@@ -6,7 +6,7 @@ This repository contains the code, trained model weights, and reproduction
 scripts for the manuscript *"Neural-Network Surrogate and AASHTO Stiffness
 Quantification for Composite Bridge Girders."* It includes the OpenSeesPy
 fibre-section data-generation pipeline, the surrogate architecture and
-training scripts, MC-Dropout and deep-ensemble inference modes, and the
+training scripts, MC-Dropout uncertainty inference (plus a deep-ensemble training script for follow-up work), and the
 AASHTO and Nie–Cai validation comparators that produce every figure and
 table in the paper.
 
@@ -33,7 +33,7 @@ pipeline runs end-to-end. See `data/README.md` for details.
 | Output | Script | Notes |
 |---|---|---|
 | Trained surrogate | `scripts/train_pinn.py --config configs/training.yaml --data data/raw/full_50k.parquet --out checkpoints/run/` | Reproduces the headline model (`weights/best.pt`) |
-| Five-member ensemble | `scripts/train_ensemble.py --members 5 --data data/raw/full_50k.parquet --out checkpoints/ensemble/` | Deep-ensemble uncertainty wrapper |
+| Deep-ensemble training script | `scripts/train_ensemble.py --members 5 --data data/raw/full_50k.parquet --out checkpoints/ensemble/` | Provided for follow-up work; members were not pre-trained for the paper (paper uses MC-Dropout for uncertainty) |
 | ML baselines (Table 3) | `scripts/run_baselines_200k.py` | XGBoost + plain MLP + residual MLP at 200k subsample |
 | Fig. 2 — Training curves | `scripts/make_figures.py --history weights/history.json` | Loss curves with best-epoch marker |
 | Fig. 3 — Parity plots (Tier 1, Table 2) | `scripts/make_figures.py --checkpoint weights/best.pt --data data/raw/full_50k.parquet` | All four targets, hexbin density |
