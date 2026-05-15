@@ -3,8 +3,9 @@
 Every figure and table in the paper is reproduced by an entry-point
 script in `scripts/`. All commands assume the working directory is the
 repository root and that the full dataset has been placed at
-`data/raw/full_50k.parquet` (downloaded from the Zenodo dataset record
-or regenerated locally with `scripts/generate_dataset.py`).
+`data/raw/full_50k.parquet` (downloaded from the Zenodo archive at
+[10.5281/zenodo.20195641](https://doi.org/10.5281/zenodo.20195641) or
+regenerated locally with `scripts/generate_dataset.py`).
 
 A 100-section smoke-test subset is shipped at
 `data/sample/smoke_100.parquet`; substitute that path in any command

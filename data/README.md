@@ -2,15 +2,13 @@
 
 The full dataset of **48,917 OpenSeesPy fibre-section analyses**
 (3.9 × 10⁶ rows) used to train the surrogate and to drive the AASHTO
-and Nie–Cai comparisons is archived at:
+and Nie–Cai comparisons is archived alongside this repository's code
+and trained weights at:
 
-> **Zenodo DOI**: *(dataset DOI to be added — placeholder
-> `10.5281/zenodo.PLACEHOLDER_DATASET_DOI` in the manuscript and
-> README will be replaced once the upload is complete)*
+> **Zenodo DOI**: [10.5281/zenodo.20195641](https://doi.org/10.5281/zenodo.20195641)
 
-The Parquet file is approximately 200 MB compressed and is too large
-to distribute in this repository. The code archive is mirrored at
-`https://doi.org/10.5281/zenodo.20195641`.
+The Parquet file is approximately 200 MB compressed and lives in the
+Zenodo record rather than in this Git repository.
 
 ## Files in this folder
 
@@ -55,12 +53,6 @@ df = pd.read_parquet("data/raw/full_50k.parquet")
 
 ## Citation
 
-```bibtex
-@dataset{Lamsal2026CompositeGirderDataset,
-  author    = {Lamsal, Sandesh},
-  title     = {Composite Girder Fibre-Section Dataset},
-  year      = {2026},
-  publisher = {Zenodo},
-  doi       = {10.5281/zenodo.PLACEHOLDER_DATASET_DOI}
-}
-```
+See the top-level [`README.md`](../README.md) — the dataset, code,
+and trained weights all share the single Zenodo DOI
+[10.5281/zenodo.20195641](https://doi.org/10.5281/zenodo.20195641).

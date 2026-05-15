@@ -16,8 +16,11 @@ Composite Bridge Girders"* by Sandesh Lamsal.
 - Nie–Cai analytical comparator
 - Sample dataset (100 sections) for smoke-testing
 
-The full dataset (48,917 sections, 3.9 × 10⁶ rows) is archived
-separately on Zenodo (DOI pending — see the Citation section).
+The full dataset (48,917 sections, 3.9 × 10⁶ rows, ~200 MB) is
+archived on Zenodo under the same DOI as this code release
+([10.5281/zenodo.20195641](https://doi.org/10.5281/zenodo.20195641))
+and can also be regenerated locally in roughly twelve minutes via
+`scripts/generate_dataset.py`.
 
 ## Installation
 
@@ -77,30 +80,17 @@ Paper (preprint):
 }
 ```
 
-Code archive (Zenodo):
+Archive (Zenodo) — code, weights, and full dataset under a single DOI:
 
 ```bibtex
-@software{Lamsal2026CompositeGirderCode,
+@software{Lamsal2026CompositeGirder,
   author    = {Lamsal, Sandesh},
-  title     = {Composite Girder Surrogate (code)},
+  title     = {Composite Girder Surrogate: code, weights, and
+               fibre-section dataset},
   year      = {2026},
   publisher = {Zenodo},
   doi       = {10.5281/zenodo.20195641},
   url       = {https://doi.org/10.5281/zenodo.20195641}
-}
-```
-
-Dataset (Zenodo):
-
-```bibtex
-@dataset{Lamsal2026CompositeGirderDataset,
-  author    = {Lamsal, Sandesh},
-  title     = {Composite Girder Fibre-Section Dataset and Trained
-               Model Weights},
-  year      = {2026},
-  publisher = {Zenodo},
-  doi       = {10.5281/zenodo.PLACEHOLDER_DATASET_DOI},
-  url       = {https://doi.org/10.5281/zenodo.PLACEHOLDER_DATASET_DOI}
 }
 ```
 
