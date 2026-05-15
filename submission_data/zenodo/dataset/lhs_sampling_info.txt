@@ -1,0 +1,26 @@
+Latin Hypercube Sampling parameters
+===================================
+
+Sampler         : scipy.stats.qmc.LatinHypercube
+Random seed     : 20260512
+Number drawn    : 50,000 candidate sections
+Validity check  : Newton convergence at every curvature increment AND
+                  elastic neutral axis within the section
+Pass rate       : 97.834% (48,917 of 50,000)
+Curvature steps : 80 monotonic increments per section
+Total rows      : 48,917 x 80 = 3,912,852 rows
+Section types   : W (hot-rolled wide-flange + concrete deck)
+                  plate (welded steel plate girder + concrete deck)
+
+The LHS sampler is implemented in src/data_generation/lhs_sampler.py
+in the linked code repository. The candidate design space and bounds
+are documented in configs/data_gen.yaml. The validity check is run
+inline during dataset generation by scripts/generate_dataset.py.
+
+To regenerate the dataset from scratch (single-core, ~12 wall-clock
+minutes on a modern laptop, OpenSeesPy required):
+
+    python scripts/generate_dataset.py \
+        --config configs/data_gen.yaml \
+        --n 50000 \
+        --out data/raw/full_50k.parquet

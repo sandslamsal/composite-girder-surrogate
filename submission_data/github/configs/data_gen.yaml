@@ -1,0 +1,60 @@
+# Latin Hypercube Sampling ranges for the 12-D composite-girder design space.
+#
+# Sampled parameters are the *independent* design variables. Quantities that
+# are functionally derived (modular ratio n = E_s/E_c, steel area A_s from
+# geometry, etc.) are computed downstream and not sampled here.
+#
+# Units: kip-inch system. Lengths in inches unless noted (ft -> in conversion
+# applied by the loader).
+
+random_seed: 20260512
+
+# ----- categorical -----
+# Sampled by quantising the LHS column that covers section_type.
+#
+# concrete_I (precast concrete I + CIP deck, AASHTO Type II-VI) is
+# implemented in `composite_section.py` but currently disabled: under
+# zero-length-section + DisplacementControl, Newton converges to the
+# hogging equilibrium branch under sagging-direction loading. Fixing this
+# (seed-moment integration or a beam-level model with explicit shear
+# connectors) is the v2 priority. Re-enable here once that lands.
+section_types:
+  - W            # hot-rolled wide-flange + concrete deck
+  - plate        # welded steel plate girder + concrete deck
+  # - concrete_I # deferred to v2 — see note above
+
+# ----- shared (all section types) -----
+span_ft:                  {min: 20.0,  max: 240.0}   # L
+deck_thickness_in:        {min: 4.5,   max: 12.0}    # t_s
+deck_width_ratio:         {min: 0.25,  max: 1.0}     # b_eff / S (girder spacing)
+girder_spacing_ft:        {min: 5.0,   max: 12.0}    # S, drives b_eff
+fc_ksi:                   {min: 3.0,   max: 10.0}    # f_c (deck + concrete-I beam)
+composite_action:         {min: 0.25,  max: 1.0}     # eta_c
+shear_stud_stiffness_ratio: {min: 0.1, max: 1.0}     # K_s / K_max
+
+# ----- steel sections (W + plate) -----
+steel:
+  fy_ksi:                 {min: 36.0,  max: 100.0}
+  depth_in:               {min: 12.0,  max: 84.0}    # d_s
+  flange_width_ratio:     {min: 0.30,  max: 0.70}    # b_f / d_s
+  flange_thickness_ratio: {min: 0.04,  max: 0.12}    # t_f / b_f
+  web_thickness_ratio:    {min: 0.015, max: 0.040}   # t_w / d_s
+
+# ----- precast concrete-I (AASHTO Type II-VI ranges) -----
+concrete_i:
+  depth_in:               {min: 36.0,  max: 72.0}    # AASHTO II (36") to VI (72")
+  fc_beam_ksi:            {min: 5.0,   max: 12.0}    # precast typically 5-12 ksi
+  prestress_ratio:        {min: 0.10,  max: 0.30}    # f_pe / f_pu, eff. prestress level
+
+# ----- moment-curvature analysis sweep -----
+analysis:
+  # Curvature is incremented monotonically; we record N points along the curve.
+  n_curvature_steps: 80
+  # Curvature normalised to phi_y (estimated yield curvature); analysis stops
+  # at moment_ratio_max OR when convergence fails (post-peak / fracture).
+  curvature_max_factor: 12.0    # phi_max = curvature_max_factor * phi_y_est
+  moment_ratio_max:    1.2      # M / M_p cap (proposal)
+  # Discretisation
+  n_fibers_deck:       40
+  n_fibers_web:        40
+  n_fibers_flange:     10
