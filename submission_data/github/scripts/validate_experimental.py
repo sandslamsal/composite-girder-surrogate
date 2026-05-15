@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Run Tier-3 experimental validation: PINN vs published beam test data.
+"""Run Tier-3 experimental validation: surrogate vs published beam test data.
 
 Usage:
     python scripts/validate_experimental.py \\
@@ -21,7 +21,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from src.models.inference import PINNPredictor
+from src.models.inference import SurrogatePredictor
 from src.validation.experimental import (
     compare_surrogate_to_experiment,
     load_experimental_csv,
@@ -40,7 +40,7 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"[load] checkpoint = {args.checkpoint}")
-    predictor = PINNPredictor.load(args.checkpoint)
+    predictor = SurrogatePredictor.load(args.checkpoint)
     print(f"[load] experimental data = {args.csv}")
     df = load_experimental_csv(args.csv)
     print(f"[compare] {len(df)} test points across {df['source'].nunique()} sources")

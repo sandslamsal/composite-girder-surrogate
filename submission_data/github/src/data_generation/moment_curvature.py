@@ -67,7 +67,7 @@ class MomentCurvatureResult:
 
         1. At least 20 of the requested steps converged. (Sweeps cut short
            by Newton failure produce too-truncated M-phi curves for the
-           PINN to learn from.)
+           surrogate to learn from.)
         2. The *initial* neutral axis (small-curvature, elastic regime)
            and the *final* neutral axis both lie inside ``[0, d_total]``.
            Sections that converge to the wrong equilibrium branch (a

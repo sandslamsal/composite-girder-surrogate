@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Generate all manuscript figures from a trained PINN checkpoint.
+"""Generate all manuscript figures from a trained surrogate checkpoint.
 
 Output: ``paper/figures/fig_*.png`` (and matching ``.pdf`` for LaTeX).
 
@@ -28,8 +28,7 @@ sys.path.insert(0, str(REPO_ROOT))
 
 import matplotlib.pyplot as plt
 
-from src.models.ensemble import EnsemblePredictor
-from src.models.inference import PINNPredictor
+from src.models.inference import SurrogatePredictor
 from src.utils.plotting import (
     apply_paper_style, savefig, color_cycle, COLORS,
     COL_SINGLE_IN, COL_DOUBLE_IN,
@@ -144,7 +143,7 @@ def _r2(y_true: np.ndarray, y_pred: np.ndarray) -> float:
 
 
 def fig_parity_plots(
-    predictor: PINNPredictor, df_test: pd.DataFrame, out: Path,
+    predictor: SurrogatePredictor, df_test: pd.DataFrame, out: Path,
 ) -> None:
     pred = predictor.predict(df_test)
 
@@ -407,7 +406,7 @@ def fig_moment_curvature(
 # Figure 5 — neutral-axis migration with curvature (AASHTO assumes fixed NA)
 # ---------------------------------------------------------------------------
 def fig_neutral_axis_migration(
-    predictor: PINNPredictor, df_full: pd.DataFrame,
+    predictor: SurrogatePredictor, df_full: pd.DataFrame,
     aashto_parquet: Path, out: Path,
 ) -> None:
     # Pick one mid-size section with moderate composite action.
@@ -451,21 +450,12 @@ def fig_uncertainty_band(
     predictor, df_full: pd.DataFrame, out: Path,
     n_dropout: int = 50,
 ) -> None:
-    """Uncertainty-band figure.
-
-    ``predictor`` may be either a :class:`PINNPredictor` (MC-Dropout) or an
-    :class:`EnsemblePredictor` (deep-ensemble) — both expose
-    ``predict_with_uncertainty`` with the same output schema.
-    """
+    """Uncertainty-band figure using MC-Dropout."""
     ids = _pick_representative_sections(df_full, n=4)
     sid = ids[0]
     sub = df_full[df_full["sample_id"] == sid].sort_values("step_index")
-    if isinstance(predictor, EnsemblePredictor):
-        unc = predictor.predict_with_uncertainty(sub)
-        uncertainty_source = f"ensemble, M = {predictor.n_members}"
-    else:
-        unc = predictor.predict_with_uncertainty(sub, n_samples=n_dropout)
-        uncertainty_source = f"MC-Dropout, T = {n_dropout}"
+    unc = predictor.predict_with_uncertainty(sub, n_samples=n_dropout)
+    uncertainty_source = f"MC-Dropout, T = {n_dropout}"
 
     phi_true = sub["curvature_1_per_in"].to_numpy() * 1e3
     mean = unc["moment_kip_in_mean"].to_numpy() / 12.0
@@ -609,13 +599,8 @@ def _split_by_sample(df: pd.DataFrame, fracs: dict, seed: int):
 
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("--checkpoint",
-                   help="Path to a single PINN checkpoint (best.pt). "
-                        "Mutually exclusive with --ensemble-dir.")
-    p.add_argument("--ensemble-dir",
-                   help="Directory containing member_*/best.pt for a deep "
-                        "ensemble. If provided, uncertainty band uses the "
-                        "ensemble instead of MC-Dropout.")
+    p.add_argument("--checkpoint", required=True,
+                   help="Path to a trained surrogate checkpoint.")
     p.add_argument("--data", required=True)
     p.add_argument("--history", required=True)
     p.add_argument("--aashto", required=True,
@@ -633,14 +618,8 @@ def main() -> None:
 
     print("[load] data, checkpoint, history…")
     df = pd.read_parquet(args.data)
-    if not args.checkpoint and not args.ensemble_dir:
-        raise SystemExit("must pass --checkpoint or --ensemble-dir")
-    if args.ensemble_dir:
-        predictor = EnsemblePredictor.from_directory(args.ensemble_dir)
-        print(f"[load] using deep ensemble ({predictor.n_members} members)")
-    else:
-        predictor = PINNPredictor.load(args.checkpoint)
-        print(f"[load] using single PINN checkpoint")
+    predictor = SurrogatePredictor.load(args.checkpoint)
+    print(f"[load] using surrogate checkpoint {args.checkpoint}")
     cfg = predictor.model  # implicit access to config via checkpoint
     # Recover the same train/val/test split as training (seed from training.yaml)
     import yaml

@@ -12,9 +12,9 @@ Composite Bridge Girders"* by Sandesh Lamsal.
   from a release of this repository.
 
 - `zenodo/` — files for the Zenodo DATASET record (uploaded manually,
-  separate from the code archive). Contains the full 3.9M-row dataset,
-  5-member deep ensemble weights, and baseline model files that are too
-  large or too peripheral for inclusion in the GitHub repository.
+  separate from the code archive). Contains the full 3.9M-row dataset
+  (and any baseline or follow-up model files too large or too peripheral
+  for inclusion in the GitHub repository).
 
 ## Workflow
 

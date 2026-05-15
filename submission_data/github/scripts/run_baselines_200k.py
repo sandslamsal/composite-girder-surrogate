@@ -31,7 +31,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
 from src.utils.normalize import FeatureNormalizer, TARGET_COLUMNS
-from src.models.pinn import CompositeGirderPINN
+from src.models.surrogate import CompositeGirderSurrogate
 
 SEED = 20260513
 N_SUB = 200_000
@@ -179,7 +179,7 @@ def main():
     # ---- Residual MLP (same arch as headline) ----
     print("\n[residual-mlp] training (matched data)", flush=True)
     res_preds_n, res_params = train_torch_model(
-        CompositeGirderPINN(input_dim=X_tr.shape[1], output_dim=Y_tr_n.shape[1],
+        CompositeGirderSurrogate(input_dim=X_tr.shape[1], output_dim=Y_tr_n.shape[1],
                             width=256, n_blocks=5, dropout=0.1),
         X_tr, Y_tr_n, X_va, Y_va_n, X_te, device, EPOCHS, "residual-mlp",
     )

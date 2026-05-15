@@ -141,7 +141,7 @@ class PlainMLP(torch.nn.Module):
 def train_plain_mlp(X_tr, X_val, y_tr, y_val, X_te, y_te, target_names,
                     epochs: int = 100, batch_size: int = 512, lr: float = 3e-4):
     print(f"[mlp] plain MLP: training {len(target_names)} targets jointly...", flush=True)
-    # Force CPU to avoid MPS competition with the parallel ensemble run.
+    # Force CPU to avoid MPS competition with parallel baseline jobs.
     device = torch.device("cpu")
     t0 = time.time()
     # Subsample train rows for tractability (matches XGBoost subset).

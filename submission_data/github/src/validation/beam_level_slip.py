@@ -7,7 +7,7 @@ the model produces a moment-curvature response *and* a true interface
 slip field; the midspan slip is the quantity we compare against the
 analytical surrogate Eq.~1.
 
-This module is **not** used to train the PINN; it exists to defend the
+This module is **not** used to train the surrogate; it exists to defend the
 analytical slip formula against reviewer scrutiny by showing that the
 formula agrees with a physically richer model across the
 composite-action range.

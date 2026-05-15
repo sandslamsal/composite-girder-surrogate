@@ -5,7 +5,7 @@ sweep of ``n_curvature_steps`` (default 80) points. The resulting wide
 table has *one row per (sample, curvature step)* with feature columns for
 the section design parameters and target columns for the OpenSees output.
 
-The PINN can use this directly as a per-point regression target; the
+The surrogate can use this directly as a per-point regression target; the
 section grouping is preserved via the ``sample_id`` column so train/test
 splits can be made by section (avoiding leakage across the M-phi curve).
 """
@@ -25,7 +25,7 @@ from .lhs_sampler import SectionParams, load_config, sample
 from .moment_curvature import MomentCurvatureResult, analyze
 
 
-# Column order is fixed so downstream PINN code can rely on it.
+# Column order is fixed so downstream surrogate code can rely on it.
 _FEATURE_COLUMNS = (
     "sample_id",
     "section_type",

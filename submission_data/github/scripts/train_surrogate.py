@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-"""Train the composite-girder PINN.
+"""Train the composite-girder surrogate.
 
 Usage:
-    python scripts/train_pinn.py --data data/raw/smoke_100.parquet --smoke \\
+    python scripts/train_surrogate.py --data data/raw/smoke_100.parquet --smoke \\
         --out checkpoints/smoke
 """
 from __future__ import annotations
@@ -25,8 +25,8 @@ from torch.utils.data import DataLoader, TensorDataset
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from src.models.pinn import CompositeGirderPINN, count_parameters
-from src.physics.losses import PhysicsLossContext, pinn_total_loss
+from src.models.surrogate import CompositeGirderSurrogate, count_parameters
+from src.physics.losses import PhysicsLossContext, total_loss
 from src.utils.normalize import FeatureNormalizer, TARGET_COLUMNS
 
 
@@ -37,8 +37,7 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--out", type=str, required=True, help="Checkpoint output dir.")
     p.add_argument("--epochs", type=int, default=None, help="Override epochs.")
     p.add_argument("--seed", type=int, default=None,
-                   help="Override config seed. Used to train ensemble members "
-                        "with different initialisations from the same config.")
+                   help="Override config seed for different initialisations.")
     p.add_argument("--equil-mode", choices=("fibre", "proxy", "none"),
                    default="fibre",
                    help="Equilibrium loss formulation. 'fibre' is the "
@@ -200,7 +199,7 @@ def main():
     )
 
     # ---- model -----------------------------------------------------------
-    model = CompositeGirderPINN(
+    model = CompositeGirderSurrogate(
         input_dim=normalizer.input_dim,
         output_dim=normalizer.output_dim,
         width=cfg["model"]["width"],
@@ -259,7 +258,7 @@ def main():
             cb = cb.to(device)
             ctx = _ctx_from_batch(cb, target_scale, target_offset)
             pred = model(xb)
-            losses = pinn_total_loss(
+            losses = total_loss(
                 pred, yb, ctx, lambda_compat, lambda_equil, data_weights,
                 equil_mode=equil_mode,
             )
@@ -282,7 +281,7 @@ def main():
                 xb = xb.to(device); yb = yb.to(device); cb = cb.to(device)
                 ctx = _ctx_from_batch(cb, target_scale, target_offset)
                 pred = model(xb)
-                losses = pinn_total_loss(
+                losses = total_loss(
                     pred, yb, ctx, lambda_compat, lambda_equil, data_weights,
                     equil_mode=equil_mode,
                 )

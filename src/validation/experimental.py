@@ -30,7 +30,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from src.models.inference import PINNPredictor
+from src.models.inference import SurrogatePredictor
 
 
 _E_C_KSI = 1802.0  # placeholder coefficient; only used if mp_estimate is
@@ -43,7 +43,7 @@ def _estimate_plastic_moment_steel_i(row: pd.Series) -> float:
     Necessary because the experimental CSV does not include
     ``mp_estimate_kip_in`` (we'd never have that for a literature test);
     we recompute it from the section geometry so the same per-row
-    moment-ratio framing the PINN was trained on still applies."""
+    moment-ratio framing the surrogate was trained on still applies."""
     fy = row["fy_ksi"]
     fc = row["fc_deck_ksi"]
     b_eff = row["deck_width_in"] * row["composite_action"]
@@ -76,7 +76,7 @@ def load_experimental_csv(path: str | Path) -> pd.DataFrame:
 
 
 def compare_surrogate_to_experiment(
-    predictor: PINNPredictor, experimental_df: pd.DataFrame,
+    predictor: SurrogatePredictor, experimental_df: pd.DataFrame,
 ) -> pd.DataFrame:
     """Run the surrogate on the experimental rows and return a side-by-side
     comparison dataframe with relative errors."""

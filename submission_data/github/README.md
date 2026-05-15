@@ -16,9 +16,8 @@ Composite Bridge Girders"* by Sandesh Lamsal.
 - Nie–Cai analytical comparator
 - Sample dataset (100 sections) for smoke-testing
 
-The full dataset (48,917 sections, 3.9 × 10⁶ rows) and 5-member deep
-ensemble weights are archived separately on Zenodo (DOI pending — see
-the Citation section).
+The full dataset (48,917 sections, 3.9 × 10⁶ rows) is archived
+separately on Zenodo (DOI pending — see the Citation section).
 
 ## Installation
 
@@ -36,7 +35,7 @@ full mapping of scripts to figures and tables.
 Quick smoke test:
 
 ```bash
-python scripts/train_pinn.py --config configs/training.yaml \
+python scripts/train_surrogate.py --config configs/training.yaml \
     --data data/sample/smoke_100.parquet \
     --out checkpoints/smoke/
 ```
@@ -47,8 +46,7 @@ python scripts/train_pinn.py --config configs/training.yaml \
 .
 ├── src/
 │   ├── data_generation/   LHS sampler, section builder, M–φ driver
-│   ├── models/            Residual-MLP architecture, training, inference,
-│   │                      deep-ensemble training helper
+│   ├── models/            Residual-MLP architecture and inference wrapper
 │   ├── physics/           Soft-physics loss terms
 │   ├── validation/        AASHTO, Nie–Cai, and beam-level comparators
 │   └── utils/             Normaliser and plotting style

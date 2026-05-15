@@ -3,7 +3,7 @@ from .losses import (
     compatibility_loss,
     equilibrium_loss,
     data_loss,
-    pinn_total_loss,
+    total_loss,
 )
 
 __all__ = [
@@ -11,5 +11,5 @@ __all__ = [
     "compatibility_loss",
     "equilibrium_loss",
     "data_loss",
-    "pinn_total_loss",
+    "total_loss",
 ]

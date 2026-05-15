@@ -1,4 +1,4 @@
-"""Feature and target normalisation for the composite-girder PINN.
+"""Feature and target normalisation for the composite-girder surrogate.
 
 Physical features use fixed ranges from configs/data_gen.yaml so the network sees
 inputs on roughly the same scale across train/val/test/inference. Targets use
@@ -15,7 +15,7 @@ import torch
 import yaml
 
 
-# Ordered input features the PINN consumes (post-encoding).
+# Ordered input features the surrogate consumes (post-encoding).
 #  - 12 continuous design features matching proposal Table 2 (+ a couple of
 #    composite-related extras the model benefits from)
 #  - 1 load-step feature (moment_ratio)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Honest accuracy metrics for the PINN's moment prediction.
+"""Honest accuracy metrics for the surrogate's moment prediction.
 
 The raw moment R^2 (~1.0) overstates the model's value because the
 input feature ``moment_ratio = M/M_p`` is fed in directly, and we
@@ -8,16 +8,16 @@ achieve very high raw R^2 simply by copying its input.
 
 Two more informative metrics:
 
-1. **Residual R^2** — compute the R^2 of the PINN's prediction against
+1. **Residual R^2** — compute the R^2 of the surrogate's prediction against
    the *residual* of the trivial baseline ``M_baseline = r * M_p_est``.
-   This measures how much of the *remaining* variance the PINN
-   explains beyond the trivial guess. Values >> 0 mean the PINN is
+   This measures how much of the *remaining* variance the surrogate
+   explains beyond the trivial guess. Values >> 0 mean the surrogate is
    genuinely doing more than copying the input.
 
 2. **Skill score** — Murphy's skill score:
-       SS = 1 - MSE(PINN) / MSE(baseline)
+       SS = 1 - MSE(surrogate) / MSE(baseline)
    This is the fraction of the baseline's mean-squared error that the
-   PINN eliminates. 1.0 = perfect, 0.0 = no better than baseline,
+   surrogate eliminates. 1.0 = perfect, 0.0 = no better than baseline,
    negative = worse than baseline.
 
 We compute both for all four targets, although they're most meaningful
@@ -41,7 +41,7 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from src.models.inference import PINNPredictor
+from src.models.inference import SurrogatePredictor
 from src.utils.normalize import TARGET_COLUMNS
 
 
@@ -79,7 +79,7 @@ def main():
     print(f"[data] test rows = {len(test):,}, sections = "
           f"{test['sample_id'].nunique():,}")
 
-    predictor = PINNPredictor.load(args.checkpoint)
+    predictor = SurrogatePredictor.load(args.checkpoint)
     pred = predictor.predict(test)
 
     # --- raw metrics --------------------------------------------------
@@ -103,13 +103,13 @@ def main():
     M_pred = pred["moment_kip_in"].to_numpy()
 
     rmse_baseline = _rmse(M_true, M_baseline)
-    rmse_pinn = _rmse(M_true, M_pred)
+    rmse_pred = _rmse(M_true, M_pred)
     print(f"Trivial baseline (r * Mp_est) RMSE vs M_true: {rmse_baseline:.3e} kip-in")
-    print(f"PINN prediction RMSE vs M_true:               {rmse_pinn:.3e} kip-in")
+    print(f"surrogate prediction RMSE vs M_true:               {rmse_pred:.3e} kip-in")
     if rmse_baseline < 1e-3:
         print()
         print("** FINDING **: M_true is literally identical to r·Mp_est in the")
-        print("dataset (baseline RMSE ~ machine epsilon). The PINN cannot do")
+        print("dataset (baseline RMSE ~ machine epsilon). The surrogate cannot do")
         print("better than the trivial baseline because the answer is the input")
         print("feature value times another input feature. Moment is NOT a real")
         print("prediction in this setup; it's a pass-through.")

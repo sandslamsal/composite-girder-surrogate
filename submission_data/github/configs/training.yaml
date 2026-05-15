@@ -1,4 +1,4 @@
-# PINN training hyperparameters (proposal Table 4 + small additions).
+# Surrogate training hyperparameters.
 
 seed: 20260513
 

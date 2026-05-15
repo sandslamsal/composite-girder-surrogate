@@ -46,7 +46,7 @@ To verify the pipeline runs end-to-end on a laptop (no full dataset
 required):
 
 ```bash
-python scripts/train_pinn.py --config configs/training.yaml \
+python scripts/train_surrogate.py --config configs/training.yaml \
     --data data/sample/smoke_100.parquet --out checkpoints/smoke/
 python scripts/make_figures.py --history checkpoints/smoke/history.json
 ```

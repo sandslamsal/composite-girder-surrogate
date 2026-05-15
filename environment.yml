@@ -1,4 +1,4 @@
-name: pinn_compgirder
+name: composite_girder_surrogate
 channels:
   - conda-forge
   - defaults

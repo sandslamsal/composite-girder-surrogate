@@ -1,9 +1,9 @@
-"""Load a trained PINN checkpoint and run predictions on new sections.
+"""Load a trained surrogate checkpoint and run predictions on new sections.
 
 Typical use:
 
-    from src.models.inference import PINNPredictor
-    pred = PINNPredictor.load("checkpoints/full_run/best.pt")
+    from src.models.inference import SurrogatePredictor
+    pred = SurrogatePredictor.load("checkpoints/full_run/best.pt")
     out = pred.predict(df)        # df has the same columns as the parquet input
 
 Returns a dataframe with predicted (y_na, curvature, moment, slip) in
@@ -18,21 +18,21 @@ import numpy as np
 import pandas as pd
 import torch
 
-from src.models.pinn import CompositeGirderPINN
+from src.models.surrogate import CompositeGirderSurrogate
 from src.utils.normalize import FeatureNormalizer, TARGET_COLUMNS
 
 
-class PINNPredictor:
-    """Inference wrapper that bundles the trained PINN and its normaliser.
+class SurrogatePredictor:
+    """Inference wrapper that bundles the trained surrogate and its normaliser.
 
     Uses MC-Dropout for epistemic uncertainty: each forward pass with
-    dropout active gives a slightly different prediction; the ensemble of
+    dropout active gives a slightly different prediction; averaging
     ``T`` passes gives mean + std-dev per target.
     """
 
     def __init__(
         self,
-        model: CompositeGirderPINN,
+        model: CompositeGirderSurrogate,
         normalizer: FeatureNormalizer,
         device: torch.device,
     ) -> None:
@@ -42,7 +42,7 @@ class PINNPredictor:
 
     @classmethod
     def load(cls, checkpoint_path: str | Path,
-             device: Optional[torch.device] = None) -> "PINNPredictor":
+             device: Optional[torch.device] = None) -> "SurrogatePredictor":
         if device is None:
             device = torch.device(
                 "mps" if torch.backends.mps.is_available() else "cpu"
@@ -52,7 +52,7 @@ class PINNPredictor:
         normalizer.load_state_dict(ckpt["normalizer_state"])
         cfg = ckpt.get("config", {})
         model_cfg = cfg.get("model", {})
-        model = CompositeGirderPINN(
+        model = CompositeGirderSurrogate(
             input_dim=normalizer.input_dim,
             output_dim=normalizer.output_dim,
             width=model_cfg.get("width", 256),

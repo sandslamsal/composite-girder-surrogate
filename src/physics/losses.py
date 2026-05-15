@@ -1,6 +1,6 @@
-"""Physics-informed loss terms for the composite-girder PINN.
+"""Physics-informed loss terms for the composite-girder surrogate.
 
-The PINN predicts (y_na, curvature, moment, slip) in *normalised* space.
+The surrogate predicts (y_na, curvature, moment, slip) in *normalised* space.
 The losses operate partly in physical units (compatibility / equilibrium
 on strains and integrated moments) and partly in normalised space
 (data-fit). The normaliser is plugged in via :class:`PhysicsLossContext`
@@ -37,7 +37,7 @@ _E_STEEL_KSI = 29_000.0
 _EPS_STEEL_YIELD_REF_KSI = _E_STEEL_KSI    # used as f_y / E_s scale
 _EPS_C0 = -0.002                            # concrete strain at peak compression
 # Concrete tension capacity: Concrete01 (used in dataset gen) is zero
-# tension, but for the PINN equilibrium loss we use a small linear tension
+# tension, but for the equilibrium loss we use a small linear tension
 # branch up to ft and then zero. Negligible numerically but stabilises
 # gradient near zero strain.
 _FT_OVER_FC = 0.07
@@ -316,7 +316,7 @@ def data_loss(pred: Tensor, target: Tensor, weights: Tensor | None = None) -> Te
     return diff_sq.mean()
 
 
-def pinn_total_loss(
+def total_loss(
     pred: Tensor,
     target: Tensor,
     ctx: PhysicsLossContext,
@@ -326,7 +326,7 @@ def pinn_total_loss(
     equil_mode: str = "fibre",
     lambda_capacity: float = 0.01,
 ) -> Dict[str, Tensor]:
-    """Combined PINN loss. ``equil_mode`` selects the equilibrium term:
+    """Combined data + physics loss. ``equil_mode`` selects the equilibrium term:
     ``"fibre"`` is the proper physics-informed integration; ``"proxy"``
     is the trivial baseline used for the ablation study; ``"none"``
     disables the equilibrium term entirely.

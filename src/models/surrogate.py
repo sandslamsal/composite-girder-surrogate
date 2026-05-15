@@ -1,4 +1,4 @@
-"""Residual-MLP PINN for composite-girder moment-curvature response.
+"""Residual-MLP surrogate for composite-girder moment-curvature response.
 
 Predicts (y_na, curvature, moment, slip) given a 17-dim normalised feature
 vector (14 continuous + 3 one-hot section-type indicators). Width 256, 5
@@ -26,7 +26,7 @@ class ResidualBlock(nn.Module):
         return x + h
 
 
-class CompositeGirderPINN(nn.Module):
+class CompositeGirderSurrogate(nn.Module):
     """Outputs (y_na, curvature, moment, slip), all >= 0 via Softplus."""
 
     def __init__(
