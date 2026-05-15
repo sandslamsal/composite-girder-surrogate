@@ -78,10 +78,3 @@ Thumbs.db
 
 # Proposal / private docs
 *.docx
-
-# Zenodo staging area — large files uploaded manually, never to GitHub
-submission_data/zenodo/dataset/full_dataset.parquet
-submission_data/zenodo/dataset/*.parquet
-submission_data/zenodo/dataset/*.csv.gz
-submission_data/zenodo/dataset/*.h5
-submission_data/zenodo/weights/ensemble/*.pt
