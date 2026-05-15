@@ -1,0 +1,41 @@
+# PINN training hyperparameters (proposal Table 4 + small additions).
+
+seed: 20260513
+
+# Optimisation
+optimizer:
+  lr: 3.0e-4
+  weight_decay: 1.0e-5
+batch_size: 512
+epochs: 300
+
+# LR schedule
+lr_scheduler:
+  type: cosine
+  eta_min: 3.0e-6
+
+# Physics weights (proposal Table 4)
+lambda_compat:
+  start: 0.01
+  end: 0.10
+  ramp_fraction: 0.333    # linear ramp over first third, hold thereafter
+lambda_equil: 0.05
+
+# Per-target weighting in the data MSE (order: y_na, curvature, moment, slip).
+# Curvature gets a heavier weight per spec.
+data_weights: [1.0, 3.0, 1.0, 1.0]
+
+# Data split (by sample_id, never by row)
+splits:
+  train: 0.8
+  val: 0.1
+  test: 0.1
+
+# Model
+model:
+  width: 256
+  n_blocks: 5
+  dropout: 0.1
+
+# Reference path so the normaliser knows the physical feature ranges.
+data_gen_config: configs/data_gen.yaml

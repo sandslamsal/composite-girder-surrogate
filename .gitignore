@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.env
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints/
+
+# PyTorch / model artifacts — keep weights/, exclude scratch checkpoints
+*.pt
+*.pth
+*.ckpt
+*.pt.bak
+checkpoints/
+runs/
+wandb/
+!weights/best.pt
+!weights/*.pt
+
+# Data — keep the smoke-test sample + experimental rows; exclude the
+# full LHS sweep, intermediate processed parquets, and run reports.
+data/raw/
+data/processed/
+data/full/
+data/*.npz
+data/*.h5
+reports/
+
+# Generated figures (output target, not checked in)
+figures/*.png
+figures/*.pdf
+
+# Manuscript — separate workspace, not part of the code release
+paper/
+
+# Logs / temp
+*.log
+*.out
+*.tcl.log
+
+# Notebooks / tests (empty)
+notebooks/
+tests/
+
+# OS
+.DS_Store
+Thumbs.db
+~$*
+*.swp
+
+# Editor / IDE
+.vscode/
+.idea/
+.vs/
+
+# AI tool configs — must not be committed
+.claude/
+.cursor/
+.aider*
+.continue/
+.copilot/
+
+# Proposal / private docs
+*.docx

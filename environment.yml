@@ -1,0 +1,19 @@
+name: pinn_compgirder
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy=1.26
+  - scipy=1.15
+  - pandas
+  - pyyaml
+  - tqdm
+  - matplotlib
+  - jupyterlab
+  - pip
+  - pip:
+      - openseespy==3.5.1.12
+      - torch==2.2.2
+      - scikit-learn
+      - pyarrow
