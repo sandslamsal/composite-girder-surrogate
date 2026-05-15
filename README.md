@@ -1,6 +1,6 @@
 # Composite Girder Surrogate
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20195641.svg)](https://doi.org/10.5281/zenodo.20195641)
+[![DOI](https://img.shields.io/badge/Mendeley%20Data-10.17632%2Fzjzyz6nrh5.1-blue)](https://doi.org/10.17632/zjzyz6nrh5.1)
 
 Code, model weights, and reproduction scripts for the paper
 *"Neural-Network Surrogate and AASHTO Stiffness Quantification for
@@ -17,10 +17,8 @@ Composite Bridge Girders"* by Sandesh Lamsal.
 - Sample dataset (100 sections) for smoke-testing
 
 The full dataset (48,917 sections, 3.9 × 10⁶ rows, ~200 MB) is
-archived on Zenodo under the same DOI as this code release
-([10.5281/zenodo.20195641](https://doi.org/10.5281/zenodo.20195641))
-and can also be regenerated locally in roughly twelve minutes via
-`scripts/generate_dataset.py`.
+archived together with the code and trained weights on Mendeley Data
+at [10.17632/zjzyz6nrh5.1](https://doi.org/10.17632/zjzyz6nrh5.1).
 
 ## Installation
 
@@ -80,17 +78,19 @@ Paper (preprint):
 }
 ```
 
-Archive (Zenodo) — code, weights, and full dataset under a single DOI:
+Archive (Mendeley Data) — code, weights, and full dataset under one DOI:
 
 ```bibtex
-@software{Lamsal2026CompositeGirder,
+@dataset{Lamsal2026CompositeGirder,
   author    = {Lamsal, Sandesh},
-  title     = {Composite Girder Surrogate: code, weights, and
-               fibre-section dataset},
+  title     = {Composite Girder Surrogate: Code, Dataset, and
+               Trained Model Weights for AASHTO Stiffness
+               Quantification},
   year      = {2026},
-  publisher = {Zenodo},
-  doi       = {10.5281/zenodo.20195641},
-  url       = {https://doi.org/10.5281/zenodo.20195641}
+  publisher = {Mendeley Data},
+  version   = {V1},
+  doi       = {10.17632/zjzyz6nrh5.1},
+  url       = {https://doi.org/10.17632/zjzyz6nrh5.1}
 }
 ```
 

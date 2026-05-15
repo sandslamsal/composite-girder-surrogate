@@ -78,3 +78,6 @@ Thumbs.db
 
 # Proposal / private docs
 *.docx
+
+# Zenodo upload staging — heavy artefacts uploaded manually, not via git
+zenodo_upload/
