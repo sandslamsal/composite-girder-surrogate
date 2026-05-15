@@ -2,13 +2,10 @@
 
 The full dataset of **48,917 OpenSeesPy fibre-section analyses**
 (3.9 × 10⁶ rows) used to train the surrogate and to drive the AASHTO
-and Nie–Cai comparisons is archived alongside this repository's code
-and trained weights at:
-
-> **Mendeley Data DOI**: [10.17632/zjzyz6nrh5.1](https://doi.org/10.17632/zjzyz6nrh5.1)
-
-The Parquet file is approximately 200 MB compressed and lives in the
-Mendeley Data record rather than in this Git repository.
+and Nie–Cai comparisons is **not shipped in this repository**. It is
+approximately 200 MB compressed and is regenerated deterministically
+from the released code and configuration (see below), so it is not
+archived separately.
 
 ## Files in this folder
 
@@ -53,6 +50,7 @@ df = pd.read_parquet("data/raw/full_50k.parquet")
 
 ## Citation
 
-See the top-level [`README.md`](../README.md). The dataset, code,
-and trained weights all share the single Mendeley Data DOI
-[10.17632/zjzyz6nrh5.1](https://doi.org/10.17632/zjzyz6nrh5.1).
+See the top-level [`README.md`](../README.md). The code and trained
+weights are archived on Zenodo at
+[10.5281/zenodo.20195641](https://doi.org/10.5281/zenodo.20195641);
+the full dataset is regenerated from that code.

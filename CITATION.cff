@@ -29,8 +29,8 @@ repository-code: "https://github.com/sandslamsal/composite-girder-surrogate"
 url: "https://github.com/sandslamsal/composite-girder-surrogate"
 identifiers:
   - type: doi
-    value: 10.17632/zjzyz6nrh5.1
-    description: "Mendeley Data record: code, dataset, and trained model weights"
+    value: 10.5281/zenodo.20195641
+    description: "Zenodo code archive"
 version: "1.0.0"
 date-released: "2026-05-15"
 preferred-citation:
