@@ -95,6 +95,7 @@ def analyze(
     axial_load_kip: float = 0.0,
     newton_tol: float = 1e-8,
     newton_max_iter: int = 30,
+    deck_rho_long: float = 0.0,
 ) -> MomentCurvatureResult:
     """Run a single moment-curvature sweep on ``params``.
 
@@ -111,8 +112,12 @@ def analyze(
         Applied axial load at the free node (positive = tension). Default 0.
     newton_tol, newton_max_iter
         Convergence controls for the Newton solver.
+    deck_rho_long
+        Optional total longitudinal deck-reinforcement ratio passed to
+        :func:`build_section`. Default 0.0 (no deck reinforcement).
     """
-    info = build_section(params, section_tag=_SECTION_TAG)
+    info = build_section(params, section_tag=_SECTION_TAG,
+                         deck_rho_long=deck_rho_long)
 
     if curvature_max is None:
         # Yield curvature scale: phi_y ~ 2 * fy / (E_s * d_total)

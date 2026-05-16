@@ -59,8 +59,15 @@ class SectionInfo:
     plastic_moment_kip_in: float    # rough M_p estimate for normalisation
 
 
-def build_section(params: SectionParams, section_tag: int = 1) -> SectionInfo:
+def build_section(params: SectionParams, section_tag: int = 1,
+                  deck_rho_long: float = 0.0) -> SectionInfo:
     """Wipe the current OpenSees domain and assemble the fibre section.
+
+    ``deck_rho_long`` is an optional total longitudinal deck-reinforcement
+    ratio (steel area / modelled deck area). The default ``0.0`` reproduces
+    the released dataset, in which deck reinforcement is omitted; a positive
+    value adds top and bottom reinforcement layers (see
+    :func:`_build_steel_i_with_deck`).
 
     Returns geometry metadata used by downstream analysis.
     """
@@ -75,7 +82,8 @@ def build_section(params: SectionParams, section_tag: int = 1) -> SectionInfo:
 
     if params.section_type in ("W", "plate"):
         info = _build_steel_i_with_deck(
-            params, section_tag, n_fibers_deck, n_fibers_web, n_fibers_flange
+            params, section_tag, n_fibers_deck, n_fibers_web, n_fibers_flange,
+            deck_rho_long=deck_rho_long,
         )
     elif params.section_type == "concrete_I":
         # Implementation exists in `_build_concrete_i_with_deck` but the
@@ -172,6 +180,7 @@ def _build_steel_i_with_deck(
     n_fibers_deck: int,
     n_fibers_web: int,
     n_fibers_flange: int,
+    deck_rho_long: float = 0.0,
 ) -> SectionInfo:
     t_s = params.deck_thickness_in
     b_eff_full = params.deck_width_in
@@ -200,6 +209,26 @@ def _build_steel_i_with_deck(
         y_deck_top, -b_eff / 2.0,
         y_deck_bot, +b_eff / 2.0,
     )
+
+    # Optional deck longitudinal reinforcement. ``deck_rho_long`` is the
+    # total longitudinal steel ratio referred to the modelled
+    # (effective-width) deck area; it is split equally between a top and a
+    # bottom layer placed 15% of the slab depth in from each face. The
+    # default (0.0) reproduces the released dataset, which omits deck
+    # reinforcement; a positive value gives the cracked deck non-zero
+    # axial stiffness.
+    if deck_rho_long > 0.0 and b_eff > 0.0:
+        a_layer = 0.5 * deck_rho_long * b_eff * t_s
+        ops.layer(
+            "straight", _MAT_STEEL, 1, a_layer,
+            y_deck_top + 0.15 * t_s, -b_eff / 2.0,
+            y_deck_top + 0.15 * t_s, +b_eff / 2.0,
+        )
+        ops.layer(
+            "straight", _MAT_STEEL, 1, a_layer,
+            y_deck_bot - 0.15 * t_s, -b_eff / 2.0,
+            y_deck_bot - 0.15 * t_s, +b_eff / 2.0,
+        )
 
     # Top flange
     _rect_patch(
