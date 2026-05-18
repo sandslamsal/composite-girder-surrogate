@@ -1,8 +1,8 @@
 """Residual-MLP surrogate for composite-girder moment-curvature response.
 
-Predicts (y_na, curvature, moment, slip) given a 17-dim normalised feature
-vector (14 continuous + 3 one-hot section-type indicators). Width 256, 5
-residual blocks, GELU + dropout 0.1; ~400k params.
+Predicts the two non-trivial section quantities (y_na, curvature) given a
+17-dim normalised feature vector (14 continuous + 3 one-hot section-type
+indicators). Width 256, 5 residual blocks, GELU + dropout 0.1.
 """
 from __future__ import annotations
 
@@ -27,12 +27,12 @@ class ResidualBlock(nn.Module):
 
 
 class CompositeGirderSurrogate(nn.Module):
-    """Outputs (y_na, curvature, moment, slip), all >= 0 via Softplus."""
+    """Outputs (y_na, curvature), both >= 0 via Softplus."""
 
     def __init__(
         self,
         input_dim: int = 17,
-        output_dim: int = 4,
+        output_dim: int = 2,
         width: int = 256,
         n_blocks: int = 5,
         dropout: float = 0.1,
@@ -46,7 +46,7 @@ class CompositeGirderSurrogate(nn.Module):
             [ResidualBlock(width, dropout) for _ in range(n_blocks)]
         )
         self.head = nn.Linear(width, output_dim)
-        # Softplus keeps all four outputs non-negative; predictions live in the
+        # Softplus keeps both outputs non-negative; predictions live in the
         # normalised [0, 1]-ish range. Default beta=1 is more numerically stable
         # on MPS than beta=2 (which can yield NaNs in mixed-precision-ish paths).
         self.out_act = nn.Softplus()

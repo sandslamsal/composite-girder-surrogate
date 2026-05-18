@@ -1,13 +1,13 @@
 """Physics-informed loss terms for the composite-girder surrogate.
 
-The surrogate predicts (y_na, curvature, moment, slip) in *normalised* space.
+The surrogate predicts (y_na, curvature) in *normalised* space.
 The losses operate partly in physical units (compatibility / equilibrium
 on strains and integrated moments) and partly in normalised space
 (data-fit). The normaliser is plugged in via :class:`PhysicsLossContext`
 so we can convert back and forth without re-introducing the per-target
 scale/offset bookkeeping at every call site.
 
-The losses fall into three classes:
+The losses fall into two classes:
 
 1. **Compatibility** -- Euler--Bernoulli strain at K sampled fibre
    depths must equal ``phi (y - y_na)``. Penalises both out-of-section
@@ -16,12 +16,9 @@ The losses fall into three classes:
 2. **Equilibrium** -- the moment implied by a simplified bilinear-elastic
    integration of fibre stresses across the section must match the input
    moment level ``r * Mp_est``. This is the loss term that genuinely
-   enforces section equilibrium given the model's (phi, y_na) predictions
-   -- the network cannot satisfy it by trivially copying its moment-ratio
-   input.
-
-3. **Capacity bound** -- the predicted moment must not exceed
-   ``1.2 * Mp_est`` (a soft cap, plastic moment plus 20 %).
+   enforces section equilibrium given the model's (phi, y_na) predictions.
+   It depends only on the two predicted quantities (curvature and
+   neutral-axis depth); no moment output is required.
 """
 from __future__ import annotations
 
@@ -52,16 +49,16 @@ class PhysicsLossContext:
 
     All tensors have shape ``(B,)`` and live on the same device as
     predictions. Section geometry is required so the fibre-integration
-    equilibrium loss can compute proper integrals; older callers that
-    only need the simple proxy losses can leave the geometry fields
-    unset (None).
+    equilibrium loss can compute proper integrals; callers that only
+    need the compatibility loss can leave the geometry fields unset
+    (None), in which case the equilibrium loss returns zero.
     """
 
     total_depth_in: Tensor          # d_total
     mp_estimate_kip_in: Tensor      # estimated plastic moment for normalisation
     moment_ratio: Tensor            # applied load level M / M_p (input feature)
-    target_scale: Tensor            # shape (4,) -- y_phys = y_norm * scale + offset
-    target_offset: Tensor           # shape (4,)
+    target_scale: Tensor            # shape (2,) -- y_phys = y_norm * scale + offset
+    target_offset: Tensor           # shape (2,)
     # Optional fields used by the fibre-integration equilibrium loss.
     deck_thickness_in: Tensor | None = None
     deck_width_in: Tensor | None = None        # effective deck width AFTER eta_c scaling
@@ -75,15 +72,12 @@ class PhysicsLossContext:
 
 
 def _denorm(pred: Tensor, ctx: PhysicsLossContext) -> Tensor:
-    """Map normalised predictions to physical units.
+    """Map normalised predictions (y_na, curvature) to physical units.
 
-    The moment column (index 2) uses per-row scaling by ``mp_estimate``;
-    the other three targets use the stored scale/offset. Must stay
-    consistent with :meth:`FeatureNormalizer.inverse_transform_targets`.
+    Must stay consistent with
+    :meth:`FeatureNormalizer.inverse_transform_targets`.
     """
-    out = pred * ctx.target_scale + ctx.target_offset
-    moment_phys = pred[..., 2] * ctx.mp_estimate_kip_in
-    return torch.stack([out[..., 0], out[..., 1], moment_phys, out[..., 3]], dim=-1)
+    return pred * ctx.target_scale + ctx.target_offset
 
 
 # ---------------------------------------------------------------------------
@@ -109,7 +103,7 @@ def compatibility_loss(
       compression, bottom in tension), otherwise the section is in pure
       axial loading rather than bending.
     """
-    y_na, phi, _m, _s = _denorm(pred, ctx).unbind(dim=-1)
+    y_na, phi = _denorm(pred, ctx).unbind(dim=-1)
     d = ctx.total_depth_in
 
     # (1) NA inside section
@@ -134,28 +128,6 @@ def compatibility_loss(
 
 
 # ---------------------------------------------------------------------------
-# Equilibrium loss -- proxy (legacy)
-# ---------------------------------------------------------------------------
-
-def equilibrium_loss_proxy(pred: Tensor, ctx: PhysicsLossContext) -> Tensor:
-    """Trivial proxy retained for backwards compatibility / ablations.
-
-    Penalises the residual ``(M_pred - r * Mp_est) / Mp_est`` in the
-    elastic-ish regime (``r < 0.7``). Note that this is trivially
-    satisfied by the model since ``M = pred_norm * Mp_est`` and the
-    target ``M_true = r * Mp_est`` is identical. The fibre-integration
-    variant below is the loss that actually carries physical content.
-    """
-    _y, _phi, m_phys, _s = _denorm(pred, ctx).unbind(dim=-1)
-    target_m = ctx.moment_ratio * ctx.mp_estimate_kip_in
-    r = ctx.moment_ratio
-    weight = torch.clamp((0.7 - r) / 0.2, min=0.0, max=1.0)
-    rel = (m_phys - target_m) / (ctx.mp_estimate_kip_in + 1e-6)
-    rel = torch.clamp(rel, min=-50.0, max=50.0)
-    return ((weight * rel) ** 2).mean()
-
-
-# ---------------------------------------------------------------------------
 # Equilibrium loss -- fibre-stress integration
 # ---------------------------------------------------------------------------
 
@@ -164,8 +136,6 @@ def _bilinear_steel_stress(eps: Tensor, fy: Tensor) -> Tensor:
     then ``b * E_s`` slope. Matches Steel02 with ``b=0.01`` used in the
     dataset generator."""
     eps_y = fy / _E_STEEL_KSI
-    # sign(eps) * (fy + b * E_s * (|eps| - eps_y)) when |eps| > eps_y,
-    # else E_s * eps
     abs_eps = eps.abs()
     elastic = _E_STEEL_KSI * eps
     hardening = torch.sign(eps) * (fy + _STEEL_B * _E_STEEL_KSI * (abs_eps - eps_y))
@@ -202,13 +172,11 @@ def equilibrium_loss_fibre(
     should match the input ``r * Mp_est`` (in the elastic-ish regime
     where the simplified bilinear materials are accurate).
 
-    The network can no longer satisfy this loss by copying its moment-
-    ratio input -- the (phi, y_na) prediction must produce a strain
-    field that integrates to the correct moment.
+    The loss depends only on the model's two predicted quantities
+    (curvature and neutral-axis depth) -- no moment output is used.
 
     Requires the optional section-geometry fields in
-    :class:`PhysicsLossContext`. If any are missing, falls back to the
-    proxy loss.
+    :class:`PhysicsLossContext`. If any are missing, returns zero.
     """
     geom_required = [
         ctx.deck_thickness_in, ctx.deck_width_in, ctx.steel_depth_in,
@@ -216,9 +184,9 @@ def equilibrium_loss_fibre(
         ctx.fc_deck_ksi, ctx.fy_ksi,
     ]
     if any(g is None for g in geom_required):
-        return equilibrium_loss_proxy(pred, ctx)
+        return torch.zeros((), device=pred.device)
 
-    y_na, phi, _m, _s = _denorm(pred, ctx).unbind(dim=-1)
+    y_na, phi = _denorm(pred, ctx).unbind(dim=-1)
 
     t_s = ctx.deck_thickness_in
     b_eff = ctx.deck_width_in
@@ -278,29 +246,16 @@ def equilibrium_loss_fibre(
     return ((weight * rel) ** 2).mean()
 
 
-# Public alias chosen by the training script. ``fibre`` is the proper
-# physics-informed loss; ``proxy`` is kept for ablation studies.
 def equilibrium_loss(
     pred: Tensor, ctx: PhysicsLossContext, mode: str = "fibre",
 ) -> Tensor:
+    """Equilibrium term dispatch. ``"fibre"`` is the fibre-stress
+    integration; ``"none"`` returns zero."""
     if mode == "fibre":
         return equilibrium_loss_fibre(pred, ctx)
-    if mode == "proxy":
-        return equilibrium_loss_proxy(pred, ctx)
+    if mode == "none":
+        return torch.zeros((), device=pred.device)
     raise ValueError(f"unknown equilibrium-loss mode: {mode!r}")
-
-
-# ---------------------------------------------------------------------------
-# Capacity bound (soft)
-# ---------------------------------------------------------------------------
-
-def capacity_loss(pred: Tensor, ctx: PhysicsLossContext) -> Tensor:
-    """Soft cap: predicted moment must not exceed 1.2 * Mp_est. Counts as
-    a physics constraint because the section's plastic moment is an upper
-    bound on the moment it can carry."""
-    _y, _phi, m_phys, _s = _denorm(pred, ctx).unbind(dim=-1)
-    excess = torch.relu(m_phys / (ctx.mp_estimate_kip_in + 1e-6) - 1.2)
-    return excess.pow(2).mean()
 
 
 # ---------------------------------------------------------------------------
@@ -308,8 +263,7 @@ def capacity_loss(pred: Tensor, ctx: PhysicsLossContext) -> Tensor:
 # ---------------------------------------------------------------------------
 
 def data_loss(pred: Tensor, target: Tensor, weights: Tensor | None = None) -> Tensor:
-    """MSE in normalised target space. Optional per-target weight vector
-    (length 4)."""
+    """MSE in normalised target space. Optional per-target weight vector."""
     diff_sq = (pred - target) ** 2
     if weights is not None:
         diff_sq = diff_sq * weights
@@ -321,31 +275,32 @@ def total_loss(
     target: Tensor,
     ctx: PhysicsLossContext,
     lambda_compat: float,
-    lambda_equil: float,
+    lambda_equil: float = 0.0,
     data_weights: Tensor | None = None,
     equil_mode: str = "fibre",
-    lambda_capacity: float = 0.01,
+    lambda_capacity: float = 0.0,
 ) -> Dict[str, Tensor]:
-    """Combined data + physics loss. ``equil_mode`` selects the equilibrium term:
-    ``"fibre"`` is the proper physics-informed integration; ``"proxy"``
-    is the trivial baseline used for the ablation study; ``"none"``
-    disables the equilibrium term entirely.
+    """Combined data + compatibility + equilibrium loss for the
+    two-output (y_na, curvature) surrogate.
+
+    ``equil_mode`` selects the equilibrium term: ``"fibre"`` is the
+    fibre-stress integration; ``"none"`` disables it. ``lambda_capacity``
+    is retained for call-signature compatibility but is inert: the
+    capacity term was moment-based and does not apply to the two-output
+    model.
     """
     l_data = data_loss(pred, target, data_weights)
     l_compat = compatibility_loss(pred, ctx)
     if equil_mode == "none":
-        l_equil = torch.tensor(0.0, device=pred.device)
+        l_equil = torch.zeros((), device=pred.device)
     else:
         l_equil = equilibrium_loss(pred, ctx, mode=equil_mode)
-    l_capacity = capacity_loss(pred, ctx)
-    l_total = (l_data
-               + lambda_compat * l_compat
-               + lambda_equil * l_equil
-               + lambda_capacity * l_capacity)
+    zero = torch.zeros((), device=pred.device)
+    l_total = l_data + lambda_compat * l_compat + lambda_equil * l_equil
     return {
         "total": l_total,
         "data": l_data,
         "compat": l_compat,
         "equil": l_equil,
-        "capacity": l_capacity,
+        "capacity": zero,
     }

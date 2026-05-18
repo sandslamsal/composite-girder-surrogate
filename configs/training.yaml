@@ -21,9 +21,9 @@ lambda_compat:
   ramp_fraction: 0.333    # linear ramp over first third, hold thereafter
 lambda_equil: 0.05
 
-# Per-target weighting in the data MSE (order: y_na, curvature, moment, slip).
+# Per-target weighting in the data MSE (order: y_na, curvature).
 # Curvature gets a heavier weight per spec.
-data_weights: [1.0, 3.0, 1.0, 1.0]
+data_weights: [1.0, 3.0]
 
 # Data split (by sample_id, never by row)
 splits:

@@ -72,20 +72,31 @@ def main():
     df_tr, df_val, df_te = split_by_sample(df, cfg["splits"], int(cfg["seed"]))
     print(f"[xgb] train={len(df_tr)} val={len(df_val)} test={len(df_te)}", flush=True)
 
+    # Compute-budget-matched: subsample the train split to 200k rows, the
+    # same budget and the same RNG draw used by the residual/plain MLP
+    # baselines, so the three baselines are directly comparable.
+    n_sub = 200_000
+    if len(df_tr) > n_sub:
+        sub_idx = np.random.default_rng(int(cfg["seed"])).choice(
+            len(df_tr), size=n_sub, replace=False)
+        df_tr = df_tr.iloc[sub_idx].reset_index(drop=True)
+    print(f"[xgb] subsampled train -> {len(df_tr)} rows", flush=True)
+
     X_tr = build_X(df_tr); X_val = build_X(df_val); X_te = build_X(df_te)
     results = {}
     total_time = 0.0
-    for target in COMPARE_TARGETS:
+    for j, target in enumerate(COMPARE_TARGETS):
         print(f"[xgb] {target}: fitting...", flush=True)
         t0 = time.time()
         model = xgb.XGBRegressor(
-            n_estimators=200,
+            n_estimators=300,
             max_depth=6,
             learning_rate=0.08,
-            subsample=0.8,
+            subsample=0.85,
+            colsample_bytree=0.85,
             tree_method="hist",
             n_jobs=1,
-            random_state=0,
+            random_state=int(cfg["seed"]) + j,
             verbosity=0,
         )
         model.fit(X_tr, df_tr[target].to_numpy(dtype=np.float32))

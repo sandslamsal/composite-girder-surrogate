@@ -42,8 +42,6 @@ SECTION_TYPES: List[str] = ["W", "plate", "concrete_I"]
 TARGET_COLUMNS: List[str] = [
     "neutral_axis_in",
     "curvature_1_per_in",
-    "moment_kip_in",
-    "slip_in",
 ]
 
 
