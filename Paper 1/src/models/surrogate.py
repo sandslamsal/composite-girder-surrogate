@@ -1,7 +1,7 @@
 """Residual-MLP surrogate for composite-girder moment-curvature response.
 
 Predicts the two non-trivial section quantities (y_na, curvature) given a
-17-dim normalised feature vector (14 continuous + 3 one-hot section-type
+15-dim normalised feature vector (13 continuous + 2 one-hot section-type
 indicators). Width 256, 5 residual blocks, GELU + dropout 0.1.
 """
 from __future__ import annotations
@@ -31,7 +31,7 @@ class CompositeGirderSurrogate(nn.Module):
 
     def __init__(
         self,
-        input_dim: int = 17,
+        input_dim: int = 15,
         output_dim: int = 2,
         width: int = 256,
         n_blocks: int = 5,

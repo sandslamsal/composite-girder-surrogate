@@ -22,7 +22,8 @@ eggs/
 # Jupyter
 .ipynb_checkpoints/
 
-# PyTorch / model artefacts — keep released weights, exclude scratch
+# PyTorch / model artefacts -- keep released weights, exclude scratch.
+# Patterns are **/-prefixed so they apply inside the Paper 1/ subtree too.
 *.pt
 *.pth
 *.ckpt
@@ -30,24 +31,36 @@ eggs/
 checkpoints/
 runs/
 wandb/
-!weights/headline_model.pt
-!weights/*.pt
+!**/weights/headline_model.pt
+!**/weights/*.pt
+# local backups of superseded models -- not part of the release
+**/weights/archive_*/
 
-# Data — keep the smoke-test sample; exclude the full LHS sweep,
+# Data -- keep the smoke-test sample; exclude the full LHS sweep,
 # intermediate processed parquets, and run reports.
-data/raw/
-data/processed/
-data/full/
-data/*.npz
-data/*.h5
+**/data/raw/
+**/data/processed/
+**/data/full/
+**/data/*.npz
+**/data/*.h5
 reports/
 
 # Generated figures (output target, not checked in)
-figures/*.png
-figures/*.pdf
+**/figures/*.png
+**/figures/*.pdf
+**/figures/validation/
 
-# Manuscript — separate workspace, not part of the code release
+# Paper-writing -- this is a CODE repository only. The manuscript,
+# cover letter, highlights, and text-addition notes are kept elsewhere.
 paper/
+paper1_text_additions.md
+*_text_additions.md
+
+# Paper 2 -- maintained in its own separate repository.
+paper2-beam-level/
+
+# Archives (e.g. Paper 1.zip) -- never committed
+*.zip
 
 # Logs / temp
 *.log
@@ -69,7 +82,7 @@ Thumbs.db
 .idea/
 .vs/
 
-# AI tool configs — must not be committed
+# AI tool configs -- must not be committed
 .claude/
 .cursor/
 .aider*
@@ -79,5 +92,5 @@ Thumbs.db
 # Proposal / private docs
 *.docx
 
-# Zenodo upload staging — heavy artefacts uploaded manually, not via git
+# Zenodo upload staging -- heavy artefacts uploaded manually, not via git
 zenodo_upload/

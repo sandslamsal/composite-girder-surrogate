@@ -49,7 +49,7 @@ def metrics(y, yh):
 
 
 class PlainMLP(nn.Module):
-    def __init__(self, n_in=17, n_out=4, dropout=0.1):
+    def __init__(self, n_in=15, n_out=2, dropout=0.1):
         super().__init__()
         self.net = nn.Sequential(
             nn.Linear(n_in, 512), nn.GELU(), nn.Dropout(dropout),

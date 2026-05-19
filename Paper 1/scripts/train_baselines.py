@@ -66,9 +66,9 @@ def _metrics(y_true: np.ndarray, y_pred: np.ndarray):
 
 # ---------------------------------------------------------------- plain MLP
 class PlainMLP(nn.Module):
-    """Non-residual MLP. Layers 17 -> 512 -> 384 -> 256 -> 128 -> 4 give
+    """Non-residual MLP. Layers 15 -> 512 -> 384 -> 256 -> 128 -> 2 give
     ~6.5e5 parameters, within ~3% of the headline residual MLP's 664k."""
-    def __init__(self, n_in: int = 17, n_out: int = 4, dropout: float = 0.1):
+    def __init__(self, n_in: int = 15, n_out: int = 2, dropout: float = 0.1):
         super().__init__()
         self.net = nn.Sequential(
             nn.Linear(n_in, 512), nn.GELU(), nn.Dropout(dropout),

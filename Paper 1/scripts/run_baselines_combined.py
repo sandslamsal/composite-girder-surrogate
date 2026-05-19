@@ -1,21 +1,19 @@
 #!/usr/bin/env python
-"""Compute-budget-matched baseline comparison.
+"""Combined XGBoost + Plain MLP baselines, subsampled to fit in memory.
 
-All three models trained on the same 200k-row training subsample (drawn
-from the same by-sample 80/10/10 split used by the headline residual
-MLP), evaluated on the same held-out test set. Direct apples-to-apples.
-
-Models:
-  - XGBoost (one regressor per target)
-  - Plain MLP (non-residual, matched parameter count)
-  - Residual MLP (same architecture as headline model)
+Same train/val/test split as the residual MLP (by sample_id, seed
+20260513). XGBoost trains on a fixed 500k-row training subsample to
+stay within available RAM; the plain MLP trains on the full split.
+Test set is held constant for both, so test metrics are directly
+comparable to the headline residual MLP.
 
 Outputs:
-  - reports/baselines/baselines_200k_metrics.json
+  - reports/baselines/baselines_metrics.json
 """
 from __future__ import annotations
 
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -31,11 +29,10 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
 from src.utils.normalize import FeatureNormalizer, TARGET_COLUMNS
-from src.models.surrogate import CompositeGirderSurrogate
+
 
 SEED = 20260513
-N_SUB = 200_000
-EPOCHS = 100
+SUBSAMPLE = 500_000
 
 
 def split(df):
@@ -59,8 +56,7 @@ def metrics(y, yh):
 
 
 class PlainMLP(nn.Module):
-    """Non-residual MLP, matched to residual MLP's ~664k parameter count."""
-    def __init__(self, n_in=17, n_out=4, dropout=0.1):
+    def __init__(self, n_in=15, n_out=2, dropout=0.1):
         super().__init__()
         self.net = nn.Sequential(
             nn.Linear(n_in, 512), nn.GELU(), nn.Dropout(dropout),
@@ -70,14 +66,15 @@ class PlainMLP(nn.Module):
             nn.Linear(128, n_out),
             nn.Softplus(),
         )
+
     def forward(self, x):
         return self.net(x)
 
 
-def train_torch_model(model, X_tr, Y_tr_n, X_va, Y_va_n, X_te, device, epochs, name):
-    model = model.to(device)
+def train_plain_mlp(X_tr, Y_tr_n, X_va, Y_va_n, X_te, device, epochs=100):
+    model = PlainMLP(n_in=X_tr.shape[1], n_out=Y_tr_n.shape[1]).to(device)
     n_params = sum(p.numel() for p in model.parameters())
-    print(f"[{name}] params = {n_params:,}", flush=True)
+    print(f"[plain-mlp] params = {n_params:,}", flush=True)
     opt = torch.optim.AdamW(model.parameters(), lr=3e-4, weight_decay=1e-5)
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=epochs, eta_min=3e-6)
     loss_fn = nn.MSELoss()
@@ -87,10 +84,9 @@ def train_torch_model(model, X_tr, Y_tr_n, X_va, Y_va_n, X_te, device, epochs, n
     Xva = torch.tensor(X_va, dtype=torch.float32, device=device)
     Yva = torch.tensor(Y_va_n, dtype=torch.float32, device=device)
     Xte = torch.tensor(X_te, dtype=torch.float32, device=device)
-    loader = DataLoader(TensorDataset(Xtr, Ytr), batch_size=512, shuffle=True)
 
+    loader = DataLoader(TensorDataset(Xtr, Ytr), batch_size=512, shuffle=True)
     best_val = float("inf"); best_state = None
-    t0 = time.time()
     for ep in range(epochs):
         model.train()
         for xb, yb in loader:
@@ -107,21 +103,19 @@ def train_torch_model(model, X_tr, Y_tr_n, X_va, Y_va_n, X_te, device, epochs, n
             best_val = val_loss
             best_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
         if (ep + 1) % 10 == 0:
-            print(f"  [{name}] ep {ep+1:3d}/{epochs}  val={val_loss:.4e}  best={best_val:.4e}  t={time.time()-t0:.0f}s", flush=True)
+            print(f"  [plain-mlp] epoch {ep + 1}/{epochs}  val={val_loss:.4e}", flush=True)
     model.load_state_dict(best_state)
     model.eval()
     with torch.no_grad():
-        preds = model(Xte).cpu().numpy()
-    print(f"[{name}] total train time = {time.time()-t0:.0f}s", flush=True)
-    return preds, n_params
+        return model(Xte).cpu().numpy()
 
 
 def main():
     out_dir = Path("reports/baselines"); out_dir.mkdir(parents=True, exist_ok=True)
-    # MPS deadlocks reliably on this machine when combined with XGBoost.
-    # CPU on 200k subsample is fast enough (~3-5 min per MLP) and stable.
-    import os
-    device = torch.device(os.environ.get("BASELINE_DEVICE", "cpu"))
+    if torch.backends.mps.is_available():
+        device = torch.device("mps")
+    else:
+        device = torch.device("cpu")
     print(f"[setup] device = {device}", flush=True)
 
     print("[load]", flush=True)
@@ -139,22 +133,15 @@ def main():
     Y_te = te_df[TARGET_COLUMNS].to_numpy(dtype=np.float64)
     te_mp = te_df["mp_estimate_kip_in"].to_numpy()
 
+    # Subsample training set for XGBoost (memory)
     rng = np.random.default_rng(SEED)
-    idx = rng.choice(len(X_tr_full), size=N_SUB, replace=False)
-    X_tr = X_tr_full[idx]
-    Y_tr_n = Y_tr_n_full[idx]
-    print(f"[subsample] tr -> {len(X_tr):,} rows  ({N_SUB:,} budget)", flush=True)
-    print(f"[encode] feature dim = {X_tr.shape[1]}", flush=True)
+    idx = rng.choice(len(X_tr_full), size=min(SUBSAMPLE, len(X_tr_full)), replace=False)
+    X_tr_sub = X_tr_full[idx]
+    Y_tr_n_sub = Y_tr_n_full[idx]
+    print(f"[xgb subsample] {len(X_tr_sub):,} rows", flush=True)
 
-    out = {"meta": {
-        "n_train": int(len(X_tr)),
-        "n_val": int(len(X_va)),
-        "n_test": int(len(X_te)),
-        "seed": SEED, "epochs": EPOCHS, "device": str(device),
-    }}
-
-    # ---- XGBoost ----
-    print("\n[xgb] training on 200k subsample, n_jobs=2", flush=True)
+    # ---- XGBoost (subsampled training)
+    print("\n[xgb] training on subsample, 4 targets, n_jobs=2", flush=True)
     xgb_preds_n = np.zeros_like(Y_te)
     for j, tgt in enumerate(TARGET_COLUMNS):
         t0 = time.time()
@@ -163,46 +150,44 @@ def main():
             subsample=0.85, colsample_bytree=0.85,
             tree_method="hist", n_jobs=2, random_state=SEED + j,
         )
-        m.fit(X_tr, Y_tr_n[:, j], eval_set=[(X_va, Y_va_n[:, j])], verbose=False)
+        m.fit(X_tr_sub, Y_tr_n_sub[:, j], eval_set=[(X_va, Y_va_n[:, j])], verbose=False)
         xgb_preds_n[:, j] = m.predict(X_te)
         print(f"  {tgt}: {time.time() - t0:.1f}s", flush=True)
-    xgb_pred = norm.inverse_transform_targets(xgb_preds_n, mp_estimate_kip_in=te_mp)
 
-    # ---- Plain MLP ----
-    print("\n[plain-mlp] training", flush=True)
-    plain_preds_n, plain_params = train_torch_model(
-        PlainMLP(n_in=X_tr.shape[1], n_out=Y_tr_n.shape[1]),
-        X_tr, Y_tr_n, X_va, Y_va_n, X_te, device, EPOCHS, "plain-mlp",
+    # ---- Plain MLP (full training)
+    print("\n[plain-mlp] training on full split", flush=True)
+    t0 = time.time()
+    plain_preds_n = train_plain_mlp(
+        X_tr_full, Y_tr_n_full, X_va, Y_va_n, X_te, device, epochs=100,
     )
+    print(f"[plain-mlp] total time = {time.time() - t0:.1f}s", flush=True)
+
+    # ---- Denormalise + metrics
+    xgb_pred = norm.inverse_transform_targets(xgb_preds_n, mp_estimate_kip_in=te_mp)
     plain_pred = norm.inverse_transform_targets(plain_preds_n, mp_estimate_kip_in=te_mp)
 
-    # ---- Residual MLP (same arch as headline) ----
-    print("\n[residual-mlp] training (matched data)", flush=True)
-    res_preds_n, res_params = train_torch_model(
-        CompositeGirderSurrogate(input_dim=X_tr.shape[1], output_dim=Y_tr_n.shape[1],
-                            width=256, n_blocks=5, dropout=0.1),
-        X_tr, Y_tr_n, X_va, Y_va_n, X_te, device, EPOCHS, "residual-mlp",
-    )
-    res_pred = norm.inverse_transform_targets(res_preds_n, mp_estimate_kip_in=te_mp)
-
-    # ---- Report ----
-    print("\nTARGET                  XGBoost              Plain MLP            Residual MLP (200k)")
+    print("\nTARGET                  XGB (R2/RMSE/MAPE)        plain-MLP (R2/RMSE/MAPE)")
+    out = {}
     for j, tgt in enumerate(TARGET_COLUMNS):
         r2_x, rm_x, mp_x = metrics(Y_te[:, j], xgb_pred[:, j])
         r2_p, rm_p, mp_p = metrics(Y_te[:, j], plain_pred[:, j])
-        r2_r, rm_r, mp_r = metrics(Y_te[:, j], res_pred[:, j])
         out[tgt] = {
             "xgb": {"r2": r2_x, "rmse": rm_x, "mape_pct": mp_x},
             "plain_mlp": {"r2": r2_p, "rmse": rm_p, "mape_pct": mp_p},
-            "residual_mlp_200k": {"r2": r2_r, "rmse": rm_r, "mape_pct": mp_r},
         }
-        print(f"  {tgt:22s}  R2={r2_x:.4f}            R2={r2_p:.4f}            R2={r2_r:.4f}")
+        print(f"  {tgt:22s}  {r2_x:.4f} / {rm_x:.3e} / {mp_x:5.1f}%   "
+              f"{r2_p:.4f} / {rm_p:.3e} / {mp_p:5.1f}%")
 
-    out["meta"]["plain_mlp_params"] = plain_params
-    out["meta"]["residual_mlp_params"] = res_params
-    with open(out_dir / "baselines_200k_metrics.json", "w") as f:
+    out["meta"] = {
+        "xgb_train_subsample": int(len(X_tr_sub)),
+        "plain_mlp_train_full": int(len(X_tr_full)),
+        "test_rows": int(len(X_te)),
+        "split_seed": SEED,
+        "device": str(device),
+    }
+    with open(out_dir / "baselines_metrics.json", "w") as f:
         json.dump(out, f, indent=2)
-    print(f"\nsaved -> {out_dir/'baselines_200k_metrics.json'}", flush=True)
+    print(f"\nsaved -> {out_dir/'baselines_metrics.json'}", flush=True)
 
 
 if __name__ == "__main__":

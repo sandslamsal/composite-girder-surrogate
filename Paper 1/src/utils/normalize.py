@@ -15,11 +15,20 @@ import torch
 import yaml
 
 
-# Ordered input features the surrogate consumes (post-encoding).
+# Ordered input features the surrogate consumes (post-encoding). Total
+# input dimension = 13 continuous + 2 one-hot = 15.
 #  - 12 continuous design features matching proposal Table 2 (+ a couple of
 #    composite-related extras the model benefits from)
 #  - 1 load-step feature (moment_ratio)
-#  - 3 one-hot section-type indicators
+#  - 2 one-hot section-type indicators (W, plate)
+#
+# Note: the shear-stud stiffness ratio K_s/K_max is NOT an NN input. It is
+# sampled in the LHS design and stored in the dataset (used by the Nie & Cai
+# cross-validation), but it has zero influence on the OpenSeesPy fiber-section
+# labels, which represent partial composite action solely through the
+# effective deck-width scaling by eta_c. Feeding it would only add a ghost
+# feature the network learns to ignore. See paper Section 3 and the Table 1
+# footnote.
 FEATURE_COLUMNS: List[str] = [
     "span_in",
     "deck_thickness_in",
@@ -27,7 +36,6 @@ FEATURE_COLUMNS: List[str] = [
     "girder_spacing_in",
     "fc_deck_ksi",
     "composite_action",
-    "shear_stud_stiffness_ratio",
     "fy_ksi",
     "steel_depth_in",
     "flange_width_in",
@@ -37,7 +45,10 @@ FEATURE_COLUMNS: List[str] = [
     "moment_ratio",
 ]
 
-SECTION_TYPES: List[str] = ["W", "plate", "concrete_I"]
+# concrete_I is deferred to v2 (see configs/data_gen.yaml) and never appears
+# in the dataset, so it is excluded from the one-hot encoding rather than
+# carried as an always-zero column.
+SECTION_TYPES: List[str] = ["W", "plate"]
 
 TARGET_COLUMNS: List[str] = [
     "neutral_axis_in",
@@ -75,10 +86,8 @@ def _physical_ranges(cfg: dict) -> Dict[str, tuple]:
         "girder_spacing_in": (spacing_min_in, spacing_max_in),
         "fc_deck_ksi": (cfg["fc_ksi"]["min"], cfg["fc_ksi"]["max"]),
         "composite_action": (cfg["composite_action"]["min"], cfg["composite_action"]["max"]),
-        "shear_stud_stiffness_ratio": (
-            cfg["shear_stud_stiffness_ratio"]["min"],
-            cfg["shear_stud_stiffness_ratio"]["max"],
-        ),
+        # shear_stud_stiffness_ratio is intentionally absent: it is sampled in
+        # the LHS and stored in the dataset, but is not an NN input feature.
         "fy_ksi": (steel["fy_ksi"]["min"], steel["fy_ksi"]["max"]),
         "steel_depth_in": (steel["depth_in"]["min"], steel["depth_in"]["max"]),
         "flange_width_in": (flange_w_min, flange_w_max),
@@ -95,7 +104,7 @@ def _physical_ranges(cfg: dict) -> Dict[str, tuple]:
 
 class FeatureNormalizer:
     """Min-max normalises features (physical ranges where possible, data-driven
-    else) and targets (data-driven). Section type expanded to a 3-way one-hot.
+    else) and targets (data-driven). Section type expanded to a 2-way one-hot.
 
     State is serialisable via ``state_dict``/``load_state_dict`` so a fitted
     normaliser can be saved alongside a checkpoint.
@@ -150,7 +159,7 @@ class FeatureNormalizer:
             raise RuntimeError("FeatureNormalizer.fit must be called first")
 
     def transform_features(self, df: pd.DataFrame) -> np.ndarray:
-        """Return an (N, D) float32 array where D = len(FEATURE_COLUMNS)+3."""
+        """Return an (N, D) float32 array where D = len(FEATURE_COLUMNS) + len(SECTION_TYPES)."""
         self._ensure_fit()
         cols = []
         for c in self.feature_columns:
