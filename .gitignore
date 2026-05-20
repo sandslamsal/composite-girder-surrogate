@@ -23,7 +23,6 @@ eggs/
 .ipynb_checkpoints/
 
 # PyTorch / model artefacts -- keep released weights, exclude scratch.
-# Patterns are **/-prefixed so they apply inside the Paper 1/ subtree too.
 *.pt
 *.pth
 *.ckpt
