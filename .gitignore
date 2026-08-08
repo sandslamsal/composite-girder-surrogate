@@ -42,7 +42,15 @@ wandb/
 **/data/full/
 **/data/*.npz
 **/data/*.h5
-reports/
+reports/*
+# ...except the small per-specimen validation tables the manuscript's
+# Data and code availability statement names by path. These are a few
+# tens of kB and MUST stay tracked, or that statement is false at
+# publication.
+!reports/model_validation/
+reports/model_validation/*
+!reports/model_validation/*.csv
+!reports/model_validation/*.json
 
 # Generated figures (output target, not checked in)
 **/figures/*.png

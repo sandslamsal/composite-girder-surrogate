@@ -29,7 +29,7 @@ repository-code: "https://github.com/sandslamsal/composite-girder-surrogate"
 url: "https://github.com/sandslamsal/composite-girder-surrogate"
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.20195641
+    value: 10.5281/zenodo.20195640
     description: "Zenodo code archive"
 version: "1.0.0"
 date-released: "2026-05-15"

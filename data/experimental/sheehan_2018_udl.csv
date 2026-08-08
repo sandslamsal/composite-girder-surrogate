@@ -1,0 +1,8 @@
+load_kn_per_m2,moment_knm,slip_cycle_max_mm,slip_residual_mm,slip_cumulative_mm,defl_cycle_max_mm,defl_cumulative_mm,is_failure_cycle,source,slip_table,defl_table
+3.0,131.71199999999996,0.017,0.005,0.017,11.2,11.2,False,Sheehan_Dai_Lam_2018_JCSR_141_251,Table 2 (LVDT-11),Table 1
+5.0,219.51999999999998,0.045,0.005,0.062,16.4,19.5,False,Sheehan_Dai_Lam_2018_JCSR_141_251,Table 2 (LVDT-11),Table 1
+7.5,329.28,0.27,0.08,0.3,26.7,31.9,False,Sheehan_Dai_Lam_2018_JCSR_141_251,Table 2 (LVDT-11),Table 1
+10.0,439.03999999999996,1.41,0.36,1.52,37.4,46.2,False,Sheehan_Dai_Lam_2018_JCSR_141_251,Table 2 (LVDT-11),Table 1
+12.0,526.8479999999998,2.58,0.67,3.04,50.9,64.8,False,Sheehan_Dai_Lam_2018_JCSR_141_251,Table 2 (LVDT-11),Table 1
+15.0,658.56,4.62,1.2,5.75,72.3,94.0,False,Sheehan_Dai_Lam_2018_JCSR_141_251,Table 2 (LVDT-11),Table 1
+18.0,790.2719999999998,16.87,9.68,19.21,182.1,215.0,True,Sheehan_Dai_Lam_2018_JCSR_141_251,Table 2 (LVDT-11),Table 1

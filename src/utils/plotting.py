@@ -36,10 +36,15 @@ def apply_paper_style() -> None:
     })
 
 
-# Single-column vs double-column figure sizes for Elsevier two-column
-# layout. Numbers from Elsevier's author guidelines.
-COL_SINGLE_IN = 3.54           # 90 mm
-COL_DOUBLE_IN = 7.48           # 190 mm
+# Figure sizes for the Elsevier CAS single-column (cas-sc) layout,
+# text width ~165 mm (6.5 in). One convention:
+#   - standard single-panel figures: rendered COL_SINGLE_IN wide and
+#     included at width=0.8\linewidth (0.8 x 6.5 in = 5.2 in -> 1:1);
+#   - wide multi-panel figures: rendered COL_DOUBLE_IN wide and
+#     included at \linewidth (6.5 in -> 1:1).
+# Fonts therefore render at their designed point size in the PDF.
+COL_SINGLE_IN = 5.2            # 132 mm, included at 0.8\linewidth
+COL_DOUBLE_IN = 6.5            # 165 mm, included at \linewidth
 
 
 # Colour-coded series cycle (matplotlib tab10 + distinct markers/styles).

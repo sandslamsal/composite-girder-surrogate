@@ -58,10 +58,12 @@ _TARGET_COLUMNS = (
 )
 
 
-def run_one(params: SectionParams, n_steps: int) -> tuple[MomentCurvatureResult, dict]:
+def run_one(
+    params: SectionParams, n_steps: int, deck_rho_long: float = 0.0
+) -> tuple[MomentCurvatureResult, dict]:
     """Run one section and return the analysis result + a feature dict
     that captures the section-level design parameters."""
-    result = analyze(params, n_steps=n_steps)
+    result = analyze(params, n_steps=n_steps, deck_rho_long=deck_rho_long)
     features = asdict(params)
     features["total_depth_in"] = result.section_info.total_depth_in
     features["mp_estimate_kip_in"] = result.section_info.plastic_moment_kip_in
@@ -94,8 +96,16 @@ def generate(
     *,
     seed: int | None = None,
     progress: bool = True,
+    deck_rho_long: float = 0.0,
 ) -> dict:
     """Generate ``n_samples`` sections, run M-phi on each, write parquet.
+
+    ``deck_rho_long`` is the total longitudinal deck-reinforcement ratio
+    passed through to the OpenSees section builder (default 0.0, i.e. an
+    unreinforced deck — the convention of the original release dataset).
+    It does not alter the LHS sampling, so the sampled section population
+    is identical for any value of ``deck_rho_long`` given the same config
+    and seed.
 
     Returns a small dict of summary statistics for the run."""
     cfg = load_config(config_path)
@@ -111,7 +121,9 @@ def generate(
         iterator = tqdm(samples, desc="OpenSeesPy M-phi", unit="section")
 
     for params in iterator:
-        result, features = run_one(params, n_steps=n_steps)
+        result, features = run_one(
+            params, n_steps=n_steps, deck_rho_long=deck_rho_long
+        )
         if not result.physically_valid:
             n_invalid += 1
             continue
@@ -152,6 +164,11 @@ def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument("--n", type=int, default=100, help="number of sections to sample")
     p.add_argument("--out", default="data/raw/sections.parquet")
     p.add_argument("--seed", type=int, default=None)
+    p.add_argument(
+        "--deck-rho-long", type=float, default=0.0,
+        help="total longitudinal deck-reinforcement ratio (default 0.0, "
+             "matching the original unreinforced-deck dataset)",
+    )
     p.add_argument("--no-progress", action="store_true")
     return p.parse_args(argv)
 
@@ -164,6 +181,7 @@ def main(argv: list[str] | None = None) -> None:
         out_path=args.out,
         seed=args.seed,
         progress=not args.no_progress,
+        deck_rho_long=args.deck_rho_long,
     )
     print()
     for k, v in stats.items():

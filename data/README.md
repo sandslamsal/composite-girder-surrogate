@@ -41,6 +41,24 @@ validity check (Newton convergence at every curvature increment and
 a neutral axis within the section under elastic loading). The
 resulting file has approximately 3.9 × 10⁶ rows.
 
+## Reinforced companion database
+
+`data/raw/full_50k_rebar007.parquet` (48,902 valid sections) is the
+companion database used for the reinforced co-primary columns of the
+paper's AASHTO comparison tables. It is generated from the **same
+LHS seed and configuration** as `full_50k.parquet` — so the sampled
+design-variable population is feature-identical — with top and
+bottom deck longitudinal reinforcement layers added at a total ratio
+of 0.7 %:
+
+```bash
+python scripts/generate_dataset.py \
+    --config configs/data_gen.yaml \
+    --n 50000 \
+    --deck-rho-long 0.007 \
+    --out data/raw/full_50k_rebar007.parquet
+```
+
 ## Loading
 
 ```python
@@ -52,5 +70,5 @@ df = pd.read_parquet("data/raw/full_50k.parquet")
 
 See the top-level [`README.md`](../README.md). The code and trained
 weights are archived on Zenodo at
-[10.5281/zenodo.20195641](https://doi.org/10.5281/zenodo.20195641);
+[10.5281/zenodo.20195640](https://doi.org/10.5281/zenodo.20195640);
 the full dataset is regenerated from that code.

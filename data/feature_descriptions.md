@@ -46,7 +46,7 @@ Units follow the kip–inch system unless explicitly noted.
 | `curvature_1_per_in` | $\varphi$ | 1/in | Section curvature returned by OpenSeesPy. Primary target. |
 | `moment_kip_in` | $M$ | kip·in | Section moment at the current curvature step. Derived from `moment_ratio × mp_estimate_kip_in`. |
 | `axial_strain` | $\varepsilon_0$ | – | Zero-strain reference returned by the OpenSeesPy zero-length section. |
-| `neutral_axis_in` | $y_{\text{na}}$ | in | Distance from the deck top to the elastic neutral axis (positive into the steel section). |
+| `neutral_axis_in` | $y_{\text{na}}$ | in | Neutral-axis position measured *below the section's geometric (fiber-area) centroid*, positive downward. openseespy ≥ 3.4 references fiber-section deformations to the fiber-area centroid, not the deck-top build origin; add the per-section centroid depth (deck rectangle scaled by `composite_action` plus the three steel plates) to convert to the deck-top datum. Datum offsets cancel within a section, so migrations, differences, and RMSE are datum-invariant. |
 | `slip_in` | $\delta$ | in | Slip at the deck–steel interface. Analytical surrogate derived from `composite_action` and `shear_stud_stiffness_ratio` (not from OpenSeesPy). |
 
 ## Notes

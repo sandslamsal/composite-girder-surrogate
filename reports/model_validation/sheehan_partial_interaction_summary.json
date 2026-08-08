@@ -1,0 +1,136 @@
+{
+  "generated_by": "scripts/validate_sheehan_partial_interaction.py",
+  "specimen": {
+    "source": "Sheehan, Dai and Lam (2018), JCSR 141, 251-261",
+    "doi": "10.1016/j.jcsr.2017.11.018",
+    "parent_programme": "DISCCO, Lawson et al. (2017), EUR 28458 EN",
+    "eta_shear_connection": 0.33,
+    "span_m": 11.2,
+    "tributary_width_m": 2.8,
+    "connector": "single 19 mm headed stud per deck rib, 300 mm pitch",
+    "connector_stiffness_kn_per_mm": 70.0,
+    "connector_stiffness_source": "DISCCO Section 4.4 and WP5 summary, published a priori; NOT fitted to this comparison",
+    "connector_resistance_kn": 68.0,
+    "connector_resistance_source": "Sheehan Section 4.1, 75 x sqrt(25/30) from Nellinger push tests"
+  },
+  "measured": {
+    "slip_table": "Sheehan Table 2, LVDT-11, one end only",
+    "deflection_table": "Sheehan Table 1",
+    "load_kn_per_m2": [
+      3.0,
+      5.0,
+      7.5,
+      10.0,
+      12.0,
+      15.0,
+      18.0
+    ],
+    "slip_cycle_max_mm": [
+      0.017,
+      0.045,
+      0.27,
+      1.41,
+      2.58,
+      4.62,
+      16.87
+    ],
+    "slip_cumulative_mm": [
+      0.017,
+      0.062,
+      0.3,
+      1.52,
+      3.04,
+      5.75,
+      19.21
+    ],
+    "defl_cycle_max_mm": [
+      11.2,
+      16.4,
+      26.7,
+      37.4,
+      50.9,
+      72.3,
+      182.1
+    ],
+    "row_convention_note": "DISCCO Section 4.3.6 reads the cumulative slip row ('about 3 mm at 12 kN/m2', 'passed 6 mm at 15 kN/m2', 'a maximum of 19 mm'); Sheehan Table 7 reads the per-cycle deflection row. Both slip rows are reported here."
+  },
+  "closed_form_check": {
+    "formulation": "Newmark partial interaction, UDL, reimplemented in src/validation/sheehan_udl.py",
+    "properties": "DISCCO Section 4.4 as printed; d back-computed from Icomp = 1104e6",
+    "d_mm": 346.30508353813366,
+    "alpha_L": 8.98247053096005,
+    "at_5_kn_per_m2": {
+      "moment_knm": 219.51999999999998,
+      "end_slip_mm": 0.5654723234984309,
+      "deflection_mm": 16.354054226271657,
+      "stud_force_kn": 39.58306264489016,
+      "I_eff_over_I_full": 0.7565281713231012
+    },
+    "discco_printed": {
+      "moment_knm": 220.0,
+      "end_slip_mm": 0.53,
+      "stud_force_kn": 37.0,
+      "I_eff_mm4": 821000000.0,
+      "I_comp_mm4": 1104000000.0,
+      "deflection_computed_mm": 16.2,
+      "deflection_measured_mm": 16.0,
+      "deflection_no_end_slip_mm": 12.0
+    },
+    "verdict": "reproduced: the reimplementation gives 0.565 mm end slip and 39.6 kN stud force against DISCCO's printed 0.53 mm and 37 kN, and I_eff/I_full = 0.76 against DISCCO's 821/1104 = 0.74."
+  },
+  "beam_model": {
+    "module": "src/validation/sheehan_udl.py",
+    "architecture": "two forceBeamColumn fibre chains on a shared interface reference line, both sections '-noCentroid', equalDOF on DOF 2 only, one zeroLength connector per node in direction 1",
+    "extensions_over_src_beam_model": [
+      "separate top and bottom flange thickness and yield stress",
+      "uniformly distributed load under load control, so the shear flow gradient that drives slip is present",
+      "slab topping offset above the top flange by the 80 mm rib depth, ribs transverse and not modelled as continuous"
+    ],
+    "variants": {
+      "primary": {
+        "note": "ACI-form concrete (Ec from Concrete02 initial tangent 2 fc / eps_c0), DISCCO connector backbone",
+        "converged_steps": 360,
+        "n_requested": 360,
+        "w_max_reached_kn_per_m2": 17.999999999999925
+      },
+      "ec35": {
+        "note": "concrete modulus forced to DISCCO's assumed Es/Ec = 6, i.e. Ec = 35 GPa",
+        "converged_steps": 360,
+        "n_requested": 360,
+        "w_max_reached_kn_per_m2": 17.999999999999925
+      },
+      "ollgaard": {
+        "note": "Ollgaard-shaped connector backbone of src/beam_model.py, same initial stiffness k = 70 kN/mm",
+        "converged_steps": 360,
+        "n_requested": 360,
+        "w_max_reached_kn_per_m2": 17.999999999999925
+      }
+    }
+  },
+  "headline": {
+    "slip_at_5_kn_per_m2_mm": {
+      "measured_cumulative": 0.062,
+      "measured_per_cycle": 0.045,
+      "closed_form": 0.5654723234984309,
+      "beam_model": 0.47643819122456477,
+      "closed_form_over_measured": 9.120521346748886,
+      "beam_model_over_measured": 7.684486955234916
+    },
+    "deflection_at_5_kn_per_m2_mm": {
+      "measured_per_cycle": 16.4,
+      "measured_discco_table_4_1": 16.0,
+      "closed_form": 16.354054226271657,
+      "beam_model": 16.891469759984002,
+      "discco_computed": 16.2
+    },
+    "deflection_ratio_range_to_15_kn_per_m2": [
+      0.862227389867331,
+      1.0299676682917076
+    ],
+    "slip_ratio_range_to_15_kn_per_m2_cumulative": [
+      0.595775384888623,
+      16.821925445677657
+    ]
+  },
+  "what_this_is_not": "This is not a validation of interface slip. With the connector stiffness fixed at the value the source programme published, two independent partial-interaction formulations both over-predict the measured end slip at service load by nearly an order of magnitude, while predicting the deflection at the same load to within a few per cent. Measured slip at service load is dominated by chemical bond, friction and the mechanical keying of the profiled deck, none of which a partial-interaction formulation carries; it is therefore a badly conditioned validation target. Deflection, and the flexural stiffness this paper is about, is well conditioned."
+}

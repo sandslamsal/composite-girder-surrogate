@@ -487,6 +487,29 @@ def fig_moment_curvature(
 # ---------------------------------------------------------------------------
 # Figure 5 — neutral-axis migration with curvature (AASHTO assumes fixed NA)
 # ---------------------------------------------------------------------------
+def _fiber_centroid_depth_in(row: pd.Series) -> float:
+    """Fiber-area centroid depth below the deck top for a W/plate section.
+
+    Mirrors the geometry of ``src/data_generation/composite_section.py``
+    (eta_c-scaled deck rectangle plus the three steel plates; primary
+    dataset, no deck reinforcement). Needed because OpenSeesPy >= 3.4
+    references fiber-section deformations to the fiber-area centroid, so
+    the recorded ``neutral_axis_in`` is measured below the centroid, not
+    below the deck top. Adding this depth converts to the deck-top datum
+    used by the AASHTO elastic neutral axis.
+    """
+    t_s = float(row["deck_thickness_in"])
+    b_eff = float(row["deck_width_in"]) * float(row["composite_action"])
+    d_s = float(row["steel_depth_in"])
+    b_f = float(row["flange_width_in"])
+    t_f = float(row["flange_thickness_in"])
+    t_w = float(row["web_thickness_in"])
+    areas = (b_eff * t_s, b_f * t_f, t_w * (d_s - 2.0 * t_f), b_f * t_f)
+    depths = (0.5 * t_s, t_s + 0.5 * t_f, t_s + 0.5 * d_s,
+              t_s + d_s - 0.5 * t_f)
+    return sum(a * y for a, y in zip(areas, depths)) / sum(areas)
+
+
 def fig_neutral_axis_migration(
     predictor: SurrogatePredictor, df_full: pd.DataFrame,
     aashto_parquet: Path, out: Path,
@@ -501,11 +524,17 @@ def fig_neutral_axis_migration(
     row = aashto[aashto["sample_id"] == sid].head(1)
     y_na_aashto = float(row["y_na_aashto_in"].iloc[0]) if not row.empty else np.nan
 
+    # Dataset / surrogate NA values are recorded below the fiber-area
+    # centroid (OpenSeesPy >= 3.4 auto-centers fiber sections); convert to
+    # the deck-top datum so they are comparable with the AASHTO elastic
+    # neutral axis, which is computed from the top of the deck.
+    y_centroid = _fiber_centroid_depth_in(sub.iloc[0])
+
     # Sort by predicted curvature so the dashed surrogate line is monotone
     phi_true = sub["curvature_1_per_in"].to_numpy() * 1e3
-    y_true = sub["neutral_axis_in"].to_numpy()
+    y_true = sub["neutral_axis_in"].to_numpy() + y_centroid
     phi_pred = pred["curvature_1_per_in"].to_numpy() * 1e3
-    y_pred = pred["neutral_axis_in"].to_numpy()
+    y_pred = pred["neutral_axis_in"].to_numpy() + y_centroid
     order = np.argsort(phi_pred)
 
     fig, ax = plt.subplots(figsize=(COL_SINGLE_IN, COL_SINGLE_IN * 0.85))
@@ -518,9 +547,9 @@ def fig_neutral_axis_migration(
         ax.axhline(y_na_aashto, color=COLORS[2], linestyle=":",
                    linewidth=1.6, label="AASHTO (fixed)")
     ax.set_xlabel(r"Curvature $\varphi \times 10^3$ (1/in)")
-    ax.set_ylabel(r"Neutral axis $y_{na}$ (in)")
+    ax.set_ylabel(r"Neutral axis below deck top (in)")
     ax.set_xlim(left=0)
-    ax.legend(loc="lower right", frameon=False)
+    ax.legend(loc="center right", frameon=False)
     fig.tight_layout()
     savefig(fig, out / "fig_neutral_axis_migration.png")
 
@@ -726,6 +755,12 @@ def main() -> None:
 
     print("[fig] AASHTO error…")
     fig_aashto_error(Path(args.aashto), out)
+
+    print("[fig] R_EI design chart…")
+    fig_rei_curve(Path(args.aashto), out)
+
+    print("[fig] deviation vs moment ratio…")
+    fig_deviation_vs_moment(Path(args.aashto), out)
 
     if args.niecai:
         nc_path = Path(args.niecai)

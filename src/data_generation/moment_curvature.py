@@ -11,7 +11,9 @@ At each curvature step we record:
 - ``curvature``  (the controlled rotation, 1/in)
 - ``moment``     (kip-in, from ``sectionForce``)
 - ``axial_strain`` (at the reference fibre, from ``sectionDeformation``)
-- ``neutral_axis_in`` (computed from the strain field: -eps0 / phi)
+- ``neutral_axis_in`` (computed from the strain field: eps0 / phi;
+  measured *below the section's fiber-area centroid*, positive downward
+  --- see :func:`_neutral_axis_depth` for the datum note)
 - ``slip_in``    (analytical, see :func:`_interface_slip`)
 
 If the Newton solver fails to converge mid-sweep, the analysis is stopped
@@ -48,7 +50,9 @@ class MomentCurvatureResult:
     curvature: np.ndarray       # 1/in
     moment: np.ndarray          # kip-in
     axial_strain: np.ndarray    # in/in
-    neutral_axis_in: np.ndarray # in (from top of deck)
+    neutral_axis_in: np.ndarray # in (below the section centroid; add the
+                                #     fiber-area centroid depth to get the
+                                #     deck-top datum)
     slip_in: np.ndarray         # in (analytical)
     converged_steps: int
     n_requested: int
@@ -229,12 +233,21 @@ def analyze(
 # ---------------------------------------------------------------------------
 
 def _neutral_axis_depth(eps0: float, phi: float) -> float:
-    """Neutral axis depth from the section reference fibre (y=0, deck top).
+    """Neutral axis depth *below the section centroid* (positive downward).
 
     OpenSees fibre sections use ``eps(y) = eps0 - phi * y``. Setting to
     zero gives ``y_na = eps0 / phi``. Under sagging both ``eps0`` and
     ``phi`` come out negative, so the ratio is positive — a depth below
-    the deck top. We guard against ``phi`` very near zero (start of
+    the reference axis.
+
+    Datum note: although the section is *built* with its origin at the
+    deck top, openseespy >= 3.4 re-references the assembled fibre section
+    to its fiber-area centroid, so ``sectionDeformation`` (and hence
+    ``eps0`` and this ratio) is measured about the centroid, not the deck
+    top. The recorded ``neutral_axis_in`` is therefore the depth below
+    the section's geometric (fiber-area) centroid; adding the per-section
+    centroid depth recovers the deck-top datum (verified numerically to
+    0.02 %). We guard against ``phi`` very near zero (start of
     analysis) by returning NaN, which downstream code masks before
     aggregation.
     """

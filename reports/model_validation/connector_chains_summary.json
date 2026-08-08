@@ -1,0 +1,73 @@
+{
+  "generated_by": "scripts/validate_connector_chains.py",
+  "programme": "Nie_Cai_2003",
+  "n_steps_beam": 100,
+  "specimens": [
+    "NC-SCB1",
+    "NC-SCB2",
+    "NC-SCB3",
+    "NC-SCB4"
+  ],
+  "no_centroid_check": {
+    "force_based": {
+      "path": "/Users/sandeshlamsal/Desktop/CompositeGirder/src/beam_model.py",
+      "noCentroid_occurrences": 3
+    },
+    "displacement_based": {
+      "path": "/Users/sandeshlamsal/Desktop/CompositeGirder/paper2-beam-level/src/beam_model.py",
+      "noCentroid_occurrences": 3
+    }
+  },
+  "implementations": {
+    "force_based": {
+      "module": "src/beam_model.py",
+      "element": "forceBeamColumn",
+      "equalDOF": [
+        2
+      ]
+    },
+    "displacement_based": {
+      "module": "paper2-beam-level/src/beam_model.py",
+      "element": "dispBeamColumn",
+      "equalDOF": [
+        2,
+        3
+      ],
+      "stop_at_slip_in": 0.3
+    }
+  },
+  "measured_slip_in": {
+    "n": 4,
+    "min": 0.016,
+    "max": 0.028
+  },
+  "force_based_err_pct": {
+    "n": 4,
+    "min": -74.22079236657834,
+    "max": -52.477042276482294
+  },
+  "displacement_based_err_pct": {
+    "n": 4,
+    "min": -69.17393817795737,
+    "max": -41.62365299174326
+  },
+  "predicted_slip_in_both_chains": {
+    "n": 8,
+    "min": 0.007218178137358068,
+    "max": 0.012842796341816481
+  },
+  "under_prediction_range_pct": [
+    -52.477042276482294,
+    -74.22079236657834
+  ],
+  "over_prediction_range_pct": [
+    -69.17393817795737,
+    -41.62365299174326
+  ],
+  "brackets_all_specimens": false,
+  "n_bracketed": 0,
+  "OVER_LO": 0.3082606182204263,
+  "OVER_HI": 0.5837634700825673,
+  "UNDER_LO": 0.4752295772351771,
+  "UNDER_HI": 0.25779207633421664
+}

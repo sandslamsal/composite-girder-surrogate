@@ -1,6 +1,6 @@
 # Composite Girder Surrogate
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20195641.svg)](https://doi.org/10.5281/zenodo.20195641)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20195640.svg)](https://doi.org/10.5281/zenodo.20195640)
 
 Code, model weights, and reproduction scripts for the paper
 *"Neural-Network Surrogate and AASHTO Stiffness Quantification for
@@ -87,8 +87,8 @@ Code archive (Zenodo):
                reproduction scripts},
   year      = {2026},
   publisher = {Zenodo},
-  doi       = {10.5281/zenodo.20195641},
-  url       = {https://doi.org/10.5281/zenodo.20195641}
+  doi       = {10.5281/zenodo.20195640},
+  url       = {https://doi.org/10.5281/zenodo.20195640}
 }
 ```
 

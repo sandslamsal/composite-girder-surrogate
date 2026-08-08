@@ -119,8 +119,15 @@ def train_xgb(X_tr, X_val, y_tr, y_val, X_te, y_te, name: str):
 
 
 class PlainMLP(torch.nn.Module):
-    """Plain (non-residual) 5-layer MLP, matched in parameter count to the
-    residual surrogate (~664k parameters when width=256, depth=5)."""
+    """Plain (non-residual) 5-layer MLP baseline.
+
+    NOT parameter-matched to the residual surrogate, despite what an
+    earlier version of this docstring claimed: at width=256, depth=5 and
+    the 15-feature input this builds 267,778 parameters against the
+    residual model's 662,530. Any accuracy gap therefore confounds the
+    residual path with 2.5x the capacity, and the manuscript reports it
+    as an upper bound on the architecture's contribution.
+    """
 
     def __init__(self, in_dim: int, out_dim: int, width: int = 256, depth: int = 5,
                  dropout: float = 0.1):

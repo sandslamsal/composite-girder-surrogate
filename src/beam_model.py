@@ -204,7 +204,13 @@ def _define_sections(p: BeamParams) -> None:
     # reinforcement in a top and a bottom layer. Real bridge decks carry
     # roughly 0.5-1% longitudinal steel; including it also gives the
     # cracked deck a stable, non-zero tangent for the force-based element.
-    ops.section("Fiber", _SEC_DECK)
+    # "-noCentroid" is essential: OpenSees >= 3.4 otherwise re-references
+    # every fiber section to its own computed centroid, which silently
+    # cancels the deliberate interface-line offset. With auto-centering
+    # active each chord bends about its own centroid with N = 0, the
+    # N*z composite couple can never develop, and the beam responds at
+    # the no-interaction bound EI_0 regardless of connector stiffness.
+    ops.section("Fiber", _SEC_DECK, "-noCentroid")
     ops.patch("rect", _MAT_CONCRETE, 40, 1,
               0.0, -b_eff / 2.0, t_s, b_eff / 2.0)
     if p.deck_rho_long > 0.0:
@@ -214,7 +220,7 @@ def _define_sections(p: BeamParams) -> None:
                       y_bar, -b_eff / 2.0, y_bar, b_eff / 2.0)
 
     # Steel I-section below the interface (top flange touches y = 0).
-    ops.section("Fiber", _SEC_STEEL)
+    ops.section("Fiber", _SEC_STEEL, "-noCentroid")
     ops.patch("rect", _MAT_STEEL, 10, 1,
               -t_f, -b_f / 2.0, 0.0, b_f / 2.0)                       # top flange
     ops.patch("rect", _MAT_STEEL, 40, 1,
@@ -243,6 +249,8 @@ def build_beam_model(p: BeamParams) -> dict:
     n_node = n_ele + 1
     mid = n_ele // 2
 
+    support_nodes = (0, n_ele)
+
     for i in range(n_node):
         x = i * dx
         ops.node(_DECK_NODE + i, x, 0.0)
@@ -250,12 +258,26 @@ def build_beam_model(p: BeamParams) -> dict:
         # Deck and steel share vertical translation only (no uplift);
         # the horizontal DOF stays independent (interface slip) and
         # rotation is independent, coupled through the connectors.
-        ops.equalDOF(_STEEL_NODE + i, _DECK_NODE + i, 2)
+        # At the two supports uy = 0 is imposed directly on both chords
+        # (below) rather than tied, so the retained steel node never
+        # carries a single-point constraint on a DOF it also retains for
+        # a multi-point constraint -- the case the Transformation
+        # constraint handler does not resolve. Here the tie is on DOF 2
+        # only, whose support value is zero either way, so this is a
+        # hygiene change and not a change of results: the max-over-span
+        # slip is unaltered to seven digits at 20, 40, 80, 160 and 320
+        # elements. The companion paper-2 model, which also ties DOF 3,
+        # was materially affected; see
+        # ``paper2-beam-level/src/beam_model.py``.
+        if i not in support_nodes:
+            ops.equalDOF(_STEEL_NODE + i, _DECK_NODE + i, 2)
 
     # Simply supported: steel pinned at the left support, roller at the
     # right. The deck is free to slip horizontally at both supports.
     ops.fix(_STEEL_NODE + 0, 1, 1, 0)
     ops.fix(_STEEL_NODE + n_ele, 0, 1, 0)
+    ops.fix(_DECK_NODE + 0, 0, 1, 0)
+    ops.fix(_DECK_NODE + n_ele, 0, 1, 0)
 
     for i in range(n_ele):
         ops.element("forceBeamColumn", _DECK_ELE + i,
