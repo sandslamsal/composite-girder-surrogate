@@ -7,14 +7,17 @@ authors:
     family-names: Lamsal
     email: slamsal60@gmail.com
 abstract: >-
-  Code, model weights, and reproduction scripts for the paper
-  "Neural-Network Surrogate and AASHTO Stiffness Quantification
-  for Composite Bridge Girders." Includes the OpenSeesPy
-  fibre-section data-generation pipeline, the residual-MLP
-  surrogate architecture, training and inference scripts,
-  MC-Dropout uncertainty wrapper, and AASHTO/Nie-Cai
-  comparators that reproduce every figure and table in the
-  paper.
+  Code, model weights, validation artifacts, and reproduction
+  scripts for the paper "Stiffness Deviation of the AASHTO
+  Transformed-Section Method Under Partial Composite Action and
+  a Neural-Network Surrogate for Composite Steel Bridge
+  Girders." Includes the OpenSeesPy fiber-section
+  data-generation pipeline, a beam-level model with discrete
+  shear connectors, the residual-MLP surrogate architecture,
+  training and inference scripts, an MC-Dropout uncertainty
+  wrapper, AASHTO and Nie-Cai comparators, baseline and
+  ablation studies, and validation against published
+  composite-beam tests.
 keywords:
   - composite-bridge-girders
   - neural-network-surrogate
@@ -31,11 +34,11 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.20195640
     description: "Zenodo code archive"
-version: "1.0.0"
-date-released: "2026-05-15"
+version: "1.1.0"
+date-released: "2026-08-08"
 preferred-citation:
   type: article
-  title: "Neural-Network Surrogate and AASHTO Stiffness Quantification for Composite Bridge Girders"
+  title: "Stiffness Deviation of the AASHTO Transformed-Section Method Under Partial Composite Action and a Neural-Network Surrogate for Composite Steel Bridge Girders"
   authors:
     - given-names: Sandesh
       family-names: Lamsal

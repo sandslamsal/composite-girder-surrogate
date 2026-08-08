@@ -1,6 +1,6 @@
 # Dataset
 
-The full dataset of **48,917 OpenSeesPy fibre-section analyses**
+The full dataset of **48,917 OpenSeesPy fiber-section analyses**
 (3.9 × 10⁶ rows) used to train the surrogate and to drive the AASHTO
 and Nie–Cai comparisons is **not shipped in this repository**. It is
 approximately 200 MB compressed and is regenerated deterministically
