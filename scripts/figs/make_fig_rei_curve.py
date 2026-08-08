@@ -272,7 +272,7 @@ NOTE_BODY = (
     'Cap the factor at 1.00; AASHTO stiffness is never amplified. In the '
     'shaded band the value is held flat and is unconservative, 0.83 against '
     'a finely binned 0.775 at service load. Interpolate linearly between '
-    'markers, to within 0.005 (service) and 0.027 (extended elastic).'
+    'markers, to within 0.010 (service) and 0.027 (extended elastic).'
 )
 
 
@@ -506,7 +506,7 @@ def build() -> None:
         # value"); the continuous curve asserts interpolation. Drawing both
         # made the figure contradict itself, and the two disagreed by up to
         # 0.09 in R_EI at the left edge. Interpolating between these markers
-        # reproduces the curve to within 0.005 (service) and 0.027
+        # reproduces the curve to within 0.010 (service) and 0.027
         # (extended elastic), i.e. four to seven times closer in RMS than
         # the step rule, so the marker-plus-curve form is the honest one.
         xs, ys = marks[(reg, rho)]

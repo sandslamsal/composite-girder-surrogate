@@ -288,7 +288,7 @@ def build() -> None:
     axa.text(0.955, 0.135, rf'{st}, $d = {d:.0f}$ in, $\eta_c = {e:.2f}$',
              transform=axa.transAxes, ha='right', va='bottom',
              fontsize=FS.FS_LABEL)
-    FS.panel(axa, '(a)', 'moment-curvature reproduction')
+    FS.panel(axa, '(a)', 'moment–curvature reproduction')
     FS.panel(axb, '(b)', 'epistemic uncertainty')
 
     handles = [FS.handle('opensees', marker=''),

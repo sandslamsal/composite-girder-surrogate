@@ -227,17 +227,27 @@ def main() -> None:
     FS.panel(ax_b, "(b)", "end slip, $\\eta$ = 0.33")
 
     # ---- shared legend for panel (a), above the panel row, never over data
+    # Each series marker is drawn FILLED in the legend only if a filled
+    # instance exists in the panel.  All twelve Chapman points sit just past
+    # the model's plateau and plot hollow, so a filled legend circle would
+    # show a mark that never occurs.
+    has_filled = {}
+    for prog in PROG:
+        sub = tests[tests.source == prog]
+        has_filled[prog] = any(
+            np.isfinite(r.measured_curvature_1_per_in)
+            and "section_beyond_model_peak" not in str(per.loc[r.test_id, "flags"])
+            for _, r in sub.iterrows())
     handles = [Line2D([], [], color=FS.color("opensees"), lw=1.0)]
     labels = ["OpenSeesPy fiber section"]
-    for _p, (label, col, mk) in PROG.items():
+    for prog, (label, col, mk) in PROG.items():
         handles.append(Line2D([], [], ls="none", marker=mk, ms=5.2, mew=1.1,
-                              mfc=col, mec=col))
+                              mfc=col if has_filled[prog] else "white",
+                              mec=col))
         labels.append(label)
     handles.append(Line2D([], [], ls="none", marker="o", ms=5.2, mew=1.1,
                           mfc="white", mec="0.35"))
-    # the count is a sample size, which the caption and the text give;
-    # the legend entry only has to name the mark
-    labels.append("beyond model peak")
+    labels.append("hollow: beyond model peak")
     fig.legend(handles, labels, loc="lower center", ncol=3,
                bbox_to_anchor=(0.5, 0.978), frameon=False,
                fontsize=FS.FS_LEGEND, handlelength=1.4, handletextpad=0.5,
@@ -273,8 +283,13 @@ def main() -> None:
                 handletextpad=0.45, labelspacing=0.24, borderpad=0.1)
 
     # ---- the finding, stated on the panel
-    ratio_cf = float(sh.cf_end_slip_mm[1] / sh.slip_cumulative_mm[1])
-    ratio_bm = float(sh.bm_end_slip_mm[1] / sh.slip_cumulative_mm[1])
+    # Absolute slips, not their ratio.  At this load the measurement is
+    # 0.062 mm, so a ratio divides by 62 microns and reports a small
+    # absolute gap as a large number.  The gap itself is what the bracket
+    # spans, so that is what it should say.
+    slip_meas = float(sh.slip_cumulative_mm[1])
+    slip_cf   = float(sh.cf_end_slip_mm[1])
+    slip_bm   = float(sh.bm_end_slip_mm[1])
     # Span the two points with a double-headed arrow and hang the label
     # off it with a leader, so the text is unambiguously attached to the
     # gap it describes. A bare arrow with the caption floating beside it
@@ -290,17 +305,14 @@ def main() -> None:
     for yy in (y_lo, y_hi):
         ax_b.plot([x_cal * 0.955, x_cal * 1.045], [yy, yy],
                   color="0.25", lw=0.8, solid_capstyle="butt", zorder=5)
-    y_mid = (y_lo * y_hi) ** 0.5          # geometric mean: log-axis centre
-    # Label to the LEFT of the bracket. To its right the measured curve
-    # climbs steeply through exactly this height and overprinted the
-    # digits; to its left the curve is still an order of magnitude below.
-    # The halo is belt and braces: figstyle.audit compares text bounding
-    # boxes against other TEXT, so it cannot see text-over-line overlap
-    # and did not catch the original collision.
-    ax_b.annotate(f"{ratio_bm:.0f}$-${ratio_cf:.0f}$\\times$",
-                  xy=(x_cal, y_mid), xycoords="data",
-                  xytext=(-6, 0), textcoords="offset points",
-                  fontsize=FS.FS_ANNOT, color="0.20", ha="right", va="center",
+    # Above the bracket, centred: the mm label is longer than the ratio it
+    # replaced and collided with the y spine when hung to the left.  The band
+    # just above the closed-form point is clear until the curves re-enter
+    # near x = 6.2.
+    ax_b.annotate(f"{slip_meas:.2f} to {slip_cf:.2f} mm",
+                  xy=(x_cal, y_hi), xycoords="data",
+                  xytext=(0, 6), textcoords="offset points",
+                  fontsize=FS.FS_ANNOT, color="0.20", ha="center", va="bottom",
                   bbox=dict(boxstyle="square,pad=0.12", fc="white",
                             ec="none", alpha=0.85))
     # That the connector stiffness was published a priori, and that
@@ -322,8 +334,7 @@ def main() -> None:
     print(f"   measured cumulative end slip {hi.min():.3f}-{hi.max():.2f} mm "
           f"over {q.min():.0f}-{q.max():.0f} kN/m2")
     print(f"   at 5 kN/m2: measured {sh.slip_cumulative_mm[1]:.3f} mm | "
-          f"closed form {sh.cf_end_slip_mm[1]:.2f} mm ({ratio_cf:.1f}x) | "
-          f"beam model {sh.bm_end_slip_mm[1]:.2f} mm ({ratio_bm:.1f}x)")
+          f"closed form {slip_cf:.2f} mm | beam model {slip_bm:.2f} mm")
     serv = sh[sh.load_kn_per_m2 <= 15.0]
     r = serv.bm_defl_over_measured_cycle
     print(f"   deflection ratio 3-15 kN/m2: {r.min():.2f} to {r.max():.2f} "

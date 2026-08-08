@@ -193,7 +193,7 @@ ENTITY = {
         label='train', label_math='train'),
     'heldout': dict(
         color=BLUE, ls=(0, (1, 1.1)), marker='',
-        label='held out', label_math='held out'),
+        label='held-out', label_math='held-out'),
 }
 
 # canonical ordering inside each group, for legends and bar groups
