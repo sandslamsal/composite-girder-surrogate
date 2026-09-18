@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """Restyled Nie & Cai vs AASHTO cross-validation figure (compiled Fig. 7).
 
-Message: the lab-calibrated Nie & Cai slip correction removes a nearly
-constant 7-9 percentage-point slice of the AASHTO deviation in every
+Message: the lab-calibrated Nie & Cai slip correction shifts the AASHTO
+bin-mean deviation by a nearly constant 7-9 percentage points in every
 composite-action bin, at both deck-reinforcement levels, but it does not
 close the remaining cracking / neutral-axis-migration gap.
 
@@ -10,26 +10,28 @@ Panel (a) plots the bin-mean curvature deviation from the OpenSeesPy
 fiber-section reference for the AASHTO closed form and the Nie & Cai
 analytical formula, at rho_l = 0 and rho_l = 0.7 %.  The two shaded
 bands split the total AASHTO deviation at rho_l = 0 into the part the
-slip correction recovers (AASHTO down to Nie & Cai) and the residual it
-leaves (Nie & Cai down to the reference).  Panel (b) plots the reduction
-in deviation the slip correction achieves, AASHTO minus Nie & Cai, in
-percentage points.
+slip correction recovers (between the AASHTO and Nie & Cai curves) and
+the residual it leaves (between the Nie & Cai curve and the zero line).
+Panel (b) plots the shift in bin-mean deviation the slip correction
+produces, Nie & Cai minus AASHTO, in percentage points.  It is a signed
+shift, not a reduction in deviation magnitude: in the top bin at
+rho_l = 0.7 % the Nie & Cai mean overshoots zero (+2.9 %), so the shift
+(8.7 points) exceeds the drop in |deviation| (2.9 points).
 
-Every key sits inside the panel it decodes.  Panel (a) keys itself in
-its own bottom-right corner, which the plotted data leaves empty across
-the whole x range (the AASHTO rho_l = 0 curve is the lower envelope of
-every curve and both bands, and it clears the legend box by the margin
-free_check() prints on each run); panel (b) keys itself in its own
-bottom-left corner.  There is no shared block above the panels, so no
-entry has to be tagged with the panel it belongs to and nothing is
-stated twice.
+Legend rules (Revision 2): every drawn mark has an entry and every entry
+glyph is the drawn mark.  Panel (a) carries two keys, each in space its
+own data leaves empty: the four series (predictor x reinforcement, each
+with its exact line style, marker and fill) in the bottom-right corner
+below the AASHTO rho_l = 0 lower envelope, and the zero line plus the two
+bands in the strip above the zero line.  Panel (b) keys itself in its
+bottom-left corner.  The clearance of each key from the plotted ink is
+measured by free_check() on every run.
 
-The entries are labels, not sentences.  What the decomposition means,
-that the bands are drawn for the unreinforced series only, and that the
-zero line is the OpenSeesPy reference are all said once, in the
-manuscript caption and the y-axis label, and are therefore not repeated
-on the panels.  The slip band is separated from the residual band by
-hatching as well as hue so the two survive greyscale printing.
+Encoding: in (a) the marker names the predictor (diamond AASHTO, triangle
+Nie & Cai) and solid/filled vs dashed/open names the reinforcement level;
+(b) keeps the same solid/filled vs dashed/open code on circles, so no
+glyph means one thing in (a) and another in (b), and every series stays
+separable in greyscale.  The slip band is hatched as well as tinted.
 
 All values come from reports/niecai/niecai_summary.csv and
 reports/niecai_rebar007/niecai_summary.csv (the extended-elastic set,
@@ -56,7 +58,7 @@ from src.utils import figstyle as FS  # noqa: E402
 
 SUM_RHO0 = REPO / "reports" / "niecai" / "niecai_summary.csv"
 SUM_RHO07 = REPO / "reports" / "niecai_rebar007" / "niecai_summary.csv"
-OUT = REPO / "paper" / "revision_1" / "submission" / "sources" / "figures" / "fig_niecai_vs_aashto.png"
+OUT = REPO / "paper" / "revision_2" / "submission" / "sources" / "figures" / "fig_niecai_vs_aashto.pdf"
 
 # ---------------------------------------------------------------- band fills
 # One dict per shaded region, used BOTH to draw the band and to build its
@@ -68,13 +70,26 @@ BAND_SLIP = dict(facecolor="#DCEEFC", edgecolor=FS.SKY, hatch="\\" * 3,
 BAND_RESIDUAL = dict(facecolor="0.885", edgecolor="none", linewidth=0.0)
 BAND_REDUCTION = dict(facecolor="0.90", edgecolor="none", linewidth=0.0)
 
-# key entries are labels, not sentences: the caption carries the argument
-LBL_SLIP = "recovered by slip correction"
-LBL_RESIDUAL = "residual: cracking and\nneutral-axis migration"
+# the zero line of (a), drawn and keyed from the same dict
+ZERO_LINE = dict(color="black", lw=1.0, ls="-")
+
+# key entries are labels, not sentences: the paragraph carries the argument
+LBL_ZERO = "OpenSeesPy reference (zero deviation)"
+LBL_SLIP = "recovered by the slip correction"
+LBL_RESIDUAL = "residual to the reference"
 LBL_REDUCTION = "7–9 point range"
+LBL_RHO = {"rho0": "no deck reinforcement",
+           "rho07": "deck reinforcement 0.7 %"}
+LBL_PRED = {"aashto": "AASHTO", "niecai": "Nie & Cai"}
+
+# per reinforcement level: line style and marker fill, shared by (a) and (b)
+LS_RHO = {"rho0": "-", "rho07": (0, (5, 1.8))}
+MK_RHO = {"rho0": {}, "rho07": dict(mfc="white")}
+LW, MS, MEW = 1.9, 5.2, 1.4
 
 # in-panel keys are set one step below the axis labels, the sanctioned
-# size for type that sits inside the data area
+# size for type that sits inside the data area (mathtext subscripts would
+# fall below the size floor here, so reinforcement is named in words)
 FS_KEY = FS.FS_ANNOT
 
 
@@ -99,36 +114,42 @@ def _dense(v: np.ndarray, n: int = 64) -> np.ndarray:
 def free_check(ax, lg, name: str) -> float:
     """Vertical gap, in axes fractions, between a legend and the data.
 
-    The legend of (a) is placed in a corner the curves leave empty, so
-    the claim that it covers nothing is measured rather than assumed.
-    Every curve and both band polygons are densified and tested against
-    the legend's rendered box; the return value is the smallest
-    clearance above the box, negative if anything reaches into it.
+    Every line (the zero line included), band polygon and span patch is
+    densified and tested against the legend's rendered box.  A key in the
+    lower half is measured to the lowest ink above it, a key in the upper
+    half to the highest ink below it; the return value is that clearance,
+    negative if anything reaches into the box.
     """
     fig = ax.figure
     fig.canvas.draw()
     r = fig.canvas.get_renderer()
-    tr = ax.transData + ax.transAxes.inverted()
+    to_ax = ax.transAxes.inverted()
     bb = lg.get_window_extent(r)
-    (x0, y0), (x1, y1) = ax.transAxes.inverted().transform(
-        [[bb.x0, bb.y0], [bb.x1, bb.y1]])
+    (x0, y0), (x1, y1) = to_ax.transform([[bb.x0, bb.y0], [bb.x1, bb.y1]])
 
     pts = []
-    for ln in ax.lines:                            # curves and markers
-        if ln.get_transform() is not ax.transData:  # axhline: blended
-            continue
+    for ln in ax.lines:                            # curves, markers, axhline
         d = np.asarray(ln.get_xydata(), float)
         if len(d):
-            pts.append(tr.transform(_dense(d)))
-    for col in ax.collections:                     # the shaded bands
-        for p in col.get_paths():
-            pts.append(tr.transform(_dense(p.vertices)))
+            pts.append(to_ax.transform(ln.get_transform().transform(_dense(d))))
+    for art in list(ax.collections) + list(ax.patches):   # bands, spans
+        tr = art.get_transform()
+        paths = art.get_paths() if hasattr(art, "get_paths") else [art.get_path()]
+        for p in paths:
+            pts.append(to_ax.transform(tr.transform(_dense(p.vertices))))
     pts = np.vstack([p for p in pts if len(p)])
     pts = pts[np.isfinite(pts).all(axis=1)]
 
     over = pts[(pts[:, 0] >= x0 - 0.01) & (pts[:, 0] <= x1 + 0.01)]
-    gap = float(over[:, 1].min() - y1) if len(over) else 1.0
     inside = int(((over[:, 1] >= y0) & (over[:, 1] <= y1)).sum())
+    if 0.5 * (y0 + y1) < 0.5:                      # key at the bottom
+        above = over[over[:, 1] >= y0]
+        gap = float(above[:, 1].min() - y1) if len(above) else 1.0
+    else:                                          # key at the top
+        below = over[over[:, 1] <= y1]
+        gap = float(y0 - below[:, 1].max()) if len(below) else 1.0
+    if inside:
+        gap = min(gap, -0.001)
     print(f"[free] {name} key box x {x0:.3f}-{x1:.3f}, y {y0:.3f}-{y1:.3f}; "
           f"clearance {gap:+.3f} of panel height, {inside} ink samples inside")
     return gap
@@ -142,19 +163,17 @@ def main() -> None:
     for tag, d in (("rho0", d0), ("rho07", d7)):
         series[("aashto", tag)] = d["aashto_err_mean_pct"].to_numpy()
         series[("niecai", tag)] = d["niecai_err_mean_pct"].to_numpy()
-    # reduction in deviation delivered by the slip correction, in points
-    reduction = {t: series[("niecai", t)] - series[("aashto", t)]
-                 for t in ("rho0", "rho07")}
+    # signed shift in bin-mean deviation from the slip correction, points
+    shift = {t: series[("niecai", t)] - series[("aashto", t)]
+             for t in ("rho0", "rho07")}
 
     for t in ("rho0", "rho07"):
         print(f"[{t}] AASHTO    " + "  ".join(f"{v:+6.1f}" for v in series[("aashto", t)]))
         print(f"[{t}] Nie&Cai   " + "  ".join(f"{v:+6.1f}" for v in series[("niecai", t)]))
-        print(f"[{t}] reduction " + "  ".join(f"{v:+6.1f}" for v in reduction[t]))
+        print(f"[{t}] shift     " + "  ".join(f"{v:+6.1f}" for v in shift[t]))
     print(f"[n] rho0 rows = {int(d0['n_rows'].sum())}")
 
     FS.apply()
-    # no legend block above the panels any more, so the panels themselves
-    # take the height the block used to occupy
     fig = plt.figure(figsize=(FS.FIG_W, 3.95))
     # the left margin holds the two-line y label of (a) and the right
     # margin the bold heading of (b) inside the canvas, so the tight crop
@@ -167,88 +186,94 @@ def main() -> None:
 
     # -------------------------------------------------- (a) deviations
     a0, n0 = series[("aashto", "rho0")], series[("niecai", "rho0")]
-    # the two mechanisms, as the vertical gaps they occupy; the bands run
-    # the full width so they do not read as free-floating rectangles.
-    # both are measured from the same zero line, so slip band + residual
-    # band = the whole AASHTO deviation, bin by bin
+    # the two shares, as the vertical gaps they occupy; the bands run the
+    # full width so they do not read as free-floating rectangles.  Both
+    # are measured from the same zero line, so slip band + residual band =
+    # the whole AASHTO deviation at rho_l = 0, bin by bin
     xf = np.concatenate(([XLO], x, [XHI]))
     ef = lambda v: np.concatenate(([v[0]], v, [v[-1]]))  # noqa: E731
     axa.fill_between(xf, ef(a0), ef(n0), zorder=1, **BAND_SLIP)
     axa.fill_between(xf, ef(n0), 0.0, zorder=0, **BAND_RESIDUAL)
-    axa.axhline(0.0, color="black", lw=1.0, zorder=2)
+    axa.axhline(0.0, zorder=2, **ZERO_LINE)
 
-    for tag, ls in (("rho0", "-"), ("rho07", (0, (5, 1.8)))):
+    def series_kw(pred, tag, **extra):
+        return FS.style(pred, ls=LS_RHO[tag], label=False, lw=LW, ms=MS,
+                        mew=MEW, **MK_RHO[tag], **extra)
+
+    for tag in FS.REINFORCEMENT:
         for pred in ("aashto", "niecai"):
-            axa.plot(x, series[(pred, tag)], zorder=4,
-                     **FS.style(pred, ls=ls, label=False, lw=1.9,
-                                ms=5.2, mfc="white" if tag == "rho07" else None,
-                                mew=1.4))
+            axa.plot(x, series[(pred, tag)], zorder=4, **series_kw(pred, tag))
 
-    axa.set_ylim(-56, 9)
-    axa.set_yticks([-50, -40, -30, -20, -10, 0])
+    # the strip above the zero line is left free for the band key
+    axa.set_ylim(-60, 17)
+    axa.set_yticks([-60, -50, -40, -30, -20, -10, 0, 10])
     FS.eta_bin_axis(axa, positions=x)
     axa.set_xlim(XLO, XHI)
-    axa.set_ylabel("curvature deviation from\nOpenSeesPy (%)")
+    axa.set_ylabel("bin-mean curvature deviation\nfrom OpenSeesPy (%)")
 
-    # (a) keys itself in the corner its own data leaves empty.  The zero
-    # line needs no entry: the y axis already says what zero is.
-    keys_a = [FS.handle("aashto", ls="-", lw=1.9, ms=5.0, fontsize=FS_KEY),
-              FS.handle("niecai", ls="-", lw=1.9, ms=5.0, fontsize=FS_KEY),
-              Line2D([], [], color="0.35", ls="-", lw=1.5, marker="o", ms=5.0,
-                     label=FS.entity_label("rho0", fontsize=FS_KEY)),
-              Line2D([], [], color="0.35", ls=(0, (5, 1.8)), lw=1.5,
-                     marker="o", ms=5.0, mfc="white", mew=1.4,
-                     label=FS.entity_label("rho07", fontsize=FS_KEY)),
-              Patch(label=LBL_SLIP, **BAND_SLIP),
-              Patch(label=LBL_RESIDUAL, **BAND_RESIDUAL)]
-    loc_a = FS.legend_loc(axa, size=(0.58, 0.30),
-                          candidates=["lower right", "lower left",
-                                      "upper left", "upper right"])
-    lga = axa.legend(handles=keys_a, loc=loc_a, frameon=False,
-                     handlelength=1.8, handleheight=1.00, handletextpad=0.45,
-                     borderaxespad=0.5, labelspacing=0.26, fontsize=FS_KEY)
-    if hasattr(lga, "set_alignment"):
-        lga.set_alignment("left")
+    # series key: one entry per drawn series, glyph = the drawn series
+    keys_series = [Line2D([], [], **series_kw(pred, tag))
+                   for pred in ("aashto", "niecai")
+                   for tag in FS.REINFORCEMENT]
+    for h, (pred, tag) in zip(keys_series,
+                              [(p, t) for p in ("aashto", "niecai")
+                               for t in FS.REINFORCEMENT]):
+        h.set_label(f"{LBL_PRED[pred]}, {LBL_RHO[tag]}")
+    lga = axa.legend(handles=keys_series, loc="lower right", frameon=False,
+                     handlelength=2.2, handleheight=1.00, handletextpad=0.45,
+                     borderaxespad=0.35, labelspacing=0.26, fontsize=FS_KEY)
+    lga.set_zorder(6)
+    axa.add_artist(lga)
 
-    # -------------------------------------------------- (b) reduction
+    # reference and band key, in the strip above the zero line
+    keys_ref = [Line2D([], [], label=LBL_ZERO, **ZERO_LINE),
+                Patch(label=LBL_SLIP, **BAND_SLIP),
+                Patch(label=LBL_RESIDUAL, **BAND_RESIDUAL)]
+    lga2 = axa.legend(handles=keys_ref, loc="upper left", frameon=False,
+                      handlelength=2.2, handleheight=1.00, handletextpad=0.45,
+                      borderaxespad=0.35, labelspacing=0.26, fontsize=FS_KEY)
+    for lg in (lga, lga2):
+        if hasattr(lg, "set_alignment"):
+            lg.set_alignment("left")
+
+    # -------------------------------------------------- (b) shift
     axb.axhspan(7.0, 9.0, zorder=0, **BAND_REDUCTION)
     for tag in FS.REINFORCEMENT:
-        open_mk = dict(mfc="white", mew=1.4) if tag == "rho07" else {}
-        axb.plot(x, reduction[tag], zorder=3,
-                 **FS.style(tag, label=False, lw=1.9, ms=5.2, **open_mk))
+        axb.plot(x, shift[tag], zorder=3,
+                 **FS.style(tag, label=False, lw=LW, ms=MS, mew=MEW,
+                            marker="o", **MK_RHO[tag]))
     axb.set_ylim(0, 11.0)
     axb.set_yticks([0, 2, 4, 6, 8, 10])
     FS.eta_bin_axis(axb, positions=x)
     axb.set_xlim(XLO, XHI)
-    axb.set_ylabel("reduction in deviation,\nAASHTO $-$ Nie & Cai\n"
+    axb.set_ylabel("shift in bin-mean deviation,\nNie & Cai $-$ AASHTO\n"
                    "(percentage points)")
-    # (b) keys itself in its own black and magenta styles
-    loc_b = FS.legend_loc(axb, size=(0.74, 0.15),
-                          candidates=["lower left", "lower right",
-                                      "upper left", "upper right"])
-    lgb = axb.legend(handles=[FS.handle("rho0", lw=1.9, ms=5.0,
-                                        fontsize=FS_KEY),
-                              FS.handle("rho07", lw=1.9, ms=5.0, mfc="white",
-                                        mew=1.4, fontsize=FS_KEY),
-                              Patch(label=LBL_REDUCTION, **BAND_REDUCTION)],
-                     loc=loc_b, frameon=False, handlelength=2.0,
-                     handleheight=1.00, handletextpad=0.5, borderaxespad=0.5,
-                     labelspacing=0.34, fontsize=FS_KEY)
+    keys_b = [FS.handle(tag, lw=LW, ms=5.0, mew=MEW, marker="o",
+                        fontsize=FS_KEY, **MK_RHO[tag])
+              for tag in FS.REINFORCEMENT]
+    for h, tag in zip(keys_b, FS.REINFORCEMENT):
+        h.set_label(LBL_RHO[tag])
+    keys_b.append(Patch(label=LBL_REDUCTION, **BAND_REDUCTION))
+    lgb = axb.legend(handles=keys_b, loc="lower left", frameon=False,
+                     handlelength=2.0, handleheight=1.00, handletextpad=0.5,
+                     borderaxespad=0.5, labelspacing=0.34, fontsize=FS_KEY)
     if hasattr(lgb, "set_alignment"):
         lgb.set_alignment("left")
 
-    FS.panel(axa, "(a)", "deviation from the OpenSeesPy reference", dy=1.030)
-    FS.panel(axb, "(b)", "reduction by the slip correction", dy=1.030)
+    FS.panel(axa, "(a)", "Deviation from the OpenSeesPy reference", dy=1.030)
+    FS.panel(axb, "(b)", "Shift due to the slip correction", dy=1.030)
 
-    print(f"[key] (a) -> {loc_a}, (b) -> {loc_b}")
-    free_check(axa, lga, "(a)")
-    free_check(axb, lgb, "(b)")
+    gaps = [free_check(axa, lga, "(a) series"),
+            free_check(axa, lga2, "(a) reference and bands"),
+            free_check(axb, lgb, "(b)")]
 
     # judged at printed size: the figure is included at width=\linewidth
     scale = FS.printed_scale(fig, 1.0)
     probs = FS.audit(fig, scale=scale)
     print(f'[audit] {"clean" if not probs else f"{len(probs)} problem(s)"} '
           f"(printed scale {scale:.3f})")
+    if min(gaps) < 0:
+        print("[free] WARNING: a key overlaps plotted ink")
     FS.save(fig, OUT)
     print(f"[done] {OUT}")
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """R_EI(eta_c) stiffness-reduction design chart (Discussion, sec:design-rec).
 
-Four series: the service-load (M/Mp <= 0.4) and extended-elastic
-(M/Mp <= 0.6) regimes, each at deck reinforcement rho_l = 0 and 0.7 %.
+Four series: the service-load (M/M_p <= 0.4) and extended-elastic
+(M/M_p <= 0.6) regimes, each at deck reinforcement rho_l = 0 and 0.7 %.
 
 ONE grid for the three blocks
 .............................
@@ -29,8 +29,9 @@ on the right; that lopsided overhang is what read as asymmetric.
 
 Because the stub now has to live inside the same left margin as the
 panel, it is only about 0.75 in wide, so the reinforcement level is
-named the way a table names a stub: a stub head, "deck rebar", over two
-short entries, "none" and "0.7 %".  The words that used to sit in every
+named the way a table names a stub: a stub head, "deck reinforcement"
+(wrapped over the two head rows), over two short entries, "none" and
+"0.7 %".  The words that used to sit in every
 row now sit once, in the head.
 
 Encoding, and why it is doubled up
@@ -49,11 +50,11 @@ every piece of annotation is set in ink dark enough to read desaturated
 (the amber ink is a darkened tint of the registry amber, used for type
 only; the lines keep the registry colour).
 
-The key IS the value table, and it sits above the panel
-.......................................................
-The key and the tabulated values are one block, full width, above the
+The legend IS the value table, and it sits above the panel
+..........................................................
+The legend and the tabulated values are one block, full width, above the
 plot, in the idiom the other figures of this manuscript use (a full
-width key over the panels, never a column in the right margin).  The
+width legend over the panels, never a column in the right margin).  The
 block is set as a table is set: a top rule, a spanner head naming the
 tabulated quantity, a column-head row giving the eta_c mid-point each
 column belongs to, a head rule, then the four series rows grouped two by
@@ -134,7 +135,7 @@ AASHTO = {
     'rho07': REPO_ROOT / 'reports/aashto_full_rebar007/aashto_comparison.parquet',
 }
 REGIME_CUT = {'service': 0.4, 'extended': 0.6}
-OUT = REPO_ROOT / 'paper/revision_1/submission/sources/figures/fig_rei_curve.png'
+OUT = REPO_ROOT / 'paper/revision_2/submission/sources/figures/fig_rei_curve.pdf'
 
 # Table tab:design-correction, bins 25-50 / 50-70 / 70-90 / 90-100 %
 PUBLISHED = {
@@ -164,33 +165,45 @@ LW_RHO = {'rho0': 1.0, 'rho07': 0.72}
 # in area, which is what makes them separable at 6 pt on paper and after
 # desaturation.  Both are a size down from the first draft, where the
 # diamonds sat on the curve like beads and hid the dash under them.
-MS_RHO = {'rho0': 4.0, 'rho07': 5.2}
-MEC = '0.18'               # dark rim, so a marker survives greyscale
-MEW = 0.7
+MS_RHO = {'rho0': 4.8, 'rho07': 6.0}
+MEW = 0.8                  # white surface ring, so markers separate from lines
 
 # Type ink.  The registry amber is a line colour: as small type on white
 # it prints at 71 % grey and fails desaturated, so annotation uses a
 # darkened amber of the same hue.  Everything else is near-black or a
 # grey light enough to stay subordinate.
-INK = {'service': FS.color('service'), 'extended': '#9A6A00'}
-INK_NOTE = '0.35'          # the note under the figure
-INK_HEAD = '0.30'          # spanner head, column heads and stub head
-RULE_TOP = '0.42'          # top rule of the block, at the sheet edge
-RULE_BOT = '0.32'          # bottom rule, which is also the lid of the panel
-RULE_HEAD = '0.60'         # head rule, under the column heads
+# Palette (Revision 2): deeper, more saturated hues than the registry
+# service blue and amber, which read pale on white. Lines and marker faces
+# use LINE; marker rims and the printed values use the darker INK of the
+# same hue, so markers keep a dark outline in greyscale and small type
+# stays legible. Line weight still carries the regime without colour.
+LINE = {'service': '#2a78d6', 'extended': '#eb6834'}   # validated pair
+WASH_ALPHA = 0.10          # range between the two reinforcement levels
+# Text wears text tokens, never the series colour: the coloured line
+# sample in each stub row carries the identity.
+INK = {'service': '#1a1a19', 'extended': '#1a1a19'}
+INK_STUB = '#52514e'
+MEC = 'white'
+INK_NOTE = '#52514e'       # the note under the figure
+INK_HEAD = '#52514e'       # spanner head, column heads and stub head
+RULE_TOP = '0.55'          # top rule of the block, at the sheet edge
+RULE_BOT = '0.40'          # bottom rule, which is also the lid of the panel
+RULE_HEAD = '0.75'         # head rule, under the column heads
 # The two grid sets are ranked by BOTH tone and weight, so the ranking
 # survives a press that flattens light greys.  The horizontal set is the
 # paper's standard grid tone (figstyle grid.color) drawn a shade finer;
 # the vertical set, which carries the columns, is darker and heavier.
-GRID_COL = '0.80'          # bin mid-point rules: they carry the columns
-GRID_ROW = '0.88'          # horizontal grid at the major y ticks, subordinate
-BAND = '0.945'             # the held-flat band
-CAP_INK = '0.40'           # the 1.00 cap rule
+GRID_COL = '0.84'          # bin mid-point rules: they carry the columns
+GRID_ROW = '0.91'          # horizontal grid at the major y ticks, subordinate
+BAND = '#F1F3F7'           # the held-flat band, a soft cool tint
+BAND_HATCH = '#D5DBE4'     # its 45-degree texture, tone on tone
+CAP_INK = '0.45'           # the 1.00 cap rule
 
 MARK_DODGE = 0.009         # split the two coincident rho markers
 
-# -- the key/value block: one row per series, in the order the curves
-# stack on the panel (service above extended, no rebar before 0.7 %).
+# -- the legend/value block: one row per series, in the order the curves
+# stack on the panel (service above extended, no deck reinforcement
+# before 0.7 %).
 # The stub entries are short because the stub column is narrow (see the
 # module docstring); STUB_HEAD carries the words they drop.
 SERIES = (
@@ -199,17 +212,25 @@ SERIES = (
     ('extended', 'rho0', 'none'),
     ('extended', 'rho07', '0.7 %'),
 )
-GROUP = {'service': 'service load, M/Mp ≤ 0.4',
-         'extended': 'extended elastic, M/Mp ≤ 0.6'}
+# The regime headings carry the moment ratio as M/M_p in mathtext, the
+# form the table head and the text use.  A subscript prints at 0.7 of its
+# parent, so the headings are set at FS_LABEL (9.5 pt): the p then prints
+# at 6.65 pt, above the 6.5 pt floor, which FS_LEGEND (8.5 pt) would not
+# clear.  The build checks this (see _floor_report).
+GROUP = {'service': r'service load, $M/M_p \leq 0.4$',
+         'extended': r'extended elastic, $M/M_p \leq 0.6$'}
+FS_GROUP = FS.FS_LABEL
 # Spanner head over the four value columns, and the head of the stub
-# column under it.  The stub head sits ON the grid's left edge, with the
-# regime headings and the line samples, and the two short entries it
-# governs are indented under it; that is the whole hierarchy of the stub,
-# and it costs no rule.  Mathtext is banned in the block (a subscript at
-# these sizes prints under the 6.5 pt floor), so the spanner names the
-# quantity in the same words the y label uses.
+# column.  The stub head sits ON the grid's left edge, with the regime
+# headings and the line samples, and the two short entries it governs are
+# indented under it; that is the whole hierarchy of the stub, and it
+# costs no rule.  "deck reinforcement" is too wide for the stub on one
+# line (it would run into the 0.375 column), so it is wrapped over the
+# two head rows the way a table wraps a stub head: "deck" on the spanner
+# row, "reinforcement" on the column-head row.  The spanner names the
+# quantity in words, as the y label does.
 SPAN_HEAD = 'tabulated stiffness reduction factor at bin mid-point'
-STUB_HEAD = 'deck rebar'
+STUB_HEAD = ('deck', 'reinforcement')
 
 # =====================================================================
 # THE GRID.  Every horizontal position in this figure resolves to one of
@@ -263,16 +284,16 @@ NOTE_LINES = 2             # the note is held to two lines
 # under a table: an upright label, then one italic block of short
 # imperative sentences.  Mathtext is banned here (a subscript at FS_SMALL
 # prints at 4.8 pt, under the floor), so the note names quantities in
-# words; the y label already carries R_EI.  Three facts, two lines: the
-# cap, the held-flat band and what it costs, and how to interpolate and
-# what that costs.  Every number quoted is asserted against the databases
-# below or is the fine-binned check reported in the text.
+# words; the y label already carries R_EI.  Three rules, no numbers: the
+# cap (the dashed rule), the held-flat band (the shading) and linear
+# interpolation between markers.  The fine-binned figures that quantify
+# the band and the interpolation (0.775, 0.010, 0.027) are reported once,
+# in the text, and are not repeated here.
 NOTE_LABEL = 'Note:'
 NOTE_BODY = (
-    'Cap the factor at 1.00; AASHTO stiffness is never amplified. In the '
-    'shaded band the value is held flat and is unconservative, 0.83 against '
-    'a finely binned 0.775 at service load. Interpolate linearly between '
-    'markers, to within 0.010 (service) and 0.027 (extended elastic).'
+    'Do not use a factor above 1.00 (dashed line). For a degree of '
+    'composite action below 0.375 (hatched range), use the first tabulated '
+    'value; it may be too high. Between bin mid-points, interpolate linearly.'
 )
 
 
@@ -315,13 +336,14 @@ def curves():
 
 def _line_kw(reg, rho):
     """Exactly how a series is drawn on the panel, key sample included."""
-    return dict(color=FS.color(reg), ls=FS.ENTITY[rho]['ls'],
-                lw=LW_REGIME[reg] * LW_RHO[rho])
+    return dict(color=LINE[reg], ls=FS.ENTITY[rho]['ls'],
+                lw=LW_REGIME[reg] * LW_RHO[rho], solid_capstyle='round',
+                solid_joinstyle='round', dash_capstyle='round')
 
 
 def _marker_kw(reg, rho):
     return dict(ls='none', marker=FS.ENTITY[rho]['marker'], ms=MS_RHO[rho],
-                mfc=FS.color(reg), mec=MEC, mew=MEW)
+                mfc=LINE[reg], mec=MEC, mew=MEW)
 
 
 def _ftext(fig, x_in, y_in, s, **kw):
@@ -467,6 +489,10 @@ def build() -> None:
     # needs no edge of its own and no symbol: the note names it.
     ax.add_patch(Rectangle((x_lo, y_lo), BIN_MIDS[0] - x_lo, 1.0 - y_lo,
                            facecolor=BAND, edgecolor='none', zorder=0))
+    with plt.rc_context({'hatch.linewidth': 0.45, 'hatch.color': BAND_HATCH}):
+        ax.add_patch(Rectangle((x_lo, y_lo), BIN_MIDS[0] - x_lo, 1.0 - y_lo,
+                               facecolor='none', edgecolor=BAND_HATCH,
+                               hatch='////', lw=0.0, zorder=0.1))
 
     # -- micro-grid, ranked in two levels and in two jobs.
     #
@@ -498,6 +524,12 @@ def build() -> None:
 
     # rho0 first, rho07 (thinner, long dash) on top of it, so the two
     # coincident service curves both stay legible
+    # a light wash of each regime's colour between its two reinforcement
+    # levels: the reinforcement effect reads as a band, not a line pair
+    for reg in ('service', 'extended'):
+        d0, d7 = data[(reg, 'rho0')], data[(reg, 'rho07')]
+        ax.fill_between(d0['x'], d0['y'], np.interp(d0['x'], d7['x'], d7['y']),
+                        facecolor=LINE[reg], alpha=WASH_ALPHA, lw=0, zorder=2)
     for reg, rho, _ in SERIES:
         d = data[(reg, rho)]
         ax.plot(d['x'], d['y'], zorder=4, **_line_kw(reg, rho))
@@ -505,10 +537,12 @@ def build() -> None:
         # spanning each bin. A tread asserts a step rule ("read the bin
         # value"); the continuous curve asserts interpolation. Drawing both
         # made the figure contradict itself, and the two disagreed by up to
-        # 0.09 in R_EI at the left edge. Interpolating between these markers
-        # reproduces the curve to within 0.010 (service) and 0.027
-        # (extended elastic), i.e. four to seven times closer in RMS than
-        # the step rule, so the marker-plus-curve form is the honest one.
+        # 0.09 in R_EI at the left edge. On fifteen equal bins, capped,
+        # interpolating between these markers reproduces the bin means to
+        # within 0.010 (service) and 0.027 (extended elastic) inside the
+        # anchors, 2.5 to 6.9 times closer in RMS than the step rule
+        # (service 6.9 / 4.9, extended 2.5 / 2.7 for rho0 / rho07), so the
+        # marker-plus-curve form is the honest one.
         xs, ys = marks[(reg, rho)]
         ax.plot(xs, ys, zorder=5, **_marker_kw(reg, rho))
 
@@ -523,6 +557,9 @@ def build() -> None:
     # kind of number
     ax.set_yticklabels([f'{v:.2f}' for v in np.arange(0.40, 1.001, 0.10)])
     ax.spines['left'].set_bounds(y_lo, 1.00)
+    for side in ('left', 'bottom'):
+        ax.spines[side].set_color('0.30')
+    ax.tick_params(which='both', colors='0.30', labelcolor='#2b2b2a')
     ax.set_xlabel(r'degree of composite action  $\eta_c = \Sigma Q_n / C_f$',
                   labelpad=3.0)
     # the y label is centred on the DATA range, not on the axes box: the
@@ -546,8 +583,9 @@ def build() -> None:
     _fline(fig, [GRID_L, GRID_R], [y_rule] * 2,
            color=RULE_BOT, lw=0.9, solid_capstyle='butt')
 
-    stub = [_ftext(fig, GRID_L, y_cols, STUB_HEAD, ha='left',
-                   va='baseline', fontsize=FS.FS_ANNOT, color=INK_HEAD)]
+    stub = [_ftext(fig, GRID_L, yb, s, ha='left', va='baseline',
+                   fontsize=FS.FS_ANNOT, color=INK_HEAD)
+            for yb, s in zip((y_span, y_cols), STUB_HEAD)]
     block = [_ftext(fig, 0.5 * (x_in(BIN_MIDS[0]) + x_in(BIN_MIDS[-1])),
                     y_span, SPAN_HEAD, ha='center', va='baseline',
                     fontsize=FS.FS_LEGEND, color=INK_HEAD)] + stub
@@ -558,14 +596,14 @@ def build() -> None:
     for reg in ('service', 'extended'):
         block.append(_ftext(fig, GRID_L, y_head[reg], GROUP[reg],
                             ha='left', va='baseline',
-                            fontsize=FS.FS_LEGEND, color=INK[reg]))
+                            fontsize=FS_GROUP, color=INK[reg]))
     for reg, rho, name in SERIES:
         yr = y_row[(reg, rho)]
         _fline(fig, [KEY_X0, KEY_X1], [yr + KEY_SAMPLE_DY] * 2,
-               solid_capstyle='butt', **_line_kw(reg, rho))
+               **_line_kw(reg, rho))
         _fline(fig, [KEY_MARK], [yr + KEY_SAMPLE_DY], **_marker_kw(reg, rho))
         entry = _ftext(fig, STUB_X, yr, name, ha='left', va='baseline',
-                       fontsize=FS.FS_ANNOT, color=INK[reg])
+                       fontsize=FS.FS_ANNOT, color=INK_STUB)
         stub.append(entry)
         block.append(entry)
         vals = data[(reg, rho)]['bin']
@@ -616,6 +654,14 @@ def build() -> None:
     if stub_r > col0_l - 0.04:
         bad.append(f'stub ends at {stub_r:.2f} in, first column starts at '
                    f'{col0_l:.2f} in')
+    # FS.audit only walks axes text; the block and the note are sheet
+    # text, so hold them to the same printed floor here, subscripts
+    # included (a mathtext subscript prints at 0.7 of its parent).
+    for t in fig.texts:
+        s = (t.get_text() or '').strip()
+        eff = FS._mathtext_floor(s, t.get_fontsize())
+        if s and eff < FS.MIN_FONT - 1e-6:
+            bad.append(f'"{s[:24]}" prints at {eff:.2f} pt < {FS.MIN_FONT} pt')
 
     lab = ax.xaxis.label.get_window_extent(renderer=r)
     top = max(n.get_window_extent(renderer=r).y1 for n in notes)

@@ -96,6 +96,13 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
+# PNG previews of the vector manuscript figures land here (repo root
+# figures/preview/), never inside the paper/ tree.
+PREVIEW_DIR = __import__('os').path.join(
+    __import__('os').path.dirname(__import__('os').path.dirname(
+        __import__('os').path.dirname(__import__('os').path.abspath(__file__)))),
+    'figures', 'preview')
+
 # Okabe-Ito
 BLACK = '#000000'
 ORANGE = '#FFB300'
@@ -382,6 +389,10 @@ def panel(ax, letter, title='', dy=1.03):
     """
     ax.text(-0.005, dy, letter, transform=ax.transAxes, fontsize=FS_PANEL,
             fontweight='bold', va='bottom', ha='left')
+    if title and title[0].isalpha():
+        # Sentence case, matching the TikZ schematics and the captions, so
+        # the bold caption title can repeat the printed heading verbatim.
+        title = title[0].upper() + title[1:]
     if title:
         ax.annotate(title, xy=(-0.005, dy), xycoords='axes fraction',
                     xytext=(16, 1.2), textcoords='offset points',
@@ -700,8 +711,16 @@ def printed_scale(fig, include_width=None, linewidth_in=6.4803):
     return frac * linewidth_in / w_in
 
 
-def save(fig, path_png, check=False, normalise_width=True, target_w=None):
-    """Write PNG (600 dpi) and a matching vector PDF for the manuscript.
+def save(fig, path, check=False, normalise_width=True, target_w=None):
+    """Write the manuscript figure, plus a PNG preview.
+
+    ``path`` ending in .pdf (Revision 2 onward): the vector PDF is written
+    there and is the file the manuscript embeds, so nothing rasterises at
+    any print size; a 600 dpi PNG preview of the same figure goes to
+    figures/preview/ at the repository root, for quick viewing only. No
+    raster copy is written next to the manuscript.
+    ``path`` ending in .png (Revision 1 layout): PNG at ``path`` and a
+    matching PDF beside it, as before.
 
     With ``normalise_width`` the tight crop is padded symmetrically out to
     ``target_w`` inches (default FIG_W). Every figure then leaves this
@@ -732,5 +751,14 @@ def save(fig, path_png, check=False, normalise_width=True, target_w=None):
             kw = {'bbox_inches': bb}   # extras already inside this bbox
         except Exception:
             pass                        # fall back to the plain tight crop
-    fig.savefig(path_png, **kw)
-    fig.savefig(str(path_png).rsplit('.', 1)[0] + '.pdf', **kw)
+    path = str(path)
+    stem, ext = path.rsplit('.', 1)
+    if ext.lower() == 'pdf':
+        import os
+        fig.savefig(path, **kw)
+        os.makedirs(PREVIEW_DIR, exist_ok=True)
+        fig.savefig(os.path.join(PREVIEW_DIR, os.path.basename(stem) + '.png'),
+                    **kw)
+    else:
+        fig.savefig(path, **kw)
+        fig.savefig(stem + '.pdf', **kw)

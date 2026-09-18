@@ -4,17 +4,31 @@
 Four panels, 2x2, drawn at the printed width of the manuscript
 (``figstyle.FIG_W`` = 6.5 in, included at ``\\linewidth``):
 
-    (a) training / held-out MSE loss vs epoch, log y, best epoch starred
-    (b) parity for the neutral-axis depth, 1:1 line
-    (c) held-out relative-error distribution for both outputs
-    (d) parity for the curvature, 1:1 line
+    (a) training / validation MSE loss vs epoch, log y, the epoch of
+        lowest validation loss (the released checkpoint) starred
+    (b) neutral-axis-depth parity on the test split, 1:1 line
+    (c) relative-error distribution of both outputs on the test split
+    (d) curvature parity on the test split, 1:1 line
 
-R^2 and MAPE are printed on the parity panels and the best epoch on
-the loss panel; the inter-decile ranges appear in
-Table tab:heldout, so on the panels they would only restate the text;
-every one of them is still written to stdout by :func:`main`.
+Split names follow the manuscript: "training", "validation", "test";
+"held-out" means the test split only, so the validation curve of (a) is
+never called held-out.  Panel (a) is drawn in neutral tones so that its
+two split curves cannot be read as the two target colours of (b)-(d).
 
-The right column therefore holds both parity plots, so the two 1:1
+R^2 and MAPE are printed on the parity panels; the best epoch and the
+inter-decile ranges are given in the text, so on the panels they would
+only restate it; every one of them is still written to stdout by
+:func:`main`.  The relative error of panel (c) and the MAPE of (b) and
+(d) use ONE definition, 100 (surrogate - OpenSeesPy) / |OpenSeesPy|
+(:func:`rel_error`), so the figure and Table tab:heldout cannot disagree.
+
+Marks decoded in the caption rather than in a legend: the hexbin
+shading of (b) and (d) (test rows per cell, logarithmic, darker for
+more), the dashed y = x line of (b) and (d), and the dotted zero-error
+line of (c).  Percent signs are set after a space throughout the figure
+("MAPE 11.9 %", "1 % bin"), matching the manuscript's siunitx spacing.
+
+The right column holds both parity plots, so the two 1:1
 panels are read as a pair instead of straddling the diagonal of the
 figure.  The four panel boxes are placed by hand on an inch grid and
 are SQUARE: a parity panel carries ``set_aspect('equal')``, which
@@ -62,17 +76,25 @@ from src.utils import figstyle as FS
 DATA = REPO_ROOT / "data" / "raw" / "full_50k.parquet"
 CKPT = REPO_ROOT / "weights" / "best.pt"
 HISTORY = REPO_ROOT / "weights" / "history.json"
-OUT = REPO_ROOT / "paper" / "revision_1" / "submission" / "sources" / "figures" / "fig_surrogate_accuracy.png"
-CACHE = Path("/private/tmp/claude-501/-Users-sandeshlamsal-Desktop-CompositeGirder/"
-             "1b666f82-1e84-4f9e-a35c-afb843f2b292/scratchpad/heldout_pred.npz")
+OUT = REPO_ROOT / "paper" / "revision_2" / "submission" / "sources" / "figures" / "fig_surrogate_accuracy.pdf"
+# repo-local and git-ignored (**/data/processed/); delete or pass
+# --refresh after retraining so the panels never show stale predictions
+CACHE = REPO_ROOT / "data" / "processed" / "heldout_pred.npz"
 
 # split reproduction (identical to scripts/make_figures.py::_split_by_sample
 # and scripts/revision_common.py, seed from configs/training.yaml)
 SEED = 20260513
 SPLITS = {"train": 0.8, "val": 0.1, "test": 0.1}
 
-CURV_SCALE = 1e4          # plot curvature in 1e-4 1/in
-ERR_CLIP = 50.0           # panel (c) x range, per the manuscript caption
+CURV_SCALE = 1e3          # plot curvature in 1e-3 1/in (house unit)
+ERR_CLIP = 50.0           # panel (c) x range; the caption states it and
+                          # the text gives the share of rows beyond it
+
+# panel (a) is neutral: the split curves must not borrow the target colours
+# registry colours of the two loss curves (FS.ENTITY 'train' / 'heldout'),
+# with their distinct dash patterns so they also separate in greyscale
+TRAIN_KW = dict(color=FS.ORANGE, ls="-", lw=1.6)
+VAL_KW = dict(color=FS.BLUE, ls=(0, (1, 1.1)), lw=1.5)
 
 # ---- panel grid, in inches on a FIG_W-wide canvas.  Margins are sized
 # for the widest tick labels and axis titles of each column / row; the
@@ -107,10 +129,22 @@ def r2(y, yh):
     return float("nan") if ss_tot < 1e-12 else 1.0 - ss_res / ss_tot
 
 
-def mape(y, yh, eps=1e-6):
+def rel_error(y, yh, eps=1e-6):
+    """Signed relative error (%), 100 (yh - y) / |y|, |y| floored at eps.
+
+    The single definition behind panel (c) AND the MAPE on (b), (d) and
+    in Table tab:heldout.  (Panel (c) once floored |y| at 1e-3 of its
+    mean instead, which moved the neutral-axis MAPE from 11.9 % to 8.4 %
+    through 163 rows with |y_na| < 0.012 in; the percentiles quoted in
+    the text are identical under both floors.)
+    """
     y, yh = np.asarray(y, float), np.asarray(yh, float)
     denom = np.where(np.abs(y) > eps, np.abs(y), eps)
-    return float(100.0 * np.mean(np.abs((yh - y) / denom)))
+    return 100.0 * (yh - y) / denom
+
+
+def mape(y, yh, eps=1e-6):
+    return float(np.mean(np.abs(rel_error(y, yh, eps))))
 
 
 def heldout_arrays(refresh: bool = False):
@@ -166,11 +200,11 @@ def panel_loss(ax, history):
     val = np.array([h["val"]["total"] for h in history], float)
     best = int(np.argmin(val))
 
-    ax.semilogy(epochs, train, **FS.style("train", lw=1.5))
-    ax.semilogy(epochs, val, **FS.style("heldout", lw=1.6))
-    ax.plot([epochs[best]], [val[best]], marker="*", ms=11,
-            color=FS.color("heldout"), mec="black", mew=0.7, ls="none",
-            zorder=6, clip_on=False)
+    ax.semilogy(epochs, train, label="training", zorder=3, **TRAIN_KW)
+    ax.semilogy(epochs, val, label="validation", zorder=4, **VAL_KW)
+    ax.plot([epochs[best]], [val[best]], marker="*", ms=12, mfc=FS.BLUE,
+            mec="black", mew=0.9, ls="none", zorder=6, clip_on=False,
+            label="lowest validation loss")
 
     ax.set_xlabel("epoch")
     ax.set_ylabel(r"MSE loss (normalised, $\times10^{-3}$)")
@@ -185,14 +219,8 @@ def panel_loss(ax, history):
     ax.yaxis.set_minor_formatter(FuncFormatter(lambda v, _p: ""))
     ax.grid(True, which="major", axis="both", lw=0.6, color="0.9")
 
-    ax.annotate(f"best held-out\nepoch {int(epochs[best])}",
-                xy=(epochs[best], val[best]), xytext=(-14, 26),
-                textcoords="offset points", fontsize=FS.FS_ANNOT,
-                color="0.20", ha="right", va="bottom",
-                arrowprops=dict(arrowstyle="-", lw=0.7, color="0.45",
-                                shrinkA=1.0, shrinkB=3.0))
-    # the star is decoded by the caption ('star, best held-out epoch') and
-    # the epoch number is given in the text, so no annotation is drawn here
+    # the star is decoded by the legend; its epoch (296) is given in the
+    # text, so no annotation repeats it on the panel
     return int(epochs[best])
 
 
@@ -219,14 +247,13 @@ def panel_parity(ax, true, pred, key, axis_label, gridsize=52):
     # judged without them, and a reader should not have to hold two numbers
     # from a distant paragraph in their head to read the panel.
     # Use THIS module's r2/mape, the same definitions that produce the
-    # numbers tabulated in the manuscript. An independently written MAPE
-    # with a different denominator gave 8.4 % against the reported 11.9 %,
-    # which would have put a figure and a table in open disagreement.
+    # numbers tabulated in the manuscript and (through rel_error) the
+    # distribution of panel (c).
     # Set at MATH_MIN_FS: a superscript renders at 0.7 of its parent, so
     # anything smaller puts "R^2" under the 6.5 pt floor and audit fails.
     FS.inside_label(ax, 0.045, 0.945,
                     f"$R^2 = {r2(true, pred):.3f}$\n"
-                    f"MAPE {mape(true, pred):.1f}%",
+                    f"MAPE {mape(true, pred):.1f} %",
                     transform=ax.transAxes, fontsize=FS.MATH_MIN_FS,
                     color="0.15", ha="left", va="top", linespacing=1.35)
     return hb
@@ -254,17 +281,21 @@ def panel_errors(ax, rel_errors):
     ax.yaxis.set_major_formatter(FuncFormatter(
         lambda v, _p: f"{v:g}" if v >= 0.1 else f"{v:.2f}"))
     ax.yaxis.set_minor_formatter(FuncFormatter(lambda v, _p: ""))
-    ax.set_xlabel("relative error, surrogate − OpenSeesPy (%)")
-    ax.set_ylabel("share of held-out rows (% per 1 % bin)")
+    # the label spells out the quantity (rel_error), so it cannot be read
+    # as an absolute difference given in percent; positive = over-prediction
+    ax.set_xlabel("(surrogate − OpenSeesPy)/|OpenSeesPy| (%)")
+    ax.set_ylabel("share of test rows (% per 1 % bin)")
 
     # A key that names the two curves and nothing else.  The inter-decile
     # ranges it used to carry are given in the results paragraph, and a
     # panel must not restate the text.  Drawn as a legend rather than as
     # coloured text so the dash pattern carries the identity too, which
-    # is what keeps the panel readable in greyscale.
-    ax.legend(loc="upper left", bbox_to_anchor=(0.0, 1.0), frameon=False,
-              fontsize=FS.FS_ANNOT, handlelength=2.2, handletextpad=0.55,
-              labelspacing=0.3, borderaxespad=0.25)
+    # is what keeps the panel readable in greyscale.  Upper right, at the
+    # legend size of panel (a), clear of the curves and of the dotted
+    # zero-error line (which the caption decodes).
+    ax.legend(loc="upper right", frameon=False, fontsize=FS.FS_LEGEND,
+              handlelength=2.2, handletextpad=0.55, labelspacing=0.3,
+              borderaxespad=0.25)
     return centres
 
 
@@ -298,13 +329,37 @@ def main() -> None:
     rel = {}
     for key, t, p in (("y_na", d["y_na_true"], d["y_na_pred"]),
                       ("curvature", d["curv_true"], d["curv_pred"])):
-        denom = np.maximum(np.abs(t), np.abs(t).mean() * 1e-3)
-        r = 100.0 * (p - t) / denom
+        r = rel_error(t, p)
         rel[key] = r[np.isfinite(r)]
         p10, p50, p90 = np.percentile(rel[key], [10, 50, 90])
-        inside = 100.0 * np.mean(np.abs(rel[key]) <= ERR_CLIP)
+        above = 100.0 * np.mean(rel[key] > ERR_CLIP)
+        below = 100.0 * np.mean(rel[key] < -ERR_CLIP)
         print(f"[err] {key}: median={p50:.2f}%  P10={p10:.2f}%  "
-              f"P90={p90:.2f}%  |e|<=50%: {inside:.1f}% of rows")
+              f"P90={p90:.2f}%  MAPE={np.mean(np.abs(rel[key])):.2f}%  "
+              f"off-scale: {above + below:.2f}% of rows "
+              f"({above:.2f}% > +50, {below:.2f}% < -50)")
+
+    # ---- asymmetry about y = x that the results paragraph describes:
+    # no net offset (mean residual << RMSE), but the large residuals of
+    # both outputs lie mostly above the line; for the curvature they sit
+    # at small reference values, and above 1e-3 1/in most rows fall
+    # slightly below the line
+    for key, t, p, big, unit in (
+            ("y_na", d["y_na_true"], d["y_na_pred"], 2.0, "in"),
+            ("curv", d["curv_true"], d["curv_pred"], 0.5e-3, "1/in")):
+        res = p - t
+        over, under = int(np.sum(res > big)), int(np.sum(res < -big))
+        print(f"[asym] {key}: mean residual={res.mean():.3g} {unit} "
+              f"(RMSE {np.sqrt(np.mean(res ** 2)):.3g}); |res|>{big:g}: "
+              f"{over} above y=x, {under} below "
+              f"({100.0 * over / max(over + under, 1):.1f}% above)")
+    res_cu = d["curv_pred"] - d["curv_true"]
+    small = d["curv_true"] < 1e-3
+    print(f"[asym] curv: rows >0.5e-3 above y=x with reference <1e-3: "
+          f"{100.0 * np.mean(small[res_cu > 0.5e-3]):.1f}% "
+          f"(base rate {100.0 * small.mean():.1f}%); reference >=1e-3: "
+          f"{100.0 * np.mean(res_cu[~small] < 0):.1f}% below y=x, median "
+          f"rel. error {np.median(rel_error(d['curv_true'][~small], d['curv_pred'][~small])):.2f}%")
 
     # ---- square panel boxes on an inch grid, so the equal-aspect parity
     # panels fill their cell and both rows print at the same height with
@@ -325,16 +380,20 @@ def main() -> None:
     ax_c, ax_d = cell(0, 1), cell(1, 1)
 
     panel_loss(ax_a, history)
+    # y_na is recorded below the fiber-area centroid (hence the negative
+    # values); the datum is named on the axis, where those values are met
     panel_parity(ax_b, d["y_na_true"], d["y_na_pred"], "y_na",
-                 r"$y_{na}$ (in)")
+                 r"$y_{na}$ below centroid (in)")
     panel_errors(ax_c, rel)
     panel_parity(ax_d, d["curv_true"] * CURV_SCALE, d["curv_pred"] * CURV_SCALE,
-                 "curvature", r"$\varphi$ ($10^{-4}$ 1/in)")
+                 "curvature", r"curvature $\varphi$ ($10^{-3}$ 1/in)")
 
-    FS.panel(ax_a, "(a)", "loss history")
-    FS.panel(ax_b, "(b)", "neutral-axis depth")
-    FS.panel(ax_c, "(c)", "relative-error distribution")
-    FS.panel(ax_d, "(d)", "curvature")
+    # headings are printed in sentence case by FS.panel; the caption's bold
+    # titles repeat them word for word
+    FS.panel(ax_a, "(a)", "Loss history")
+    FS.panel(ax_b, "(b)", "Neutral-axis-depth parity")
+    FS.panel(ax_c, "(c)", "Relative-error distribution")
+    FS.panel(ax_d, "(d)", "Curvature parity")
 
     FS.place_legend(ax_a, ncol=1)
 

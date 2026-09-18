@@ -1,18 +1,19 @@
 #!/usr/bin/env python
-"""Consolidated AASHTO transformed-section deviation figure (revision 1).
+"""Consolidated AASHTO transformed-section deviation figure (revision 2).
 
 Replaces the three separate figures of the submitted manuscript
 (``fig_aashto_error``, ``fig_deviation_vs_moment``,
 ``fig_neutral_axis_migration``) with one three-panel figure:
 
     (a) stiffness over-prediction Delta by eta_c bin, for both load
-        regimes and both deck-reinforcement levels -- the graphical form
+        regimes and both deck-reinforcement levels: the graphical form
         of Table tab:aashto (bars = bin mean, ticks = bin median);
-    (b) Delta as a continuous function of the moment ratio M/M_p,
-        stratified by eta_c bin, with the two reporting conventions
-        (M/M_p = 0.4 and 0.6) marked;
+    (b) mean Delta in 25 equal moment-ratio intervals up to M/M_p = 0.6,
+        one curve per eta_c bin of the rho_l = 0 database, with the two
+        regime limits (M/M_p = 0.4 and 0.6) marked;
     (c) neutral-axis migration with curvature for one representative
-        section, against the fixed AASHTO elastic neutral axis.
+        section (eta_c = 0.85, rho_l = 0), against the fixed AASHTO
+        elastic neutral axis.
 
 Sign convention (identical to the manuscript):
 ``Delta = (phi_OS - phi_AASHTO) / phi_OS = -phi_error_pct``.
@@ -58,7 +59,7 @@ AASHTO_RHO0 = ROOT / 'reports/aashto_full/aashto_comparison.parquet'
 AASHTO_RHO07 = ROOT / 'reports/aashto_full_rebar007/aashto_comparison.parquet'
 FULL_DATA = ROOT / 'data/raw/full_50k.parquet'
 CHECKPOINT = ROOT / 'weights/best.pt'
-OUT = ROOT / 'paper/revision_1/submission/sources/figures/fig_aashto_deviation.png'
+OUT = ROOT / 'paper/revision_2/submission/sources/figures/fig_aashto_deviation.pdf'
 
 REGIME_CUT = {'service': 0.4, 'extended': 0.6}
 CONDITIONS = (('service', 'rho0'), ('service', 'rho07'),
@@ -129,14 +130,22 @@ KEY_DIM = {'row': 'load regime', 'col': 'deck longitudinal reinforcement'}
 KEY_MEDIAN = 'bin median'
 KEY_MEAN = 'bin mean'
 KEY_MEAN_TOKEN = '12.3'      # a value that appears nowhere in the panel
+# the house names of the two load regimes, with M/M_p in mathtext; they are
+# set at FS.FS_LABEL (9.5 pt) so the subscript prints above the 6.5 pt floor
+REGIME_LABEL = {'service': r'service load, $M/M_p \leq 0.4$',
+                'extended': r'extended elastic, $M/M_p \leq 0.6$'}
+
+# panel (b): the eta_c bins keep the registry colours of FS.ETA_BIN_STYLE
+# (author's decision: the figures stay in colour). The registry dash
+# patterns still separate the four bins in greyscale.
 
 
 def key_col_label(rho: str, fontsize: float) -> str:
-    """Column head of the key: the registry label of a rebar level.
+    """Column head of the key: the registry label of a reinforcement level.
 
     The dimension is named above the two columns, so the plain-language
-    gloss the registry carries on ``rho0`` ('no deck rebar') would only
-    repeat it and would make the two heads wildly different in width.
+    gloss the registry carries on ``rho0`` would only repeat it and would
+    make the two heads wildly different in width.
     The companion database's ratio is never restated here: the
     ``rho07`` head is the registry label verbatim.
     """
@@ -183,10 +192,10 @@ def crossing_key(fig, ax, bar_w_in: float, height_in: float = 0.80,
     kax.set_axis_off()
     kax.patch.set_visible(False)
 
-    L, S, D = FS.FS_LEGEND, FS.FS_LABEL, FS.FS_ANNOT
+    L, S, D = FS.FS_LABEL, FS.FS_LABEL, FS.FS_ANNOT
     wd = _widths(fig, {
-        'service': (FS.entity_label('service', L), L),
-        'extended': (FS.entity_label('extended', L), L),
+        'service': (REGIME_LABEL['service'], L),
+        'extended': (REGIME_LABEL['extended'], L),
         'rho0': (key_col_label('rho0', S), S),
         'rho07': (key_col_label('rho07', S), S),
         'dim_row': (KEY_DIM['row'], D), 'dim_col': (KEY_DIM['col'], D),
@@ -230,7 +239,7 @@ def crossing_key(fig, ax, bar_w_in: float, height_in: float = 0.80,
         kax.text(x_col[rho], y_lvl, key_col_label(rho, S), ha='center',
                  va='center', fontsize=S)
     for regime in ('service', 'extended'):
-        kax.text(x_lab, y_row[regime], FS.entity_label(regime, L),
+        kax.text(x_lab, y_row[regime], REGIME_LABEL[regime],
                  ha='right', va='center', fontsize=L)
         for rho in ('rho0', 'rho07'):
             kax.add_patch(Rectangle((x_col[rho] - 0.5 * sw,
@@ -349,25 +358,30 @@ def build(cache: Path | None = None) -> None:
 
     # ------------------------------------------------- (b) deviation vs M/Mp
     for b in FS.ETA_BINS:
-        ax_b.plot(centres, curves[b], **FS.eta_bin_style(b, lw=1.8, marker=''))
-    ax_b.axhline(0.0, color='0.6', lw=0.7, ls=':')
+        ax_b.plot(centres, curves[b], **FS.eta_bin_style(
+            b, lw=1.8, marker=''))
     ax_b.set_xlim(0.04, 0.665)
-    ax_b.set_ylim(-6, 97)
+    # the floor follows the data: the 90-100 % curve dips to about -6.6
+    lo_b = min(float(np.nanmin(v)) for v in curves.values())
+    ax_b.set_ylim(min(-6.0, np.floor(lo_b) - 2.5), 97)
     ax_b.set_yticks([0, 20, 40, 60, 80])
-    for cut, txt in ((0.4, 'service'), (0.6, 'extended')):
+    # the two regime limits, each named by its regime (the x-axis already
+    # carries M/M_p, so the value is read off the axis)
+    for cut, txt in ((0.4, 'service load'), (0.6, 'extended elastic')):
         ax_b.axvline(cut, color='0.55', lw=0.8, ls=(0, (3, 2.2)), zorder=1)
-        ax_b.annotate(f'{txt}\nM/Mp = {cut}', xy=(cut, 1.0),
+        ax_b.annotate(txt, xy=(cut, 1.0),
                       xycoords=('data', 'axes fraction'),
                       xytext=(-3, -1), textcoords='offset points',
                       ha='right', va='top', fontsize=FS.FS_SMALL,
-                      color='0.35', linespacing=1.15)
+                      color='0.35')
     ax_b.set_xlabel(r'moment ratio $M/M_p$')
     ax_b.set_ylabel('stiffness over-prediction\n' r'$\Delta$ (%)')
-    ax_b.legend(loc='upper left', bbox_to_anchor=(0.0, 0.86),
-                fontsize=FS.FS_TICK, ncol=2, handlelength=1.9,
-                columnspacing=1.0, labelspacing=0.25,
-                borderaxespad=0.3, alignment='left',
-                title='degree of composite action',
+    # one column, in the free space left of the service-load limit and
+    # below its label, so no legend text crosses a dashed vertical
+    ax_b.legend(loc='upper left', bbox_to_anchor=(0.0, 0.925),
+                fontsize=FS.FS_TICK, ncol=1, handlelength=1.9,
+                labelspacing=0.18, borderaxespad=0.3, alignment='left',
+                title='degree of composite action,\nno deck reinforcement',
                 title_fontproperties={'size': FS.FS_SMALL})
     ax_b.get_legend().get_title().set_color('0.3')
 
@@ -385,16 +399,21 @@ def build(cache: Path | None = None) -> None:
     ax_c.set_xlim(0, float(phi_t.max()) * 1.02)
     lo = min(float(c['y_na_aashto']), float(c['y_true'].min()))
     ax_c.set_ylim(float(c['y_true'].max()) + 0.4, lo - 1.9)   # inverted: depth down
-    ax_c.set_xlabel(r'curvature $\varphi \times 10^{3}$ (1/in)')
+    ax_c.set_xlabel(r'curvature $\varphi$ ($10^{-3}$ 1/in)')
     ax_c.set_ylabel('neutral axis below\ndeck top (in)')
-    ax_c.legend(loc='center right', handlelength=1.9, borderaxespad=0.4)
+    ax_c.legend(loc='center right', handlelength=1.9, borderaxespad=0.4,
+                alignment='left',
+                title=(f"section with {100 * float(c['eta']):.0f} % composite "
+                       'action,\nno deck reinforcement'),
+                title_fontproperties={'size': FS.FS_SMALL})
+    ax_c.get_legend().get_title().set_color('0.3')
     # The coincidence of the fiber and AASHTO neutral axes at low
     # curvature is read straight off the plot and is quantified in the
     # text (to within 0.06 in), so it is not also annotated here.  The
     # self-validation print below still checks it on every run.
 
     # panel letters and short titles
-    FS.panel(ax_a, '(a)', 'bin-wise deviation', dy=dy_a)
+    FS.panel(ax_a, '(a)', 'bin means and medians', dy=dy_a)
     FS.panel(ax_b, '(b)', 'growth with load level', dy=1.03)
     FS.panel(ax_c, '(c)', 'neutral-axis migration', dy=1.03)
 
@@ -408,10 +427,12 @@ def build(cache: Path | None = None) -> None:
     print(f'[save] {OUT}')
 
     # self-validation printed for the record
-    lo = c['y_true'][:3].mean()
+    # the text quotes the agreement at the lowest curvature step
+    lo = float(c['y_true'][0])
     print(f"[check] sid {int(c['sid'])}  eta_c {float(c['eta']):.3f}  "
           f"centroid {float(c['centroid']):.3f} in")
-    print(f"[check] fiber NA at low curvature {lo:.2f} in vs AASHTO elastic "
+    print(f"[check] fiber NA at lowest curvature step (M/Mp "
+          f"{float(c['mr'][0]):.2f}) {lo:.2f} in vs AASHTO elastic "
           f"{float(c['y_na_aashto']):.2f} in  "
           f"(diff {lo - float(c['y_na_aashto']):+.2f} in); "
           f"migrates to {c['y_true'].max():.2f} in")
