@@ -1,0 +1,1478 @@
+{
+ "programme": "Viest, Siess, Appleton and Newmark (1952): full-scale composite T-beams with channel shear connectors, University of Illinois (Studies of Slab and Beam Highway Bridges, Part IV)",
+ "key": "viest1952",
+ "accessible": true,
+ "included": true,
+ "citations": [
+  "Viest, I.M., Siess, C.P., Appleton, J.H. and Newmark, N.M. (1952). Full-scale tests of channel shear connectors and composite T-beams. University of Illinois Engineering Experiment Station Bulletin Series No. 405, Vol. 50, No. 21. Urbana, IL. 162 pp.",
+  "Slutter, R.G. and Driscoll, G.C. Jr. (1963). The flexural strength of steel and concrete composite beams. Fritz Engineering Laboratory Report 279.15, Lehigh University (Table 4: sum(q_u)/C for B21S, B21W, B24S, B24W)."
+ ],
+ "sources": [
+  {
+   "url": "https://www.ideals.illinois.edu/items/4841 (PDF bitstream https://www.ideals.illinois.edu/items/4841/bitstreams/18942/data.pdf; handle https://hdl.handle.net/2142/4365)",
+   "document": "Bulletin 405, open access scan (2007 UIUC digitisation), 162 PDF pages, embedded page images 150 ppi JPEG; md5 bc4b997648d5e27dab5b3947f88e1ce0",
+   "local_copy": "session scratchpad lit_sources/viest1952/viest1952_bulletin405.pdf (not in the repository)",
+   "page_mapping": "PDF page = printed page + 4",
+   "pages_used": {
+    "push-out Table 3 (concrete), Table 5 (load-slip, ultimate)": "printed 18, 26-27",
+    "channel formulas, connector modulus (Sec. 27, App. B)": "printed 74-75, 150",
+    "specimens, Fig. 32, Sec. 31, materials Tables 14-16": "printed 80-85",
+    "construction, shoring, bond (Sec. 33)": "printed 85-87",
+    "instrumentation, test procedure, Table 17 (Secs. 34-35)": "printed 90-93",
+    "Table 18 section properties": "printed 94",
+    "Fig. 43, Table 19, Tables 20-21": "printed 102-106",
+    "Tables 24-25, Sec. 42 shear connection": "printed 116-119",
+    "Fig. 53 effect of bond (Sec. 44)": "printed 122-123",
+    "Tables 26-28 connector forces and slips": "printed 130-137"
+   }
+  },
+  {
+   "url": "https://web.archive.org/web/20200318193301id_/https://preserve.lehigh.edu/cgi/viewcontent.cgi?article=2805&context=engr-civil-environmental-fritz-lab-reports",
+   "document": "Slutter and Driscoll (1963) Fritz Lab. Report 279.15, Table 1 (p. 27) and Table 4 (p. 31)"
+  }
+ ],
+ "screening": "All four beams are bridge-scale, solid cast-in-place slab, simply supported 37.5 ft, rolled 21WF68/24WF76, f'c 5.5-6.5 ksi, slab 6.11-6.25 in, 6 ft slab width: inside the design space except flange F_y 34.3-35.8 ksi (web 37.9-41.8 ksi) and channel rather than stud connectors. B21W is the partial-connection specimen (eta 0.66 with the bulletin's push-out strength, 0.50 per Slutter-Driscoll Table 4, 0.59 with the AISC channel formula); B24W, B24S and B21S are over-connected (eta 1.4-2.3) and are included as full-composite references.",
+ "specimens": [
+  {
+   "id": "B24W",
+   "included": true,
+   "screening": "INCLUDED as a near-full reference (eta >= 1 by every strength basis). Solid 72 x 6.25 in cast-in-place slab, simply supported 37.5 ft span, 24WF76 (23.91 in deep), f'c 5.50 ksi, b_f/d 0.376, t_f/b_f 0.0756, t_w/d 0.0184, girder spacing (slab width) 6 ft, monotonic positive bending with a midspan point load in the elastic tests: all inside the design space except: flange F_y 35.8 ksi below 36 ksi by 0.2 ksi (1 %); web F_y 38.7 ksi in range; area-weighted 37.1 ksi; eta_plastic 1.68 > 1.00 (over-connected; reference for the full-composite end, R_EI read at eta = 1); channel connectors (not studs): representable as discrete connectors with the bulletin's push-out load-slip data; unshored: slab dead load carried by the steel section alone before the tests; deflection record is applied load only.",
+   "spec_summary": {
+    "id": "B24W",
+    "included": true,
+    "reason": "near-full reference (over-connected); in range except flange F_y and connector type",
+    "eta_source": "Slutter and Driscoll (1963) Table 4: sum(q_u)/C = 1.41 (q_u from their channel formula Eq. 12); this file: 12 channels per half span x 116.1 kips (Bulletin 405 push-out 4C3C9, Table 5, p. 26-27) / C_f 830.3 kips = 1.678; AISC channel Q_n 106.5 kips gives 1.539",
+    "eta_plastic": 1.678,
+    "span_ft": 37.5,
+    "steel": "24WF76 rolled (d 23.91, b_f 8.99, t_f 0.68, t_w 0.44 in)",
+    "slab": "solid 72 x 6.25 in, rho_l 0.67 % (longitudinal, both layers)",
+    "fc_ksi": 5.5,
+    "fy_ksi": 35.8,
+    "connectors": "C4x5.4 channels 6 in long, 12 per half span (+1 on the midspan line); 9 + 18k in, k = 0..24 (25 channels; first 9 in from each support centreline, 18 in pitch, one on the midspan line)",
+    "loading": "single concentrated load at midspan (14 x 14 in plate), simply supported 450 in span",
+    "n_elastic_points": 4,
+    "data_form": "digitised figure (Fig. 43) + tabulated deflection ratio (Table 19)",
+    "out_of_range": "flange F_y 35.8 ksi below 36 ksi by 0.2 ksi (1 %); web F_y 38.7 ksi in range; area-weighted 37.1 ksi; eta_plastic 1.68 > 1.00 (over-connected; reference for the full-composite end, R_EI read at eta = 1); channel connectors (not studs): representable as discrete connectors with the bulletin's push-out load-slip data; unshored: slab dead load carried by the steel section alone before the tests; deflection record is applied load only"
+   },
+   "geometry": {
+    "span_in": 450.0,
+    "span_ft": 37.5,
+    "support_positions": "centre to centre of bearings: 6 in diameter half-cylinder at one end, 2.5 in roller at the other, 12 x 12 x 2 in bearing plates, 6 x 9 x 1 in sole plates (Sec. 31, p. 82; Sec. 34, p. 91; Fig. 32, p. 80)",
+    "overhang_beyond_supports_in": "4 (slab and beam end to support centreline, Fig. 32 elevation)",
+    "load_positions": "single load at midspan through a 14 x 14 x 2 in steel plate grouted with gypsum plaster (Sec. 34, p. 91)",
+    "steel_section": {
+     "designation": "24WF76",
+     "source": "rolled WF (ASTM A7-46); dimensions from the AISC Manual WF table (not given in the bulletin); A and I agree with Table 18 (p. 94)",
+     "d": 23.91,
+     "bf": 8.99,
+     "tf": 0.68,
+     "tw": 0.44,
+     "A": 22.37,
+     "Ix": 2096.4,
+     "A_flanges_in2": 12.226,
+     "A_web_incl_fillets_in2": 10.144,
+     "stiffeners": "two 4.5 x 0.5 in plates each side of the web over each support (Sec. 31, pp. 81-82)"
+    },
+    "slab": {
+     "width_in": 72.0,
+     "thickness_in": 6.25,
+     "thickness_source": "actual average, Fig. 32 (p. 80); design 6 in (Slutter and Driscoll 1963 Table 1 transposes B24W and B21W)",
+     "haunch_in": 0.0,
+     "haunch_source": "slab cast on plywood forms flush with the top flange (Sec. 33, p. 85)",
+     "longitudinal_reinforcement": {
+      "top": "3/8 in bars at 12 in",
+      "bottom": "1/2 in bars at 6 in (12 bars)",
+      "area_top_in2": 0.66,
+      "area_bottom_in2": 2.352,
+      "cover_in": 1.0,
+      "centroid_depth_assumed_in": {
+       "top": 1.25,
+       "bottom": 5.0
+      },
+      "rho_l": 0.0067,
+      "source": "Fig. 32 cross-sections (p. 80); bar areas nominal (1/2 in = 0.196, 3/8 in = 0.110 in2); Table 18 slab area including transformed bars (469.6 in2) is consistent with this steel area (72 x t + (n-1) A_s)"
+     },
+     "transverse_reinforcement": "1/2 in bars at 6 in top; 1/2 in bars at 6 in bottom (Fig. 32)",
+     "bars": "intermediate-grade deformed bars (B24W: mixed stock), Sec. 32 (p. 83); longitudinal bars butt-welded near midspan"
+    },
+    "shoring": "unshored (Sec. 31, pp. 81-82): dead load on the steel section alone",
+    "table18_section_properties": {
+     "A_b": 22.37,
+     "I_b": 2096,
+     "E_b_1e6psi": 30.7,
+     "A_slab_incl_bars": 469.6,
+     "I_slab": 1529,
+     "E_c_1e6psi": 4.16,
+     "n": 7.38,
+     "I_composite": 5943,
+     "NA_above_steel_centroid": 10.97,
+     "k_over_s_1e6psi": 0.374,
+     "weight_lb_ft": 567
+    }
+   },
+   "materials": {
+    "concrete": {
+     "fc_psi": 5500,
+     "Ec_measured_psi": 4160000.0,
+     "source": "Table 14 (p. 84): average of 6 x 12 in cylinders over the test period; E_c initial modulus by compressometer",
+     "normal_weight": true
+    },
+    "steel_beam": {
+     "flange_fy_ksi": 35.8,
+     "flange_fu_ksi": 61.3,
+     "web_fy_ksi": 38.7,
+     "web_fu_ksi": 64.4,
+     "E_table18_ksi": 30700.0,
+     "source": "Table 15 (p. 85) static coupon values from unyielded portions after testing; E from Table 18 (p. 94)",
+     "residual_stress": "about 30 ksi compression at mid-depth of the 21 in beams, flanges -3 to +9 ksi (Sec. 37, p. 97)"
+    },
+    "channel_steel": {
+     "fy_ksi_parallel_perpendicular": [
+      44.4,
+      47.0
+     ],
+     "fu_ksi_parallel_perpendicular": [
+      67.25,
+      67.15
+     ],
+     "source": "Table 16 (p. 85)"
+    }
+   },
+   "connectors": {
+    "type": "C4x5.4 (4 in, 5.4 lb) channel, welded to the top flange with 3/16 in continuous fillet welds front and back, all facing the same direction (Sec. 33, p. 85)",
+    "length_in": 6.0,
+    "channel_dims": "t_f (average) 0.296 in, t_w 0.184 in (handbook); Table 2 of the bulletin lists web 0.180 in",
+    "layout": "9 + 18k in, k = 0..24 (25 channels; first 9 in from each support centreline, 18 in pitch, one on the midspan line)",
+    "positions_from_left_support_in": [
+     9,
+     27,
+     45,
+     63,
+     81,
+     99,
+     117,
+     135,
+     153,
+     171,
+     189,
+     207,
+     225,
+     243,
+     261,
+     279,
+     297,
+     315,
+     333,
+     351,
+     369,
+     387,
+     405,
+     423,
+     441
+    ],
+    "per_half_span_excluding_midspan_connector": 12,
+    "layout_source": "Fig. 32 elevations (p. 80) and Sec. 31 (p. 81); midspan connector confirmed on the crop of Fig. 32",
+    "push_out_same_programme": {
+     "specimen": "4C3C9 (6-in-wide C4x5.4, f'c 5340 psi)",
+     "load_per_connector_kip_at_average_slip": {
+      "0.003 in": 20.7,
+      "0.006 in": 33.7,
+      "0.020 in": 60.5
+     },
+     "ultimate_kip": 116.1,
+     "secant_stiffness_kip_per_in": {
+      "0.003 in": 6900.0,
+      "0.006 in": 5617.0,
+      "0.020 in": 3025.0
+     },
+     "source": "Table 5 (printed pp. 26-27, PDF pp. 30-31), read from the rendered page; concrete strengths Table 3 (p. 18)",
+     "note": "nearest Group I f'c below 5500 psi; 4C3C10 (5740 psi) is flagged by the authors as of questionable accuracy (21.8/32.1/60.1 kips at 0.003/0.006/0.020 in, ult 112.1)"
+    },
+    "beam_derived_modulus": {
+     "one_over_C": 39,
+     "k_1e6_lb_in": 6.73,
+     "spacing": "18 in",
+     "source": "Table 25 (p. 118), computed by the authors from MEASURED BEAM SLIPS (Bul. 396 Sec. 54 method), not from push-out tests; footnote: based on k = 6.73e6 lb/in per 6 in width (B24W, B24S) and 4.92e6 lb/in per 6 in width (B21S, B21W), k proportional to width; Table 18 k/s = k divided by the (average) spacing"
+    },
+    "strength_for_eta": {
+     "value_kip": 116.1,
+     "basis": "bulletin push-out ultimate (Table 5)",
+     "alternatives": {
+      "slutter_driscoll_eq12_kip": 95.0,
+      "aisc_channel_formula_kip": 106.5,
+      "beam_connector_yield_kip": null
+     },
+     "alt_note": "Table 27 (p. 135): 9,680 lb per inch width is the yield load of the channel connectors at first yielding of B21W (38.7 kips per 4 in channel)"
+    },
+    "degree_of_connection": {
+     "C_f": {
+      "A_flanges_in2": 12.226,
+      "A_web_incl_fillets_in2": 10.144,
+      "AsFy_kip": 830.3,
+      "concrete_085fcAc_kip": 2103.8,
+      "C_f_kip": 830.3
+     },
+     "n_per_half_span": 12,
+     "eta_pushout": 1.678,
+     "eta_aisc_channel_formula": 1.539,
+     "eta_slutter_driscoll_table4": 1.41,
+     "counting_convention": "connectors between a support and the midspan section, excluding the connector on the midspan line (it carries no shear under the symmetric midspan load); including it adds one connector",
+     "authors_statement": "1/C = 39 > 20: practically complete interaction (Sec. 42, p. 119)"
+    }
+   },
+   "loading": {
+    "pattern": "single concentrated load at midspan (module pattern: midspan point load)",
+    "load_plate": "14 x 14 x 2 in",
+    "sequence": "Table 17 (p. 92): midspan flexural tests to 40 and 60 kips, midspan yield test to 100 kips, capacity test 111 kips",
+    "instrumentation": "deflectometers with 0.001 in dials bearing on the laboratory floor and the bottom flange at midspan (Sec. 34, p. 90); loads by 125 kip ring dynamometer",
+    "bond": "white lead on top flange to prevent bond (Sec. 31, p. 82)",
+    "repeated_loading": "several elastic tests at midspan and quarter points before the plotted test; all below yield (Sec. 35, pp. 91-93; Table 17, p. 92)"
+   },
+   "deflection_zero_includes": "applied midspan load only: 'a set of readings of all instruments was taken before application of the first load increment' (Sec. 35, p. 93). Unshored: slab and beam self-weight (551-567 lb/ft) was already on the steel section and is not in the record. Deflection measured relative to the laboratory floor; bearing compression is not separated (not stated).",
+   "elastic_limit": {
+    "first_yield_measured_kip": 79,
+    "first_yield_theory_incomplete_interaction_kip": 64.6,
+    "source": "Table 21 (p. 106): load at first yielding, theory with load spread over 14 in and coupon yield",
+    "ultimate_test_kip": "111 (test stopped, not failed; estimated 120)",
+    "ultimate_complete_interaction_theory_kip": 116.7,
+    "ultimate_source": "Table 24 (p. 116)",
+    "rule_used": "points below the measured first-yield load are flagged elastic; the modelling step must also apply M/M_p <= 0.6 with its own M_p (and consider the dead-load moment already on the steel for unshored beams)"
+   },
+   "tabulated_stiffness_ratio": {
+    "midspan_deflection_percent_of_complete_interaction": {
+     "test": 102,
+     "incomplete_interaction_theory": 104,
+     "no_interaction_theory": 248
+    },
+    "source": "Table 19 (p. 104): concentrated load at midspan, test data are averages; complete-interaction theory = 100",
+    "note": "the authors' complete-interaction deflection appears to include shear deformation: PL^3/48 E_b I with Table 18 values is about 6 % below the plotted complete-interaction line (see notes)"
+   },
+   "measured": [
+    {
+     "load": 20.02,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.2218,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 2252.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=706.2, py=3024.8)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 40.01,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.4514,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 4501.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=859.3, py=2727.0)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 60.2,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.6809,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 6772.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=1010.0, py=2426.0)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 70.18,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.8089,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 7895.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=1093.5, py=2278.3)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 80.37,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.9781,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 9042.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=1209.5, py=2122.3)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": false,
+     "flags": [
+      "at or above the measured first-yield load 79 kips (Table 21, p. 106)"
+     ]
+    }
+   ],
+   "context_measured": [],
+   "digitisation": {
+    "method": "600 dpi render of the 150 ppi JPEG scan (4x interpolation); grid lines detected programmatically (>= 5 per axis, labelled lines 0/0.4/0.8 in and 0/20/40... kips included), piecewise-linear pixel-to-value map; open markers by ring-template correlation plus closed-interior test; see digitise_viest1952.py",
+    "files": [
+     "viest1952_digitised/digitise_viest1952.py",
+     "viest1952_digitised/calibration.json",
+     "viest1952_digitised/markers_raw.csv",
+     "viest1952_digitised/overlay_check.png"
+    ],
+    "uncertainty": "Fig. 43: +/-0.006 in deflection and +/-0.3 kip load (grid-fit rms 0.002-0.003 in and 0.12-0.17 kip; marker centroid +/-0.5 scan pixel = +/-0.003 in; hand-drafted grid cells irregular by up to 5 render px, removed by the piecewise map)"
+   },
+   "assumptions": [
+    "Steel plate dimensions from the AISC WF table (bulletin gives only A and I); web area taken as A - 2 b_f t_f (includes fillets).",
+    "C_f = min(0.85 f'c b t, A_f F_y,flange + A_w F_y,web) with coupon yields; slab reinforcement ignored in C_f.",
+    "Longitudinal bar centroids assumed 1.25 in from the slab faces (1 in cover + half bar); the relative position of longitudinal and transverse bars is not stated.",
+    "Connector strength for eta and the model: bulletin push-out ultimate of the matching channel (Table 5); stiffness: Table 5 load-slip points (or the beam-derived Table 25 modulus as a sensitivity case)."
+   ]
+  },
+  {
+   "id": "B24S",
+   "included": true,
+   "screening": "INCLUDED as a near-full reference (eta >= 1 by every strength basis). Solid 72 x 6.17 in cast-in-place slab, simply supported 37.5 ft span, 24WF76 (23.91 in deep), f'c 5.62 ksi, b_f/d 0.376, t_f/b_f 0.0756, t_w/d 0.0184, girder spacing (slab width) 6 ft, monotonic positive bending with a midspan point load in the elastic tests: all inside the design space except: flange F_y 35.2 ksi below 36 ksi by 0.8 ksi (2 %); web F_y 37.9 ksi in range; area-weighted 36.4 ksi; eta_plastic 2.14 > 1.00 (over-connected; reference for the full-composite end, R_EI read at eta = 1); channel connectors (not studs): representable as discrete connectors with the bulletin's push-out load-slip data.",
+   "spec_summary": {
+    "id": "B24S",
+    "included": true,
+    "reason": "near-full reference (over-connected); in range except flange F_y and connector type",
+    "eta_source": "Slutter and Driscoll (1963) Table 4: sum(q_u)/C = 1.59 (q_u from their channel formula Eq. 12); this file: 15 channels per half span x 116.1 kips (Bulletin 405 push-out 4C3C9, Table 5, p. 26-27) / C_f 814.8 kips = 2.137; AISC channel Q_n 108.2 kips gives 1.992",
+    "eta_plastic": 2.137,
+    "span_ft": 37.5,
+    "steel": "24WF76 rolled (d 23.91, b_f 8.99, t_f 0.68, t_w 0.44 in)",
+    "slab": "solid 72 x 6.17 in, rho_l 0.68 % (longitudinal, both layers)",
+    "fc_ksi": 5.62,
+    "fy_ksi": 35.2,
+    "connectors": "C4x5.4 channels 6 in long, 15 per half span (+1 on the midspan line); per half span from each support centreline: 6, then 6 spaces at 12 in, 5 at 15 in, 4 at 18 in to midspan (31 channels, one on the midspan line)",
+    "loading": "single concentrated load at midspan (14 x 14 in plate), simply supported 450 in span",
+    "n_elastic_points": 3,
+    "data_form": "digitised figure (Fig. 43) + tabulated deflection ratio (Table 19)",
+    "out_of_range": "flange F_y 35.2 ksi below 36 ksi by 0.8 ksi (2 %); web F_y 37.9 ksi in range; area-weighted 36.4 ksi; eta_plastic 2.14 > 1.00 (over-connected; reference for the full-composite end, R_EI read at eta = 1); channel connectors (not studs): representable as discrete connectors with the bulletin's push-out load-slip data"
+   },
+   "geometry": {
+    "span_in": 450.0,
+    "span_ft": 37.5,
+    "support_positions": "centre to centre of bearings: 6 in diameter half-cylinder at one end, 2.5 in roller at the other, 12 x 12 x 2 in bearing plates, 6 x 9 x 1 in sole plates (Sec. 31, p. 82; Sec. 34, p. 91; Fig. 32, p. 80)",
+    "overhang_beyond_supports_in": "4 (slab and beam end to support centreline, Fig. 32 elevation)",
+    "load_positions": "single load at midspan through a 14 x 14 x 2 in steel plate grouted with gypsum plaster (Sec. 34, p. 91)",
+    "steel_section": {
+     "designation": "24WF76",
+     "source": "rolled WF (ASTM A7-46); dimensions from the AISC Manual WF table (not given in the bulletin); A and I agree with Table 18 (p. 94)",
+     "d": 23.91,
+     "bf": 8.99,
+     "tf": 0.68,
+     "tw": 0.44,
+     "A": 22.37,
+     "Ix": 2096.4,
+     "A_flanges_in2": 12.226,
+     "A_web_incl_fillets_in2": 10.144,
+     "stiffeners": "two 4.5 x 0.5 in plates each side of the web over each support (Sec. 31, pp. 81-82)"
+    },
+    "slab": {
+     "width_in": 72.0,
+     "thickness_in": 6.17,
+     "thickness_source": "actual average, Fig. 32 (p. 80); design 6 in (Slutter and Driscoll 1963 Table 1 transposes B24W and B21W)",
+     "haunch_in": 0.0,
+     "haunch_source": "slab cast on plywood forms flush with the top flange (Sec. 33, p. 85)",
+     "longitudinal_reinforcement": {
+      "top": "3/8 in bars at 12 in",
+      "bottom": "1/2 in bars at 6 in (12 bars)",
+      "area_top_in2": 0.66,
+      "area_bottom_in2": 2.352,
+      "cover_in": 1.0,
+      "centroid_depth_assumed_in": {
+       "top": 1.25,
+       "bottom": 4.92
+      },
+      "rho_l": 0.0068,
+      "source": "Fig. 32 cross-sections (p. 80); bar areas nominal (1/2 in = 0.196, 3/8 in = 0.110 in2); Table 18 slab area including transformed bars (463.8 in2) is consistent with this steel area (72 x t + (n-1) A_s)"
+     },
+     "transverse_reinforcement": "1/2 in bars at 6 in top; 5/8 in bars at 6 in bottom (Fig. 32)",
+     "bars": "intermediate-grade deformed bars (B24W: mixed stock), Sec. 32 (p. 83); longitudinal bars butt-welded near midspan"
+    },
+    "shoring": "shored: rigid intermediate support removed 46 days after casting (Sec. 33, p. 87)",
+    "table18_section_properties": {
+     "A_b": 22.37,
+     "I_b": 2096,
+     "E_b_1e6psi": 30.6,
+     "A_slab_incl_bars": 463.8,
+     "I_slab": 1471,
+     "E_c_1e6psi": 4.15,
+     "n": 7.38,
+     "I_composite": 5943,
+     "NA_above_steel_centroid": 10.97,
+     "k_over_s_1e6psi": 0.513,
+     "weight_lb_ft": 552
+    }
+   },
+   "materials": {
+    "concrete": {
+     "fc_psi": 5620,
+     "Ec_measured_psi": 4150000.0,
+     "source": "Table 14 (p. 84): average of 6 x 12 in cylinders over the test period; E_c initial modulus by compressometer",
+     "normal_weight": true
+    },
+    "steel_beam": {
+     "flange_fy_ksi": 35.2,
+     "flange_fu_ksi": 59.2,
+     "web_fy_ksi": 37.9,
+     "web_fu_ksi": 61.2,
+     "E_table18_ksi": 30600.0,
+     "source": "Table 15 (p. 85) static coupon values from unyielded portions after testing; E from Table 18 (p. 94)",
+     "residual_stress": "about 30 ksi compression at mid-depth of the 21 in beams, flanges -3 to +9 ksi (Sec. 37, p. 97)"
+    },
+    "channel_steel": {
+     "fy_ksi_parallel_perpendicular": [
+      44.4,
+      47.0
+     ],
+     "fu_ksi_parallel_perpendicular": [
+      67.25,
+      67.15
+     ],
+     "source": "Table 16 (p. 85)"
+    }
+   },
+   "connectors": {
+    "type": "C4x5.4 (4 in, 5.4 lb) channel, welded to the top flange with 3/16 in continuous fillet welds front and back, all facing the same direction (Sec. 33, p. 85)",
+    "length_in": 6.0,
+    "channel_dims": "t_f (average) 0.296 in, t_w 0.184 in (handbook); Table 2 of the bulletin lists web 0.180 in",
+    "layout": "per half span from each support centreline: 6, then 6 spaces at 12 in, 5 at 15 in, 4 at 18 in to midspan (31 channels, one on the midspan line)",
+    "positions_from_left_support_in": [
+     6,
+     18,
+     30,
+     42,
+     54,
+     66,
+     78,
+     93,
+     108,
+     123,
+     138,
+     153,
+     171,
+     189,
+     207,
+     225,
+     243,
+     261,
+     279,
+     297,
+     312,
+     327,
+     342,
+     357,
+     372,
+     384,
+     396,
+     408,
+     420,
+     432,
+     444
+    ],
+    "per_half_span_excluding_midspan_connector": 15,
+    "layout_source": "Fig. 32 elevations (p. 80) and Sec. 31 (p. 81); midspan connector confirmed on the crop of Fig. 32",
+    "push_out_same_programme": {
+     "specimen": "4C3C9 (6-in-wide C4x5.4, f'c 5340 psi)",
+     "load_per_connector_kip_at_average_slip": {
+      "0.003 in": 20.7,
+      "0.006 in": 33.7,
+      "0.020 in": 60.5
+     },
+     "ultimate_kip": 116.1,
+     "secant_stiffness_kip_per_in": {
+      "0.003 in": 6900.0,
+      "0.006 in": 5617.0,
+      "0.020 in": 3025.0
+     },
+     "source": "Table 5 (printed pp. 26-27, PDF pp. 30-31), read from the rendered page; concrete strengths Table 3 (p. 18)",
+     "note": "nearest reliable Group I specimen to f'c 5620 psi"
+    },
+    "beam_derived_modulus": {
+     "one_over_C": 54,
+     "k_1e6_lb_in": "7.49 (6.15 for s_min)",
+     "spacing": "12/15/18 in, average 14.6 in, equivalent 13.1 in",
+     "source": "Table 25 (p. 118), computed by the authors from MEASURED BEAM SLIPS (Bul. 396 Sec. 54 method), not from push-out tests; footnote: based on k = 6.73e6 lb/in per 6 in width (B24W, B24S) and 4.92e6 lb/in per 6 in width (B21S, B21W), k proportional to width; Table 18 k/s = k divided by the (average) spacing"
+    },
+    "strength_for_eta": {
+     "value_kip": 116.1,
+     "basis": "bulletin push-out ultimate (Table 5)",
+     "alternatives": {
+      "slutter_driscoll_eq12_kip": 96.0,
+      "aisc_channel_formula_kip": 108.2,
+      "beam_connector_yield_kip": null
+     },
+     "alt_note": "Table 27 (p. 135): 9,680 lb per inch width is the yield load of the channel connectors at first yielding of B21W (38.7 kips per 4 in channel)"
+    },
+    "degree_of_connection": {
+     "C_f": {
+      "A_flanges_in2": 12.226,
+      "A_web_incl_fillets_in2": 10.144,
+      "AsFy_kip": 814.8,
+      "concrete_085fcAc_kip": 2122.1,
+      "C_f_kip": 814.8
+     },
+     "n_per_half_span": 15,
+     "eta_pushout": 2.137,
+     "eta_aisc_channel_formula": 1.992,
+     "eta_slutter_driscoll_table4": 1.59,
+     "counting_convention": "connectors between a support and the midspan section, excluding the connector on the midspan line (it carries no shear under the symmetric midspan load); including it adds one connector",
+     "authors_statement": "1/C = 54 > 20: practically complete interaction (Sec. 42, p. 119)"
+    }
+   },
+   "loading": {
+    "pattern": "single concentrated load at midspan (module pattern: midspan point load)",
+    "load_plate": "14 x 14 x 2 in",
+    "sequence": "Table 17 (p. 92): midspan tests to 60 and 65 kips, midspan yield test to 115 kips (stopped)",
+    "instrumentation": "deflectometers with 0.001 in dials bearing on the laboratory floor and the bottom flange at midspan (Sec. 34, p. 90); loads by 125 kip ring dynamometer",
+    "bond": "white lead on top flange to prevent bond (Sec. 31, p. 82)",
+    "repeated_loading": "several elastic tests at midspan and quarter points before the plotted test; all below yield (Sec. 35, pp. 91-93; Table 17, p. 92)"
+   },
+   "deflection_zero_includes": "applied midspan load only: 'a set of readings of all instruments was taken before application of the first load increment' (Sec. 35, p. 93). Shored: self-weight acted on the composite section after shore removal and is not in the record. Deflection measured relative to the laboratory floor; bearing compression is not separated (not stated).",
+   "elastic_limit": {
+    "first_yield_measured_kip": 78,
+    "first_yield_theory_incomplete_interaction_kip": 69.5,
+    "source": "Table 21 (p. 106): load at first yielding, theory with load spread over 14 in and coupon yield",
+    "ultimate_test_kip": "115 (test stopped, not failed; estimated 130)",
+    "ultimate_complete_interaction_theory_kip": 114.9,
+    "ultimate_source": "Table 24 (p. 116)",
+    "rule_used": "points below the measured first-yield load are flagged elastic; the modelling step must also apply M/M_p <= 0.6 with its own M_p (and consider the dead-load moment already on the steel for unshored beams)"
+   },
+   "tabulated_stiffness_ratio": {
+    "midspan_deflection_percent_of_complete_interaction": {
+     "test": 102,
+     "incomplete_interaction_theory": 103,
+     "no_interaction_theory": 249
+    },
+    "source": "Table 19 (p. 104): concentrated load at midspan, test data are averages; complete-interaction theory = 100",
+    "note": "the authors' complete-interaction deflection appears to include shear deformation: PL^3/48 E_b I with Table 18 values is about 6 % below the plotted complete-interaction line (see notes)"
+   },
+   "measured": [
+    {
+     "load": 29.39,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.343,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 3306.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=2069.9, py=2880.2)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 60.29,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.6785,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 6783.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=2291.5, py=2415.5)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 70.2,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.7895,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 7898.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=2367.8, py=2270.5)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 80.42,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.9276,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 9047.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=2458.3, py=2113.5)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": false,
+     "flags": [
+      "at or above the measured first-yield load 78 kips (Table 21, p. 106)"
+     ]
+    }
+   ],
+   "context_measured": [],
+   "digitisation": {
+    "method": "600 dpi render of the 150 ppi JPEG scan (4x interpolation); grid lines detected programmatically (>= 5 per axis, labelled lines 0/0.4/0.8 in and 0/20/40... kips included), piecewise-linear pixel-to-value map; open markers by ring-template correlation plus closed-interior test; see digitise_viest1952.py",
+    "files": [
+     "viest1952_digitised/digitise_viest1952.py",
+     "viest1952_digitised/calibration.json",
+     "viest1952_digitised/markers_raw.csv",
+     "viest1952_digitised/overlay_check.png"
+    ],
+    "uncertainty": "Fig. 43: +/-0.006 in deflection and +/-0.3 kip load (grid-fit rms 0.002-0.003 in and 0.12-0.17 kip; marker centroid +/-0.5 scan pixel = +/-0.003 in; hand-drafted grid cells irregular by up to 5 render px, removed by the piecewise map)"
+   },
+   "assumptions": [
+    "Steel plate dimensions from the AISC WF table (bulletin gives only A and I); web area taken as A - 2 b_f t_f (includes fillets).",
+    "C_f = min(0.85 f'c b t, A_f F_y,flange + A_w F_y,web) with coupon yields; slab reinforcement ignored in C_f.",
+    "Longitudinal bar centroids assumed 1.25 in from the slab faces (1 in cover + half bar); the relative position of longitudinal and transverse bars is not stated.",
+    "Connector strength for eta and the model: bulletin push-out ultimate of the matching channel (Table 5); stiffness: Table 5 load-slip points (or the beam-derived Table 25 modulus as a sensitivity case)."
+   ]
+  },
+  {
+   "id": "B21S",
+   "included": true,
+   "screening": "INCLUDED as a near-full reference (eta >= 1 by every strength basis). Solid 72 x 6.25 in cast-in-place slab, simply supported 37.5 ft span, 21WF68 (21.13 in deep), f'c 6.48 ksi, b_f/d 0.391, t_f/b_f 0.0828, t_w/d 0.0204, girder spacing (slab width) 6 ft, monotonic positive bending with a midspan point load in the elastic tests: all inside the design space except: flange F_y 35.1 ksi below 36 ksi by 0.9 ksi (2 %); web F_y 41.8 ksi in range; area-weighted 38.0 ksi; eta_plastic 2.33 > 1.00 (over-connected; reference for the full-composite end, R_EI read at eta = 1); channel connectors (not studs): representable as discrete connectors with the bulletin's push-out load-slip data.",
+   "spec_summary": {
+    "id": "B21S",
+    "included": true,
+    "reason": "near-full reference (over-connected); in range except flange F_y and connector type",
+    "eta_source": "Slutter and Driscoll (1963) Table 4: sum(q_u)/C = 1.95 (q_u from their channel formula Eq. 12); this file: 15 channels per half span x 118.2 kips (Bulletin 405 push-out 4C3C11, Table 5, p. 26-27) / C_f 760.9 kips = 2.330; AISC channel Q_n 120.4 kips gives 2.374",
+    "eta_plastic": 2.33,
+    "span_ft": 37.5,
+    "steel": "21WF68 rolled (d 21.13, b_f 8.27, t_f 0.685, t_w 0.43 in)",
+    "slab": "solid 72 x 6.25 in, rho_l 0.67 % (longitudinal, both layers)",
+    "fc_ksi": 6.48,
+    "fy_ksi": 35.1,
+    "connectors": "C4x5.4 channels 6 in long, 15 per half span (+1 on the midspan line); as B24S (31 channels, one on the midspan line)",
+    "loading": "single concentrated load at midspan (14 x 14 in plate), simply supported 450 in span",
+    "n_elastic_points": 5,
+    "data_form": "digitised figure (Fig. 43) + tabulated deflection ratio (Table 19)",
+    "out_of_range": "flange F_y 35.1 ksi below 36 ksi by 0.9 ksi (2 %); web F_y 41.8 ksi in range; area-weighted 38.0 ksi; eta_plastic 2.33 > 1.00 (over-connected; reference for the full-composite end, R_EI read at eta = 1); channel connectors (not studs): representable as discrete connectors with the bulletin's push-out load-slip data"
+   },
+   "geometry": {
+    "span_in": 450.0,
+    "span_ft": 37.5,
+    "support_positions": "centre to centre of bearings: 6 in diameter half-cylinder at one end, 2.5 in roller at the other, 12 x 12 x 2 in bearing plates, 6 x 9 x 1 in sole plates (Sec. 31, p. 82; Sec. 34, p. 91; Fig. 32, p. 80)",
+    "overhang_beyond_supports_in": "4 (slab and beam end to support centreline, Fig. 32 elevation)",
+    "load_positions": "single load at midspan through a 14 x 14 x 2 in steel plate grouted with gypsum plaster (Sec. 34, p. 91)",
+    "steel_section": {
+     "designation": "21WF68",
+     "source": "rolled WF (ASTM A7-46); dimensions from the AISC Manual WF table (not given in the bulletin); A and I agree with Table 18 (p. 94)",
+     "d": 21.13,
+     "bf": 8.27,
+     "tf": 0.685,
+     "tw": 0.43,
+     "A": 20.02,
+     "Ix": 1478.3,
+     "A_flanges_in2": 11.33,
+     "A_web_incl_fillets_in2": 8.69,
+     "stiffeners": "two 4.5 x 0.5 in plates each side of the web over each support (Sec. 31, pp. 81-82)"
+    },
+    "slab": {
+     "width_in": 72.0,
+     "thickness_in": 6.25,
+     "thickness_source": "actual average, Fig. 32 (p. 80); design 6 in (Slutter and Driscoll 1963 Table 1 transposes B24W and B21W)",
+     "haunch_in": 0.0,
+     "haunch_source": "slab cast on plywood forms flush with the top flange (Sec. 33, p. 85)",
+     "longitudinal_reinforcement": {
+      "top": "3/8 in bars at 12 in",
+      "bottom": "1/2 in bars at 6 in (12 bars)",
+      "area_top_in2": 0.66,
+      "area_bottom_in2": 2.352,
+      "cover_in": 1.0,
+      "centroid_depth_assumed_in": {
+       "top": 1.25,
+       "bottom": 5.0
+      },
+      "rho_l": 0.0067,
+      "source": "Fig. 32 cross-sections (p. 80); bar areas nominal (1/2 in = 0.196, 3/8 in = 0.110 in2); Table 18 slab area including transformed bars (467.1 in2) is consistent with this steel area (72 x t + (n-1) A_s)"
+     },
+     "transverse_reinforcement": "1/2 in bars at 6 in top; 5/8 in bars at 6 in bottom (Fig. 32)",
+     "bars": "intermediate-grade deformed bars (B24W: mixed stock), Sec. 32 (p. 83); longitudinal bars butt-welded near midspan"
+    },
+    "shoring": "shored: intermediate shore reaction adjusted daily, removed 20 days after casting (Sec. 33, p. 87)",
+    "table18_section_properties": {
+     "A_b": 20.02,
+     "I_b": 1478,
+     "E_b_1e6psi": 29.6,
+     "A_slab_incl_bars": 467.1,
+     "I_slab": 1521,
+     "E_c_1e6psi": 4.58,
+     "n": 6.46,
+     "I_composite": 4652,
+     "NA_above_steel_centroid": 10.72,
+     "k_over_s_1e6psi": 0.366,
+     "weight_lb_ft": 565
+    }
+   },
+   "materials": {
+    "concrete": {
+     "fc_psi": 6480,
+     "Ec_measured_psi": 4580000.0,
+     "source": "Table 14 (p. 84): average of 6 x 12 in cylinders over the test period; E_c initial modulus by compressometer",
+     "normal_weight": true
+    },
+    "steel_beam": {
+     "flange_fy_ksi": 35.1,
+     "flange_fu_ksi": 58.3,
+     "web_fy_ksi": 41.8,
+     "web_fu_ksi": 60.4,
+     "E_table18_ksi": 29600.0,
+     "source": "Table 15 (p. 85) static coupon values from unyielded portions after testing; E from Table 18 (p. 94)",
+     "residual_stress": "about 30 ksi compression at mid-depth of the 21 in beams, flanges -3 to +9 ksi (Sec. 37, p. 97)"
+    },
+    "channel_steel": {
+     "fy_ksi_parallel_perpendicular": [
+      42.2,
+      42.7
+     ],
+     "fu_ksi_parallel_perpendicular": [
+      60.5,
+      63.0
+     ],
+     "source": "Table 16 (p. 85)"
+    }
+   },
+   "connectors": {
+    "type": "C4x5.4 (4 in, 5.4 lb) channel, welded to the top flange with 3/16 in continuous fillet welds front and back, all facing the same direction (Sec. 33, p. 85)",
+    "length_in": 6.0,
+    "channel_dims": "t_f (average) 0.296 in, t_w 0.184 in (handbook); Table 2 of the bulletin lists web 0.180 in",
+    "layout": "as B24S (31 channels, one on the midspan line)",
+    "positions_from_left_support_in": [
+     6,
+     18,
+     30,
+     42,
+     54,
+     66,
+     78,
+     93,
+     108,
+     123,
+     138,
+     153,
+     171,
+     189,
+     207,
+     225,
+     243,
+     261,
+     279,
+     297,
+     312,
+     327,
+     342,
+     357,
+     372,
+     384,
+     396,
+     408,
+     420,
+     432,
+     444
+    ],
+    "per_half_span_excluding_midspan_connector": 15,
+    "layout_source": "Fig. 32 elevations (p. 80) and Sec. 31 (p. 81); midspan connector confirmed on the crop of Fig. 32",
+    "push_out_same_programme": {
+     "specimen": "4C3C11 (6-in-wide C4x5.4, f'c 6320 psi, white lead instead of grease)",
+     "load_per_connector_kip_at_average_slip": {
+      "0.003 in": null,
+      "0.006 in": 30.0,
+      "0.020 in": 65.8
+     },
+     "ultimate_kip": 118.2,
+     "secant_stiffness_kip_per_in": {
+      "0.003 in": null,
+      "0.006 in": 5000.0,
+      "0.020 in": 3290.0
+     },
+     "source": "Table 5 (printed pp. 26-27, PDF pp. 30-31), read from the rendered page; concrete strengths Table 3 (p. 18)",
+     "note": "nearest Group I f'c; no reading at 0.003 in"
+    },
+    "beam_derived_modulus": {
+     "one_over_C": 44,
+     "k_1e6_lb_in": "5.35 (4.29 for s_min)",
+     "spacing": "12/15/18 in, average 14.6 in, equivalent 13.4 in",
+     "source": "Table 25 (p. 118), computed by the authors from MEASURED BEAM SLIPS (Bul. 396 Sec. 54 method), not from push-out tests; footnote: based on k = 6.73e6 lb/in per 6 in width (B24W, B24S) and 4.92e6 lb/in per 6 in width (B21S, B21W), k proportional to width; Table 18 k/s = k divided by the (average) spacing"
+    },
+    "strength_for_eta": {
+     "value_kip": 118.2,
+     "basis": "bulletin push-out ultimate (Table 5)",
+     "alternatives": {
+      "slutter_driscoll_eq12_kip": 103.1,
+      "aisc_channel_formula_kip": 120.4,
+      "beam_connector_yield_kip": null
+     },
+     "alt_note": "Table 27 (p. 135): 9,680 lb per inch width is the yield load of the channel connectors at first yielding of B21W (38.7 kips per 4 in channel)"
+    },
+    "degree_of_connection": {
+     "C_f": {
+      "A_flanges_in2": 11.33,
+      "A_web_incl_fillets_in2": 8.69,
+      "AsFy_kip": 760.9,
+      "concrete_085fcAc_kip": 2478.6,
+      "C_f_kip": 760.9
+     },
+     "n_per_half_span": 15,
+     "eta_pushout": 2.33,
+     "eta_aisc_channel_formula": 2.374,
+     "eta_slutter_driscoll_table4": 1.95,
+     "counting_convention": "connectors between a support and the midspan section, excluding the connector on the midspan line (it carries no shear under the symmetric midspan load); including it adds one connector",
+     "authors_statement": "1/C = 44 > 20: practically complete interaction (Sec. 42, p. 119)"
+    }
+   },
+   "loading": {
+    "pattern": "single concentrated load at midspan (module pattern: midspan point load)",
+    "load_plate": "14 x 14 x 2 in",
+    "sequence": "Table 17 (p. 92): midspan tests to 50, 50 and 75 kips, capacity test 102 kips",
+    "instrumentation": "deflectometers with 0.001 in dials bearing on the laboratory floor and the bottom flange at midspan (Sec. 34, p. 90); loads by 125 kip ring dynamometer",
+    "bond": "white lead on top flange to prevent bond (Sec. 31, p. 82)",
+    "repeated_loading": "several elastic tests at midspan and quarter points before the plotted test; all below yield (Sec. 35, pp. 91-93; Table 17, p. 92)"
+   },
+   "deflection_zero_includes": "applied midspan load only: 'a set of readings of all instruments was taken before application of the first load increment' (Sec. 35, p. 93). Shored: self-weight acted on the composite section after shore removal and is not in the record. Deflection measured relative to the laboratory floor; bearing compression is not separated (not stated).",
+   "elastic_limit": {
+    "first_yield_measured_kip": 62,
+    "first_yield_theory_incomplete_interaction_kip": 56.6,
+    "source": "Table 21 (p. 106): load at first yielding, theory with load spread over 14 in and coupon yield",
+    "ultimate_test_kip": "102 (failed)",
+    "ultimate_complete_interaction_theory_kip": 100.6,
+    "ultimate_source": "Table 24 (p. 116)",
+    "rule_used": "points below the measured first-yield load are flagged elastic; the modelling step must also apply M/M_p <= 0.6 with its own M_p (and consider the dead-load moment already on the steel for unshored beams)"
+   },
+   "tabulated_stiffness_ratio": {
+    "midspan_deflection_percent_of_complete_interaction": {
+     "test": 101,
+     "incomplete_interaction_theory": 101,
+     "no_interaction_theory": 262
+    },
+    "source": "Table 19 (p. 104): concentrated load at midspan, test data are averages; complete-interaction theory = 100",
+    "note": "the authors' complete-interaction deflection appears to include shear deformation: PL^3/48 E_b I with Table 18 values is about 6 % below the plotted complete-interaction line (see notes)"
+   },
+   "measured": [
+    {
+     "load": 19.81,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.2975,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 2229.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=764.2, py=4562.5)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 40.0,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.5912,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 4500.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=959.5, py=4265.5)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 49.86,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.7288,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 5609.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=1051.5, py=4115.5)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 54.82,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.8074,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 6167.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=1104.2, py=4041.9)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 59.92,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.8798,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 6741.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=1153.5, py=3966.3)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 65.45,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.9736,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 7363.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=1217.5, py=3885.5)",
+     "series": "Fig. 43 midspan test (test not identified in the figure; plotted maxima are consistent with the midspan yield test of Table 17)",
+     "elastic": false,
+     "flags": [
+      "at or above the measured first-yield load 62 kips (Table 21, p. 106)"
+     ]
+    }
+   ],
+   "context_measured": [],
+   "digitisation": {
+    "method": "600 dpi render of the 150 ppi JPEG scan (4x interpolation); grid lines detected programmatically (>= 5 per axis, labelled lines 0/0.4/0.8 in and 0/20/40... kips included), piecewise-linear pixel-to-value map; open markers by ring-template correlation plus closed-interior test; see digitise_viest1952.py",
+    "files": [
+     "viest1952_digitised/digitise_viest1952.py",
+     "viest1952_digitised/calibration.json",
+     "viest1952_digitised/markers_raw.csv",
+     "viest1952_digitised/overlay_check.png"
+    ],
+    "uncertainty": "Fig. 43: +/-0.006 in deflection and +/-0.3 kip load (grid-fit rms 0.002-0.003 in and 0.12-0.17 kip; marker centroid +/-0.5 scan pixel = +/-0.003 in; hand-drafted grid cells irregular by up to 5 render px, removed by the piecewise map)"
+   },
+   "assumptions": [
+    "Steel plate dimensions from the AISC WF table (bulletin gives only A and I); web area taken as A - 2 b_f t_f (includes fillets).",
+    "C_f = min(0.85 f'c b t, A_f F_y,flange + A_w F_y,web) with coupon yields; slab reinforcement ignored in C_f.",
+    "Longitudinal bar centroids assumed 1.25 in from the slab faces (1 in cover + half bar); the relative position of longitudinal and transverse bars is not stated.",
+    "Connector strength for eta and the model: bulletin push-out ultimate of the matching channel (Table 5); stiffness: Table 5 load-slip points (or the beam-derived Table 25 modulus as a sensitivity case)."
+   ]
+  },
+  {
+   "id": "B21W",
+   "included": true,
+   "screening": "INCLUDED (partial connection). Solid 72 x 6.11 in cast-in-place slab, simply supported 37.5 ft span, 21WF68 (21.13 in deep), f'c 5.58 ksi, b_f/d 0.391, t_f/b_f 0.0828, t_w/d 0.0204, girder spacing (slab width) 6 ft, monotonic positive bending with a midspan point load in the elastic tests: all inside the design space except: flange F_y 34.3 ksi below 36 ksi by 1.7 ksi (5 %); web F_y 41.4 ksi in range; area-weighted 37.4 ksi; channel connectors (not studs): representable as discrete connectors with the bulletin's push-out load-slip data; unshored: slab dead load carried by the steel section alone before the tests; deflection record is applied load only.",
+   "spec_summary": {
+    "id": "B21W",
+    "included": true,
+    "reason": "partial connection by the plastic definition with the programme's own push-out strength; in range except flange F_y and connector type",
+    "eta_source": "Slutter and Driscoll (1963) Table 4: sum(q_u)/C = 0.5 (q_u from their channel formula Eq. 12); this file: 6 channels per half span x 81.9 kips (Bulletin 405 push-out 4C3W2, Table 5, p. 26-27) / C_f 748.4 kips = 0.657; AISC channel Q_n 71.8 kips gives 0.575",
+    "eta_plastic": 0.657,
+    "span_ft": 37.5,
+    "steel": "21WF68 rolled (d 21.13, b_f 8.27, t_f 0.685, t_w 0.43 in)",
+    "slab": "solid 72 x 6.11 in, rho_l 0.80 % (longitudinal, both layers)",
+    "fc_ksi": 5.58,
+    "fy_ksi": 34.3,
+    "connectors": "C4x5.4 channels 4 in long, 6 per half span (+1 on the midspan line); 9 + 36k in, k = 0..12 (13 channels; first 9 in from each support centreline, 36 in pitch, one on the midspan line)",
+    "loading": "single concentrated load at midspan (14 x 14 in plate), simply supported 450 in span",
+    "n_elastic_points": 8,
+    "data_form": "digitised figure (Fig. 43 and Fig. 53) + tabulated deflection ratio (Table 19)",
+    "out_of_range": "flange F_y 34.3 ksi below 36 ksi by 1.7 ksi (5 %); web F_y 41.4 ksi in range; area-weighted 37.4 ksi; channel connectors (not studs): representable as discrete connectors with the bulletin's push-out load-slip data; unshored: slab dead load carried by the steel section alone before the tests; deflection record is applied load only"
+   },
+   "geometry": {
+    "span_in": 450.0,
+    "span_ft": 37.5,
+    "support_positions": "centre to centre of bearings: 6 in diameter half-cylinder at one end, 2.5 in roller at the other, 12 x 12 x 2 in bearing plates, 6 x 9 x 1 in sole plates (Sec. 31, p. 82; Sec. 34, p. 91; Fig. 32, p. 80)",
+    "overhang_beyond_supports_in": "4 (slab and beam end to support centreline, Fig. 32 elevation)",
+    "load_positions": "single load at midspan through a 14 x 14 x 2 in steel plate grouted with gypsum plaster (Sec. 34, p. 91)",
+    "steel_section": {
+     "designation": "21WF68",
+     "source": "rolled WF (ASTM A7-46); dimensions from the AISC Manual WF table (not given in the bulletin); A and I agree with Table 18 (p. 94)",
+     "d": 21.13,
+     "bf": 8.27,
+     "tf": 0.685,
+     "tw": 0.43,
+     "A": 20.02,
+     "Ix": 1478.3,
+     "A_flanges_in2": 11.33,
+     "A_web_incl_fillets_in2": 8.69,
+     "stiffeners": "two 4.5 x 0.5 in plates each side of the web over each support (Sec. 31, pp. 81-82)"
+    },
+    "slab": {
+     "width_in": 72.0,
+     "thickness_in": 6.11,
+     "thickness_source": "actual average, Fig. 32 (p. 80); design 6 in (Slutter and Driscoll 1963 Table 1 transposes B24W and B21W)",
+     "haunch_in": 0.0,
+     "haunch_source": "slab cast on plywood forms flush with the top flange (Sec. 33, p. 85)",
+     "longitudinal_reinforcement": {
+      "top": "1/2 in bars at 12 in (1/2 in used instead of the design 3/8 in, Sec. 31, p. 82)",
+      "bottom": "1/2 in bars at 6 in (12 bars)",
+      "area_top_in2": 1.176,
+      "area_bottom_in2": 2.352,
+      "cover_in": 1.0,
+      "centroid_depth_assumed_in": {
+       "top": 1.25,
+       "bottom": 4.86
+      },
+      "rho_l": 0.008,
+      "source": "Fig. 32 cross-sections (p. 80); bar areas nominal (1/2 in = 0.196, 3/8 in = 0.110 in2); Table 18 slab area including transformed bars (461.1 in2) is consistent with this steel area (72 x t + (n-1) A_s)"
+     },
+     "transverse_reinforcement": "1/2 in bars at 6 in top; 5/8 in bars at 6 in bottom (Fig. 32)",
+     "bars": "intermediate-grade deformed bars (B24W: mixed stock), Sec. 32 (p. 83); longitudinal bars butt-welded near midspan"
+    },
+    "shoring": "unshored (Sec. 31, pp. 81-82): dead load on the steel section alone",
+    "table18_section_properties": {
+     "A_b": 20.02,
+     "I_b": 1478,
+     "E_b_1e6psi": 29.4,
+     "A_slab_incl_bars": 461.1,
+     "I_slab": 1434,
+     "E_c_1e6psi": 4.45,
+     "n": 6.61,
+     "I_composite": 4580,
+     "NA_above_steel_centroid": 10.58,
+     "k_over_s_1e6psi": 0.0907,
+     "weight_lb_ft": 551
+    }
+   },
+   "materials": {
+    "concrete": {
+     "fc_psi": 5580,
+     "Ec_measured_psi": 4450000.0,
+     "source": "Table 14 (p. 84): average of 6 x 12 in cylinders over the test period; E_c initial modulus by compressometer",
+     "normal_weight": true
+    },
+    "steel_beam": {
+     "flange_fy_ksi": 34.3,
+     "flange_fu_ksi": 57.9,
+     "web_fy_ksi": 41.4,
+     "web_fu_ksi": 61.8,
+     "E_table18_ksi": 29400.0,
+     "source": "Table 15 (p. 85) static coupon values from unyielded portions after testing; E from Table 18 (p. 94)",
+     "residual_stress": "about 30 ksi compression at mid-depth of the 21 in beams, flanges -3 to +9 ksi (Sec. 37, p. 97)"
+    },
+    "channel_steel": {
+     "fy_ksi_parallel_perpendicular": [
+      38.9,
+      39.7
+     ],
+     "fu_ksi_parallel_perpendicular": [
+      54.5,
+      56.6
+     ],
+     "source": "Table 16 (p. 85)"
+    }
+   },
+   "connectors": {
+    "type": "C4x5.4 (4 in, 5.4 lb) channel, welded to the top flange with 3/16 in continuous fillet welds front and back, all facing the same direction (Sec. 33, p. 85)",
+    "length_in": 4.0,
+    "channel_dims": "t_f (average) 0.296 in, t_w 0.184 in (handbook); Table 2 of the bulletin lists web 0.180 in",
+    "layout": "9 + 36k in, k = 0..12 (13 channels; first 9 in from each support centreline, 36 in pitch, one on the midspan line)",
+    "positions_from_left_support_in": [
+     9,
+     45,
+     81,
+     117,
+     153,
+     189,
+     225,
+     261,
+     297,
+     333,
+     369,
+     405,
+     441
+    ],
+    "per_half_span_excluding_midspan_connector": 6,
+    "layout_source": "Fig. 32 elevations (p. 80) and Sec. 31 (p. 81); midspan connector confirmed on the crop of Fig. 32",
+    "push_out_same_programme": {
+     "specimen": "4C3W2 (4-in-wide C4x5.4, the B21W connector, f'c 4430 psi, natural bond NOT broken)",
+     "load_per_connector_kip_at_average_slip": {
+      "0.003 in": 23.4,
+      "0.006 in": 29.6,
+      "0.020 in": 46.0
+     },
+     "ultimate_kip": 81.9,
+     "secant_stiffness_kip_per_in": {
+      "0.003 in": 7800.0,
+      "0.006 in": 4933.0,
+      "0.020 in": 2300.0
+     },
+     "source": "Table 5 (printed pp. 26-27, PDF pp. 30-31), read from the rendered page; concrete strengths Table 3 (p. 18)",
+     "note": "failure by the connector welds (WCA, S+T); the only push-out of the 4-in channel; alternative: 4C3C9 scaled by width 4/6 (13.8/22.5/40.3 kips, ult 77.4)"
+    },
+    "beam_derived_modulus": {
+     "one_over_C": 11,
+     "k_1e6_lb_in": 3.28,
+     "spacing": "36 in",
+     "source": "Table 25 (p. 118), computed by the authors from MEASURED BEAM SLIPS (Bul. 396 Sec. 54 method), not from push-out tests; footnote: based on k = 6.73e6 lb/in per 6 in width (B24W, B24S) and 4.92e6 lb/in per 6 in width (B21S, B21W), k proportional to width; Table 18 k/s = k divided by the (average) spacing"
+    },
+    "strength_for_eta": {
+     "value_kip": 81.9,
+     "basis": "bulletin push-out ultimate (Table 5)",
+     "alternatives": {
+      "slutter_driscoll_eq12_kip": 63.8,
+      "aisc_channel_formula_kip": 71.8,
+      "beam_connector_yield_kip": 38.7
+     },
+     "alt_note": "Table 27 (p. 135): 9,680 lb per inch width is the yield load of the channel connectors at first yielding of B21W (38.7 kips per 4 in channel)"
+    },
+    "degree_of_connection": {
+     "C_f": {
+      "A_flanges_in2": 11.33,
+      "A_web_incl_fillets_in2": 8.69,
+      "AsFy_kip": 748.4,
+      "concrete_085fcAc_kip": 2086.5,
+      "C_f_kip": 748.4
+     },
+     "n_per_half_span": 6,
+     "eta_pushout": 0.657,
+     "eta_aisc_channel_formula": 0.575,
+     "eta_slutter_driscoll_table4": 0.5,
+     "counting_convention": "connectors between a support and the midspan section, excluding the connector on the midspan line (it carries no shear under the symmetric midspan load); including it adds one connector",
+     "authors_statement": "B21W 'built with an extremely weak shear connection' (p. 103), designed so that beam and connectors yield together (Sec. 31, pp. 81-82); 1/C = 11 versus > 20 for practically complete interaction (Sec. 42, pp. 118-119)"
+    }
+   },
+   "loading": {
+    "pattern": "single concentrated load at midspan (module pattern: midspan point load)",
+    "load_plate": "14 x 14 x 2 in",
+    "sequence": "Table 17 (p. 92): 1A midspan 40 kips (bond present), 11 repetitions of 40 kips, 1B midspan 40, 2 off-midspan (section 5E) 30, 3 midspan 40, 4 off-midspan (5W) 30, 5A midspan 50, 5B midspan 50, 6 capacity 79 kips",
+    "instrumentation": "deflectometers with 0.001 in dials bearing on the laboratory floor and the bottom flange at midspan (Sec. 34, p. 90); loads by 125 kip ring dynamometer",
+    "bond": "no bond prevention; natural bond broken before the reported tests by eleven repetitions of 40 kips at midspan (Sec. 35, p. 93; Sec. 44, p. 122)",
+    "repeated_loading": "11 repetitions of 40 kips at midspan to break natural bond before test 1B; all digitised post-bond tests stayed below yield except the 47 and 50 kip readings"
+   },
+   "deflection_zero_includes": "applied midspan load only: 'a set of readings of all instruments was taken before application of the first load increment' (Sec. 35, p. 93). Unshored: slab and beam self-weight (551-567 lb/ft) was already on the steel section and is not in the record. Deflection measured relative to the laboratory floor; bearing compression is not separated (not stated).",
+   "elastic_limit": {
+    "first_yield_measured_kip": 47,
+    "first_yield_theory_incomplete_interaction_kip": 47.9,
+    "source": "Table 21 (p. 106): load at first yielding, theory with load spread over 14 in and coupon yield",
+    "ultimate_test_kip": "79 (failed: butt welds of longitudinal slab bars fractured, all connectors yielded, west-half connectors later broke)",
+    "ultimate_complete_interaction_theory_kip": 96.8,
+    "ultimate_source": "Table 24 (p. 116)",
+    "rule_used": "points below the measured first-yield load are flagged elastic; the modelling step must also apply M/M_p <= 0.6 with its own M_p (and consider the dead-load moment already on the steel for unshored beams)"
+   },
+   "tabulated_stiffness_ratio": {
+    "midspan_deflection_percent_of_complete_interaction": {
+     "test": 113,
+     "incomplete_interaction_theory": 115,
+     "no_interaction_theory": 262
+    },
+    "source": "Table 19 (p. 104): concentrated load at midspan, test data are averages; complete-interaction theory = 100",
+    "note": "the authors' complete-interaction deflection appears to include shear deformation: PL^3/48 E_b I with Table 18 values is about 6 % below the plotted complete-interaction line (see notes)"
+   },
+   "measured": [
+    {
+     "load": 9.97,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.1779,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 1122.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=1963.5, py=4707.5)",
+     "series": "Fig. 43 midspan test (5A or 5B of Table 17, the only midspan tests reaching 50 kips before the capacity test; the figure does not say which)",
+     "elastic": true,
+     "flags": [
+      "low-load point: +/-0.006 in is about 3 % of the reading"
+     ]
+    },
+    {
+     "load": 20.02,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.3516,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 2252.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=2080.7, py=4553.5)",
+     "series": "Fig. 43 midspan test (5A or 5B of Table 17, the only midspan tests reaching 50 kips before the capacity test; the figure does not say which)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 30.23,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.512,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 3401.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=2187.5, py=4403.5)",
+     "series": "Fig. 43 midspan test (5A or 5B of Table 17, the only midspan tests reaching 50 kips before the capacity test; the figure does not say which)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 39.79,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.6746,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 4476.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=2295.0, py=4261.9)",
+     "series": "Fig. 43 midspan test (5A or 5B of Table 17, the only midspan tests reaching 50 kips before the capacity test; the figure does not say which)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 46.94,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.8073,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 5281.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=2382.8, py=4153.9)",
+     "series": "Fig. 43 midspan test (5A or 5B of Table 17, the only midspan tests reaching 50 kips before the capacity test; the figure does not say which)",
+     "elastic": false,
+     "flags": [
+      "at or above the measured first-yield load 47 kips (Table 21, p. 106)"
+     ]
+    },
+    {
+     "load": 49.88,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.9509,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 5612.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.006
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 43, left sub-panel 'At Midspan' (printed p. 102, PDF p. 106); raw marker in viest1952_digitised/markers_raw.csv (px=2479.5, py=4109.5)",
+     "series": "Fig. 43 midspan test (5A or 5B of Table 17, the only midspan tests reaching 50 kips before the capacity test; the figure does not say which)",
+     "elastic": false,
+     "flags": [
+      "at or above the measured first-yield load 47 kips (Table 21, p. 106)"
+     ]
+    },
+    {
+     "load": 10.04,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.1631,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 1130.0,
+     "uncertainty": {
+      "load_kip": 0.2,
+      "deflection_in": 0.004
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 53, right panel 'Deflection at Midspan' (printed p. 123, PDF p. 127); raw marker in viest1952_digitised/markers_raw.csv (px=2211.5, py=1839.4)",
+     "series": "Fig. 53 test AFTER breaking bond (test 1B of Table 17, to 40 kips)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 19.91,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.3264,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 2240.0,
+     "uncertainty": {
+      "load_kip": 0.2,
+      "deflection_in": 0.004
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 53, right panel 'Deflection at Midspan' (printed p. 123, PDF p. 127); raw marker in viest1952_digitised/markers_raw.csv (px=2394.6, py=1618.5)",
+     "series": "Fig. 53 test AFTER breaking bond (test 1B of Table 17, to 40 kips)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 30.01,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.4987,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 3376.0,
+     "uncertainty": {
+      "load_kip": 0.2,
+      "deflection_in": 0.004
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 53, right panel 'Deflection at Midspan' (printed p. 123, PDF p. 127); raw marker in viest1952_digitised/markers_raw.csv (px=2586.1, py=1396.2)",
+     "series": "Fig. 53 test AFTER breaking bond (test 1B of Table 17, to 40 kips)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 40.0,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.6712,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 4500.0,
+     "uncertainty": {
+      "load_kip": 0.2,
+      "deflection_in": 0.004
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 53, right panel 'Deflection at Midspan' (printed p. 123, PDF p. 127); raw marker in viest1952_digitised/markers_raw.csv (px=2776.8, py=1165.2)",
+     "series": "Fig. 53 test AFTER breaking bond (test 1B of Table 17, to 40 kips)",
+     "elastic": true,
+     "flags": []
+    }
+   ],
+   "context_measured": [
+    {
+     "load": 10.03,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.1448,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 1128.0,
+     "uncertainty": {
+      "load_kip": 0.2,
+      "deflection_in": 0.004
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 53, right panel 'Deflection at Midspan' (printed p. 123, PDF p. 127); raw marker in viest1952_digitised/markers_raw.csv (px=2190.8, py=1839.7)",
+     "series": "Fig. 53 test BEFORE breaking bond (test 1A)",
+     "elastic": true,
+     "flags": [
+      "natural bond intact: not the modelled condition; context only"
+     ]
+    },
+    {
+     "load": 19.93,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.2892,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 2242.0,
+     "uncertainty": {
+      "load_kip": 0.2,
+      "deflection_in": 0.004
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 53, right panel 'Deflection at Midspan' (printed p. 123, PDF p. 127); raw marker in viest1952_digitised/markers_raw.csv (px=2353.0, py=1618.0)",
+     "series": "Fig. 53 test BEFORE breaking bond (test 1A)",
+     "elastic": true,
+     "flags": [
+      "natural bond intact: not the modelled condition; context only"
+     ]
+    },
+    {
+     "load": 25.04,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.3687,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 2817.0,
+     "uncertainty": {
+      "load_kip": 0.2,
+      "deflection_in": 0.004
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 53, right panel 'Deflection at Midspan' (printed p. 123, PDF p. 127); raw marker in viest1952_digitised/markers_raw.csv (px=2442.0, py=1503.5)",
+     "series": "Fig. 53 test BEFORE breaking bond (test 1A)",
+     "elastic": true,
+     "flags": [
+      "natural bond intact: not the modelled condition; context only"
+     ]
+    },
+    {
+     "load": 30.09,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.453,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 3385.0,
+     "uncertainty": {
+      "load_kip": 0.2,
+      "deflection_in": 0.004
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 53, right panel 'Deflection at Midspan' (printed p. 123, PDF p. 127); raw marker in viest1952_digitised/markers_raw.csv (px=2535.6, py=1394.4)",
+     "series": "Fig. 53 test BEFORE breaking bond (test 1A)",
+     "elastic": true,
+     "flags": [
+      "natural bond intact: not the modelled condition; context only"
+     ]
+    },
+    {
+     "load": 34.96,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.534,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 3933.0,
+     "uncertainty": {
+      "load_kip": 0.2,
+      "deflection_in": 0.004
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 53, right panel 'Deflection at Midspan' (printed p. 123, PDF p. 127); raw marker in viest1952_digitised/markers_raw.csv (px=2625.0, py=1281.5)",
+     "series": "Fig. 53 test BEFORE breaking bond (test 1A)",
+     "elastic": true,
+     "flags": [
+      "natural bond intact: not the modelled condition; context only"
+     ]
+    },
+    {
+     "load": 39.99,
+     "load_unit": "kip (single concentrated load at midspan, applied load only)",
+     "deflection": 0.6389,
+     "deflection_unit": "in (midspan, bottom flange, from readings taken just before the first increment)",
+     "moment_midspan_applied_kip_in": 4499.0,
+     "uncertainty": {
+      "load_kip": 0.2,
+      "deflection_in": 0.004
+     },
+     "source": "digitised, Viest et al. (1952), Univ. Illinois Eng. Exp. Sta. Bulletin 405 Fig. 53, right panel 'Deflection at Midspan' (printed p. 123, PDF p. 127); raw marker in viest1952_digitised/markers_raw.csv (px=2741.0, py=1165.5)",
+     "series": "Fig. 53 test BEFORE breaking bond (test 1A)",
+     "elastic": true,
+     "flags": [
+      "natural bond intact: not the modelled condition; context only"
+     ]
+    }
+   ],
+   "digitisation": {
+    "method": "600 dpi render of the 150 ppi JPEG scan (4x interpolation); grid lines detected programmatically (>= 5 per axis, labelled lines 0/0.4/0.8 in and 0/20/40... kips included), piecewise-linear pixel-to-value map; open markers by ring-template correlation plus closed-interior test; see digitise_viest1952.py",
+    "files": [
+     "viest1952_digitised/digitise_viest1952.py",
+     "viest1952_digitised/calibration.json",
+     "viest1952_digitised/markers_raw.csv",
+     "viest1952_digitised/overlay_check.png"
+    ],
+    "uncertainty": "Fig. 43: +/-0.006 in deflection and +/-0.3 kip load (grid-fit rms 0.002-0.003 in and 0.12-0.17 kip; marker centroid +/-0.5 scan pixel = +/-0.003 in; hand-drafted grid cells irregular by up to 5 render px, removed by the piecewise map); Fig. 53: +/-0.004 in and +/-0.2 kip (1115 px/in, 22.6 px/kip)"
+   },
+   "assumptions": [
+    "Steel plate dimensions from the AISC WF table (bulletin gives only A and I); web area taken as A - 2 b_f t_f (includes fillets).",
+    "C_f = min(0.85 f'c b t, A_f F_y,flange + A_w F_y,web) with coupon yields; slab reinforcement ignored in C_f.",
+    "Longitudinal bar centroids assumed 1.25 in from the slab faces (1 in cover + half bar); the relative position of longitudinal and transverse bars is not stated.",
+    "Connector strength for eta and the model: bulletin push-out ultimate of the matching channel (Table 5); stiffness: Table 5 load-slip points (or the beam-derived Table 25 modulus as a sensitivity case).",
+    "B21W push-out 4C3W2 had natural bond intact and weld failure; its initial stiffness is therefore an upper bound for the bond-broken beam. Sensitivity: k = 3.28e3 kip/in (Table 25, beam slips), 3.74e3 kip/in (4C3C9 secant at 0.006 in x 4/6), 4.93e3 kip/in (4C3W2 secant at 0.006 in).",
+    "eta counting: 6 channels per half span (midspan channel excluded); including it gives 7 x 81.9 / C_f = 0.766."
+   ]
+  }
+ ],
+ "data_files": {
+  "digitisation_script": "viest1952_digitised/digitise_viest1952.py",
+  "builder": "viest1952_digitised/build_viest1952_json.py",
+  "raw_markers": "viest1952_digitised/markers_raw.csv",
+  "calibration": "viest1952_digitised/calibration.json",
+  "overlay_check": "viest1952_digitised/overlay_check.png"
+ },
+ "notes": [
+  "Cross-check of the digitisation against Table 19: at 40 kips the flexural PL^3/48EI with Table 18 E_b I gives 0.564 (B21W), 0.552 (B21S), 0.416 (B24W) in; digitised Fig. 43 values 0.675, 0.591, 0.451 in; adding shear deformation PL/(4 G A_w) with G = 11,300 ksi and A_w = d t_w (0.044 in for 21WF68, 0.038 in for 24WF76) gives ratios 1.11, 0.99, 0.99 versus Table 19 113, 101, 102: the tabulated complete-interaction deflection includes shear deformation and the digitised points reproduce Table 19 within 1-3 %.",
+  "Connector modulus premise corrected: the bulletin's k/s (Table 18) and k (Table 25) were back-calculated from measured beam slips; push-out stiffness is available only as loads at 0.003, 0.006 and 0.020 in average slip (Table 5).",
+  "B21W: only four elastic load levels exist in each record (10-40 kips); first yield was measured at 47 kips and all connectors yielded in the yield test. Two independent B21W records are provided: test 1B (Fig. 53, after breaking bond) and test 5A/5B (Fig. 43).",
+  "B24W and B24S curves continue to 85 and 90 kips beyond the 1.0 in sub-panel edge; those post-yield points were not digitised."
+ ]
+}

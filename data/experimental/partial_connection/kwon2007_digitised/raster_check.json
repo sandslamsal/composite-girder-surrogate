@@ -1,0 +1,47 @@
+{
+ "report_fig5-14": {
+  "DBLNB-30BS_center": "34/73",
+  "HASAA-30BS_center": "68/75",
+  "NON-00BS_center": "96/96"
+ },
+ "report_fig5-20": {
+  "DBLNB-30BS_center": "46/73",
+  "HASAA-30BS_center": "72/75",
+  "NON-00BS_center": "96/96"
+ },
+ "thesis_fig4-16": {
+  "NON-00BS_center": "76/100",
+  "NON-00BS_south_quarter": "1/91",
+  "NON-00BS_north_quarter": "100/100"
+ },
+ "thesis_fig4-18": {
+  "DBLNB-30BS_center": "52/75",
+  "DBLNB-30BS_south_quarter": "10/68",
+  "DBLNB-30BS_north_quarter": "75/75"
+ },
+ "thesis_fig4-20": {
+  "HASAA-30BS_center": "55/77",
+  "HASAA-30BS_south_quarter": "10/68",
+  "HASAA-30BS_north_quarter": "77/77"
+ },
+ "thesis_fig4-22": {
+  "HTFGB-30BS_center": "113/139",
+  "HTFGB-30BS_south_quarter": "5/120",
+  "HTFGB-30BS_north_quarter": "139/139"
+ },
+ "thesis_fig4-61": {
+  "HASAA-30BS1_center": "71/88",
+  "HASAA-30BS1_south_quarter": "7/85",
+  "HASAA-30BS1_north_quarter": "88/88"
+ },
+ "thesis_fig4-24": {
+  "NON-00BS": "88/100",
+  "DBLNB-30BS": "12/69",
+  "HTFGB-30BS": "90/121",
+  "HASAA-30BS": "77/77"
+ },
+ "thesis_fig4-63": {
+  "HASAA-30BS": "53/77",
+  "HASAA-30BS1": "85/88"
+ }
+}

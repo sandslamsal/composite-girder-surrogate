@@ -1,0 +1,222 @@
+{
+  "all_solid_partial": {
+    "meas_over_full": {
+      "n": 20,
+      "median": 0.869,
+      "mean": 0.878,
+      "q1": 0.785,
+      "q3": 0.951,
+      "min": 0.61,
+      "max": 1.162,
+      "below_1": 15,
+      "within_10pct": 8
+    },
+    "meas_over_REI": {
+      "n": 20,
+      "median": 1.0,
+      "mean": 1.017,
+      "q1": 0.9,
+      "q3": 1.109,
+      "min": 0.784,
+      "max": 1.314,
+      "below_1": 10,
+      "within_10pct": 9
+    },
+    "meas_over_beam": {
+      "n": 20,
+      "median": 1.023,
+      "mean": 1.052,
+      "q1": 0.976,
+      "q3": 1.155,
+      "min": 0.751,
+      "max": 1.329,
+      "below_1": 9,
+      "within_10pct": 11
+    }
+  },
+  "cast_in_place": {
+    "meas_over_full": {
+      "n": 15,
+      "median": 0.927,
+      "mean": 0.918,
+      "q1": 0.856,
+      "q3": 1.002,
+      "min": 0.61,
+      "max": 1.162,
+      "below_1": 10,
+      "within_10pct": 8
+    },
+    "meas_over_REI": {
+      "n": 15,
+      "median": 1.044,
+      "mean": 1.061,
+      "q1": 0.982,
+      "q3": 1.136,
+      "min": 0.785,
+      "max": 1.314,
+      "below_1": 5,
+      "within_10pct": 8
+    },
+    "meas_over_beam": {
+      "n": 15,
+      "median": 1.072,
+      "mean": 1.087,
+      "q1": 0.989,
+      "q3": 1.166,
+      "min": 0.751,
+      "max": 1.329,
+      "below_1": 5,
+      "within_10pct": 7
+    }
+  },
+  "precast": {
+    "meas_over_full": {
+      "n": 5,
+      "median": 0.771,
+      "mean": 0.758,
+      "q1": 0.764,
+      "q3": 0.785,
+      "min": 0.687,
+      "max": 0.785,
+      "below_1": 5,
+      "within_10pct": 0
+    },
+    "meas_over_REI": {
+      "n": 5,
+      "median": 0.88,
+      "mean": 0.885,
+      "q1": 0.873,
+      "q3": 0.896,
+      "min": 0.784,
+      "max": 0.991,
+      "below_1": 5,
+      "within_10pct": 1
+    },
+    "meas_over_beam": {
+      "n": 5,
+      "median": 0.951,
+      "mean": 0.947,
+      "q1": 0.945,
+      "q3": 0.971,
+      "min": 0.84,
+      "max": 1.028,
+      "below_1": 4,
+      "within_10pct": 4
+    }
+  },
+  "bridge_scale_cast_in_place": {
+    "meas_over_full": {
+      "n": 5,
+      "median": 0.923,
+      "mean": 0.909,
+      "q1": 0.882,
+      "q3": 0.934,
+      "min": 0.785,
+      "max": 1.02,
+      "below_1": 4,
+      "within_10pct": 3
+    },
+    "meas_over_REI": {
+      "n": 5,
+      "median": 1.044,
+      "mean": 1.038,
+      "q1": 0.968,
+      "q3": 1.1,
+      "min": 0.944,
+      "max": 1.136,
+      "below_1": 2,
+      "within_10pct": 3
+    },
+    "meas_over_beam": {
+      "n": 5,
+      "median": 1.154,
+      "mean": 1.123,
+      "q1": 1.026,
+      "q3": 1.156,
+      "min": 1.02,
+      "max": 1.262,
+      "below_1": 0,
+      "within_10pct": 2
+    }
+  },
+  "laboratory_scale": {
+    "meas_over_full": {
+      "n": 10,
+      "median": 0.928,
+      "mean": 0.923,
+      "q1": 0.855,
+      "q3": 1.002,
+      "min": 0.61,
+      "max": 1.162,
+      "below_1": 6,
+      "within_10pct": 5
+    },
+    "meas_over_REI": {
+      "n": 10,
+      "median": 1.049,
+      "mean": 1.072,
+      "q1": 0.998,
+      "q3": 1.19,
+      "min": 0.785,
+      "max": 1.314,
+      "below_1": 3,
+      "within_10pct": 5
+    },
+    "meas_over_beam": {
+      "n": 10,
+      "median": 1.032,
+      "mean": 1.069,
+      "q1": 0.986,
+      "q3": 1.166,
+      "min": 0.751,
+      "max": 1.329,
+      "below_1": 5,
+      "within_10pct": 5
+    }
+  },
+  "without_bond_intact": {
+    "meas_over_full": {
+      "n": 17,
+      "median": 0.854,
+      "mean": 0.847,
+      "q1": 0.785,
+      "q3": 0.927,
+      "min": 0.61,
+      "max": 1.039,
+      "below_1": 15,
+      "within_10pct": 6
+    },
+    "meas_over_REI": {
+      "n": 17,
+      "median": 0.991,
+      "mean": 0.977,
+      "q1": 0.896,
+      "q3": 1.044,
+      "min": 0.784,
+      "max": 1.208,
+      "below_1": 10,
+      "within_10pct": 9
+    },
+    "meas_over_beam": {
+      "n": 17,
+      "median": 0.993,
+      "mean": 1.015,
+      "q1": 0.971,
+      "q3": 1.072,
+      "min": 0.751,
+      "max": 1.262,
+      "below_1": 9,
+      "within_10pct": 11
+    }
+  },
+  "full_connection_references": {
+    "B24W": 1.007,
+    "B24S": 1.084,
+    "B21S": 1.062
+  },
+  "profiled_slab_sheehan": {
+    "meas_over_full": 0.789,
+    "meas_over_REI": 0.942,
+    "meas_over_beam": 1.001
+  }
+}

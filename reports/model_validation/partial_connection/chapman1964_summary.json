@@ -1,0 +1,583 @@
+{
+  "generated_by": "scripts/validate_partial_chapman1964.py",
+  "data": "data/experimental/partial_connection/chapman1964.json",
+  "role": "full-connection anchor",
+  "specimens": {
+    "A1": {
+      "specimen": "A1",
+      "source": "Chapman and Balakrishnan (1964); Balakrishnan (1963) thesis",
+      "classification": {
+        "programme": "Chapman and Balakrishnan (1964)",
+        "slab_type": "solid cast-in-place",
+        "connection_system": "welded studs in solid cast-in-place slab",
+        "scale": "laboratory",
+        "role": "full-connection anchor"
+      },
+      "window": {
+        "rule": "thesis tables at W = 5 and 20 tons",
+        "n_points": 2,
+        "m_over_mp_mid": 0.13601229631470269,
+        "m_over_mp_min": 0.13601229631470269,
+        "m_over_mp_max": 0.5440491852588107
+      },
+      "R_meas_flex": 0.9984301412872841,
+      "R_meas_flex_note": "thesis basis at W = 5 tons (primary); the 20 ton value is R_meas_flex_20t",
+      "R_meas_flex_20t": 0.9920634920634921,
+      "R_meas_flex_repo_convention_5t": 1.2208290167085685,
+      "R_meas_flex_repo_convention_20t": 1.235396512255359,
+      "R_meas_flex_repo_convention_5t_range_shear_area": [
+        1.1946273551012696,
+        1.2208290167085685
+      ],
+      "R_EI": {
+        "window_mean": 0.97,
+        "mid_window": 1.0,
+        "window_min": 0.94,
+        "window_max": 1.0
+      },
+      "eta_plastic": 2.5405129681535055,
+      "eta_plastic_details": {
+        "eta": 2.5405129681535055,
+        "sum_qu_kip": 1064.0000000000002,
+        "sum_qu_left_kip": 1064.0000000000002,
+        "sum_qu_right_kip": 1064.0000000000002,
+        "cf_kip": 418.81305599999996,
+        "region": "half_span",
+        "region_end_in": 108.0,
+        "concrete_crushing_kip": 783.36,
+        "steel_yield_kip": 418.81305599999996
+      },
+      "rho_l": 0.021305288720633905,
+      "rho_l_note": "approximate, from the thesis bar description (reference only)",
+      "per_load": {
+        "W5t": {
+          "W_tons": 5.0,
+          "W_kip": 11.200000000000001,
+          "delta_expt_in": 0.0712,
+          "thesis_delta_bending_in": 0.0636,
+          "thesis_delta_shear_in": 0.007500000000000001,
+          "thesis_delta_total_in": 0.0711,
+          "R_meas_flex_thesis": 0.9984301412872841,
+          "R_meas_total_thesis": 0.9985955056179775,
+          "R_meas_flex_repo_convention": 1.2208290167085685,
+          "R_meas_flex_repo_full_depth_web": 1.1946273551012696,
+          "repo_delta_full_flex_in": 0.07247268640791943,
+          "repo_delta_shear_clear_web_in": 0.011836497481596282,
+          "m_over_mp": 0.13601229631470269,
+          "R_EI_reference": 1.0,
+          "partial_interaction_theory_total_in": null
+        },
+        "W20t": {
+          "W_tons": 20.0,
+          "W_kip": 44.800000000000004,
+          "delta_expt_in": 0.28200000000000003,
+          "thesis_delta_bending_in": 0.25,
+          "thesis_delta_shear_in": 0.03,
+          "thesis_delta_total_in": 0.28,
+          "R_meas_flex_thesis": 0.9920634920634921,
+          "R_meas_total_thesis": 0.9929078014184397,
+          "R_meas_flex_repo_convention": 1.235396512255359,
+          "R_meas_flex_repo_full_depth_web": 1.2085726888037165,
+          "repo_delta_full_flex_in": 0.2898907456316777,
+          "repo_delta_shear_clear_web_in": 0.047345989926385126,
+          "m_over_mp": 0.5440491852588107,
+          "R_EI_reference": 0.94,
+          "partial_interaction_theory_total_in": 0.294
+        }
+      },
+      "first_end_slip_W_tons": null,
+      "section": {
+        "I_full_in4": 1117.8729717784174,
+        "n_modular": 8.993902041407841,
+        "ec_ksi": 3224.406922210657,
+        "thesis_I_transformed_in4": 1242,
+        "thesis_m": 6.94
+      },
+      "flags": [
+        "full-connection anchor (eta_plastic >= 0.9); excluded from partial-connection statistics",
+        "laboratory scale; span 18 ft and 4 ft spacing below the design space",
+        "chemical bond not prevented"
+      ]
+    },
+    "A2": {
+      "specimen": "A2",
+      "source": "Chapman and Balakrishnan (1964); Balakrishnan (1963) thesis",
+      "classification": {
+        "programme": "Chapman and Balakrishnan (1964)",
+        "slab_type": "solid cast-in-place",
+        "connection_system": "welded studs in solid cast-in-place slab",
+        "scale": "laboratory",
+        "role": "full-connection anchor"
+      },
+      "window": {
+        "rule": "thesis tables at W = 5 and 20 tons",
+        "n_points": 2,
+        "m_over_mp_mid": 0.13214155375112885,
+        "m_over_mp_min": 0.13214155375112885,
+        "m_over_mp_max": 0.5285662150045154
+      },
+      "R_meas_flex": 0.9870759289176091,
+      "R_meas_flex_note": "thesis basis at W = 5 tons (primary); the 20 ton value is R_meas_flex_20t",
+      "R_meas_flex_20t": 1.0,
+      "R_meas_flex_repo_convention_5t": 1.2265817446883445,
+      "R_meas_flex_repo_convention_20t": 1.213928637242139,
+      "R_meas_flex_repo_convention_5t_range_shear_area": [
+        1.1994516426292958,
+        1.2265817446883445
+      ],
+      "R_EI": {
+        "window_mean": 0.9352180633718814,
+        "mid_window": 1.0,
+        "window_min": 0.8704361267437627,
+        "window_max": 1.0
+      },
+      "eta_plastic": 2.2690578646746857,
+      "eta_plastic_details": {
+        "eta": 2.2690578646746857,
+        "sum_qu_kip": 952.0000000000001,
+        "sum_qu_left_kip": 952.0000000000001,
+        "sum_qu_right_kip": 952.0000000000001,
+        "cf_kip": 419.557392,
+        "region": "half_span",
+        "region_end_in": 108.0,
+        "concrete_crushing_kip": 954.72,
+        "steel_yield_kip": 419.557392
+      },
+      "rho_l": 0.0021305288720633907,
+      "rho_l_note": "approximate, from the thesis bar description (reference only)",
+      "per_load": {
+        "W5t": {
+          "W_tons": 5.0,
+          "W_kip": 11.200000000000001,
+          "delta_expt_in": 0.0694,
+          "thesis_delta_bending_in": 0.0611,
+          "thesis_delta_shear_in": 0.007500000000000001,
+          "thesis_delta_total_in": 0.06860000000000001,
+          "R_meas_flex_thesis": 0.9870759289176091,
+          "R_meas_total_thesis": 0.9884726224783862,
+          "R_meas_flex_repo_convention": 1.2265817446883445,
+          "R_meas_flex_repo_full_depth_web": 1.1994516426292958,
+          "repo_delta_full_flex_in": 0.07060634134939556,
+          "repo_delta_shear_clear_web_in": 0.011836497481596282,
+          "m_over_mp": 0.13214155375112885,
+          "R_EI_reference": 1.0,
+          "partial_interaction_theory_total_in": null
+        },
+        "W20t": {
+          "W_tons": 20.0,
+          "W_kip": 44.800000000000004,
+          "delta_expt_in": 0.28,
+          "thesis_delta_bending_in": 0.25,
+          "thesis_delta_shear_in": 0.03,
+          "thesis_delta_total_in": 0.28,
+          "R_meas_flex_thesis": 1.0,
+          "R_meas_total_thesis": 1.0,
+          "R_meas_flex_repo_convention": 1.213928637242139,
+          "R_meas_flex_repo_full_depth_web": 1.1873493181400236,
+          "repo_delta_full_flex_in": 0.28242536539758223,
+          "repo_delta_shear_clear_web_in": 0.047345989926385126,
+          "m_over_mp": 0.5285662150045154,
+          "R_EI_reference": 0.8704361267437627,
+          "partial_interaction_theory_total_in": 0.295
+        }
+      },
+      "first_end_slip_W_tons": 35.0,
+      "section": {
+        "I_full_in4": 1147.421828964089,
+        "n_modular": 8.146870983065837,
+        "ec_ksi": 3559.6488590870867,
+        "thesis_I_transformed_in4": 1263,
+        "thesis_m": 6.47
+      },
+      "flags": [
+        "full-connection anchor (eta_plastic >= 0.9); excluded from partial-connection statistics",
+        "laboratory scale; span 18 ft and 4 ft spacing below the design space",
+        "chemical bond not prevented"
+      ]
+    },
+    "A3": {
+      "specimen": "A3",
+      "source": "Chapman and Balakrishnan (1964); Balakrishnan (1963) thesis",
+      "classification": {
+        "programme": "Chapman and Balakrishnan (1964)",
+        "slab_type": "solid cast-in-place",
+        "connection_system": "welded studs in solid cast-in-place slab",
+        "scale": "laboratory",
+        "role": "full-connection anchor"
+      },
+      "window": {
+        "rule": "thesis tables at W = 5 and 20 tons",
+        "n_points": 2,
+        "m_over_mp_mid": 0.12955097694921128,
+        "m_over_mp_min": 0.12955097694921128,
+        "m_over_mp_max": 0.5182039077968451
+      },
+      "R_meas_flex": 1.0571428571428572,
+      "R_meas_flex_note": "thesis basis at W = 5 tons (primary); the 20 ton value is R_meas_flex_20t",
+      "R_meas_flex_20t": 0.9920634920634921,
+      "R_meas_flex_repo_convention_5t": 1.267257837666454,
+      "R_meas_flex_repo_convention_20t": 1.267257837666454,
+      "R_meas_flex_repo_convention_5t_range_shear_area": [
+        1.2397422180511637,
+        1.267257837666454
+      ],
+      "R_EI": {
+        "window_mean": 0.9352180633718814,
+        "mid_window": 1.0,
+        "window_min": 0.8704361267437627,
+        "window_max": 1.0
+      },
+      "eta_plastic": 1.810948279265403,
+      "eta_plastic_details": {
+        "eta": 1.810948279265403,
+        "sum_qu_kip": 840.0000000000001,
+        "sum_qu_left_kip": 840.0000000000001,
+        "sum_qu_right_kip": 840.0000000000001,
+        "cf_kip": 463.845384,
+        "region": "half_span",
+        "region_end_in": 108.0,
+        "concrete_crushing_kip": 648.72,
+        "steel_yield_kip": 463.845384
+      },
+      "rho_l": 0.0021305288720633907,
+      "rho_l_note": "approximate, from the thesis bar description (reference only)",
+      "per_load": {
+        "W5t": {
+          "W_tons": 5.0,
+          "W_kip": 11.200000000000001,
+          "delta_expt_in": 0.07050000000000001,
+          "thesis_delta_bending_in": 0.0666,
+          "thesis_delta_shear_in": 0.007500000000000001,
+          "thesis_delta_total_in": 0.0741,
+          "R_meas_flex_thesis": 1.0571428571428572,
+          "R_meas_total_thesis": 1.0510638297872341,
+          "R_meas_flex_repo_convention": 1.267257837666454,
+          "R_meas_flex_repo_full_depth_web": 1.2397422180511637,
+          "repo_delta_full_flex_in": 0.07434178335141291,
+          "repo_delta_shear_clear_web_in": 0.011836497481596282,
+          "m_over_mp": 0.12955097694921128,
+          "R_EI_reference": 1.0,
+          "partial_interaction_theory_total_in": null
+        },
+        "W20t": {
+          "W_tons": 20.0,
+          "W_kip": 44.800000000000004,
+          "delta_expt_in": 0.28200000000000003,
+          "thesis_delta_bending_in": 0.25,
+          "thesis_delta_shear_in": 0.03,
+          "thesis_delta_total_in": 0.28,
+          "R_meas_flex_thesis": 0.9920634920634921,
+          "R_meas_total_thesis": 0.9929078014184397,
+          "R_meas_flex_repo_convention": 1.267257837666454,
+          "R_meas_flex_repo_full_depth_web": 1.2397422180511637,
+          "repo_delta_full_flex_in": 0.29736713340565163,
+          "repo_delta_shear_clear_web_in": 0.047345989926385126,
+          "m_over_mp": 0.5182039077968451,
+          "R_EI_reference": 0.8704361267437627,
+          "partial_interaction_theory_total_in": 0.297
+        }
+      },
+      "first_end_slip_W_tons": 35.0,
+      "section": {
+        "I_full_in4": 1089.767472279053,
+        "n_modular": 9.883259652056372,
+        "ec_ksi": 2934.254590181295,
+        "thesis_I_transformed_in4": 1185,
+        "thesis_m": 8.36
+      },
+      "flags": [
+        "full-connection anchor (eta_plastic >= 0.9); excluded from partial-connection statistics",
+        "laboratory scale; span 18 ft and 4 ft spacing below the design space",
+        "chemical bond not prevented"
+      ]
+    },
+    "A4": {
+      "specimen": "A4",
+      "source": "Chapman and Balakrishnan (1964); Balakrishnan (1963) thesis",
+      "classification": {
+        "programme": "Chapman and Balakrishnan (1964)",
+        "slab_type": "solid cast-in-place",
+        "connection_system": "welded studs in solid cast-in-place slab",
+        "scale": "laboratory",
+        "role": "full-connection anchor"
+      },
+      "window": {
+        "rule": "thesis tables at W = 5 and 20 tons",
+        "n_points": 2,
+        "m_over_mp_mid": 0.12746441828184954,
+        "m_over_mp_min": 0.12746441828184954,
+        "m_over_mp_max": 0.5098576731273982
+      },
+      "R_meas_flex": 1.0522022838499185,
+      "R_meas_flex_note": "thesis basis at W = 5 tons (primary); the 20 ton value is R_meas_flex_20t",
+      "R_meas_flex_20t": 1.02880658436214,
+      "R_meas_flex_repo_convention_5t": 1.2885905005486253,
+      "R_meas_flex_repo_convention_20t": 1.3011535349936243,
+      "R_meas_flex_repo_convention_5t_range_shear_area": [
+        1.2597953592191449,
+        1.2885905005486253
+      ],
+      "R_EI": {
+        "window_mean": 0.9352180633718814,
+        "mid_window": 1.0,
+        "window_min": 0.8704361267437627,
+        "window_max": 1.0
+      },
+      "eta_plastic": 1.5753872574542003,
+      "eta_plastic_details": {
+        "eta": 1.5753872574542003,
+        "sum_qu_kip": 728.0000000000001,
+        "sum_qu_left_kip": 728.0000000000001,
+        "sum_qu_right_kip": 728.0000000000001,
+        "cf_kip": 462.1086,
+        "region": "half_span",
+        "region_end_in": 108.0,
+        "concrete_crushing_kip": 712.368,
+        "steel_yield_kip": 462.1086
+      },
+      "rho_l": 0.0021305288720633907,
+      "rho_l_note": "approximate, from the thesis bar description (reference only)",
+      "per_load": {
+        "W5t": {
+          "W_tons": 5.0,
+          "W_kip": 11.200000000000001,
+          "delta_expt_in": 0.0688,
+          "thesis_delta_bending_in": 0.0645,
+          "thesis_delta_shear_in": 0.007500000000000001,
+          "thesis_delta_total_in": 0.07200000000000001,
+          "R_meas_flex_thesis": 1.0522022838499185,
+          "R_meas_total_thesis": 1.0465116279069768,
+          "R_meas_flex_repo_convention": 1.2885905005486253,
+          "R_meas_flex_repo_full_depth_web": 1.2597953592191449,
+          "repo_delta_full_flex_in": 0.07340262822319273,
+          "repo_delta_shear_clear_web_in": 0.011836497481596282,
+          "m_over_mp": 0.12746441828184954,
+          "R_EI_reference": 1.0,
+          "partial_interaction_theory_total_in": null
+        },
+        "W20t": {
+          "W_tons": 20.0,
+          "W_kip": 44.800000000000004,
+          "delta_expt_in": 0.273,
+          "thesis_delta_bending_in": 0.25,
+          "thesis_delta_shear_in": 0.03,
+          "thesis_delta_total_in": 0.28,
+          "R_meas_flex_thesis": 1.02880658436214,
+          "R_meas_total_thesis": 1.0256410256410255,
+          "R_meas_flex_repo_convention": 1.3011535349936243,
+          "R_meas_flex_repo_full_depth_web": 1.2718005786243995,
+          "repo_delta_full_flex_in": 0.2936105128927709,
+          "repo_delta_shear_clear_web_in": 0.047345989926385126,
+          "m_over_mp": 0.5098576731273982,
+          "R_EI_reference": 0.8704361267437627,
+          "partial_interaction_theory_total_in": 0.3
+        }
+      },
+      "first_end_slip_W_tons": 32.5,
+      "section": {
+        "I_full_in4": 1103.7105794256584,
+        "n_modular": 9.431410497825384,
+        "ec_ksi": 3074.8317027115486,
+        "thesis_I_transformed_in4": 1196,
+        "thesis_m": 7.96
+      },
+      "flags": [
+        "full-connection anchor (eta_plastic >= 0.9); excluded from partial-connection statistics",
+        "laboratory scale; span 18 ft and 4 ft spacing below the design space",
+        "chemical bond not prevented"
+      ]
+    },
+    "A5": {
+      "specimen": "A5",
+      "source": "Chapman and Balakrishnan (1964); Balakrishnan (1963) thesis",
+      "classification": {
+        "programme": "Chapman and Balakrishnan (1964)",
+        "slab_type": "solid cast-in-place",
+        "connection_system": "welded studs in solid cast-in-place slab",
+        "scale": "laboratory",
+        "role": "full-connection anchor"
+      },
+      "window": {
+        "rule": "thesis tables at W = 5 and 20 tons",
+        "n_points": 2,
+        "m_over_mp_mid": 0.13241607781036388,
+        "m_over_mp_min": 0.13241607781036388,
+        "m_over_mp_max": 0.5296643112414555
+      },
+      "R_meas_flex": 0.9536,
+      "R_meas_flex_note": "thesis basis at W = 5 tons (primary); the 20 ton value is R_meas_flex_20t",
+      "R_meas_flex_20t": 0.9960159362549801,
+      "R_meas_flex_repo_convention_5t": 1.2271724694590482,
+      "R_meas_flex_repo_convention_20t": 1.2219203769780658,
+      "R_meas_flex_repo_convention_5t_range_shear_area": [
+        1.2003031728147375,
+        1.2271724694590482
+      ],
+      "R_EI": {
+        "window_mean": 0.9352180633718814,
+        "mid_window": 1.0,
+        "window_min": 0.8704361267437627,
+        "window_max": 1.0
+      },
+      "eta_plastic": 1.321455038285196,
+      "eta_plastic_details": {
+        "eta": 1.321455038285196,
+        "sum_qu_kip": 560.0000000000001,
+        "sum_qu_left_kip": 560.0000000000001,
+        "sum_qu_right_kip": 560.0000000000001,
+        "cf_kip": 423.7752959999999,
+        "region": "half_span",
+        "region_end_in": 108.0,
+        "concrete_crushing_kip": 878.8319999999999,
+        "steel_yield_kip": 423.7752959999999
+      },
+      "rho_l": 0.0021305288720633907,
+      "rho_l_note": "approximate, from the thesis bar description (reference only)",
+      "per_load": {
+        "W5t": {
+          "W_tons": 5.0,
+          "W_kip": 11.200000000000001,
+          "delta_expt_in": 0.07,
+          "thesis_delta_bending_in": 0.0596,
+          "thesis_delta_shear_in": 0.007500000000000001,
+          "thesis_delta_total_in": 0.0671,
+          "R_meas_flex_thesis": 0.9536,
+          "R_meas_total_thesis": 0.9585714285714285,
+          "R_meas_flex_repo_convention": 1.2271724694590482,
+          "R_meas_flex_repo_full_depth_web": 1.2003031728147375,
+          "repo_delta_full_flex_in": 0.07137664901789707,
+          "repo_delta_shear_clear_web_in": 0.011836497481596282,
+          "m_over_mp": 0.13241607781036388,
+          "R_EI_reference": 1.0,
+          "partial_interaction_theory_total_in": null
+        },
+        "W20t": {
+          "W_tons": 20.0,
+          "W_kip": 44.800000000000004,
+          "delta_expt_in": 0.281,
+          "thesis_delta_bending_in": 0.25,
+          "thesis_delta_shear_in": 0.03,
+          "thesis_delta_total_in": 0.28,
+          "R_meas_flex_thesis": 0.9960159362549801,
+          "R_meas_total_thesis": 0.99644128113879,
+          "R_meas_flex_repo_convention": 1.2219203769780658,
+          "R_meas_flex_repo_full_depth_web": 1.1952780837413108,
+          "repo_delta_full_flex_in": 0.2855065960715883,
+          "repo_delta_shear_clear_web_in": 0.047345989926385126,
+          "m_over_mp": 0.5296643112414555,
+          "R_EI_reference": 0.8704361267437627,
+          "partial_interaction_theory_total_in": 0.305
+        }
+      },
+      "first_end_slip_W_tons": 22.5,
+      "section": {
+        "I_full_in4": 1135.0386778072525,
+        "n_modular": 8.491333884365186,
+        "ec_ksi": 3415.246696799515,
+        "thesis_I_transformed_in4": 1302,
+        "thesis_m": 5.69
+      },
+      "flags": [
+        "full-connection anchor (eta_plastic >= 0.9); excluded from partial-connection statistics",
+        "laboratory scale; span 18 ft and 4 ft spacing below the design space",
+        "chemical bond not prevented"
+      ]
+    },
+    "A6": {
+      "specimen": "A6",
+      "source": "Chapman and Balakrishnan (1964); Balakrishnan (1963) thesis",
+      "classification": {
+        "programme": "Chapman and Balakrishnan (1964)",
+        "slab_type": "solid cast-in-place",
+        "connection_system": "welded studs in solid cast-in-place slab",
+        "scale": "laboratory",
+        "role": "full-connection anchor"
+      },
+      "window": {
+        "rule": "thesis tables at W = 5 and 20 tons",
+        "n_points": 2,
+        "m_over_mp_mid": 0.13302132373284592,
+        "m_over_mp_min": 0.13302132373284592,
+        "m_over_mp_max": 0.5320852949313837
+      },
+      "R_meas_flex": 1.015126050420168,
+      "R_meas_flex_note": "thesis basis at W = 5 tons (primary); the 20 ton value is R_meas_flex_20t",
+      "R_meas_flex_20t": 0.9541984732824428,
+      "R_meas_flex_repo_convention_5t": 1.3012180281304309,
+      "R_meas_flex_repo_convention_20t": 1.1735715094171932,
+      "R_meas_flex_repo_convention_5t_range_shear_area": [
+        1.2712137863701953,
+        1.3012180281304309
+      ],
+      "R_EI": {
+        "window_mean": 0.9232533888307273,
+        "mid_window": 0.9980162517404718,
+        "window_min": 0.8484905259209828,
+        "window_max": 0.9980162517404718
+      },
+      "eta_plastic": 0.907224601650175,
+      "eta_plastic_details": {
+        "eta": 0.907224601650175,
+        "sum_qu_kip": 392.00000000000006,
+        "sum_qu_left_kip": 392.00000000000006,
+        "sum_qu_right_kip": 392.00000000000006,
+        "cf_kip": 432.087048,
+        "region": "half_span",
+        "region_end_in": 108.0,
+        "concrete_crushing_kip": 842.1120000000001,
+        "steel_yield_kip": 432.087048
+      },
+      "rho_l": 0.0021305288720633907,
+      "rho_l_note": "approximate, from the thesis bar description (reference only)",
+      "per_load": {
+        "W5t": {
+          "W_tons": 5.0,
+          "W_kip": 11.200000000000001,
+          "delta_expt_in": 0.067,
+          "thesis_delta_bending_in": 0.0604,
+          "thesis_delta_shear_in": 0.007500000000000001,
+          "thesis_delta_total_in": 0.0679,
+          "R_meas_flex_thesis": 1.015126050420168,
+          "R_meas_total_thesis": 1.0134328358208955,
+          "R_meas_flex_repo_convention": 1.3012180281304309,
+          "R_meas_flex_repo_full_depth_web": 1.2712137863701953,
+          "repo_delta_full_flex_in": 0.07177974397176536,
+          "repo_delta_shear_clear_web_in": 0.011836497481596282,
+          "m_over_mp": 0.13302132373284592,
+          "R_EI_reference": 0.9980162517404718,
+          "partial_interaction_theory_total_in": null
+        },
+        "W20t": {
+          "W_tons": 20.0,
+          "W_kip": 44.800000000000004,
+          "delta_expt_in": 0.292,
+          "thesis_delta_bending_in": 0.25,
+          "thesis_delta_shear_in": 0.03,
+          "thesis_delta_total_in": 0.28,
+          "R_meas_flex_thesis": 0.9541984732824428,
+          "R_meas_total_thesis": 0.958904109589041,
+          "R_meas_flex_repo_convention": 1.1735715094171932,
+          "R_meas_flex_repo_full_depth_web": 1.1491098952145709,
+          "repo_delta_full_flex_in": 0.2871189758870614,
+          "repo_delta_shear_clear_web_in": 0.047345989926385126,
+          "m_over_mp": 0.5320852949313837,
+          "R_EI_reference": 0.8484905259209828,
+          "partial_interaction_theory_total_in": 0.313
+        }
+      },
+      "first_end_slip_W_tons": 15.0,
+      "section": {
+        "I_full_in4": 1128.6646182445797,
+        "n_modular": 8.674489405545497,
+        "ec_ksi": 3343.136252084261,
+        "thesis_I_transformed_in4": 1260,
+        "thesis_m": 6.52
+      },
+      "flags": [
+        "full-connection anchor (eta_plastic >= 0.9); excluded from partial-connection statistics",
+        "laboratory scale; span 18 ft and 4 ft spacing below the design space",
+        "chemical bond not prevented"
+      ]
+    }
+  }
+}

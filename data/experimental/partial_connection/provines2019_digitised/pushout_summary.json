@@ -1,0 +1,714 @@
+{
+ "Fig92_CIP_longitudinal": {
+  "report_page": 103,
+  "pdf_page": 121,
+  "table": "Table 15 (p. 104)",
+  "calibration": {
+   "x_ticks_pt": [
+    143.55685424804688,
+    216.2053680419922,
+    288.85888671875,
+    360.76336669921875,
+    433.4168701171875,
+    506.07037353515625
+   ],
+   "y_ticks_pt": [
+    307.5429382324219,
+    348.6929016113281,
+    389.0946960449219,
+    430.2446594238281,
+    470.6464538574219,
+    511.04425048828125,
+    552.1942138671875
+   ],
+   "x_fit_tick_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "slip_in_per_pt": 0.001380065308382379,
+   "slip_intercept": -0.19826170839612353,
+   "load_kip_per_pt": -1.227837339294443,
+   "load_intercept": 677.8753569291096,
+   "x_fit_max_residual_in": 0.00038470147930086407,
+   "y_fit_max_residual_kip": 0.39614414785546614
+  },
+  "curves": {
+   "PO-S1-L3D-CIP": {
+    "drawing_index": 8,
+    "colour_rgb": [
+     0.0,
+     0.4390000104904175,
+     0.753000020980835
+    ],
+    "n_vertices": 683,
+    "max_load_curve_kip": 183.1416302696253,
+    "slip_at_max_curve_in": 0.37559739517334445,
+    "table_max_load_kip": 183.1,
+    "table_slip_at_max_in": 0.38,
+    "Qmax_per_stud_curve_kip": 45.785407567406324,
+    "Qmax_per_stud_table_kip": 45.775,
+    "assignment_cost": 0.26176051095807895,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 2065.153172893835,
+    "slip_at_25pct_Qmax_in": 0.0055413565202837856,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 1892.2998668257676,
+    "slip_at_40pct_Qmax_in": 0.009676056274692896,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 2137.0740584874666,
+    "slip_at_50pct_Qmax_in": 0.010709736477826526,
+    "slip_at_first_load_above_5kip_in": 0.0003729765627410453
+   },
+   "PO-S2-L3D-CIP": {
+    "drawing_index": 9,
+    "colour_rgb": [
+     0.0,
+     0.4390000104904175,
+     0.753000020980835
+    ],
+    "n_vertices": 4450,
+    "max_load_curve_kip": 184.9789272745577,
+    "slip_at_max_curve_in": 0.27533081557376515,
+    "table_max_load_kip": 185.4,
+    "table_slip_at_max_in": 0.28,
+    "Qmax_per_stud_curve_kip": 46.24473181863942,
+    "Qmax_per_stud_table_kip": 46.35,
+    "assignment_cost": 0.6545319467540585,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 2570.614921021182,
+    "slip_at_25pct_Qmax_in": 0.0045076763171501555,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 2318.8046705098745,
+    "slip_at_40pct_Qmax_in": 0.007995498817036322,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 2163.918789970379,
+    "slip_at_50pct_Qmax_in": 0.010709736477826526,
+    "slip_at_first_load_above_5kip_in": 0.0003729765627410453
+   },
+   "PO-S1-L4D-CIP": {
+    "drawing_index": 10,
+    "colour_rgb": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "n_vertices": 9688,
+    "max_load_curve_kip": 279.5993670576673,
+    "slip_at_max_curve_in": 0.40557401577359264,
+    "table_max_load_kip": 279.5,
+    "table_slip_at_max_in": 0.41,
+    "Qmax_per_stud_curve_kip": 69.89984176441682,
+    "Qmax_per_stud_table_kip": 69.875,
+    "assignment_cost": 0.3206662689876464,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 3875.33371318997,
+    "slip_at_25pct_Qmax_in": 0.0045076763171501555,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 3107.5629258213585,
+    "slip_at_40pct_Qmax_in": 0.008994186334171352,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 2529.7311694146033,
+    "slip_at_50pct_Qmax_in": 0.013810756029102006,
+    "slip_at_first_load_above_5kip_in": 0.0003729765627410453
+   },
+   "PO-S2-L4D-CIP": {
+    "drawing_index": 11,
+    "colour_rgb": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "n_vertices": 6214,
+    "max_load_curve_kip": 205.1891193875701,
+    "slip_at_max_curve_in": 0.27429715642875696,
+    "table_max_load_kip": 205.5,
+    "table_slip_at_max_in": 0.32,
+    "Qmax_per_stud_curve_kip": 51.29727984689252,
+    "Qmax_per_stud_table_kip": 51.375,
+    "assignment_cost": 2.5960227909920643,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 1953.4111428239114,
+    "slip_at_25pct_Qmax_in": 0.006575036723417416,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 2123.799140539024,
+    "slip_at_40pct_Qmax_in": 0.009676056274692896,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 2010.4332175784255,
+    "slip_at_50pct_Qmax_in": 0.012777096884093814,
+    "slip_at_first_load_above_5kip_in": 0.0003729765627410453
+   },
+   "PO-S1-L5D-CIP": {
+    "drawing_index": 12,
+    "colour_rgb": [
+     0.0,
+     0.6899999976158142,
+     0.3140000104904175
+    ],
+    "n_vertices": 5053,
+    "max_load_curve_kip": 237.3416858267101,
+    "slip_at_max_curve_in": 0.3993719345547908,
+    "table_max_load_kip": 237.6,
+    "table_slip_at_max_in": 0.41,
+    "Qmax_per_stud_curve_kip": 59.33542145667752,
+    "Qmax_per_stud_table_kip": 59.4,
+    "assignment_cost": 0.789717445550362,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 1951.70882861735,
+    "slip_at_25pct_Qmax_in": 0.0076087169265510735,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 1324.0105130487702,
+    "slip_at_40pct_Qmax_in": 0.017945476841636526,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 1050.1291059640473,
+    "slip_at_50pct_Qmax_in": 0.028282236756722007,
+    "slip_at_first_load_above_5kip_in": 0.0003729765627410453
+   },
+   "PO-S2-L5D-CIP": {
+    "drawing_index": 13,
+    "colour_rgb": [
+     0.0,
+     0.6899999976158142,
+     0.3140000104904175
+    ],
+    "n_vertices": 1426,
+    "max_load_curve_kip": 259.38913747403296,
+    "slip_at_max_curve_in": 0.31254313442157255,
+    "table_max_load_kip": 259.2,
+    "table_slip_at_max_in": 0.31,
+    "Qmax_per_stud_curve_kip": 64.84728436850824,
+    "Qmax_per_stud_table_kip": 64.8,
+    "assignment_cost": 0.31629419511160306,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 2463.86456554724,
+    "slip_at_25pct_Qmax_in": 0.006575036723417416,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 2028.629839401763,
+    "slip_at_40pct_Qmax_in": 0.012777096884093814,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 1805.468881430141,
+    "slip_at_50pct_Qmax_in": 0.017945476841636526,
+    "slip_at_first_load_above_5kip_in": 0.0003729765627410453
+   },
+   "PO-S1-L6D-CIP": {
+    "drawing_index": 14,
+    "colour_rgb": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n_vertices": 5043,
+    "max_load_curve_kip": 241.9349096037301,
+    "slip_at_max_curve_in": 0.29703803666519524,
+    "table_max_load_kip": 241.7,
+    "table_slip_at_max_in": 0.3,
+    "Qmax_per_stud_curve_kip": 60.48372740093252,
+    "Qmax_per_stud_table_kip": 60.425,
+    "assignment_cost": 0.38300777047033996,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 2297.515684771481,
+    "slip_at_25pct_Qmax_in": 0.006575036723417416,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 1891.666019226104,
+    "slip_at_40pct_Qmax_in": 0.012777096884093814,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 1509.6575970867684,
+    "slip_at_50pct_Qmax_in": 0.020012816189778376,
+    "slip_at_first_load_above_5kip_in": 0.0003729765627410453
+   },
+   "PO-S2-L6D-CIP": {
+    "drawing_index": 15,
+    "colour_rgb": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n_vertices": 5769,
+    "max_load_curve_kip": 208.8636759268129,
+    "slip_at_max_curve_in": 0.28153285467631617,
+    "table_max_load_kip": 208.7,
+    "table_slip_at_max_in": 0.29,
+    "Qmax_per_stud_curve_kip": 52.215918981703226,
+    "Qmax_per_stud_table_kip": 52.175,
+    "assignment_cost": 0.5870331929971045,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 2893.6749407611687,
+    "slip_at_25pct_Qmax_in": 0.0045076763171501555,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 2742.906616380074,
+    "slip_at_40pct_Qmax_in": 0.0076087169265510735,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 2435.86759151466,
+    "slip_at_50pct_Qmax_in": 0.010709736477826526,
+    "slip_at_first_load_above_5kip_in": 0.0003729765627410453
+   }
+  }
+ },
+ "Fig93_PC_longitudinal": {
+  "report_page": 105,
+  "pdf_page": 123,
+  "table": "Table 16 (p. 106)",
+  "calibration": {
+   "x_ticks_pt": [
+    137.54611206054688,
+    210.1706085205078,
+    282.8000793457031,
+    355.4295654296875,
+    428.0590515136719,
+    501.4372863769531
+   ],
+   "y_ticks_pt": [
+    117.96293640136719,
+    159.11289978027344,
+    199.5146942138672,
+    239.91647338867188,
+    280.3182678222656,
+    320.716064453125,
+    361.86602783203125
+   ],
+   "x_fit_tick_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "slip_in_per_pt": 0.0013748360637583605,
+   "slip_intercept": -0.18890328441447932,
+   "load_kip_per_pt": -1.232688382493038,
+   "load_intercept": 445.740849563205,
+   "x_fit_max_residual_in": 0.0004907806096846601,
+   "y_fit_max_residual_kip": 0.39788283294944904
+  },
+  "curves": {
+   "PO-S1-L3D-PC": {
+    "drawing_index": 8,
+    "colour_rgb": [
+     0.0,
+     0.4390000104904175,
+     0.753000020980835
+    ],
+    "n_vertices": 4517,
+    "max_load_curve_kip": 192.89051672131075,
+    "slip_at_max_curve_in": 0.23953994768429518,
+    "table_max_load_kip": 193.3,
+    "table_slip_at_max_in": 0.25,
+    "Qmax_per_stud_curve_kip": 48.22262918032769,
+    "Qmax_per_stud_table_kip": 48.325,
+    "assignment_cost": 0.9324858944745062,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": null,
+    "slip_at_25pct_Qmax_in": -0.00031465351446038903,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 4000.046731718602,
+    "slip_at_40pct_Qmax_in": 0.0048324435429020485,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 2421.2036373056653,
+    "slip_at_50pct_Qmax_in": 0.009979540600264514,
+    "slip_at_first_load_above_5kip_in": -0.0013440813172662658
+   },
+   "PO-S2-L3D-PC": {
+    "drawing_index": 9,
+    "colour_rgb": [
+     0.0,
+     0.4390000104904175,
+     0.753000020980835
+    ],
+    "n_vertices": 7351,
+    "max_load_curve_kip": 191.04596076858917,
+    "slip_at_max_curve_in": 0.2776284197564436,
+    "table_max_load_kip": 191.0,
+    "table_slip_at_max_in": 0.28,
+    "Qmax_per_stud_curve_kip": 47.76149019214729,
+    "Qmax_per_stud_table_kip": 47.75,
+    "assignment_cost": 0.16453978076699016,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 3138.956243104616,
+    "slip_at_25pct_Qmax_in": 0.0038030157400961717,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 1734.9524221618726,
+    "slip_at_40pct_Qmax_in": 0.011008947424736903,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 1578.3415019505055,
+    "slip_at_50pct_Qmax_in": 0.015126637657626951,
+    "slip_at_first_load_above_5kip_in": -0.00443232276901695
+   },
+   "PO-S1-L4D-PC": {
+    "drawing_index": 10,
+    "colour_rgb": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "n_vertices": 8701,
+    "max_load_curve_kip": 229.78150411041852,
+    "slip_at_max_curve_in": 0.4238059090548697,
+    "table_max_load_kip": 229.7,
+    "table_slip_at_max_in": 0.43,
+    "Qmax_per_stud_curve_kip": 57.44537602760463,
+    "Qmax_per_stud_table_kip": 57.425,
+    "assignment_cost": 0.3912086576750501,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 1604.0300636296413,
+    "slip_at_25pct_Qmax_in": 0.00895011279745861,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 1299.487585118359,
+    "slip_at_40pct_Qmax_in": 0.0176761981130492,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 1085.5289601602083,
+    "slip_at_50pct_Qmax_in": 0.026450238596824216,
+    "slip_at_first_load_above_5kip_in": -0.00031465351446038903
+   },
+   "PO-S2-L4D-PC": {
+    "drawing_index": 11,
+    "colour_rgb": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "n_vertices": 4349,
+    "max_load_curve_kip": 201.1909996992259,
+    "slip_at_max_curve_in": 0.25086354862349247,
+    "table_max_load_kip": 201.5,
+    "table_slip_at_max_in": 0.28,
+    "Qmax_per_stud_curve_kip": 50.297749924806475,
+    "Qmax_per_stud_table_kip": 50.375,
+    "assignment_cost": 1.7658228695994795,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 1143.9558673613133,
+    "slip_at_25pct_Qmax_in": 0.011008947424736903,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 1172.5019636323095,
+    "slip_at_40pct_Qmax_in": 0.017185472284905218,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 1078.140813954725,
+    "slip_at_50pct_Qmax_in": 0.023361976166740045,
+    "slip_at_first_load_above_5kip_in": 0.0007147742883455155
+   },
+   "PO-S1-L5D-PC": {
+    "drawing_index": 12,
+    "colour_rgb": [
+     0.0,
+     0.6899999976158142,
+     0.3140000104904175
+    ],
+    "n_vertices": 5706,
+    "max_load_curve_kip": 197.5018689844507,
+    "slip_at_max_curve_in": 0.2714519368529422,
+    "table_max_load_kip": 197.9,
+    "table_slip_at_max_in": 0.3,
+    "Qmax_per_stud_curve_kip": 49.37546724611268,
+    "Qmax_per_stud_table_kip": 49.475,
+    "assignment_cost": 1.8255341729021848,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 1794.8412028296216,
+    "slip_at_25pct_Qmax_in": 0.006891278170180343,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 1403.823891664073,
+    "slip_at_40pct_Qmax_in": 0.014097209854821047,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 1161.213708981675,
+    "slip_at_50pct_Qmax_in": 0.02130314153946178,
+    "slip_at_first_load_above_5kip_in": -0.0013440813172662658
+   },
+   "PO-S2-L5D-PC": {
+    "drawing_index": 13,
+    "colour_rgb": [
+     0.0,
+     0.6899999976158142,
+     0.3140000104904175
+    ],
+    "n_vertices": 5660,
+    "max_load_curve_kip": 197.5018689844507,
+    "slip_at_max_curve_in": 0.24056935450876757,
+    "table_max_load_kip": 197.7,
+    "table_slip_at_max_in": 0.26,
+    "Qmax_per_stud_curve_kip": 49.37546724611268,
+    "Qmax_per_stud_table_kip": 49.425,
+    "assignment_cost": 1.1696632901109012,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 2107.909486869824,
+    "slip_at_25pct_Qmax_in": 0.005861850367374466,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 1642.2481959831189,
+    "slip_at_40pct_Qmax_in": 0.01203837522754278,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 1529.61326811034,
+    "slip_at_50pct_Qmax_in": 0.01615604448209934,
+    "slip_at_first_load_above_5kip_in": -0.00031465351446038903
+   },
+   "PO-S1-L6D-PC": {
+    "drawing_index": 14,
+    "colour_rgb": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n_vertices": 5242,
+    "max_load_curve_kip": 195.65735065039314,
+    "slip_at_max_curve_in": 0.33218765276015216,
+    "table_max_load_kip": 195.5,
+    "table_slip_at_max_in": 0.35,
+    "Qmax_per_stud_curve_kip": 48.914337662598285,
+    "Qmax_per_stud_table_kip": 48.875,
+    "assignment_cost": 1.047968012385532,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 1014.9833153600777,
+    "slip_at_25pct_Qmax_in": 0.01203837522754278,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 1015.8848582706273,
+    "slip_at_40pct_Qmax_in": 0.019244306912183512,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 923.9047092351796,
+    "slip_at_50pct_Qmax_in": 0.026450238596824216,
+    "slip_at_first_load_above_5kip_in": 0.0007147742883455155
+   },
+   "PO-S2-L6D-PC": {
+    "drawing_index": 15,
+    "colour_rgb": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n_vertices": 4392,
+    "max_load_curve_kip": 194.73505386470035,
+    "slip_at_max_curve_in": 0.2385105408598228,
+    "table_max_load_kip": 194.4,
+    "table_slip_at_max_in": 0.24,
+    "Qmax_per_stud_curve_kip": 48.68376346617509,
+    "Qmax_per_stud_table_kip": 48.6,
+    "assignment_cost": 0.4095268217092019,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": null,
+    "slip_at_25pct_Qmax_in": -0.00031465351446038903,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 7008.918918054445,
+    "slip_at_40pct_Qmax_in": 0.002773608915623782,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 3526.1963600816416,
+    "slip_at_50pct_Qmax_in": 0.006891278170180343,
+    "slip_at_first_load_above_5kip_in": -0.0013440813172662658
+   }
+  }
+ },
+ "Fig94_CIP_transverse": {
+  "report_page": 107,
+  "pdf_page": 125,
+  "table": "Table 17 (p. 107)",
+  "calibration": {
+   "x_ticks_pt": [
+    142.03533935546875,
+    214.6552276611328,
+    287.28009033203125,
+    359.90496826171875,
+    432.52984619140625,
+    505.15472412109375
+   ],
+   "y_ticks_pt": [
+    78.3629150390625,
+    119.51287841796875,
+    159.9146728515625,
+    201.06463623046875,
+    241.4664306640625,
+    281.8642272949219,
+    323.0141906738281
+   ],
+   "x_fit_tick_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "slip_in_per_pt": 0.0013769522116463576,
+   "slip_intercept": -0.19557260097008447,
+   "load_kip_per_pt": -1.2278373392944433,
+   "load_intercept": 396.47956703193654,
+   "x_fit_max_residual_in": 3.2736873691596724e-06,
+   "y_fit_max_residual_kip": 0.39614414785546614
+  },
+  "curves": {
+   "PO-S1-T3D-CIP": {
+    "drawing_index": 29,
+    "colour_rgb": [
+     0.0,
+     0.4390000104904175,
+     0.753000020980835
+    ],
+    "n_vertices": 8035,
+    "max_load_curve_kip": 219.88734554454155,
+    "slip_at_max_curve_in": 0.3551613879771489,
+    "table_max_load_kip": 219.6,
+    "table_slip_at_max_in": 0.35,
+    "Qmax_per_stud_curve_kip": 54.97183638613539,
+    "Qmax_per_stud_table_kip": 54.9,
+    "assignment_cost": 0.5454149433989983,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 5318.4773139165,
+    "slip_at_25pct_Qmax_in": 0.0025806258426799566,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 2940.2410389646698,
+    "slip_at_40pct_Qmax_in": 0.007468775419763766,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 2314.6851697001566,
+    "slip_at_50pct_Qmax_in": 0.01185906418692606,
+    "slip_at_first_load_above_5kip_in": -0.0005121799351943124
+   },
+   "PO-S2-T3D-CIP": {
+    "drawing_index": 30,
+    "colour_rgb": [
+     0.0,
+     0.4390000104904175,
+     0.753000020980835
+    ],
+    "n_vertices": 7596,
+    "max_load_curve_kip": 238.2602593879325,
+    "slip_at_max_curve_in": 0.2623770045346877,
+    "table_max_load_kip": 238.2,
+    "table_slip_at_max_in": 0.27,
+    "Qmax_per_stud_curve_kip": 59.56506484698313,
+    "Qmax_per_stud_table_kip": 59.55,
+    "assignment_cost": 0.4414091611981339,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 4122.162643850204,
+    "slip_at_25pct_Qmax_in": 0.0036115751090536052,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 3552.9007676822275,
+    "slip_at_40pct_Qmax_in": 0.0067043808869278465,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 3396.5460075024907,
+    "slip_at_50pct_Qmax_in": 0.008766258409051791,
+    "slip_at_first_load_above_5kip_in": -0.0005121799351943124
+   },
+   "PO-S1-T4D-CIP": {
+    "drawing_index": 31,
+    "colour_rgb": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "n_vertices": 7031,
+    "max_load_curve_kip": 240.09753765755394,
+    "slip_at_max_curve_in": 0.3149548288222902,
+    "table_max_load_kip": 240.0,
+    "table_slip_at_max_in": 0.32,
+    "Qmax_per_stud_curve_kip": 60.024384414388486,
+    "Qmax_per_stud_table_kip": 60.0,
+    "assignment_cost": 0.34979621643943315,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 1711.1063010088114,
+    "slip_at_25pct_Qmax_in": 0.008766258409051791,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 1605.148140756823,
+    "slip_at_40pct_Qmax_in": 0.014951890975423654,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 1293.136832168356,
+    "slip_at_50pct_Qmax_in": 0.02319940106391946,
+    "slip_at_first_load_above_5kip_in": -0.0005121799351943124
+   },
+   "PO-S2-T4D-CIP": {
+    "drawing_index": 32,
+    "colour_rgb": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "n_vertices": 4344,
+    "max_load_curve_kip": 218.9687157773863,
+    "slip_at_max_curve_in": 0.29433605360105064,
+    "table_max_load_kip": 219.2,
+    "table_slip_at_max_in": 0.31,
+    "Qmax_per_stud_curve_kip": 54.74217894434658,
+    "Qmax_per_stud_table_kip": 54.8,
+    "assignment_cost": 1.0144815425611489,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 2414.755333412646,
+    "slip_at_25pct_Qmax_in": 0.00567345263117755,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 1700.541281777228,
+    "slip_at_40pct_Qmax_in": 0.012890013453299709,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 1436.3864779071732,
+    "slip_at_50pct_Qmax_in": 0.019075646019671544,
+    "slip_at_first_load_above_5kip_in": -0.0005121799351943124
+   }
+  }
+ },
+ "Fig95_PC_transverse": {
+  "report_page": 108,
+  "pdf_page": 126,
+  "table": "Table 18 (p. 109)",
+  "calibration": {
+   "x_ticks_pt": [
+    142.03533935546875,
+    214.6552276611328,
+    287.28009033203125,
+    359.90496826171875,
+    432.52984619140625,
+    505.15472412109375
+   ],
+   "y_ticks_pt": [
+    216.4938507080078,
+    256.8956298828125,
+    296.54925537109375,
+    336.9510192871094,
+    376.6046142578125,
+    417.00244140625,
+    456.6560363769531
+   ],
+   "x_fit_tick_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "slip_in_per_pt": 0.0013769522116463576,
+   "slip_intercept": -0.19557260097008447,
+   "load_kip_per_pt": -1.2491506645089305,
+   "load_intercept": 570.634149363067,
+   "x_fit_max_residual_in": 3.2736873691596724e-06,
+   "y_fit_max_residual_kip": 0.26844028638720374
+  },
+  "curves": {
+   "PO-S1-T3D-PC": {
+    "drawing_index": 8,
+    "colour_rgb": [
+     0.0,
+     0.4390000104904175,
+     0.753000020980835
+    ],
+    "n_vertices": 6740,
+    "max_load_curve_kip": 215.62643016647957,
+    "slip_at_max_curve_in": 0.2695935653568099,
+    "table_max_load_kip": 215.4,
+    "table_slip_at_max_in": 0.27,
+    "Qmax_per_stud_curve_kip": 53.90660754161989,
+    "Qmax_per_stud_table_kip": 53.85,
+    "assignment_cost": 0.24675189863906577,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 3727.5979575370866,
+    "slip_at_25pct_Qmax_in": 0.0036115751090536052,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 4639.7171577624,
+    "slip_at_40pct_Qmax_in": 0.004642524375427254,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 3480.782263509233,
+    "slip_at_50pct_Qmax_in": 0.007735330153301495,
+    "slip_at_first_load_above_5kip_in": 0.008766279419675144
+   },
+   "PO-S2-T3D-PC": {
+    "drawing_index": 9,
+    "colour_rgb": [
+     0.0,
+     0.4390000104904175,
+     0.753000020980835
+    ],
+    "n_vertices": 5144,
+    "max_load_curve_kip": 191.32707984069617,
+    "slip_at_max_curve_in": 0.24691293362406977,
+    "table_max_load_kip": 191.3,
+    "table_slip_at_max_in": 0.28,
+    "Qmax_per_stud_curve_kip": 47.83176996017404,
+    "Qmax_per_stud_table_kip": 47.825,
+    "assignment_cost": 1.6814331594926732,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 1008.1950659463571,
+    "slip_at_25pct_Qmax_in": 0.01185906418692606,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 951.43010131688,
+    "slip_at_40pct_Qmax_in": 0.020106574275421868,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 909.4900304066164,
+    "slip_at_50pct_Qmax_in": 0.026292206841793703,
+    "slip_at_first_load_above_5kip_in": 0.0015496975869296326
+   },
+   "PO-S1-T4D-PC": {
+    "drawing_index": 10,
+    "colour_rgb": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "n_vertices": 7283,
+    "max_load_curve_kip": 195.06542090255743,
+    "slip_at_max_curve_in": 0.29021234057804945,
+    "table_max_load_kip": 194.9,
+    "table_slip_at_max_in": 0.31,
+    "Qmax_per_stud_curve_kip": 48.76635522563936,
+    "Qmax_per_stud_table_kip": 48.725,
+    "assignment_cost": 1.1548038736549562,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 945.014529591645,
+    "slip_at_25pct_Qmax_in": 0.012890013453299709,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 969.3346928732876,
+    "slip_at_40pct_Qmax_in": 0.020106574275421868,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 891.643653373798,
+    "slip_at_50pct_Qmax_in": 0.027323135097544027,
+    "slip_at_first_load_above_5kip_in": -0.0005121799351943124
+   },
+   "PO-S2-T4D-PC": {
+    "drawing_index": 11,
+    "colour_rgb": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "n_vertices": 5005,
+    "max_load_curve_kip": 213.75727869607545,
+    "slip_at_max_curve_in": 0.3180476346001644,
+    "table_max_load_kip": 213.6,
+    "table_slip_at_max_in": 0.33,
+    "Qmax_per_stud_curve_kip": 53.43931967401886,
+    "Qmax_per_stud_table_kip": 53.4,
+    "assignment_cost": 0.7548969660672328,
+    "secant_k_per_stud_at_25pct_Qmax_kip_per_in": 1725.8521610136866,
+    "slip_at_25pct_Qmax_in": 0.007735309142678143,
+    "secant_k_per_stud_at_40pct_Qmax_kip_per_in": 1428.5838527412102,
+    "slip_at_40pct_Qmax_in": 0.014951869964800302,
+    "secant_k_per_stud_at_50pct_Qmax_kip_per_in": 1263.1577434762994,
+    "slip_at_50pct_Qmax_in": 0.021137502531172164,
+    "slip_at_first_load_above_5kip_in": 0.000518748320555984
+   }
+  }
+ }
+}

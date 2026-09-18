@@ -1,0 +1,724 @@
+{
+ "fig43_B24W": {
+  "fig": "fig43",
+  "beam": "B24W",
+  "png": "r600-106.png",
+  "pdf_page": 106,
+  "printed_page": 102,
+  "box": [
+   556,
+   1676,
+   1232,
+   3322
+  ],
+  "exclude": [
+   [
+    560,
+    1690,
+    900,
+    1800
+   ]
+  ],
+  "x_axis_deflection_in": {
+   "lines": [
+    {
+     "px": 560.06,
+     "index": 0,
+     "value": 0.0,
+     "labelled": true
+    },
+    {
+     "px": 691.62,
+     "index": 1,
+     "value": 0.2,
+     "labelled": false
+    },
+    {
+     "px": 825.4,
+     "index": 2,
+     "value": 0.4,
+     "labelled": true
+    },
+    {
+     "px": 957.41,
+     "index": 3,
+     "value": 0.6,
+     "labelled": false
+    },
+    {
+     "px": 1087.41,
+     "index": 4,
+     "value": 0.8,
+     "labelled": true
+    },
+    {
+     "px": 1224.5,
+     "index": 5,
+     "value": 1.0,
+     "labelled": false
+    }
+   ],
+   "median_spacing_px": 132.01426289436563,
+   "global_fit": {
+    "value_per_px": 0.0015080522026908799,
+    "intercept": -0.8437750494110862,
+    "rms_residual": 0.0020617833464784473,
+    "max_abs_residual": 0.003904003682996371
+   },
+   "n_labelled_lines_used": 3
+  },
+  "y_axis_load_kip": {
+   "lines": [
+    {
+     "px": 3315.63,
+     "index": 0,
+     "value": 0.0,
+     "labelled": true
+    },
+    {
+     "px": 3173.39,
+     "index": 1,
+     "value": 10.0,
+     "labelled": false
+    },
+    {
+     "px": 3025.05,
+     "index": 2,
+     "value": 20.0,
+     "labelled": true
+    },
+    {
+     "px": 2877.14,
+     "index": 3,
+     "value": 30.0,
+     "labelled": false
+    },
+    {
+     "px": 2727.11,
+     "index": 4,
+     "value": 40.0,
+     "labelled": true
+    },
+    {
+     "px": 2578.87,
+     "index": 5,
+     "value": 50.0,
+     "labelled": false
+    },
+    {
+     "px": 2429.02,
+     "index": 6,
+     "value": 60.0,
+     "labelled": true
+    },
+    {
+     "px": 2281.07,
+     "index": 7,
+     "value": 70.0,
+     "labelled": false
+    },
+    {
+     "px": 2127.66,
+     "index": 8,
+     "value": 80.0,
+     "labelled": true
+    },
+    {
+     "px": 1981.5,
+     "index": 9,
+     "value": 90.0,
+     "labelled": false
+    },
+    {
+     "px": 1833.95,
+     "index": 10,
+     "value": 100.0,
+     "labelled": true
+    },
+    {
+     "px": 1679.48,
+     "index": 11,
+     "value": 110.0,
+     "labelled": false
+    }
+   ],
+   "median_spacing_px": 148.24167758914064,
+   "global_fit": {
+    "value_per_px": -0.06714580896273295,
+    "intercept": 223.03165951630882,
+    "rms_residual": 0.17075035119017004,
+    "max_abs_residual": 0.40100094520255425
+   },
+   "n_labelled_lines_used": 6
+  },
+  "n_markers": 5
+ },
+ "fig43_B24S": {
+  "fig": "fig43",
+  "beam": "B24S",
+  "png": "r600-106.png",
+  "pdf_page": 106,
+  "printed_page": 102,
+  "box": [
+   1836,
+   1676,
+   2512,
+   3322
+  ],
+  "exclude": [
+   [
+    1840,
+    1690,
+    2180,
+    1800
+   ]
+  ],
+  "x_axis_deflection_in": {
+   "lines": [
+    {
+     "px": 1841.29,
+     "index": 0,
+     "value": 0.0,
+     "labelled": true
+    },
+    {
+     "px": 1974.92,
+     "index": 1,
+     "value": 0.2,
+     "labelled": false
+    },
+    {
+     "px": 2107.78,
+     "index": 2,
+     "value": 0.4,
+     "labelled": true
+    },
+    {
+     "px": 2237.54,
+     "index": 3,
+     "value": 0.6,
+     "labelled": false
+    },
+    {
+     "px": 2375.02,
+     "index": 4,
+     "value": 0.8,
+     "labelled": true
+    },
+    {
+     "px": 2505.55,
+     "index": 5,
+     "value": 1.0,
+     "labelled": false
+    }
+   ],
+   "median_spacing_px": 132.862780385841,
+   "global_fit": {
+    "value_per_px": 0.0015048802826003417,
+    "intercept": -2.7711331889503183,
+    "rms_residual": 0.0020818610427257357,
+    "max_abs_residual": 0.0039033614207498735
+   },
+   "n_labelled_lines_used": 3
+  },
+  "y_axis_load_kip": {
+   "lines": [
+    {
+     "px": 3310.87,
+     "index": 0,
+     "value": 0.0,
+     "labelled": true
+    },
+    {
+     "px": 3167.55,
+     "index": 1,
+     "value": 10.0,
+     "labelled": false
+    },
+    {
+     "px": 3019.16,
+     "index": 2,
+     "value": 20.0,
+     "labelled": true
+    },
+    {
+     "px": 2871.15,
+     "index": 3,
+     "value": 30.0,
+     "labelled": false
+    },
+    {
+     "px": 2721.63,
+     "index": 4,
+     "value": 40.0,
+     "labelled": true
+    },
+    {
+     "px": 2573.31,
+     "index": 5,
+     "value": 50.0,
+     "labelled": false
+    },
+    {
+     "px": 2419.8,
+     "index": 6,
+     "value": 60.0,
+     "labelled": true
+    },
+    {
+     "px": 2273.55,
+     "index": 7,
+     "value": 70.0,
+     "labelled": false
+    },
+    {
+     "px": 2119.62,
+     "index": 8,
+     "value": 80.0,
+     "labelled": true
+    },
+    {
+     "px": 1974.98,
+     "index": 9,
+     "value": 90.0,
+     "labelled": false
+    },
+    {
+     "px": 1827.89,
+     "index": 10,
+     "value": 100.0,
+     "labelled": true
+    }
+   ],
+   "median_spacing_px": 148.1691329595244,
+   "global_fit": {
+    "value_per_px": -0.06714980599953517,
+    "intercept": 222.6330554783559,
+    "rms_residual": 0.1663604756189465,
+    "max_abs_residual": 0.3087772886749178
+   },
+   "n_labelled_lines_used": 6
+  },
+  "n_markers": 4
+ },
+ "fig43_B21S": {
+  "fig": "fig43",
+  "beam": "B21S",
+  "png": "r600-106.png",
+  "pdf_page": 106,
+  "printed_page": 102,
+  "box": [
+   560,
+   3500,
+   1242,
+   4866
+  ],
+  "exclude": [
+   [
+    564,
+    3520,
+    900,
+    3640
+   ]
+  ],
+  "x_axis_deflection_in": {
+   "lines": [
+    {
+     "px": 568.53,
+     "index": 0,
+     "value": 0.0,
+     "labelled": true
+    },
+    {
+     "px": 701.8,
+     "index": 1,
+     "value": 0.2,
+     "labelled": false
+    },
+    {
+     "px": 829.79,
+     "index": 2,
+     "value": 0.4,
+     "labelled": true
+    },
+    {
+     "px": 965.44,
+     "index": 3,
+     "value": 0.6,
+     "labelled": false
+    },
+    {
+     "px": 1099.1,
+     "index": 4,
+     "value": 0.8,
+     "labelled": true
+    },
+    {
+     "px": 1235.52,
+     "index": 5,
+     "value": 1.0,
+     "labelled": false
+    }
+   ],
+   "median_spacing_px": 133.65213375883513,
+   "global_fit": {
+    "value_per_px": 0.0015012142677454346,
+    "intercept": -0.8511378773989237,
+    "rms_residual": 0.0031317637121083364,
+    "max_abs_residual": 0.005445290166439465
+   },
+   "n_labelled_lines_used": 3
+  },
+  "y_axis_load_kip": {
+   "lines": [
+    {
+     "px": 4859.45,
+     "index": 0,
+     "value": 0.0,
+     "labelled": true
+    },
+    {
+     "px": 4712.2,
+     "index": 1,
+     "value": 10.0,
+     "labelled": false
+    },
+    {
+     "px": 4559.57,
+     "index": 2,
+     "value": 20.0,
+     "labelled": true
+    },
+    {
+     "px": 4411.95,
+     "index": 3,
+     "value": 30.0,
+     "labelled": false
+    },
+    {
+     "px": 4265.55,
+     "index": 4,
+     "value": 40.0,
+     "labelled": true
+    },
+    {
+     "px": 4113.37,
+     "index": 5,
+     "value": 50.0,
+     "labelled": false
+    },
+    {
+     "px": 3965.12,
+     "index": 6,
+     "value": 60.0,
+     "labelled": true
+    },
+    {
+     "px": 3819.01,
+     "index": 7,
+     "value": 70.0,
+     "labelled": false
+    },
+    {
+     "px": 3665.99,
+     "index": 8,
+     "value": 80.0,
+     "labelled": true
+    },
+    {
+     "px": 3514.91,
+     "index": 9,
+     "value": 90.0,
+     "labelled": false
+    }
+   ],
+   "median_spacing_px": 148.2426734803057,
+   "global_fit": {
+    "value_per_px": -0.06701815159650475,
+    "intercept": 325.71973581009865,
+    "rms_residual": 0.11513323666442313,
+    "max_abs_residual": 0.22325531846894364
+   },
+   "n_labelled_lines_used": 5
+  },
+  "n_markers": 6
+ },
+ "fig43_B21W": {
+  "fig": "fig43",
+  "beam": "B21W",
+  "png": "r600-106.png",
+  "pdf_page": 106,
+  "printed_page": 102,
+  "box": [
+   1844,
+   3500,
+   2520,
+   4866
+  ],
+  "exclude": [
+   [
+    1848,
+    3520,
+    2190,
+    3640
+   ],
+   [
+    1990,
+    3960,
+    2520,
+    4090
+   ]
+  ],
+  "x_axis_deflection_in": {
+   "lines": [
+    {
+     "px": 1850.46,
+     "index": 0,
+     "value": 0.0,
+     "labelled": true
+    },
+    {
+     "px": 1977.51,
+     "index": 1,
+     "value": 0.2,
+     "labelled": false
+    },
+    {
+     "px": 2113.61,
+     "index": 2,
+     "value": 0.4,
+     "labelled": true
+    },
+    {
+     "px": 2245.57,
+     "index": 3,
+     "value": 0.6,
+     "labelled": false
+    },
+    {
+     "px": 2377.95,
+     "index": 4,
+     "value": 0.8,
+     "labelled": true
+    },
+    {
+     "px": 2512.52,
+     "index": 5,
+     "value": 1.0,
+     "labelled": false
+    }
+   ],
+   "median_spacing_px": 132.3893936619561,
+   "global_fit": {
+    "value_per_px": 0.0015073686731312875,
+    "intercept": -2.7854657845191984,
+    "rms_residual": 0.0026235371194041836,
+    "max_abs_residual": 0.0046291597153461095
+   },
+   "n_labelled_lines_used": 3
+  },
+  "y_axis_load_kip": {
+   "lines": [
+    {
+     "px": 4855.43,
+     "index": 0,
+     "value": 0.0,
+     "labelled": true
+    },
+    {
+     "px": 4707.07,
+     "index": 1,
+     "value": 10.0,
+     "labelled": false
+    },
+    {
+     "px": 4553.81,
+     "index": 2,
+     "value": 20.0,
+     "labelled": true
+    },
+    {
+     "px": 4406.85,
+     "index": 3,
+     "value": 30.0,
+     "labelled": false
+    },
+    {
+     "px": 4258.82,
+     "index": 4,
+     "value": 40.0,
+     "labelled": true
+    },
+    {
+     "px": 4107.66,
+     "index": 5,
+     "value": 50.0,
+     "labelled": false
+    },
+    {
+     "px": 3813.1,
+     "index": 7,
+     "value": 70.0,
+     "labelled": false
+    },
+    {
+     "px": 3661.33,
+     "index": 8,
+     "value": 80.0,
+     "labelled": true
+    },
+    {
+     "px": 3508.21,
+     "index": 9,
+     "value": 90.0,
+     "labelled": false
+    }
+   ],
+   "median_spacing_px": 151.46106310478194,
+   "global_fit": {
+    "value_per_px": -0.06695474631421988,
+    "intercept": 325.08098886012255,
+    "rms_residual": 0.12362620992766205,
+    "max_abs_residual": 0.22415431062927382
+   },
+   "n_labelled_lines_used": 4
+  },
+  "n_markers": 6
+ },
+ "fig53_B21W": {
+  "fig": "fig53",
+  "beam": "B21W",
+  "png": "r600-127.png",
+  "pdf_page": 127,
+  "printed_page": 123,
+  "box": [
+   2016,
+   926,
+   2934,
+   2078
+  ],
+  "exclude": [
+   [
+    2030,
+    940,
+    2460,
+    1150
+   ]
+  ],
+  "x_axis_deflection_in": {
+   "lines": [
+    {
+     "px": 2027.61,
+     "index": 0,
+     "value": 0.0,
+     "labelled": true
+    },
+    {
+     "px": 2253.06,
+     "index": 1,
+     "value": 0.2,
+     "labelled": true
+    },
+    {
+     "px": 2477.04,
+     "index": 2,
+     "value": 0.4,
+     "labelled": true
+    },
+    {
+     "px": 2697.95,
+     "index": 3,
+     "value": 0.6,
+     "labelled": true
+    },
+    {
+     "px": 2919.24,
+     "index": 4,
+     "value": 0.8,
+     "labelled": false
+    }
+   ],
+   "median_spacing_px": 222.62908212524326,
+   "global_fit": {
+    "value_per_px": 0.0008975876059411451,
+    "intercept": -1.8215113729522154,
+    "rms_residual": 0.0012676880095519654,
+    "max_abs_residual": 0.0018490304682384773
+   },
+   "n_labelled_lines_used": 4
+  },
+  "y_axis_load_kip": {
+   "lines": [
+    {
+     "px": 2066.48,
+     "index": 0,
+     "value": 0.0,
+     "labelled": true
+    },
+    {
+     "px": 1952.51,
+     "index": 1,
+     "value": 5.0,
+     "labelled": false
+    },
+    {
+     "px": 1840.28,
+     "index": 2,
+     "value": 10.0,
+     "labelled": true
+    },
+    {
+     "px": 1724.89,
+     "index": 3,
+     "value": 15.0,
+     "labelled": false
+    },
+    {
+     "px": 1616.51,
+     "index": 4,
+     "value": 20.0,
+     "labelled": true
+    },
+    {
+     "px": 1504.44,
+     "index": 5,
+     "value": 25.0,
+     "labelled": false
+    },
+    {
+     "px": 1396.47,
+     "index": 6,
+     "value": 30.0,
+     "labelled": true
+    },
+    {
+     "px": 1280.53,
+     "index": 7,
+     "value": 35.0,
+     "labelled": false
+    },
+    {
+     "px": 1165.22,
+     "index": 8,
+     "value": 40.0,
+     "labelled": true
+    },
+    {
+     "px": 938.73,
+     "index": 10,
+     "value": 50.0,
+     "labelled": false
+    }
+   ],
+   "median_spacing_px": 113.96209178086178,
+   "global_fit": {
+    "value_per_px": -0.0444709850591975,
+    "intercept": 91.8680342885836,
+    "rms_residual": 0.10440087075295354,
+    "max_abs_residual": 0.234362217033933
+   },
+   "n_labelled_lines_used": 5
+  },
+  "n_markers": 10
+ }
+}

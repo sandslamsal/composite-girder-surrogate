@@ -1,0 +1,163 @@
+{
+ "programme": "Culver and Coston (1959 report; 1961 ASCE paper), Tests of composite beams with stud shear connectors",
+ "key": "culver1961",
+ "citations": [
+  "Culver, C. and Coston, R. (1961). Tests of composite beams with stud shear connectors. Proc. ASCE, J. Struct. Div. 87(ST2), February 1961 (Fritz Laboratory Reprint No. 174).",
+  "Slutter, R.G. and Driscoll, G.C. Jr. (1963). The flexural strength of steel and concrete composite beams. Fritz Engineering Laboratory Report 279.15, Lehigh University (Table 4, BI-BIII)."
+ ],
+ "sources": [
+  {
+   "url": "https://preserve.lehigh.edu/lehigh-scholarship/faculty-and-staff-publications/fritz-lab-reports/tests-composite-beams-stud (Lehigh Preserve, Fritz Laboratory Reports paper 1802)",
+   "local_copy": "/private/tmp/claude-501/-Users-sandeshlamsal-Desktop-CompositeGirder/a32c3e10-8884-4339-8200-ea3611516154/scratchpad/lit_sources/culver1961/culver_coston_1961_reprint174.pdf",
+   "note": "The Lehigh Preserve PDF filed as Reprint No. 174 of the ASCE paper contains the typed Fritz Engineering Laboratory report by the same authors, dated April 1959 (report number illegible in the scan), 32 PDF pages: text pp. 1-13, Tables 1-5 pp. 14-17, Figs 1-5 pp. 18-22, Appendix A-D pp. 23-29. It is the report behind the paper, not the typeset journal version; its specimens and results are those Slutter and Driscoll cite as BI-BIII (ref. 5).",
+   "pages": {
+    "Table 1 specimens and load spacings": "report p. 14",
+    "Table 2 static results": "p. 15",
+    "Tables 4-5 materials": "p. 17",
+    "Fig. 1 dimensions": "p. 18",
+    "Fig. 4 load-deflection": "p. 21 (PDF p. 24)",
+    "Appendix A section properties, D deflections": "pp. 23, 29"
+   }
+  }
+ ],
+ "accessible": true,
+ "included": false,
+ "screening_summary": "Source accessible and geometry essentially complete (stud row positions not dimensioned, only pitch). Beam B3 has a solid slab, but its partial value 0.76 belongs to the third reloading (B3-T3) of a beam already yielded twice, with residual deflection 1.79 in, residual slip 0.071 in and only one plotted point below yield; the virgin test B3-T1 is effectively full connection (0.83-1.06). The whole programme is also far below the design space (10 ft span, 8 in deep section, 3 x 24 in slab) and uses hooked studs. No specimen qualifies.",
+ "geometry_and_materials": {
+  "span_in": 120.0,
+  "span_ft": 10.0,
+  "support": "simple supports 3 in inside each beam end (Fig. 1, report p. 18)",
+  "steel_section": {
+   "designation": "8WF17",
+   "A_in2": 5.0,
+   "d_in": 8.0,
+   "Is_in4": 56.0,
+   "bf_in": 5.25,
+   "tf_in": 0.308,
+   "tw_in": 0.23,
+   "provenance": "A, d, I from report Appendix A p. 23; b_f, t_f, t_w from the 1950s 8WF17 handbook shape (not in the report)"
+  },
+  "slab": {
+   "width_in": 24.0,
+   "thickness_in": 3.0,
+   "haunch_in": 0.0,
+   "reinforcement": "mesh 6x9 - 5/16 x 3/16 in rods (Fig. 1)",
+   "type": "solid flat normal-weight slab"
+  },
+  "concrete": {
+   "fc_psi": 5563,
+   "provenance": "Table 5 p. 17, cumulative average of cylinders at 28-42 days; ready-mix, 3/4 in max aggregate"
+  },
+  "steel": {
+   "fy_ksi": 36.9,
+   "provenance": "Table 4 p. 17, average of 3 flange coupons, ASTM A-7"
+  },
+  "studs": {
+   "type": "1/2 in diameter L-shaped (hooked) studs, 2.25 in high with 1.75 in hook (Fig. 1), 2 per transverse row at 2.25 in",
+   "pitch_B3_in": 7.0,
+   "positions": "pitch only; first-row position not dimensioned",
+   "q_u": "no push-out tests in this programme"
+  }
+ },
+ "specimens": [
+  {
+   "id": "B3-T3 (Slutter and Driscoll BIII-T6)",
+   "included": false,
+   "reason": "The only partial-connection test (sum(q_u)/C = 0.760 per Slutter and Driscoll 1963 Table 4, computed for this test's 37 in shear span, load spacing 2b = 46 in). It is the THIRD loading of beam B3: B3-T1 (2b = 24 in) and B3-T2 (2b = 36 in) were both taken past yield of the steel (to 47.5 and 54.0 kip) and stopped short of slab crushing, so T3 starts from a residual mid-span deflection of 1.79 in (Fig. 4 annotation) and a residual end slip of 0.0712 in (Table 2); failure by stud shearing at 58.0 kip. Fig. 4 shows only one marker below P_y (about 30 kip) before the curve reaches 55 kip, so no elastic load-deflection record exists (fewer than two elastic points, previously yielded steel and damaged interface). Also geometrically far outside the design space: span 10 ft (range 20-240 ft: 50 % below the minimum); steel depth 8.0 in (12-84 in: 33 % below); slab 3 in (4.5-12 in: 33 % below); slab width 24 in = 2 ft (girder spacing 5-12 ft); L-shaped hooked studs rather than headed studs. In range: f'c 5.56 ksi, f_y 36.9 ksi, b_f/d 0.66, t_f/b_f 0.059, t_w/d 0.029. Far smaller than the Chapman beams already used (18 ft, 12 in deep, 6 x 48 in slab), so not \"very close\".",
+   "eta_source": "Slutter and Driscoll (1963) Fritz Lab Report 279.15, Table 4 p. 31: BIII-T6 sum(q_u)/C = 0.760 (their test T6 = loads at x = 23 in from mid-span = Culver B3-T3); connector strength = report's own semi-empirical stud value; C = A_s f_y = 185 kip (report App. B p. 25)",
+   "eta_plastic": 0.76,
+   "loading": "two symmetric point loads, 2b = 46 in (shear span a = 37 in), hydraulic jack with Amsler pendulum dynamometer, load increments 5 kip to yield then deflection increments (pp. 3-4); third reloading of the specimen",
+   "n_elastic_points": 1,
+   "data_form": "Fig. 4 load vs mid-span deflection (shear deflection included, residual deflection shifted to the origin); digitised markers in culver1961_digitised/fig4_b3_markers.csv: 4 markers, one below P_y",
+   "span_ft": 10.0,
+   "steel": "8WF17 (A 5.00 in2, d 8.00 in, I 56.0 in4), ASTM A-7",
+   "slab": "solid 3 x 24 in normal-weight slab, mesh 6x9 5/16 x 3/16 in",
+   "fc_ksi": 5.563,
+   "fy_ksi": 36.9,
+   "connectors": "1/2 in x 2.25 in L-shaped studs, 2 per row at 7 in (B3); 2 at 5.5 in (B2); 3 at 5.5 in (B1, B4)",
+   "out_of_range": "span 10 ft (-50 %), steel depth 8 in (-33 %), slab 3 in (-33 %), slab width 2 ft (spacing range 5-12 ft), hooked (non-headed) studs",
+   "measured": []
+  },
+  {
+   "id": "B3-T1",
+   "included": false,
+   "reason": "Virgin test of beam B3 (2b = 24 in, shear span 48 in) with a good elastic record (6 loading-branch markers below P_y, 5-30 kip, in Fig. 4, digitised), but NOT partial: with 2 studs per row at 7 in pitch the 48 in shear span holds 6-7 rows (12-14 studs; row positions not dimensioned). Using the stud strength implied by Slutter and Driscoll's 0.760 for 10 studs in the 37 in span of T3 (14.0 kip), sum(q_u)/C = 0.91-1.06; with AISC Q_n = min(0.5 A_s sqrt(f'c E_c), A_s F_u) = 12.8 kip (normal-weight E_c, F_u 65 ksi) it is 0.83-0.97. The report itself says \"Up to yielding of the steel beam the behavior of all the specimens was exactly the same\" (p. 7). Also outside the design space: span 10 ft (range 20-240 ft: 50 % below the minimum); steel depth 8.0 in (12-84 in: 33 % below); slab 3 in (4.5-12 in: 33 % below); slab width 24 in = 2 ft (girder spacing 5-12 ft); L-shaped hooked studs rather than headed studs. In range: f'c 5.56 ksi, f_y 36.9 ksi, b_f/d 0.66, t_f/b_f 0.059, t_w/d 0.029. Far smaller than the Chapman beams already used (18 ft, 12 in deep, 6 x 48 in slab), so not \"very close\".",
+   "eta_source": "reconstructed here from the stud pitch (Table 1 p. 14, Fig. 1) and the connector strength implied by Slutter and Driscoll Table 4; not stated by either source for this test",
+   "eta_plastic": 0.98,
+   "loading": "two symmetric point loads, 2b = 24 in (shear span 48 in), first loading of B3",
+   "n_elastic_points": 6,
+   "data_form": "Fig. 4 digitised markers (fig4_b3_markers.csv); report Appendix D gives the theoretical full-interaction deflection including shear (0.258 in at 30 kip for T1)",
+   "span_ft": 10.0,
+   "steel": "8WF17 (A 5.00 in2, d 8.00 in, I 56.0 in4), ASTM A-7",
+   "slab": "solid 3 x 24 in normal-weight slab, mesh 6x9 5/16 x 3/16 in",
+   "fc_ksi": 5.563,
+   "fy_ksi": 36.9,
+   "connectors": "1/2 in x 2.25 in L-shaped studs, 2 per row at 7 in (B3); 2 at 5.5 in (B2); 3 at 5.5 in (B1, B4)",
+   "out_of_range": "span 10 ft (-50 %), steel depth 8 in (-33 %), slab 3 in (-33 %), slab width 2 ft (spacing range 5-12 ft), hooked (non-headed) studs",
+   "measured": []
+  },
+  {
+   "id": "B3-T2",
+   "included": false,
+   "reason": "Second loading of B3 (2b = 36 in, shear span 42 in, 6 rows = 12 studs, sum(q_u)/C about 0.76-0.91 by the same reconstruction) after T1 had yielded the steel; residual deflection 0.90 in at the origin (Fig. 4). Previously yielded, so not a virgin elastic record; and outside the design space as above.",
+   "eta_source": "reconstructed (see B3-T1)",
+   "eta_plastic": 0.84,
+   "loading": "two symmetric point loads, 2b = 36 in",
+   "n_elastic_points": 0,
+   "data_form": "Fig. 4 (digitised markers exist in fig4_b3_markers.csv, not used)",
+   "span_ft": 10.0,
+   "steel": "8WF17 (A 5.00 in2, d 8.00 in, I 56.0 in4), ASTM A-7",
+   "slab": "solid 3 x 24 in normal-weight slab, mesh 6x9 5/16 x 3/16 in",
+   "fc_ksi": 5.563,
+   "fy_ksi": 36.9,
+   "connectors": "1/2 in x 2.25 in L-shaped studs, 2 per row at 7 in (B3); 2 at 5.5 in (B2); 3 at 5.5 in (B1, B4)",
+   "out_of_range": "span 10 ft (-50 %), steel depth 8 in (-33 %), slab 3 in (-33 %), slab width 2 ft (spacing range 5-12 ft), hooked (non-headed) studs",
+   "measured": []
+  },
+  {
+   "id": "B1-T1, B2-T1, B2-T2",
+   "included": false,
+   "reason": "Full connection: Slutter and Driscoll Table 4 gives BI-T3 (= B1-T1) 2.04 and BII-T4 (= B2-T2) 1.21; B2-T1 (shorter shear span) is higher still. Also outside the design space as above.",
+   "eta_source": "Slutter and Driscoll (1963) Table 4",
+   "eta_plastic": 1.21,
+   "loading": "two symmetric point loads, 2b = 24 or 36 in",
+   "n_elastic_points": 0,
+   "data_form": "Fig. 4 (not digitised)",
+   "span_ft": 10.0,
+   "steel": "8WF17 (A 5.00 in2, d 8.00 in, I 56.0 in4), ASTM A-7",
+   "slab": "solid 3 x 24 in normal-weight slab, mesh 6x9 5/16 x 3/16 in",
+   "fc_ksi": 5.563,
+   "fy_ksi": 36.9,
+   "connectors": "1/2 in x 2.25 in L-shaped studs, 2 per row at 7 in (B3); 2 at 5.5 in (B2); 3 at 5.5 in (B1, B4)",
+   "out_of_range": "span 10 ft (-50 %), steel depth 8 in (-33 %), slab 3 in (-33 %), slab width 2 ft (spacing range 5-12 ft), hooked (non-headed) studs",
+   "measured": []
+  },
+  {
+   "id": "B4",
+   "included": false,
+   "reason": "Fatigue specimen (cyclic loading 3-48 kip, 2b = 36 in); excluded by scope (monotonic static loading only).",
+   "eta_source": "n/a (3 studs per row at 5.5 in; full connection)",
+   "eta_plastic": null,
+   "loading": "cyclic",
+   "n_elastic_points": 0,
+   "data_form": "Table 3 (fatigue deflections)",
+   "span_ft": 10.0,
+   "steel": "8WF17 (A 5.00 in2, d 8.00 in, I 56.0 in4), ASTM A-7",
+   "slab": "solid 3 x 24 in normal-weight slab, mesh 6x9 5/16 x 3/16 in",
+   "fc_ksi": 5.563,
+   "fy_ksi": 36.9,
+   "connectors": "1/2 in x 2.25 in L-shaped studs, 2 per row at 7 in (B3); 2 at 5.5 in (B2); 3 at 5.5 in (B1, B4)",
+   "out_of_range": "span 10 ft (-50 %), steel depth 8 in (-33 %), slab 3 in (-33 %), slab width 2 ft (spacing range 5-12 ft), hooked (non-headed) studs",
+   "measured": []
+  }
+ ],
+ "data_files": {
+  "digitisation_dir": "culver1961_digitised/",
+  "files": [
+   "digitise_fig4.py",
+   "fig4_b3_calibration.json",
+   "fig4_b3_markers.csv"
+  ],
+  "note": "Fig. 4 B3 digitisation kept for the record; not used because the programme is excluded. No overlay check was made."
+ }
+}

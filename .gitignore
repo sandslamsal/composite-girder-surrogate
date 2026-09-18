@@ -51,6 +51,15 @@ reports/*
 reports/model_validation/*
 !reports/model_validation/*.csv
 !reports/model_validation/*.json
+!reports/model_validation/partial_connection/
+!reports/model_validation/partial_connection/*.csv
+!reports/model_validation/partial_connection/*.json
+# Emergent-eta_c re-binning of the representation-sensitivity table: the
+# two small outputs the revised manuscript and its response letter name.
+!reports/section_vs_beam_revision/
+reports/section_vs_beam_revision/*
+!reports/section_vs_beam_revision/rebin_by_emergent.csv
+!reports/section_vs_beam_revision/rebin_by_emergent.md
 
 # Generated figures (output target, not checked in)
 **/figures/*.png

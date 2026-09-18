@@ -1,0 +1,838 @@
+{
+  "programme": "Suwaed and Karavasilis: full-scale precast steel-concrete composite beam with demountable friction-based shear connectors (FBSC), University of Warwick",
+  "key": "suwaed2020",
+  "citations": [
+    "Suwaed ASH, Karavasilis TL (2020). Demountable steel-concrete composite beam with full-interaction and low degree of shear connection. Journal of Constructional Steel Research 171:106152. doi:10.1016/j.jcsr.2020.106152",
+    "Suwaed ASH (2017). Development of Novel Demountable Shear Connectors for Precast Steel-Concrete Composite Bridges. PhD thesis, University of Warwick. WRAP 90318, http://wrap.warwick.ac.uk/90318"
+  ],
+  "sources": [
+    {
+      "url": "https://wrap.warwick.ac.uk/90318/1/WRAP_Theses_Suwaed_2017.pdf",
+      "document": "PhD thesis (open access, 262 PDF pages)",
+      "accessed": "2026-09-16 (downloaded and read)",
+      "page_mapping": "printed page = PDF page - 19",
+      "pages_used": {
+        "beam test setup, specimen, materials, instrumentation (Section 4.6)": "printed 67-79 (PDF 86-98)",
+        "push-out specimen and bolt tables (Tables 4.3, 4.5)": "printed 42, 45 (PDF 61, 64)",
+        "FBSC push-out results, Table 6.1, Eq. 6.1, stiffness": "printed 117-141 (PDF 136-160)",
+        "beam design, degree of connection, capacities (Section 7.2)": "printed 155-159 (PDF 174-178)",
+        "load-deflection, Fig. 7.3, Table 7.1, Eq. 7.1, Fig. 7.6, datum and self-weight": "printed 160-166 (PDF 179-185)",
+        "slip, strains, elastic limits (Sections 7.3.2-7.3.3)": "printed 166-182 (PDF 185-201)",
+        "conclusions": "printed 188-190 (PDF 207-209)"
+      }
+    },
+    {
+      "url": "https://doi.org/10.1016/j.jcsr.2020.106152",
+      "document": "JCSR 2020 journal paper",
+      "accessed": "not accessible (closed access; ScienceDirect 403; Unpaywall and OpenAlex list no OA copy). Abstract read via Semantic Scholar API (paperId 3d4d003ae7d29dd2bb913d1f3c5d5cbc1ea9764e)."
+    }
+  ],
+  "specimens": [
+    {
+      "id": "Suwaed-FBSC-beam (single full-scale beam, cycle-1 loading branch)",
+      "included": true,
+      "screening": {
+        "decision": "included (very close to the design space; one parameter marginally outside, consistent with the Chapman precedent)",
+        "design_space_check": {
+          "span": {
+            "value_ft": 27.89,
+            "range_ft": "20-240",
+            "inside": true
+          },
+          "deck_thickness": {
+            "value_in": 5.91,
+            "range_in": "4.5-12",
+            "inside": true
+          },
+          "girder_spacing": {
+            "value_ft": 4.1,
+            "range_ft": "5-12",
+            "inside": false,
+            "note": "isolated beam: spacing taken as the slab width (1250 mm = 4.10 ft), as for the Chapman beams (48 in = 4.0 ft) in data/experimental/literature_tests.csv; 0.90 ft (18 %) below the 5 ft floor, i.e. closer to the range than Chapman. b_eff/S = 1.0 (inside 0.25-1.0)."
+          },
+          "fc": {
+            "value_ksi": 7.54,
+            "range_ksi": "3-10",
+            "inside": true,
+            "note": "cylinder peak ~52 MPa from the thesis's own slab cylinders (Fig. 4.50 / Eq. 4.1); cube 66 MPa panels, 61 MPa stitch. Any cube-to-cylinder factor 0.75-0.85 keeps it inside (6.8-8.1 ksi)."
+          },
+          "eta_c": {
+            "value": "0.32-0.70 depending on definition (0.47 recommended, see connectors.degree_of_connection)",
+            "range": "0.25-1.00",
+            "inside": true
+          },
+          "fy": {
+            "value_ksi": 51.5,
+            "range_ksi": "36-100",
+            "inside": true
+          },
+          "steel_depth": {
+            "value_in": 18.24,
+            "range_in": "12-84",
+            "inside": true
+          },
+          "bf_over_ds": {
+            "value": 0.414,
+            "range": "0.30-0.70",
+            "inside": true
+          },
+          "tf_over_bf": {
+            "value": 0.0922,
+            "range": "0.04-0.12",
+            "inside": true
+          },
+          "tw_over_ds": {
+            "value": 0.0227,
+            "range": "0.015-0.04",
+            "inside": true
+          },
+          "section_type": {
+            "value": "W (hot-rolled UB)",
+            "inside": true
+          },
+          "support_and_loading": {
+            "value": "simply supported (pin + roller), four-point bending, cycle 1 is monotonic virgin loading",
+            "inside": true
+          },
+          "slab": {
+            "value": "solid reinforced precast slab, no decking",
+            "inside": true
+          }
+        },
+        "differences_from_modelled_case": [
+          "Connector is a friction-based demountable connector (pretensioned M16 grade 8.8 bolt through a grouted countersunk hole into a precast plug in a grouted slab pocket), not a welded headed stud: its load-slip curve has a very stiff friction phase (230-900 kN/mm initial) before bearing, so the beam showed no measurable end slip up to ~500 kN.m. A discrete-spring beam model with the programme's push-out secant stiffness (97-104 kN/mm) is a simplification of that trilinear response.",
+          "Precast slab of two 4.05 m panels plus a 0.9 m in-situ stitch at mid-span (lapped longitudinal bars >= 800 mm); stitch f_cu 61 MPa vs panels 66 MPa. Slab interface not bonded: release agent in pockets, random slab-flange gaps < 1 mm (pp. 74, 182-183).",
+          "Shear lag measured across the 1.25 m slab: edge strains 0.6-0.7 of the centre strains at all load levels (p. 181); the full-width transformed section therefore overstates the slab contribution independently of slip.",
+          "Deflection transducer S12 is bolted to a column of the loading rig, not an independent reference frame (p. 78); support blocks and bedding compliance are included in the record.",
+          "Single specimen, single test; JCSR 2020 paper (same beam) is closed access and was not read beyond its abstract."
+        ]
+      },
+      "geometry": {
+        "span_mm": 8500,
+        "span_in": 334.65,
+        "beam_length_mm": 9173,
+        "slab_length_mm": 9000,
+        "support_positions": "supports 250 mm inside each slab end (Fig. 4.43), i.e. 336.5 mm from each steel beam end; left roller (15 x 12 mm rods), right pin; rocker wedge with 10 mm radius; upper bearing plates 300 x 210 mm; supports on 1.2 x 0.6 x 0.4 m concrete blocks grouted to the strong floor; no bearing stiffeners",
+        "load_positions": "two point loads P/2 at 2750 mm and 5750 mm from the left support (3.0 m apart, shear spans 2.75 m), applied to the top of the slab through pinned/roller supports of a 4.5 m UC305x305x283 spreader beam; ball joint under a 100 t jack in a steel frame",
+        "steel_section": {
+          "designation": "UB457x191x89 (S355, hot rolled)",
+          "h_mm": 463.4,
+          "b_mm": 191.9,
+          "tw_mm": 10.5,
+          "tf_mm": 17.7,
+          "root_radius_mm": 10.2,
+          "h_in": 18.244,
+          "b_in": 7.555,
+          "tw_in": 0.4134,
+          "tf_in": 0.6969,
+          "area_mm2_used_by_author": 11400,
+          "area_mm2_plates_only": 11287,
+          "area_mm2_with_root_fillets_computed": 11377,
+          "Iy_cm4_computed_with_fillets": 41015,
+          "Iy_cm4_plates_only": 40615,
+          "provenance": "h, b: thesis pp. 158 and Fig. 4.43; tw, tf: p. 177; A = 11400 mm2 'nominal area of the steel section' p. 156. Root radius 10.2 mm from BS 4-1 / SCI P363 handbook (not in thesis); area and Iy computed here from those dimensions (handbook tabulates A = 114 cm2, Iy ~ 41,000 cm4). Class 1 section (p. 159)."
+        },
+        "slab": {
+          "width_mm": 1250,
+          "thickness_mm": 150,
+          "haunch_mm": 0,
+          "width_in": 49.21,
+          "thickness_in": 5.906,
+          "construction": "two precast panels 4.05 m long + 0.9 m cast-in-place stitch at mid-span (p. 74); 15 conical pockets at 600 mm c/c on the centreline, 300 mm from each slab end (p. 74); no profiled decking",
+          "reinforcement": {
+            "bottom_mesh": "longitudinal 12 mm @ 250 mm (edge spacing 225 mm); transverse 10 mm @ 200 mm (edge 175 mm)",
+            "top_mesh": "same as bottom but longitudinal bars 10 mm (p. 76)",
+            "grade": "ribbed B500 to EN 10080, f_yk 500 MPa assumed (not tested), E as steel beam (p. 76)",
+            "cover": "20 mm spacers under bottom mesh, about 12 mm top cover (p. 76); plastic analysis places the tension bars 25 mm above the slab soffit (p. 159)",
+            "longitudinal_bars_inferred": "6 bottom 12 mm (679 mm2) + 6 top 10 mm (471 mm2) across 1250 mm (225+3x250+225 = 1200 mm between edge bars). Six bottom bars are corroborated by the thesis's reinforcement yield force of 340 kN (p. 158) = 679 mm2 x 500 MPa.",
+            "rho_l_total_percent": 0.61,
+            "rho_l_bottom_percent": 0.36,
+            "rho_l_top_percent": 0.25,
+            "rho_l_note": "between the manuscript's rho_l = 0 and 0.7 % levels; bar count is an inference from the stated spacings"
+          }
+        },
+        "shoring": "fully propped: steel beam propped by two temporary supports 3 m apart at mid-length before slab placement (p. 71); composite beam kept on the two floor props under the spreader load points until the pocket grout hardened (p. 77); props removed with the spreader in place, so beam, slab and spreader self-weight act on the composite section (pp. 163-164)"
+      },
+      "materials": {
+        "steel_beam": {
+          "fy_MPa": 355,
+          "fu_MPa": 457,
+          "Es_GPa": 210.1,
+          "yield_strain": 0.001625,
+          "fy_ksi": 51.49,
+          "Es_ksi": 30472.0,
+          "provenance": "mean of 3 flange coupons, BS EN ISO 6892-1, p. 71 (Fig. 4.48); elastic-limit strain 0.001625, hardening onset 0.015 (p. 71)"
+        },
+        "concrete_slab_panels": {
+          "fcu_100mm_cube_MPa": 66,
+          "fct_split_MPa": 4.5,
+          "Ec_GPa": 31,
+          "Ec_ksi": 4496.0,
+          "cylinder_peak_MPa": 52,
+          "fc_prime_ksi_adopted": 7.54,
+          "provenance": "test-day means, Table 4.6 p. 72 (18 cubes 100 mm; 6 split cylinders 100x200; E from 3 cylinders 100x170 with strain gauges). Cylinder peak ~52 MPa read from Fig. 4.50 (p. 73), and the thesis's regression Eq. 4.1 has its maximum at 51.8 MPa (computed here); linear to strain 0.0012, peak at 0.0033 (p. 73).",
+          "unit_weight": "normal weight (ready-mix, 10 mm gravel; composite self-weight 5.3 kN/m incl. steel 0.87 kN/m gives ~23.6 kN/m3 for the slab)"
+        },
+        "concrete_midspan_stitch": {
+          "fcu_100mm_cube_MPa": 61,
+          "fct_split_MPa": 3.7,
+          "Ec_GPa": null,
+          "fc_prime_estimate_MPa": 48,
+          "fc_prime_estimate_ksi": 6.96,
+          "provenance": "Table 4.6 p. 72; E not measured; cylinder estimate 48 MPa is an assumption (same 0.79 cylinder/cube ratio as the panels). Thesis uses f_cu = 61 MPa in its plastic analysis (p. 156)."
+        },
+        "plugs": {
+          "fcu_MPa": 89,
+          "fct_MPa": 4.7,
+          "E_GPa": 39,
+          "provenance": "Table 4.6 p. 72"
+        },
+        "grout": {
+          "fcu_75mm_cube_MPa": 49,
+          "provenance": "Table 4.6 p. 72"
+        },
+        "bolts_M16_grade_8_8": {
+          "E_GPa": 209,
+          "fy_MPa": 787,
+          "fu_MPa": 889,
+          "tensile_resistance_kN": 178.7,
+          "provenance": "Table 4.5 p. 45, mean of 9 coupons, stresses on nominal (shank) area"
+        },
+        "fc_prime_sensitivity": "ACI E_c at 52 MPa is 34.1 GPa (+10 % over the measured 31 GPa). Computed here with the thesis Eq. 7.1 inputs: n = 6.78 (measured E) gives I_tr = 1.221e9 mm4; n = E_s/E_c(ACI) with E_s = 29,000 ksi gives I_tr = 1.261e9 mm4 but E_s I_tr 1.7 % lower because E_s 200 vs 210.1 GPa, so delta_full differs by < 2 % between the two E choices."
+      },
+      "connectors": {
+        "type": "Friction-Based Shear Connector (FBSC): M16 grade 8.8 bolt, smooth shank with 20 mm threaded ends, seated in a 60-degree countersunk hole in the top flange filled with grout, passing through a precast high-strength conical plug in a grouted oval conical slab pocket, upper nut on a hardened plate washer (Sections 3.3, 4.6.2; pp. 74, 156)",
+        "number": 30,
+        "layout": "15 transverse rows of 2 bolts (100 mm apart) at 600 mm c/c; first row 386.5 mm from each beam end = 50 mm inside each support (p. 72; Fig. 4.55). Row x-positions from the left support: 50, 650, 1250, 1850, 2450 | 3050, 3650, 4250, 4850, 5450 | 6050, 6650, 7250, 7850, 8450 mm, i.e. 5 rows (10 bolts) in each shear span and 5 rows (10 bolts) in the 3 m constant-moment zone, with the middle row at mid-span.",
+        "preload": "tightened to proof load, 88-106 kN (DTI washers; washer load cells on bolts S1, S4, S6, S8) (pp. 78, 168)",
+        "push_out_programme": {
+          "tests_used": "FBSC push-out Tests 5, 6 and 11 (final design, four M16 bolts, EC4 Annex B specimen with no grease); Test 5 preload 88-106 kN (DTI), Test 6 63 kN, Test 11 59 kN; slab f_cu 37-50 MPa, plug f_cu 74-100 MPa (Table 4.3 p. 42)",
+          "resistance_per_bolt_kN": {
+            "test5": 185,
+            "test6": 206,
+            "test11": 179,
+            "mean": 190,
+            "std": 11.5,
+            "P_Rk": 161,
+            "provenance": "Table 6.1 and text, p. 131 (P_Rk = 0.9 x 179)"
+          },
+          "slip_capacity_mm": {
+            "mean": 15.7,
+            "provenance": "Table 6.1 p. 131"
+          },
+          "stiffness_kN_per_mm": {
+            "k_EC4_at_50pct_mean_resistance": 104,
+            "k_EC4_provenance": "95 kN / 0.91 mm from Eq. 6.1, p. 138; also 'characteristic ... stiffness of the FBSC for an M16 bolt ... 104 kN/mm', p. 189",
+            "k_secant_0_to_1mm": 97,
+            "k_secant_provenance": "P_i = 97 S for 0-1 mm slip, p. 132; used by the author for the beam test (p. 168)",
+            "phase_1_initial": "230-900 kN/mm for 2-10 kN; linear to 0.1-0.3 mm slip at 55-70 kN (~25 % of resistance) (p. 137); Test 5: 250 kN/mm to 70 kN at 0.28 mm (p. 121)",
+            "phase_2": "Test 5: 28 kN/mm to 110 kN at 1.7 mm (p. 122); general 0.3-1.5 mm up to 110 kN (p. 138)",
+            "test6_secant_at_50pct": "85 kN/mm, initial 7-8 times higher (p. 124)",
+            "idealised_curve_test6": "P_i/P = 2.1 S (S < 0.13 mm); 0.22 S + 0.24 (0.13-1 mm); quartic beyond 1 mm, with P = 206 kN (Fig. 7.19, pp. 178-179)",
+            "load_slip_equation": "Eq. 6.1: P_i = -1.04e-2 S^4 + 3.88e-1 S^3 - 4.93 S^2 + 29.5 S + 72 (kN, mm), valid S >= 1 mm, fitted to Tests 5, 6, 11 (p. 132)"
+          },
+          "preload_effect": "preload changes the first-slip (friction) load, not the initial stiffness (p. 153); +40 % preload gave +29 % friction resistance (p. 189)"
+        },
+        "beam_test_evidence": "no end slip to ~500 kN.m; < 1 mm to ~50 % of M_p70 % (1210 kN.m); 1 mm at S8 at 800 kN.m; < 2 mm to ~900 kN.m (pp. 167-168). Back-calculated resistance from the beam test 225 kN/bolt (p. 179). Connectors between the load points carry ~20 % of the shear-span resistance (p. 179).",
+        "degree_of_connection": {
+          "C_f_kN": 4047,
+          "C_f_basis": "min(0.85 f'c b t_s = 0.85 x 52 x 1250 x 150 = 8288 kN, A_s F_y = 11400 x 355 = 4047 kN) = 4047 kN, steel governs (thesis: F_s = 4047 kN < F_c = 0.45 f_cu b h = 5147 kN, p. 156). With the plates-only area of the database formula, A_s F_y = 4007 kN (eta values +1 %).",
+          "thesis_value": {
+            "eta": 0.7,
+            "definition": "15 bolts per half-length (half of all 30, including the 5 rows between the load points, 2.5 rows per half) x 190 kN mean push-out resistance = 2850 kN / 4047 kN",
+            "provenance": "Section 7.2.2, pp. 157-159"
+          },
+          "JCSR_2020_value": {
+            "eta": 0.32,
+            "definition": "not verified: paper closed access; abstract (Semantic Scholar API record) states 'a 32% degree of partial shear connection'. 10 bolts per shear span x P_Rd (161/1.25 = 128.8 kN) / 4047 = 0.318 reproduces it, but that reconstruction is an inference."
+          },
+          "plastic_sumQn_over_Cf_options": {
+            "10_bolts_support_to_load_point_x_190": 0.469,
+            "15_bolts_support_to_midspan_x_190": 0.704,
+            "10_bolts_x_P_Rk_161": 0.398,
+            "15_bolts_x_P_Rk_161": 0.597,
+            "10_bolts_x_P_Rd_128.8": 0.318
+          },
+          "recommended_for_this_study": {
+            "eta_c": 0.47,
+            "reason": "AISC/AASHTO sum(Q_n) counts connectors between zero moment and the nearest section of maximum moment, which in four-point bending is the load point (10 bolts per shear span), with the programme's mean push-out resistance 190 kN, the strength a beam model would use. The thesis's 0.70 counts the constant-moment-zone connectors that the beam test shows carry little shear (p. 179, Fig. 7.10). Every definition lies inside 0.25-1.00; R_EI read-off sensitivity to this choice should be reported."
+          }
+        }
+      },
+      "loading": {
+        "type": "four-point bending, load control not specified; loading rate not reported in Sections 4.6 or 7.3",
+        "cycles": "six cycles; cycle 1 loaded monotonically from the de-propped state to 838 kN / 135 mm then unloaded (jack stroke exhausted), packing plates added and reloaded five times (pp. 160-161; Table 7.1). Only the cycle-1 loading branch is virgin monotonic loading and is the only branch used here.",
+        "load_measurement": "100 t load cell under the jack; Fig. 7.3 and Table 7.1 loads exclude self-weight and spreader; Fig. 7.6 and later moment plots add the 57 kN.m initial moment (p. 164). M_jack = 1.375 P kN.m (P/2 x 2.75 m); M_total = 57 + 1.375 P.",
+        "table_7_1_cycle_peaks": [
+          {
+            "cycle": 1,
+            "Pmax_kN": 838,
+            "dmax_mm": 135,
+            "residual_mm": 80
+          },
+          {
+            "cycle": 2,
+            "Pmax_kN": 897,
+            "dmax_mm": 201,
+            "residual_mm": 139
+          },
+          {
+            "cycle": 3,
+            "Pmax_kN": 914,
+            "dmax_mm": 210,
+            "residual_mm": 149
+          },
+          {
+            "cycle": 4,
+            "Pmax_kN": 878,
+            "dmax_mm": 211,
+            "residual_mm": 150
+          },
+          {
+            "cycle": 5,
+            "Pmax_kN": 926,
+            "dmax_mm": 251,
+            "residual_mm": 187
+          },
+          {
+            "cycle": 6,
+            "Pmax_kN": 939,
+            "dmax_mm": 275,
+            "residual_mm": 209
+          }
+        ],
+        "capacities_reported": {
+          "M_fp_full_connection_kNm": 1306,
+          "M_p70pct_kNm": 1210,
+          "max_moment_jack_kNm": 1292,
+          "max_moment_total_kNm": 1348,
+          "provenance": "pp. 157-164 (thesis plastic analysis with 0.45 f_cu)"
+        },
+        "M_p_database_definition": {
+          "note": "src/data_generation/composite_section.py::_estimate_plastic_moment_steel_i: A_s F_y (t_s + d_s/2 - a/2), a = A_s F_y / (0.85 f'c b_eff) capped at t_s, A_s from plates only, b_eff = slab width x eta_c. Computed here at f'c = 52 MPa, F_y = 355 MPa.",
+          "Mp_kNm": {
+            "eta_1.00_full_width": 1384,
+            "eta_0.70": 1323,
+            "eta_0.47_or_lower": 1229
+          },
+          "Mp_kipin": {
+            "eta_1.00_full_width": 12251,
+            "eta_0.70": 11710,
+            "eta_0.47_or_lower": 10877
+          },
+          "jack_load_at_M_total_over_Mp_0.4_kN": {
+            "eta_1.00": 361,
+            "eta_0.70": 343,
+            "eta_0.47": 316
+          },
+          "jack_load_at_M_total_over_Mp_0.6_kN": {
+            "eta_1.00": 563,
+            "eta_0.70": 536,
+            "eta_0.47": 495
+          }
+        }
+      },
+      "deflection_zero_includes": "The deflection datum is the propped state (thesis p. 163: 'this situation represents the zero-deflection, and zero-moment state'). Removing the props gave ~2 mm at mid-span from beam self-weight (5.3 kN/m) and spreader (2 x 6 kN), M = 57 kN.m (p. 164). Fig. 7.3's load axis excludes these loads but its deflection axis does not: the cycle-1 curve starts at 2.07 mm at zero jack load (digitised, linear extrapolation of 10-100 kN; 2.18 mm at the zero-load row). Fig. 7.6 (M_total vs deflection) coincides with Fig. 7.3 plotted against 57 + 1.375 P (Fig. 7.6 vs Fig. 7.3: 3.64 vs 3.69 mm at 100 kN.m, 18.65 vs 18.62 mm at 500, 23.48 vs 23.50 at 600, 36.77 vs 36.72 at 800; within 1 mm at 200-400 kN.m where the ABS line hides the test line in Fig. 7.6), and the text point 11.7 mm at 340 kN.m matches Fig. 7.6 (11.56 mm), confirming that the stated and plotted deflections include the ~2 mm self-weight deflection. 'measured[].deflection' is therefore as-plotted minus delta0 = 2.07 mm, paired with the jack load P. Alternative consistent pairing: as-plotted deflection with M_total, noting that the self-weight part is a UDL. The record also includes support/bedding settlement and any movement of the rig column carrying LVDT S12 (not separable).",
+      "elastic_limit": {
+        "programme_statements": [
+          "linear moment-deflection response up to 50-55 % of maximum bending moment (p. 165); 'behaved linearly up to 55 % of the maximum moment' (p. 190)",
+          "full interaction (no end slip) until ~500 kN.m; feasible to assume full interaction to ~40 % of partial-connection capacity and to ~50 % with < 1 mm slip (p. 167)",
+          "slab and steel strains linear to 750 kN.m (62 % of partial capacity) (pp. 173-174)",
+          "first yield: bottom-flange strain exceeds elastic limit at 860 kN.m, 40 mm, slip 1.7 mm (p. 174)",
+          "slab soffit goes into tension at 888 kN.m; top-fibre concrete elastic limit exceeded at 1075 kN.m (pp. 172-173)"
+        ],
+        "adopted": "elastic if M_total <= 0.50 x 1348 = 674 kN.m, i.e. jack load P <= 449 kN (highest recorded level 445 kN). This is the lower bound of the programme's linearity statement, below first yield (860 kN.m) and below M/M_p = 0.6 for every database M_p variant (P <= 495 kN at eta_c <= 0.47).",
+        "observed_softening": "Digitised tangent compliance is ~0.051 mm/kN from 0 to 300 kN and 0.066-0.069 mm/kN from 300 to 445 kN; softening begins near M_total ~470 kN.m, consistent with the onset of end slip at ~500 kN.m. The 300-445 kN levels are within the programme's stated linear range but carry this softening; report service-load (M/M_p <= 0.4, P <= 316-361 kN) and extended-range statistics separately."
+      },
+      "measured": [
+        {
+          "load": 50.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 2.62,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 4.69,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 68.8,
+          "moment_total_kNm": 125.8,
+          "load_kip": 11.24,
+          "deflection_in": 0.1031,
+          "columnwise_crosscheck_mm_as_plotted": null,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.134
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": true,
+          "flags": [
+            "low-load point: +/-0.35 mm digitisation uncertainty is ~13 % of the jack-only deflection; weight accordingly"
+          ]
+        },
+        {
+          "load": 100.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 5.1,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 7.17,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 137.5,
+          "moment_total_kNm": 194.5,
+          "load_kip": 22.48,
+          "deflection_in": 0.2008,
+          "columnwise_crosscheck_mm_as_plotted": null,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.069
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": true,
+          "flags": []
+        },
+        {
+          "load": 150.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 7.6,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 9.67,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 206.2,
+          "moment_total_kNm": 263.2,
+          "load_kip": 33.72,
+          "deflection_in": 0.2992,
+          "columnwise_crosscheck_mm_as_plotted": null,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.046
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": true,
+          "flags": []
+        },
+        {
+          "load": 200.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 10.01,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 12.08,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 275.0,
+          "moment_total_kNm": 332.0,
+          "load_kip": 44.96,
+          "deflection_in": 0.3941,
+          "columnwise_crosscheck_mm_as_plotted": null,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.035
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": true,
+          "flags": []
+        },
+        {
+          "load": 250.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 12.52,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 14.59,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 343.8,
+          "moment_total_kNm": 400.8,
+          "load_kip": 56.2,
+          "deflection_in": 0.4929,
+          "columnwise_crosscheck_mm_as_plotted": null,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.028
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": true,
+          "flags": []
+        },
+        {
+          "load": 300.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 15.26,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 17.33,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 412.5,
+          "moment_total_kNm": 469.5,
+          "load_kip": 67.44,
+          "deflection_in": 0.6008,
+          "columnwise_crosscheck_mm_as_plotted": null,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.023
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": true,
+          "flags": []
+        },
+        {
+          "load": 350.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 18.33,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 20.4,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 481.2,
+          "moment_total_kNm": 538.2,
+          "load_kip": 78.68,
+          "deflection_in": 0.7217,
+          "columnwise_crosscheck_mm_as_plotted": null,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.019
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": true,
+          "flags": [
+            "past onset of measurable end slip (~500 kN.m total, p. 167); still inside programme linearity limit"
+          ]
+        },
+        {
+          "load": 400.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 21.83,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 23.9,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 550.0,
+          "moment_total_kNm": 607.0,
+          "load_kip": 89.92,
+          "deflection_in": 0.8594,
+          "columnwise_crosscheck_mm_as_plotted": null,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.016
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": true,
+          "flags": [
+            "past onset of measurable end slip (~500 kN.m total, p. 167); still inside programme linearity limit"
+          ]
+        },
+        {
+          "load": 445.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 24.95,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 27.02,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 611.9,
+          "moment_total_kNm": 668.9,
+          "load_kip": 100.04,
+          "deflection_in": 0.9823,
+          "columnwise_crosscheck_mm_as_plotted": null,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.014
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": true,
+          "flags": [
+            "past onset of measurable end slip (~500 kN.m total, p. 167); still inside programme linearity limit"
+          ]
+        },
+        {
+          "load": 500.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 30.16,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 32.23,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 687.5,
+          "moment_total_kNm": 744.5,
+          "load_kip": 112.4,
+          "deflection_in": 1.1874,
+          "columnwise_crosscheck_mm_as_plotted": null,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.012
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": false,
+          "flags": [
+            "beyond programme linearity limit (M_total > 0.50 x 1348 kN.m); excluded from stiffness statistics"
+          ]
+        },
+        {
+          "load": 550.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 35.75,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 37.82,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 756.2,
+          "moment_total_kNm": 813.2,
+          "load_kip": 123.64,
+          "deflection_in": 1.4075,
+          "columnwise_crosscheck_mm_as_plotted": 37.85,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.01
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": false,
+          "flags": [
+            "beyond programme linearity limit (M_total > 0.50 x 1348 kN.m); excluded from stiffness statistics"
+          ]
+        },
+        {
+          "load": 600.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 42.04,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 44.11,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 825.0,
+          "moment_total_kNm": 882.0,
+          "load_kip": 134.89,
+          "deflection_in": 1.6551,
+          "columnwise_crosscheck_mm_as_plotted": 44.4,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.008
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": false,
+          "flags": [
+            "beyond programme linearity limit (M_total > 0.50 x 1348 kN.m); excluded from stiffness statistics",
+            "past first yield of the bottom flange (860 kN.m total, p. 174)"
+          ]
+        },
+        {
+          "load": 650.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 51.18,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 53.25,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 893.8,
+          "moment_total_kNm": 950.8,
+          "load_kip": 146.13,
+          "deflection_in": 2.015,
+          "columnwise_crosscheck_mm_as_plotted": 52.85,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.007
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": false,
+          "flags": [
+            "beyond programme linearity limit (M_total > 0.50 x 1348 kN.m); excluded from stiffness statistics",
+            "past first yield of the bottom flange (860 kN.m total, p. 174)"
+          ]
+        },
+        {
+          "load": 700.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 63.75,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 65.82,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 962.5,
+          "moment_total_kNm": 1019.5,
+          "load_kip": 157.37,
+          "deflection_in": 2.5098,
+          "columnwise_crosscheck_mm_as_plotted": 66.03,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.005
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": false,
+          "flags": [
+            "beyond programme linearity limit (M_total > 0.50 x 1348 kN.m); excluded from stiffness statistics",
+            "past first yield of the bottom flange (860 kN.m total, p. 174)"
+          ]
+        },
+        {
+          "load": 750.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 81.11,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 83.18,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 1031.2,
+          "moment_total_kNm": 1088.2,
+          "load_kip": 168.61,
+          "deflection_in": 3.1933,
+          "columnwise_crosscheck_mm_as_plotted": null,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.004
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": false,
+          "flags": [
+            "beyond programme linearity limit (M_total > 0.50 x 1348 kN.m); excluded from stiffness statistics",
+            "past first yield of the bottom flange (860 kN.m total, p. 174)"
+          ]
+        },
+        {
+          "load": 800.0,
+          "load_unit": "kN (jack load P, total of both point loads; self-weight and spreader excluded)",
+          "deflection": 104.91,
+          "deflection_unit": "mm (mid-span, due to jack load only = as-plotted minus delta0)",
+          "deflection_as_plotted_mm": 106.98,
+          "delta0_mm": 2.07,
+          "moment_jack_kNm": 1100.0,
+          "moment_total_kNm": 1157.0,
+          "load_kip": 179.85,
+          "deflection_in": 4.1303,
+          "columnwise_crosscheck_mm_as_plotted": null,
+          "uncertainty": {
+            "load_kN": 2.0,
+            "deflection_mm": 0.35,
+            "relative_deflection": 0.003
+          },
+          "source": "digitised, Suwaed (2017) PhD thesis Fig. 7.3 cycle-1 loading branch, printed p. 160 (PDF p. 179); raw rows in suwaed2020_digitised/fig7_3_cycle1_rows.csv",
+          "elastic": false,
+          "flags": [
+            "beyond programme linearity limit (M_total > 0.50 x 1348 kN.m); excluded from stiffness statistics",
+            "past first yield of the bottom flange (860 kN.m total, p. 174)"
+          ]
+        },
+        {
+          "load": 0.0,
+          "load_unit": "kN (jack load, back-calculated as (M_total - 57)/1.375)",
+          "deflection": 0.0,
+          "deflection_unit": "mm (jack-only = stated deflection minus delta0; stated values are from the propped datum and include ~2 mm self-weight deflection)",
+          "moment_total_kNm": 57,
+          "deflection_as_stated_mm": 2.0,
+          "source": "Suwaed (2017) PhD thesis text, printed p. 164 (PDF p. 183): self-weight of beam (5.3 kN/m) + spreader (2 x 6 kN) on de-propping: 'deflection of about 2 mm' (moment 57 kN.m)",
+          "elastic": true,
+          "flags": [
+            "text value quoted by the author, rounded; use as a cross-check of the digitised curve, not as an independent data set"
+          ]
+        },
+        {
+          "load": 205.8,
+          "load_unit": "kN (jack load, back-calculated as (M_total - 57)/1.375)",
+          "deflection": 9.63,
+          "deflection_unit": "mm (jack-only = stated deflection minus delta0; stated values are from the propped datum and include ~2 mm self-weight deflection)",
+          "moment_total_kNm": 340,
+          "deflection_as_stated_mm": 11.7,
+          "source": "Suwaed (2017) PhD thesis text, printed p. 175 (PDF p. 194): strain profile Fig. 7.16: 28 % of plastic strength, 340 kN.m and 11.7 mm",
+          "elastic": true,
+          "flags": [
+            "text value quoted by the author, rounded; use as a cross-check of the digitised curve, not as an independent data set"
+          ]
+        },
+        {
+          "load": 322.2,
+          "load_unit": "kN (jack load, back-calculated as (M_total - 57)/1.375)",
+          "deflection": 17.93,
+          "deflection_unit": "mm (jack-only = stated deflection minus delta0; stated values are from the propped datum and include ~2 mm self-weight deflection)",
+          "moment_total_kNm": 500,
+          "deflection_as_stated_mm": 20.0,
+          "source": "Suwaed (2017) PhD thesis text, printed p. 167 (PDF p. 186): no end slip until ~500 kN.m; mid-span deflection 20 mm (L/425) read from Fig. 7.6",
+          "elastic": true,
+          "flags": [
+            "text value quoted by the author, rounded; use as a cross-check of the digitised curve, not as an independent data set"
+          ]
+        },
+        {
+          "load": 584.0,
+          "load_unit": "kN (jack load, back-calculated as (M_total - 57)/1.375)",
+          "deflection": 37.93,
+          "deflection_unit": "mm (jack-only = stated deflection minus delta0; stated values are from the propped datum and include ~2 mm self-weight deflection)",
+          "moment_total_kNm": 860,
+          "deflection_as_stated_mm": 40.0,
+          "source": "Suwaed (2017) PhD thesis text, printed p. 174 (PDF p. 193): bottom-flange strain exceeds elastic limit at 860 kN.m, 40 mm (L/212), max slip 1.7 mm",
+          "elastic": false,
+          "flags": [
+            "text value quoted by the author, rounded; use as a cross-check of the digitised curve, not as an independent data set"
+          ]
+        },
+        {
+          "load": 702.5,
+          "load_unit": "kN (jack load, back-calculated as (M_total - 57)/1.375)",
+          "deflection": 64.93,
+          "deflection_unit": "mm (jack-only = stated deflection minus delta0; stated values are from the propped datum and include ~2 mm self-weight deflection)",
+          "moment_total_kNm": 1023,
+          "deflection_as_stated_mm": 67.0,
+          "source": "Suwaed (2017) PhD thesis text, printed p. 176 (PDF p. 195): Fig. 7.18: 1023 kN.m, 67 mm, max slip 3.3 mm",
+          "elastic": false,
+          "flags": [
+            "text value quoted by the author, rounded; use as a cross-check of the digitised curve, not as an independent data set"
+          ]
+        },
+        {
+          "load": 802.2,
+          "load_unit": "kN (jack load, back-calculated as (M_total - 57)/1.375)",
+          "deflection": 99.93,
+          "deflection_unit": "mm (jack-only = stated deflection minus delta0; stated values are from the propped datum and include ~2 mm self-weight deflection)",
+          "moment_total_kNm": 1160,
+          "deflection_as_stated_mm": 102.0,
+          "source": "Suwaed (2017) PhD thesis text, printed p. 179 (PDF p. 198): Fig. 7.20: 1160 kN.m, 102 mm",
+          "elastic": false,
+          "flags": [
+            "text value quoted by the author, rounded; use as a cross-check of the digitised curve, not as an independent data set"
+          ]
+        },
+        {
+          "load": 816.7,
+          "load_unit": "kN (jack load, back-calculated as (M_total - 57)/1.375)",
+          "deflection": 107.93,
+          "deflection_unit": "mm (jack-only = stated deflection minus delta0; stated values are from the propped datum and include ~2 mm self-weight deflection)",
+          "moment_total_kNm": 1180,
+          "deflection_as_stated_mm": 110.0,
+          "source": "Suwaed (2017) PhD thesis text, printed p. 174 (PDF p. 193): mid-web strain exceeds elastic limit at 1180 kN.m, 110 mm, slip 6.2 mm",
+          "elastic": false,
+          "flags": [
+            "text value quoted by the author, rounded; use as a cross-check of the digitised curve, not as an independent data set"
+          ]
+        }
+      ],
+      "digitisation": {
+        "figure": "Suwaed (2017) PhD thesis Fig. 7.3, printed p. 160 (PDF p. 179); embedded raster 856 x 514 px at 150 ppi",
+        "render": "pdftoppm -r 600 (page render outside the repository); script suwaed2020_digitised/digitise_suwaed2017_figs.py",
+        "calibration": "x: 8 labelled gridlines 0 to -350 mm, 8.033 px/mm at 600 dpi (2.008 native px/mm), max fit residual 0.21 mm (native-pixel quantisation); y: 5 labelled gridlines 0-1000 kN, 1.712 px/kN (2.336 kN per native px), residual 0.006 kN",
+        "extraction": "row-wise weighted centroid of the leftmost blue run (cycle-1 loading branch) for every 600 dpi row, 1451 rows 0-845 kN; deflection at each load level interpolated between rows; column-wise centroids over 36-76 mm as a cross-check (agree within 0.4 mm at 550-700 kN)",
+        "validation": "Table 7.1 residual deflections 80/139/149/187 mm digitised as 80.2/138.7/149.4/187.3 mm; maximum deflection 275 mm digitised as 275.8 mm; cycle-6 peak 939 kN at 263 mm (text p. 162) digitised as 941.3 kN at 263.5 mm (top pixel, includes half line width). Text points 11.7 mm at 340 kN.m (Fig. 7.6 digitised 11.56 mm).",
+        "uncertainty": "load +/-2 kN; as-plotted deflection +/-0.3 mm (row scatter s.d. 0.06 mm, max 0.22 mm about a smooth cubic over 50-450 kN; calibration residual 0.21 mm); delta0 +/-0.15 mm; jack-only deflection +/-0.35 mm combined, i.e. +/-13 % at 50 kN, +/-7 % at 100 kN, +/-2.3 % at 300 kN, +/-1.4 % at 445 kN",
+        "fig_7_6_crosscheck": "Fig. 7.6 (printed p. 164) digitised in suwaed2020_digitised/fig7_6_*.{csv,json}: test through-origin secant 27.9 kN.m/mm over 100-600 kN.m (M_total, as-plotted deflection); the thesis's ETABS line 31.0 kN.m/mm and ABS ('ABC') line 25.8 kN.m/mm (both digitised at 1.38 native px/mm, +/-5 %). The thesis Eq. 7.1 transformed section with measured E (n = 6.78, I_tr = 1.221e9 mm4, computed here) corresponds to 33.0 kN.m/mm, so the thesis's 'very close up to 700 kN.m' statement (p. 166) is relative to software lines that are themselves softer than a plain transformed-section calculation."
+      },
+      "assumptions": [
+        "f'c = 52 MPa (7.54 ksi) for the slab panels, from the peak of the thesis's own 100 x 170 mm cylinder curves (Fig. 4.50; Eq. 4.1 maximum 51.8 MPa); the 0.9 m stitch (f_cu 61 MPa) is taken as ~48 MPa by the same ratio. The thesis does not report a cylinder strength explicitly.",
+        "E_c: measured 31 GPa (Table 4.6) for the panels; the stitch modulus is not reported. The ACI expression at 52 MPa gives 34.1 GPa; the effect on delta_full is < 2 % (see materials.fc_prime_sensitivity).",
+        "Root radius 10.2 mm and handbook section properties are not in the thesis (BS 4-1 / SCI P363).",
+        "Longitudinal bar count (6 x 12 mm bottom, 6 x 10 mm top) inferred from stated spacings; bottom count corroborated by the 340 kN yield force (p. 158). rho_l = 0.61 %.",
+        "delta0 = 2.07 mm self-weight deflection subtracted from the plotted deflections to pair them with the jack load; the text states 'about 2 mm'. A +/-0.15 mm change in delta0 changes the jack-only deflection by 6 % at 50 kN, 3 % at 100 kN and 1 % at 300 kN.",
+        "Shear deformation: the source's full-interaction calculation (Eq. 7.1, p. 161) is bending only. If the steel web alone carries the shear (A_v = 5130 mm2 EC3 or 4494 mm2 clear web, G = 80.8 GPa), shear adds 0.0033-0.0038 mm/kN, i.e. 8-9 % of the full-interaction bending deflection (0.0416 mm/kN with measured E). Report separately if used.",
+        "Connector stiffness: the programme's push-out values (104 kN/mm EC4 definition; 97 kN/mm secant 0-1 mm) come from Tests 5, 6, 11 with lower slab strength (f_cu 37-50 MPa) and, for Tests 6 and 11, lower preload (59-63 kN) than the beam (88-106 kN). The thesis states that preload does not change initial stiffness (p. 153). The friction phase (230-900 kN/mm up to 55-70 kN/bolt) is much stiffer; the beam's zero end slip to ~500 kN.m suggests that phase governs the service range, so a single secant spring is a lower bound on connector stiffness there.",
+        "Loading rate not reported; creep during the test is mentioned only at the cycle-6 peak (263 to 275 mm), outside the elastic range.",
+        "The JCSR 2020 paper (Suwaed and Karavasilis) reports the same 9.0 m beam (abstract) but could not be read (closed access, no repository copy per Unpaywall/OpenAlex); all numbers here come from the thesis."
+      ]
+    }
+  ],
+  "data_files": {
+    "digitised_folder": "data/experimental/partial_connection/suwaed2020_digitised/",
+    "files": [
+      "digitise_suwaed2017_figs.py",
+      "fig7_3_calibration.json",
+      "fig7_3_cycle1_rows.csv",
+      "fig7_3_cycle1_columns_36_76mm.csv",
+      "fig7_3_cycle1_levels.csv",
+      "fig7_6_calibration.json",
+      "fig7_6_rows.csv",
+      "fig7_6_levels.csv"
+    ]
+  }
+}

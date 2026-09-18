@@ -1,0 +1,269 @@
+{
+  "generated_by": "scripts/validate_partial_suwaed2020.py",
+  "method": "src/validation/partial_connection_windowed.py (windowed intercept-free slope)",
+  "data": "data/experimental/partial_connection/suwaed2020.json",
+  "specimens": {
+    "Suwaed-FBSC": {
+      "specimen": "Suwaed-FBSC",
+      "source": "Suwaed (2017) PhD thesis, Warwick; Suwaed and Karavasilis (2020) JCSR 171:106152",
+      "classification": {
+        "programme": "Suwaed (2017); Suwaed and Karavasilis (2020)",
+        "slab_type": "solid precast panels",
+        "connection_system": "friction-grip bolts",
+        "scale": "bridge",
+        "role": "partial-connection"
+      },
+      "window": {
+        "rule": "JSON elastic flag and jack load >= 25% of the highest elastic load (5 % step tolerance) (445 kN): 150-445 kN",
+        "n_points": 7,
+        "load_min": 33.72134146495657,
+        "load_max": 100.03997967937117,
+        "load_mid": 66.88066057216388,
+        "source_load_min": 150.0,
+        "source_load_max": 445.0,
+        "source_load_unit": "kN (jack load, sum of both points)",
+        "m_over_mp_min": 0.21251357159474896,
+        "m_over_mp_max": 0.5399620710368004,
+        "m_over_mp_mid": 0.37623782131577466
+      },
+      "K_units": "kip of total applied load (kip/in for udl) per in of mid-span deflection",
+      "R_meas_flex": 0.7690385725526879,
+      "R_meas_flex_range_shear_area": [
+        0.7648245212531443,
+        0.7690385725526879
+      ],
+      "R_meas_flex_range_K_uncertainty": [
+        0.7041313179379716,
+        0.8346913176352182
+      ],
+      "R_beam_aci": 0.7469609374207434,
+      "R_EI_window_mean": 0.7765351738362873,
+      "R_EI": {
+        "window_mean": 0.7765351738362873,
+        "mid_window": 0.8718627718590276,
+        "window_min": 0.6494317098059671,
+        "window_max": 0.8718627718590276,
+        "regime_mid": "service"
+      },
+      "eta_plastic": 0.4704180400549472,
+      "rho_l": 0.0060999999999999995,
+      "R_meas": 0.7173062215348498,
+      "Delta_meas": 0.2826937784651502,
+      "R_meas_secant": 0.7938607108197112,
+      "R_meas_flex_secant": 0.8577160697498594,
+      "R_meas_flex_secant_range_shear_area": [
+        0.8524774564482953,
+        0.8577160697498594
+      ],
+      "R_beam_E0": 0.7886269190825802,
+      "R_beam_E0_note": "beam model with Concrete02 E_0 = 1000 f'c",
+      "K_meas": {
+        "slope": 96.548447165007,
+        "slope_standard_error": 3.2884983661107268,
+        "uncertainty_used_in_checks": 7.643981538909525,
+        "implied_deflection_zero_offset_in": -0.07538921194863758,
+        "secant_from_zero": 106.85257787245891
+      },
+      "K_full": 134.59864736488456,
+      "K_steel": 43.82649146678141,
+      "K_noncomposite": 50.237982858644905,
+      "K_beam_aci": 100.53993181123825,
+      "K_beam_E0": 106.14811658405156,
+      "shear": {
+        "G_ksi": 11153.846153846154,
+        "area_clear_web_in2": 6.96587268,
+        "area_full_depth_web_in2": 7.5420696,
+        "C_sh_clear_over_C_full": 0.09377984159550215,
+        "C_sh_full_over_C_full": 0.08661527553456098,
+        "assumption": "steel web carries the whole vertical shear, same term for section and test"
+      },
+      "section": {
+        "n_modular": 5.859188487474335,
+        "ec_ksi": 4949.490882909069,
+        "ec_source": "ACI 1802 sqrt(fc), aashto.py",
+        "es_ksi": 29000.0,
+        "I_full_in4": 3026.2990419031403,
+        "I_steel_in4": 985.3893165534078,
+        "y_na_from_slab_top_in": 6.119670906371722
+      },
+      "beam_aci": {
+        "K_beam": 100.53993181123825,
+        "K_beam_secant": 101.26990906509776,
+        "R_beam": 0.7469609374207434,
+        "R_beam_secant": 0.7523842998998671,
+        "converged_all": true,
+        "beam_concrete_modulus_ksi": 4949.490882909069,
+        "eta_emergent_mid": 0.1516669213074219,
+        "eta_emergent_half_span_mid": 0.1721815853328363,
+        "end_slip_mid_in": 0.026717955048941568,
+        "connector_force_max_mid_kip": 15.297769867657422,
+        "beam_first_yield_loads_in_window": []
+      },
+      "beam_E0": {
+        "K_beam": 106.14811658405156,
+        "K_beam_secant": 107.20014084087036,
+        "R_beam": 0.7886269190825802,
+        "R_beam_secant": 0.7964429282135402,
+        "converged_all": true,
+        "beam_concrete_modulus_ksi": 7540.0,
+        "eta_emergent_mid": 0.15105981041399993,
+        "eta_emergent_half_span_mid": 0.17157639168449126,
+        "end_slip_mid_in": 0.02671857727084637,
+        "connector_force_max_mid_kip": 15.248486675102555,
+        "beam_first_yield_loads_in_window": []
+      },
+      "eta_plastic_details": {
+        "eta": 0.4704180400549472,
+        "sum_qu_kip": 427.1369918894499,
+        "sum_qu_left_kip": 427.1369918894499,
+        "sum_qu_right_kip": 427.1369918894499,
+        "cf_kip": 907.9944974889954,
+        "region": "shear_span",
+        "region_end_in": 108.26771653543307,
+        "concrete_crushing_kip": 1862.6193502387007,
+        "steel_yield_kip": 907.9944974889954,
+        "note": ""
+      },
+      "eta_emergent_mid_window": 0.1516669213074219,
+      "rho_l_note": "gross, 6 x 12 mm + 6 x 10 mm (inferred) / (1250 x 150 mm)",
+      "M_p": {
+        "mp_db_kip_in": 10963.81192072748,
+        "details": {
+          "mp_kip_in": 10963.81192072748,
+          "eta_input": 0.4704180400549472,
+          "eta_used": 0.4704180400549472,
+          "b_eff_in": 23.150494097192283,
+          "c_steel_kip": 907.9944974889954,
+          "a_block_in": 5.905511811023622,
+          "block_capped_at_slab": true,
+          "y_steel_force_centroid_from_slab_top_in": 15.027511811023626,
+          "beam_model_full_width_mp_kip_in": 12337.915243052934
+        },
+        "moment_offset_kip_in": 504.4925101056495,
+        "moment_offset_note": "57 kN.m self-weight and spreader moment on the composite section (propped construction)"
+      },
+      "connector_note": "programme push-out law per bolt: 97 kN/mm secant to 1 mm, Eq. 6.1 beyond (Tests 5, 6, 11); pairs in 15 rows; Q_u = 190 kN",
+      "flags": [
+        "friction-based demountable bolt connector (FBSC), pretensioned: friction phase 230-900 kN/mm to 55-70 kN per bolt; no measurable end slip to about 500 kN.m",
+        "precast panels with in-situ stitch; slab not bonded to the flange",
+        "slab width 1250 mm = 4.1 ft equivalent spacing (below the 5 ft minimum)",
+        "eta 0.32-0.70 depending on definition (0.47 AISC shear-span count with mean push-out Q_u)",
+        "deflection transducer referenced to the loading rig column (support bedding included)",
+        "single specimen"
+      ],
+      "notes": [
+        "digitised levels only; the rounded text points are cross-checks (not used)",
+        "window 300-445 kN carries the softening that starts near 470 kN.m total moment"
+      ],
+      "sanity_checks": {
+        "K_steel<=K_meas (within uncertainty)": true,
+        "K_meas<=K_full (within uncertainty)": true,
+        "K_steel<=K_meas (nominal)": true,
+        "K_meas<=K_full (nominal)": true,
+        "flexural compliance positive after shear removal": true,
+        "K_noncomposite<=K_beam_aci<=K_full": true
+      },
+      "sensitivity": {
+        "R_beam_aci_range": [
+          0.6978857514662725,
+          0.7469609374207434
+        ],
+        "R_EI_window_mean_range": [
+          0.7221836734693878,
+          0.8956612244897959
+        ],
+        "R_EI_mid_range": [
+          0.83,
+          0.9651142857142857
+        ],
+        "R_EI_window_envelope": [
+          0.5784285714285714,
+          0.9651142857142857
+        ],
+        "beam_cases": [
+          {
+            "label": "Test 6 idealised trilinear toe (433 kN/mm to 56 kN, Fig. 7.19) then Eq. 6.1",
+            "R_beam": 0.6978857514662725,
+            "K_beam": 93.93447816258627,
+            "eta_emergent_mid": 0.16516786397570615
+          }
+        ],
+        "rei_cases": [
+          {
+            "label": "eta option 10_bolts_support_to_load_point_x_190",
+            "eta": 0.469,
+            "rho_l": 0.0060999999999999995,
+            "m_over_mp_mid": 0.37623782131577466,
+            "R_EI_window_mean": 0.7757274376417234,
+            "R_EI_mid": 0.8712406349206349,
+            "R_EI_window_min": 0.6483765079365079,
+            "R_EI_window_max": 0.8712406349206349
+          },
+          {
+            "label": "eta option 15_bolts_support_to_midspan_x_190",
+            "eta": 0.704,
+            "rho_l": 0.0060999999999999995,
+            "m_over_mp_mid": 0.34992066556363777,
+            "R_EI_window_mean": 0.8956612244897959,
+            "R_EI_mid": 0.9651142857142857,
+            "R_EI_window_min": 0.8030571428571428,
+            "R_EI_window_max": 0.9651142857142857
+          },
+          {
+            "label": "eta option 10_bolts_x_P_Rk_161",
+            "eta": 0.398,
+            "rho_l": 0.0060999999999999995,
+            "m_over_mp_mid": 0.37623782131577466,
+            "R_EI_window_mean": 0.7352848072562359,
+            "R_EI_mid": 0.8400907936507936,
+            "R_EI_window_min": 0.5955434920634921,
+            "R_EI_window_max": 0.8400907936507936
+          },
+          {
+            "label": "eta option 15_bolts_x_P_Rk_161",
+            "eta": 0.597,
+            "rho_l": 0.0060999999999999995,
+            "m_over_mp_mid": 0.36008447752008416,
+            "R_EI_window_mean": 0.8486380952380953,
+            "R_EI_mid": 0.9273980952380954,
+            "R_EI_window_min": 0.7436247619047619,
+            "R_EI_window_max": 0.9273980952380954
+          },
+          {
+            "label": "eta option 10_bolts_x_P_Rd_128.8",
+            "eta": 0.318,
+            "rho_l": 0.0060999999999999995,
+            "m_over_mp_mid": 0.37623782131577466,
+            "R_EI_window_mean": 0.7221836734693878,
+            "R_EI_mid": 0.83,
+            "R_EI_window_min": 0.5784285714285714,
+            "R_EI_window_max": 0.83
+          },
+          {
+            "label": "thesis eta (15 bolts per half x 190 kN)",
+            "eta": 0.7,
+            "rho_l": 0.0060999999999999995,
+            "m_over_mp_mid": 0.35023585040682237,
+            "R_EI_window_mean": 0.8939183673469387,
+            "R_EI_mid": 0.9637142857142856,
+            "R_EI_window_min": 0.8008571428571428,
+            "R_EI_window_max": 0.9637142857142856
+          }
+        ],
+        "note": "R_meas does not depend on these inputs"
+      },
+      "K_full_moduli_sensitivity": {
+        "measured E_c 31 GPa, E_s 29 000 ksi": {
+          "K_full": 131.83699709989693,
+          "R_meas": 0.7323319651451806,
+          "R_meas_flex": 0.7851479775330408
+        },
+        "measured E_s 210.1 GPa and E_c 31 GPa": {
+          "K_full": 137.01759036501528,
+          "R_meas": 0.7046427170978679,
+          "R_meas_flex": 0.7528389638359815
+        }
+      }
+    }
+  }
+}

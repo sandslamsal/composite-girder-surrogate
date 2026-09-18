@@ -1,0 +1,255 @@
+{
+ "source": "Provines, Ocel & Zmetra (2019) FHWA-HRT-20-005, Figure 68, report p. 80 (PDF page 98)",
+ "render": {
+  "dpi": 600,
+  "crop_px_size_wh": [
+   3599,
+   2399
+  ],
+  "native_px_size_wh": [
+   576,
+   384
+  ],
+  "render_px_per_native_px_xy": [
+   6.248263888888889,
+   6.247395833333333
+  ],
+  "placement_pt_x0y0x1y1": [
+   90.0,
+   166.80001831054688,
+   521.9000244140625,
+   454.7300109863281
+  ],
+  "cells_differing_between_render_samples_and_embedded_raster": 0
+ },
+ "pixel_convention": "render pixel-centre indices in the cropped 600-dpi render; rows increase downward",
+ "render_calibration": {
+  "y_axis_line_col": 502.5,
+  "x_axis_line_row": 2039.5,
+  "top_frame_row": 108.5,
+  "right_frame_col": 3464.5,
+  "x_tick_cols": [
+   502.5,
+   802.5,
+   1096.0,
+   1389.5,
+   1689.5,
+   1983.5,
+   2283.5,
+   2577.5,
+   2871.0,
+   3171.0,
+   3464.5
+  ],
+  "y_tick_rows": [
+   108.5,
+   489.5,
+   877.5,
+   1264.5,
+   1652.5,
+   2039.5
+  ],
+  "dashed_line_rows": [
+   368.0,
+   624.0,
+   2327.5
+  ]
+ },
+ "native_calibration": {
+  "y_axis_line_col": 80.0,
+  "x_axis_line_row": 326.0,
+  "top_frame_row": 17.0,
+  "right_frame_col": 554.0,
+  "x_tick_cols": [
+   80.0,
+   128.0,
+   175.0,
+   222.0,
+   270.0,
+   317.0,
+   365.0,
+   412.0,
+   459.0,
+   507.0,
+   554.0
+  ],
+  "y_tick_rows": [
+   17.0,
+   78.0,
+   140.0,
+   202.0,
+   264.0,
+   326.0
+  ],
+  "dashed_line_rows": [
+   58.5,
+   99.5,
+   372.0
+  ]
+ },
+ "x_map_in_per_render_px": {
+  "slope": 0.003376396126075624,
+  "intercept": -1.7009185298506295,
+  "max_abs_residual": 0.009416112668549914,
+  "pixels": [
+   502.5,
+   802.5,
+   1096.0,
+   1389.5,
+   1689.5,
+   1983.5,
+   2283.5,
+   2577.5,
+   2871.0,
+   3171.0,
+   3464.5
+  ],
+  "values": [
+   0.0,
+   1.0,
+   2.0,
+   3.0,
+   4.0,
+   5.0,
+   6.0,
+   7.0,
+   8.0,
+   9.0,
+   10.0
+  ]
+ },
+ "y_map_kipft_per_render_px": {
+  "slope": -1.293316941696841,
+  "intercept": 2636.4357614990126,
+  "max_abs_residual": 3.889126675094758,
+  "pixels": [
+   108.5,
+   489.5,
+   877.5,
+   1264.5,
+   1652.5,
+   2039.5
+  ],
+  "values": [
+   2500.0,
+   2000.0,
+   1500.0,
+   1000.0,
+   500.0,
+   0.0
+  ]
+ },
+ "x_map_native_check": {
+  "slope": 0.021101022760976265,
+  "intercept": -1.6928607648223815,
+  "max_abs_residual": 0.009012542933955814,
+  "pixels": [
+   80.0,
+   128.0,
+   175.0,
+   222.0,
+   270.0,
+   317.0,
+   365.0,
+   412.0,
+   459.0,
+   507.0,
+   554.0
+  ],
+  "values": [
+   0.0,
+   1.0,
+   2.0,
+   3.0,
+   4.0,
+   5.0,
+   6.0,
+   7.0,
+   8.0,
+   9.0,
+   10.0
+  ]
+ },
+ "y_map_native_check": {
+  "slope": -8.083083394521676,
+  "intercept": 2633.5544410289594,
+  "max_abs_residual": 3.857976677908937,
+  "pixels": [
+   17.0,
+   78.0,
+   140.0,
+   202.0,
+   264.0,
+   326.0
+  ],
+  "values": [
+   2500.0,
+   2000.0,
+   1500.0,
+   1000.0,
+   500.0,
+   0.0
+  ]
+ },
+ "dashed_line_check": {
+  "Mn_2_transverse_studs": {
+   "value_kipft": 2157.0,
+   "predicted_row_px": 370.70245199911284,
+   "detected_row_px": 368.0,
+   "moment_error_kipft": 3.495126954575131
+  },
+  "Mn_1_transverse_stud": {
+   "value_kipft": 1831.0,
+   "predicted_row_px": 622.7675023279871,
+   "detected_row_px": 624.0,
+   "moment_error_kipft": -1.5940101198161598
+  }
+ },
+ "series_colours_rgb": {
+  "1S2": [
+   0,
+   0,
+   0
+  ],
+  "1S1": [
+   0,
+   112,
+   192
+  ],
+  "2S1": [
+   0,
+   176,
+   80
+  ],
+  "3S1": [
+   255,
+   0,
+   0
+  ],
+  "4S1": [
+   112,
+   48,
+   160
+  ]
+ },
+ "draw_order_bottom_to_top": [
+  "1S2",
+  "1S1",
+  "2S1",
+  "3S1",
+  "4S1"
+ ],
+ "moment_ceiling_kipft": {
+  "1S2": 1240.0,
+  "1S1": 1600.0,
+  "2S1": 1600.0,
+  "3S1": 1600.0,
+  "4S1": 1600.0
+ },
+ "search_window_cells": {
+  "col_first": 81,
+  "col_last_exclusive": 271,
+  "x_axis_row": 326
+ },
+ "moment_level_uncertainty_kipft": 7.929058111462885
+}

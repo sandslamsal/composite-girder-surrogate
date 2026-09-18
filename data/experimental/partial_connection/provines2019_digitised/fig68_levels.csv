@@ -1,0 +1,145 @@
+series,moment_kipft,moment_unc_kipft,displacement_in,displacement_unc_in,rules,rows_used
+1S2,100,7.9,,,"hidden under a curve drawn on top (rows [314, 313])",
+1S2,150,7.9,,,"hidden under a curve drawn on top (rows [308, 307])",
+1S2,200,7.9,,,"hidden under a curve drawn on top (rows [302, 301])",
+1S2,250,7.9,,,hidden under a curve drawn on top (rows [294]),
+1S2,300,7.9,,,"hidden under a curve drawn on top (rows [289, 288])",
+1S2,350,7.9,,,"hidden under a curve drawn on top (rows [283, 282])",
+1S2,400,7.9,,,"hidden under a curve drawn on top (rows [277, 276])",
+1S2,450,7.9,,,"hidden under a curve drawn on top (rows [271, 270])",
+1S2,460,7.9,,,"hidden under a curve drawn on top (rows [269, 268])",
+1S2,500,7.9,,,"hidden under a curve drawn on top (rows [264, 263])",
+1S2,550,7.9,,,"hidden under a curve drawn on top (rows [258, 257])",
+1S2,600,7.9,,,hidden under a curve drawn on top (rows [252]),
+1S2,650,7.9,,,hidden under a curve drawn on top (rows [246]),
+1S2,700,7.9,,,hidden under a curve drawn on top (rows [239]),
+1S2,750,7.9,,,"hidden under a curve drawn on top (rows [234, 233])",
+1S2,800,7.9,,,"hidden under a curve drawn on top (rows [227, 226])",
+1S2,850,7.9,0.5231,0.02,run centre | run centre,"221,220"
+1S2,900,7.9,0.5653,0.02,run centre | run centre,"215,214"
+1S2,950,7.9,0.6107,0.02,run centre | run centre,"209,208"
+1S2,1000,7.9,0.6497,0.02,run centre | run centre,"203,202"
+1S2,1050,7.9,0.6919,0.02,run centre | run centre,"196,195"
+1S2,1100,7.9,0.7341,0.02,run centre | run centre,"190,189"
+1S2,1150,7.9,0.7808,0.02,run centre | run centre,"184,183"
+1S2,1200,7.9,0.8354,0.02,run centre | run centre,"178,177"
+1S1,100,7.9,,,"hidden under a curve drawn on top (rows [314, 313])",
+1S1,150,7.9,,,"hidden under a curve drawn on top (rows [308, 307])",
+1S1,200,7.9,0.0801,0.02,run centre | run centre,"302,301"
+1S1,250,7.9,0.1035,0.02,run centre | run centre,"295,294"
+1S1,300,7.9,0.1433,0.02,run centre | run centre,"289,288"
+1S1,350,7.9,0.1808,0.02,run centre | run centre,"283,282"
+1S1,400,7.9,0.2132,0.02,run centre | run centre,"277,276"
+1S1,450,7.9,0.2512,0.0252,left edge plus half width | run centre,"271,270"
+1S1,460,7.9,0.2593,0.02,run centre | run centre,"269,268"
+1S1,500,7.9,0.2912,0.02,run centre | run centre,"264,263"
+1S1,550,7.9,0.3243,0.02,run centre | run centre,"258,257"
+1S1,600,7.9,0.3796,0.02,run centre | run centre,"252,251"
+1S1,650,7.9,0.423,0.02,run centre | run centre,"246,245"
+1S1,700,7.9,0.4583,0.02,run centre | run centre,"240,239"
+1S1,750,7.9,0.5119,0.02,run centre | run centre,"234,233"
+1S1,800,7.9,0.5564,0.02,run centre | run centre,"227,226"
+1S1,850,7.9,,,hidden under a curve drawn on top (rows [220]),
+1S1,900,7.9,,,hidden under a curve drawn on top (rows [214]),
+1S1,950,7.9,0.7659,0.0305,"right edge minus half width | both edges covered, run centre","209,208"
+1S1,1000,7.9,,,"hidden under a curve drawn on top (rows [203, 202])",
+1S1,1050,7.9,,,"hidden under a curve drawn on top (rows [196, 195])",
+1S1,1100,7.9,0.9632,0.0252,run centre | left edge plus half width,"190,189"
+1S1,1150,7.9,1.0668,0.02,run centre | run centre,"184,183"
+1S1,1200,7.9,1.1955,0.02,run centre | run centre,"178,177"
+1S1,1250,7.9,1.3249,0.02,run centre | run centre,"172,171"
+1S1,1300,7.9,1.5334,0.02,run centre | run centre,"166,165"
+1S1,1350,7.9,1.6459,0.02,run centre | run centre,"159,158"
+1S1,1400,7.9,1.8731,0.02,run centre | run centre,"153,152"
+1S1,1450,7.9,2.1147,0.02,run centre | run centre,"147,146"
+1S1,1500,7.9,2.3462,0.02,run centre | run centre,"141,140"
+2S1,100,7.9,0.0273,0.0252,left edge plus half width | left edge plus half width,"314,313"
+2S1,150,7.9,0.0273,0.02,run centre | run centre,"308,307"
+2S1,200,7.9,0.0472,0.02,run centre | run centre,"302,301"
+2S1,250,7.9,0.062,0.02,run centre | run centre,"295,294"
+2S1,300,7.9,0.0906,0.02,run centre | run centre,"289,288"
+2S1,350,7.9,0.1117,0.02,run centre | run centre,"283,282"
+2S1,400,7.9,0.1508,0.02,run centre | run centre,"277,276"
+2S1,450,7.9,0.175,0.02,run centre | run centre,"271,270"
+2S1,460,7.9,0.1878,0.02,run centre | run centre,"269,268"
+2S1,500,7.9,0.2269,0.02,run centre | run centre,"264,263"
+2S1,550,7.9,0.261,0.02,run centre | run centre,"258,257"
+2S1,600,7.9,0.3053,0.02,run centre | run centre,"252,251"
+2S1,650,7.9,0.3487,0.02,run centre | run centre,"246,245"
+2S1,700,7.9,0.3943,0.02,run centre | run centre,"240,239"
+2S1,750,7.9,0.4423,0.02,run centre | run centre,"234,233"
+2S1,800,7.9,0.5121,0.02,run centre | run centre,"227,226"
+2S1,850,7.9,0.5761,0.02,run centre | run centre,"221,220"
+2S1,900,7.9,0.6676,0.02,run centre | run centre,"215,214"
+2S1,950,7.9,0.7305,0.02,run centre | run centre,"209,208"
+2S1,1000,7.9,0.8115,0.02,run centre | run centre,"203,202"
+2S1,1050,7.9,0.8845,0.02,run centre | run centre,"196,195"
+2S1,1100,7.9,0.991,0.0252,left edge plus half width | run centre,"190,189"
+2S1,1150,7.9,1.1115,0.02,run centre | run centre,"184,183"
+2S1,1200,7.9,,,hidden under a curve drawn on top (rows [177]),
+2S1,1250,7.9,,,"hidden under a curve drawn on top (rows [172, 171])",
+2S1,1300,7.9,,,"hidden under a curve drawn on top (rows [166, 165])",
+2S1,1350,7.9,,,hidden under a curve drawn on top (rows [159]),
+2S1,1400,7.9,,,hidden under a curve drawn on top (rows [152]),
+2S1,1450,7.9,2.4773,0.0252,right edge minus half width | run centre,"147,146"
+2S1,1500,7.9,,,hidden under a curve drawn on top (rows [141]),
+3S1,100,7.9,0.0484,0.0252,left edge plus half width | left edge plus half width,"314,313"
+3S1,150,7.9,,,hidden under a curve drawn on top (rows [307]),
+3S1,200,7.9,,,hidden under a curve drawn on top (rows [302]),
+3S1,250,7.9,,,"hidden under a curve drawn on top (rows [295, 294])",
+3S1,300,7.9,,,"hidden under a curve drawn on top (rows [289, 288])",
+3S1,350,7.9,,,hidden under a curve drawn on top (rows [283]),
+3S1,400,7.9,0.2488,0.02,run centre | run centre,"277,276"
+3S1,450,7.9,,,hidden under a curve drawn on top (rows [270]),
+3S1,460,7.9,,,hidden under a curve drawn on top (rows [269]),
+3S1,500,7.9,,,"hidden under a curve drawn on top (rows [264, 263])",
+3S1,550,7.9,0.386,0.0252,left edge plus half width | left edge plus half width,"258,257"
+3S1,600,7.9,,,"hidden under a curve drawn on top (rows [252, 251])",
+3S1,650,7.9,,,"hidden under a curve drawn on top (rows [246, 245])",
+3S1,700,7.9,,,"hidden under a curve drawn on top (rows [240, 239])",
+3S1,750,7.9,,,hidden under a curve drawn on top (rows [234]),
+3S1,800,7.9,,,"hidden under a curve drawn on top (rows [227, 226])",
+3S1,850,7.9,,,"hidden under a curve drawn on top (rows [221, 220])",
+3S1,900,7.9,,,"hidden under a curve drawn on top (rows [215, 214])",
+3S1,950,7.9,,,hidden under a curve drawn on top (rows [208]),
+3S1,1000,7.9,,,"hidden under a curve drawn on top (rows [203, 202])",
+3S1,1050,7.9,,,"hidden under a curve drawn on top (rows [196, 195])",
+3S1,1100,7.9,,,hidden under a curve drawn on top (rows [189]),
+3S1,1150,7.9,,,"hidden under a curve drawn on top (rows [184, 183])",
+3S1,1200,7.9,,,"hidden under a curve drawn on top (rows [178, 177])",
+3S1,1250,7.9,,,hidden under a curve drawn on top (rows [171]),
+3S1,1300,7.9,1.7783,0.02,run centre | run centre,"166,165"
+3S1,1350,7.9,,,hidden under a curve drawn on top (rows [158]),
+3S1,1400,7.9,2.0782,0.02,run centre | run centre,"153,152"
+3S1,1450,7.9,2.4226,0.0252,run centre | right edge minus half width,"147,146"
+3S1,1500,7.9,2.7245,0.0252,right edge minus half width | run centre,"141,140"
+4S1,100,7.9,0.0694,0.02,run centre | run centre,"314,313"
+4S1,150,7.9,0.1028,0.02,run centre | run centre,"308,307"
+4S1,200,7.9,0.1327,0.02,run centre | run centre,"302,301"
+4S1,250,7.9,0.18,0.02,run centre | run centre,"295,294"
+4S1,300,7.9,0.1973,0.02,run centre | run centre,"289,288"
+4S1,350,7.9,0.2373,0.02,run centre | run centre,"283,282"
+4S1,400,7.9,0.2804,0.02,run centre | run centre,"277,276"
+4S1,450,7.9,0.3168,0.02,run centre | run centre,"271,270"
+4S1,460,7.9,0.3277,0.02,run centre | run centre,"269,268"
+4S1,500,7.9,0.3546,0.02,run centre | run centre,"264,263"
+4S1,550,7.9,0.4071,0.02,run centre | run centre,"258,257"
+4S1,600,7.9,0.4359,0.02,run centre | run centre,"252,251"
+4S1,650,7.9,0.4809,0.02,run centre | run centre,"246,245"
+4S1,700,7.9,0.5229,0.02,run centre | run centre,"240,239"
+4S1,750,7.9,0.5816,0.02,run centre | run centre,"234,233"
+4S1,800,7.9,0.6297,0.02,run centre | run centre,"227,226"
+4S1,850,7.9,0.7054,0.02,run centre | run centre,"221,220"
+4S1,900,7.9,0.7433,0.02,run centre | run centre,"215,214"
+4S1,950,7.9,0.8199,0.02,run centre | run centre,"209,208"
+4S1,1000,7.9,0.8834,0.02,run centre | run centre,"203,202"
+4S1,1050,7.9,0.9709,0.02,run centre | run centre,"196,195"
+4S1,1100,7.9,1.0535,0.02,run centre | run centre,"190,189"
+4S1,1150,7.9,1.1912,0.02,run centre | run centre,"184,183"
+4S1,1200,7.9,1.3378,0.02,run centre | run centre,"178,177"
+4S1,1250,7.9,1.4953,0.02,run centre | run centre,"172,171"
+4S1,1300,7.9,1.6977,0.02,run centre | run centre,"166,165"
+4S1,1350,7.9,1.8324,0.02,run centre | run centre,"159,158"
+4S1,1400,7.9,2.0024,0.02,run centre | run centre,"153,152"
+4S1,1450,7.9,0.7658,0.02,run centre | run centre,"147,146"
+4S1,1500,7.9,2.5802,0.02,run centre | run centre,"141,140"

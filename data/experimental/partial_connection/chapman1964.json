@@ -1,0 +1,54 @@
+{
+  "programme": "Chapman and Balakrishnan (1964), beams A1-A6: full-connection anchor (tabulated elastic deflections from Balakrishnan (1963) PhD thesis)",
+  "key": "chapman1964",
+  "role": "full-connection anchor (not a partial-connection specimen; excluded from the partial-connection statistics)",
+  "citations": [
+    "Chapman, J.C. and Balakrishnan, S. (1964). Experiments on composite beams. The Structural Engineer 42(11), 369-383.",
+    "Balakrishnan, S.M. (1963). The behaviour of composite steel and concrete beams with welded stud shear connectors. PhD thesis, Imperial College, University of London (Spiral handle 10044/1/13358, open access)."
+  ],
+  "sources_note": "Values transcribed from the verified literature entry (orchestrator scratchpad lit_partial.json, 'verified' entry for Chapman and Balakrishnan), which checked every number against the rendered thesis and paper page images. No new digitising. Page images are kept outside the repository.",
+  "geometry_source": "data/experimental/literature_tests.csv rows CB-A1-40T ... CB-A6-40T (span 216 in, slab 48 x 6 in, 12 x 6 in BSB idealised as d 12, b_f 6, t_f 0.66, t_w 0.42 in; cylinder f'c and flange F_y per beam)",
+  "loading": {
+    "pattern": "central point load W, simply supported span 18 ft = 216 in; jack load on a 9 x 7.5 x 1.5 in plate on plywood (thesis p. 67); point load spread over 9 in in the thesis calculation (thesis p. 138)",
+    "ton": "British (long) ton = 2.240 kips"
+  },
+  "studs": {
+    "type": "3/4 in x 4 in headed studs welded in pairs 3 in apart transversely (thesis p. 66)",
+    "number": {"A1": 84, "A2": 76, "A3": 68, "A4": 56, "A5": 44, "A6": 32},
+    "pair_spacing_in": {"A1": 5.7, "A2": 6.25, "A3": 7.0, "A4": 8.5, "A5": 10.8, "A6": 14.88},
+    "layout_source": "paper Table 1 (p. 371) number and spacing in pairs; uniform spacing symmetric about mid-span assumed; at least one pair lies outside the span in every beam (thesis p. 133; A6: 16 pairs at 14.88 in = 223 in over the 216 in span)",
+    "pushout_ultimate_per_stud_tons": {"PA1": 12.5, "PA2": 12.3, "PA3": 12.7},
+    "pushout_source": "paper Table 2 (p. 373)",
+    "overall_beam_length_in": 240.0
+  },
+  "thesis_p138_W5tons": {
+    "source": "Balakrishnan (1963) thesis p. 138 (PDF p. 145), Section 4.1: mid-span deflection at W = 5 tons, values in in x 1e-4; delta_bending, delta_shear and delta_total are the full-interaction calculation (per-beam E_c; shear with E_s 13,400 tsi, E_c 4.5e6 psi), delta_expt the mean of four readings",
+    "columns": ["E_steel_tsi", "E_conc_1e6_psi", "m", "I_transformed_in4", "delta_bending", "delta_shear", "delta_total", "delta_expt"],
+    "A1": [13400, 4.32, 6.94, 1242, 636, 75, 711, 712],
+    "A2": [13300, 4.60, 6.47, 1263, 611, 75, 686, 694],
+    "A3": [13000, 3.48, 8.36, 1185, 666, 75, 741, 705],
+    "A4": [13300, 3.74, 7.96, 1196, 645, 75, 720, 688],
+    "A5": [13200, 5.20, 5.69, 1302, 596, 75, 671, 700],
+    "A6": [13500, 4.63, 6.52, 1260, 604, 75, 679, 670]
+  },
+  "thesis_p143_W20tons": {
+    "source": "Balakrishnan (1963) thesis p. 143 (PDF p. 150), Section 4.2: mid-span deflection at W = 20 tons, in x 1e-3; partial-interaction theory bending, partial-interaction total, experiment; full-interaction theory bending 250 and total 280 (shear 30) for all six beams",
+    "columns": ["partial_bending", "partial_total", "delta_expt"],
+    "full_interaction_bending": 250,
+    "full_interaction_total": 280,
+    "A1": [264, 294, 282],
+    "A2": [265, 295, 280],
+    "A3": [267, 297, 282],
+    "A4": [270, 300, 273],
+    "A5": [275, 305, 281],
+    "A6": [283, 313, 292]
+  },
+  "first_end_slip_W_tons": {"A1": null, "A2": 35.0, "A3": 35.0, "A4": 32.5, "A5": 22.5, "A6": 15.0},
+  "first_end_slip_source": "thesis Figs. 134-135 (PDF pp. 345-346); A1 no slip",
+  "slab_reinforcement": "A1: 5/8 in bars, longitudinal at 5 in top and bottom; A2-A6: longitudinal 5/16 in at 12 in top and bottom (thesis p. 66)",
+  "caveats": [
+    "chemical bond not prevented; the thesis attributes the near-full-interaction elastic response to bond still being effective (p. 143)",
+    "by the authors' push-out basis A6 is a 100 per cent design and A1-A5 are over-connected; these beams anchor the full-connection end only",
+    "slab carries about 32 % of the vertical shear (paper p. 376); the thesis shear term reflects that"
+  ]
+}

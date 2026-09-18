@@ -1,0 +1,1061 @@
+{
+ "programme": "McGarraugh and Baldwin (1971), Lightweight concrete-on-steel composite beams",
+ "key": "mcgarraugh1971",
+ "citations": [
+  "McGarraugh, J.B. and Baldwin, J.W. Jr. (1971). Lightweight concrete-on-steel composite beams. AISC Engineering Journal 8(3), 90-98 (July 1971).",
+  "Companion push-out programme: Ollgaard, J.G., Slutter, R.G. and Fisher, J.W. (1971). Shear strength of stud connectors in lightweight and normal-weight concrete. AISC Engineering Journal 8(2), 55-64 (ref. 4 of the paper; not opened)."
+ ],
+ "sources": [
+  {
+   "url": "https://ej.aisc.org/index.php/engj/article/download/166/165",
+   "local_copy": "/private/tmp/claude-501/-Users-sandeshlamsal-Desktop-CompositeGirder/a32c3e10-8884-4339-8200-ea3611516154/scratchpad/lit_sources/mcgarraugh1971/mcgarraugh1971.pdf",
+   "note": "9-page ABBYY-OCR scan of the journal article (PDF p. 1-9 = journal p. 90-98); open access",
+   "pages": {
+    "Fig. 1 beam geometry": "p. 90 (PDF 1)",
+    "Table 1 materials, Fig. 2 instrumentation, Fig. 3 test set-up": "p. 91 (PDF 2)",
+    "Table 2 push-out and ultimate moments, Fig. 5 reaction vs mid-span deflection": "p. 92 (PDF 3)",
+    "Fig. 6 slip distribution, Fig. 7 load vs slip": "p. 93 (PDF 4)",
+    "Figs 8-9 B6": "p. 94 (PDF 5)"
+   }
+  }
+ ],
+ "data_files": {
+  "digitisation_dir": "mcgarraugh1971_digitised/",
+  "scripts": [
+   "digitise.py",
+   "trace_pushout.py",
+   "overlay_check.py"
+  ],
+  "fig5": [
+   "fig5_B2_markers.csv",
+   "fig5_B2_calibration.json",
+   "fig5_B4_markers.csv",
+   "fig5_B4_calibration.json"
+  ],
+  "fig7": [
+   "fig7_B2_calibration.json",
+   "fig7_B4_calibration.json",
+   "fig7_B2_pushout_curve.csv",
+   "fig7_B4_pushout_curve.csv"
+  ],
+  "b6_not_used": [
+   "fig8_B6_markers.csv",
+   "fig8_B6_calibration.json",
+   "fig9_B6_markers.csv",
+   "fig9_B6_calibration.json"
+  ],
+  "verification": "overlay_check.png (contains a crop of the copyrighted figure)"
+ },
+ "specimens": [
+  {
+   "id": "B2",
+   "included": true,
+   "screening": {
+    "decision": "included, flagged: lightweight concrete and 36 in slab width",
+    "design_space_check": {
+     "span_ft": "22.0 (range 20-240): in range",
+     "deck_thickness_in": "4.5 (range 4.5-12): in range, at the lower bound",
+     "girder_spacing_ft": "slab width 36 in = 3.0 ft (range 5-12): 2.0 ft (40 %) below; the Chapman beams in the manuscript use 48 in = 4 ft. Slab width / span = 0.136, inside the database range of spacing/span (5/240 = 0.02 to 12/20 = 0.6)",
+     "fc_ksi": "5.56 (range 3-10): in range",
+     "eta_c": "0.37 plastic, shear-span count with programme push-out strength (range 0.25-1.00): in range",
+     "fy_ksi": "36.6 measured static yield point, A36 (range 36-100): in range",
+     "steel_depth_in": "13.8 (range 12-84): in range",
+     "bf_over_d": "0.488 (0.30-0.70): in range",
+     "tf_over_bf": "0.0572 (0.04-0.12): in range",
+     "tw_over_d": "0.0196 (0.015-0.04): in range",
+     "section": "rolled W: in scope",
+     "support": "simply supported: in scope",
+     "loading": "monotonic positive bending (short-term test): in scope",
+     "concrete": "LIGHTWEIGHT, 112 pcf; measured E_c = 2200 ksi against 4250 ksi from the normal-weight ACI expression the database uses, so n = Es/Ec = 13.2 instead of 6.8. Outside the database assumption (normal weight)."
+    },
+    "very_close_reasoning": "Every tabulated design-space parameter is inside the ranges (B2 slab width excepted, handled as for the Chapman beams through the width/span ratio). The only material departure is the lightweight slab. Judged very close for a stiffness-ratio comparison because delta_full and the beam model both use the measured lightweight E_c, so R_meas = delta_full/delta_meas isolates the interface-slip loss; but R_EI(eta_c) was derived at normal-weight modular ratios, and a larger n lowers the composite stiffness gain over the bare steel, so the lightweight beam tests R_EI outside its calibration n. Report it flagged, not pooled silently with normal-weight beams."
+   },
+   "geometry": {
+    "span_in": 264.0,
+    "span_ft": 22.0,
+    "beam_overall_length_in": 276.0,
+    "support_positions": "simple supports 6 in inside each beam end (Fig. 1, ST series, p. 90)",
+    "load_positions": "two symmetric point loads, each 78 in from its support (54 in from mid-span); constant-moment region 108 in (Fig. 1, ST series)",
+    "steel_section": {
+     "designation": "W14x30",
+     "A_in2": 8.85,
+     "d_in": 13.8,
+     "bf_in": 6.73,
+     "tf_in": 0.385,
+     "tw_in": 0.27,
+     "Ix_in4": 291.0,
+     "Sx_in3": 42.0,
+     "Zx_in3": 47.3,
+     "provenance": "designation from Fig. 1 (p. 90); dimensions from AISC Shapes Database v15.0 (handbook, not measured; the source gives no measured dimensions)"
+    },
+    "slab": {
+     "thickness_in": 4.5,
+     "haunch_in": 0.0,
+     "type": "solid cast-in-place lightweight concrete slab, flat soffit on the top flange (Fig. 1 section)",
+     "reinforcement": "two layers of bars shown in the Fig. 1 cross-section (longitudinal bars and transverse bars, top and bottom); bar sizes, spacing and cover NOT stated; rho_l unknown",
+     "width_in": 36.0,
+     "width_provenance": "Table 1, p. 91"
+    }
+   },
+   "materials": {
+    "steel": {
+     "grade": "ASTM A36",
+     "fy_static_ksi": 36.6,
+     "fy_provenance": "Table 1, p. 91, \"Static Yield Point of Beam\"",
+     "Es_ksi": null,
+     "Es_note": "not reported; use 29000 ksi (assumption)",
+     "fu_ksi": null,
+     "fu_note": "not reported"
+    },
+    "concrete": {
+     "type": "E: sanded lightweight (natural sand + rotary-kiln lightweight coarse aggregate, max 3/4 in)",
+     "unit_weight_pcf": 112,
+     "fc_ksi": 5.56,
+     "fsp_ksi": 0.42,
+     "Ec_measured_ksi": 2200.0,
+     "Ec_calculated_in_source_ksi": 2890.0,
+     "Ec_ACI_normalweight_57000sqrtfc_ksi": 4250.0,
+     "slab_width_in": 36.0,
+     "provenance": "Table 1, p. 91 (f'c, splitting strength f_sp, E_c measured and calculated, unit weight, slab width); aggregate descriptions p. 91. Test age not stated. \"Calculated\" E_c equals the ACI 33 w^1.5 sqrt(f'c) value (checked: 2.92 and 1.81 x10^3 ksi)",
+     "Ec_for_delta_full": "use Ec_measured_ksi (task instruction and paper conclusion 4: \"calculations should be based on the actual modular ratio for the lightweight concrete\"); flag"
+    }
+   },
+   "connectors": {
+    "type": "3/4 in x 3 in headed stud shear connectors (Fig. 1)",
+    "diameter_in": 0.75,
+    "height_in": 3.0,
+    "area_in2": 0.4418,
+    "studs_per_group": 2,
+    "studs_per_group_provenance": "NOT stated in the text; the Fig. 1 cross-section shows two studs side by side on the flange. With 2 per group the shear span holds 6 studs, which reproduces the stated \"about 50 percent shear connection\" under the 1969 AISC allowable-stress rule (V_h = A_s F_y / 2 = 159 kip; q = 13.3 kip for a 3/4 in stud at f'c >= 4 ksi; 6/12 = 0.50). Counting 1 per group would give 25 %, counting all 10 studs of a half-span 83 %; so 2 per group is the only reading consistent with the text.",
+    "group_positions_from_support_in": [
+     6,
+     28,
+     50,
+     96,
+     120
+    ],
+    "group_positions_from_beam_end_in": [
+     12,
+     34,
+     56,
+     102,
+     126
+    ],
+    "layout": "5 groups per half-span, symmetric: 12, 2@22, (28 to load), 18, 24, 12 in to mid-span measured from the beam end (Fig. 1, ST series). 3 groups (6 studs) in each shear span (support to load point) and 2 groups (4 studs) in each half of the constant-moment region; 20 studs in the beam.",
+    "total_studs": 20,
+    "studs_in_each_shear_span": 6,
+    "studs_per_half_span": 10,
+    "strength": {
+     "pushout_ultimate_per_stud_kip": 20.0,
+     "pushout_slip_at_ultimate_in": 0.285,
+     "provenance": "Table 2(a), p. 92: companion push-out specimen P2 (P2 was companion to B2, P3 to B3, etc.); push-out design \"identical to that used in the Lehigh phase\" (Ollgaard, Slutter and Fisher 1971, ref. 4); push-out geometry not given in this paper",
+     "ollgaard_formula_kip": 24.43,
+     "ollgaard_note": "0.5 A_s sqrt(f'c E_c) with the measured E_c (Eq. 2 of the paper, developed at Lehigh); below the A_s F_u cap for F_u >= 56 ksi"
+    },
+    "stiffness": {
+     "pushout_curve": {
+      "curve_file": "mcgarraugh1971_digitised/fig7_B2_pushout_curve.csv",
+      "n_points": 111,
+      "slip_range_in": [
+       0.0101,
+       0.2773
+      ],
+      "load_at_end_of_curve_kip": 23.74,
+      "secant_stiffness_per_stud": {
+       "0.5 x Table 2a ultimate": {
+        "load_kip": 10.0,
+        "slip_in": 0.0117,
+        "secant_k_kip_per_in": 851
+       },
+       "0.5 x Fig. 7 curve end load": {
+        "load_kip": 11.87,
+        "slip_in": 0.0158,
+        "secant_k_kip_per_in": 752
+       }
+      }
+     },
+     "provenance": "digitised push-out curve (\"Pushout\", solid line) of Fig. 7, journal p. 93 (PDF p. 4); traced by trace_pushout.py",
+     "caveat": "the Fig. 7 push-out curve ends at 23.7 kip/stud at 0.28 in slip, 18 % above the Table 2(a) ultimate of 20 kip at 0.285 in; unresolved (the slip at ultimate agrees). The curve below ~9 kip is hidden under beam-data markers and was not traced."
+    },
+    "beam_derived_connector_data": "Fig. 7 also plots stud load-slip derived from strain profiles in the beam for the three shear-span groups (+ exterior, triangle central, circle nearest the load). Text p. 93: B2 initial connector stiffness \"essentially the same as the pushout\"; for B4 the initial stiffness of the exterior and central groups is lower than the push-out and exterior-stud ultimate only 60 % of push-out. Not digitised (scatter)."
+   },
+   "degree_of_connection": {
+    "programme_statement": "\"The ST series beams were designed with about a 50 percent shear connection to insure a shear connector failure\" (p. 90); all ST beams failed in the shear connection (p. 91)",
+    "C_f_kip": 323.9,
+    "C_f_definition": "min(A_s F_y = 323.9, 0.85 f'c b t = 765.6) kip; steel governs",
+    "eta_plastic_primary": 0.37,
+    "eta_plastic_primary_definition": "6 studs in the shear span x Table 2(a) push-out ultimate / C_f",
+    "eta_plastic_alternatives": {
+     "shear span, Ollgaard 0.5 A_s sqrt(fc Ec) with measured Ec": 0.453,
+     "shear span, Fig. 7 push-out curve end load": 0.439,
+     "all 10 studs support to mid-span, Table 2(a) ultimate": 0.617
+    }
+   },
+   "loading": {
+    "type": "two symmetric point loads at 78 in from each support (ST series, Fig. 1), short-term monotonic test to failure",
+    "control": "four independently controlled hydraulic ram systems; equal quarter-point deflections used for control instead of applied load (p. 91)",
+    "plotted_quantity": "Fig. 5 ordinate \"REACTION (KIPS)\" = end reaction = load at each load point; checked: experimental ultimate moment (Table 2b) / 78 in = 35.0 kip against the plotted plateau of about 34.5-34.7 kip",
+    "ultimate_moment_experimental_kip_in": 2730,
+    "ultimate_provenance": "Table 2(b), p. 92",
+    "failure": "shear connection (stud shear-off or pull-out); mid-span deflection 12-14 in at failure (p. 91)",
+    "shoring": "not stated"
+   },
+   "deflection_zero_includes": "applied test load only: the Fig. 5 experimental points and theoretical curves start at the origin at the start of the test. Self-weight of beam and slab, and the weight of any loading hardware, are not included. Shoring during casting is not stated (irrelevant to the applied-load increment if the slab was hardened before testing).",
+   "elastic_limit": {
+    "programme_statements": [
+     "\"Slips, strains, and deflections were linear to first yield of the steel beam, at which time flexural cracking was observed in the slab in the maximum moment region\" (p. 91)",
+     "discrepancy with theory in the \"knee\" attributed to residual stresses (p. 92)",
+     "first-yield load not reported"
+    ],
+    "estimates": {
+     "steel-alone first yield (F_y S_x / 78 in), a lower bound under partial interaction without residual stress": 19.7,
+     "full-composite plastic moment M_p (PNA in slab, measured F_y and f'c) kip-in, for orientation only": 3384,
+     "note": "the modelling stage must recompute M/M_p with the database definition"
+    },
+    "adopted": "elastic if end reaction <= 14.5 kip: the last marker before the knee. The next marker (18.7 kip: increment 17 kip/in after 32 and 27) shows an incremental stiffness drop of more than 40 % relative to the preceding increments, while all adopted points lie below the steel-alone first-yield load and below M/M_p(full) = 0.4"
+   },
+   "measured": [
+    {
+     "load": 4.48,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 0.124,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 349.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.162
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=761.2, py=4171.4)",
+     "elastic": true,
+     "flags": [
+      "low-deflection point: +/-0.02 in is 16 % of the value; weight accordingly"
+     ]
+    },
+    {
+     "load": 8.21,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 0.241,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 640.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.083
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=788.5, py=4082.5)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 14.13,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 0.459,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 1102.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.044
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=839.4, py=3935.2)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 18.72,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 0.722,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 1460.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.028
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=901.3, py=3819.3)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 21.75,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 0.986,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 1697.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.02
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=963.3, py=3744.5)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 24.85,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 1.344,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 1938.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.015
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=1050.7, py=3669.6)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 26.96,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 1.623,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2103.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.012
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=1118.7, py=3618.4)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 29.17,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 1.98,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2275.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.01
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=1205.5, py=3564.7)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 30.98,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 2.343,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2417.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.009
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=1294.3, py=3520.5)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 32.48,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 2.831,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2534.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.007
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=1413.7, py=3483.8)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 33.57,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 3.44,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2618.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.006
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=1563.0, py=3457.1)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 33.83,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 3.902,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2639.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.005
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=1676.2, py=3450.6)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 34.18,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 4.49,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2666.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.004
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=1821.9, py=3441.7)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 34.51,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 5.157,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2692.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.004
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=1986.8, py=3433.5)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 34.71,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 5.748,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2707.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.003
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=2130.7, py=3428.5)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 34.48,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 6.709,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2689.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.003
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 top panel (B2), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B2_markers.csv (px=2366.9, py=3433.7)",
+     "elastic": false,
+     "flags": []
+    }
+   ],
+   "digitisation": {
+    "figure": "Fig. 5 top panel (B2)",
+    "page": "journal p. 92, PDF p. 3",
+    "render": "pdftoppm -r 600 -gray (the scan in the PDF is a native 600 ppi CCITT image)",
+    "method": "digitise.py: each grid line (x: 0-7 in every 1 in, labels 0, 2, 4, 6; y: 0-40 kip every 10) fitted as a straight line through 100-400 ink-run centres; points mapped by piecewise-linear interpolation between neighbouring fitted lines (\"local\", adopted), global affine map reported as a check; markers (filled circles ~33 px) isolated by binary opening (disk r=12), centre = centroid of the erosion core (disk r=12). All 16 plotted markers found, none rejected.",
+    "verification": "overlay_check.py / overlay_check.png: every digitised value re-projected to pixels through the inverse calibration lands on its marker (round-trip residual < 0.02 px); opening centroid vs erosion core differ by <= 0.001 in and <= 0.01 kip; local vs affine calibration differ by up to 0.028 in, 0.09 kip in the elastic points (largest at the first point, where the 0-1 in grid interval is 3 % narrower than the others). The authors' dashed reference lines, fitted through the origin, cross zero load at -0.01 in, which bounds the zero offset.",
+    "uncertainty": {
+     "deflection_in": 0.02,
+     "load_kip": 0.3,
+     "note": "deflection: zero offset +/-0.01 in, calibration +/-0.01 in, marker centring < 0.002 in; the draughting accuracy of the 1971 plotted symbols is unknown and not included"
+    },
+    "reference_lines_in_figure": {
+     "rigid_connection_slope_kip_per_in": 46.9,
+     "no_connection_slope_kip_per_in": 12.9,
+     "provenance": "fig5_B2_calibration.json reference_lines (slope through origin)",
+     "check_warning": "UNRESOLVED: the authors' dashed \"Rigid Connection\" and \"No Connection\" lines do not match a simple elastic calculation for the stated geometry. With W14x30, the measured E_c, span 264 in and loads at 78 in, the transformed-section stiffness is 35.9 kip/in (reaction per in of mid-span deflection) and the no-connection (steel + slab bending) stiffness 15.1 kip/in; the figure lines give 46.9 and 12.9, a ratio of 3.6 against 2.4 computed (the ratio is independent of span and load position). The experimental secant stiffness at the lowest markers (36, 34 kip/in) is close to the computed full-composite value. Possible causes: the figure lines are schematic, or the theory used other section properties. The measured points are unaffected, but the modelling stage should not use the figure's reference lines as a check."
+    }
+   },
+   "assumptions": [
+    "studs per group = 2 (inferred from the Fig. 1 section and the stated ~50 % connection; not stated in the text)",
+    "E_s = 29000 ksi (not reported)",
+    "steel dimensions from the AISC handbook (not measured)",
+    "slab reinforcement ratio unknown (not stated); read R_EI at rho_l = 0 and report the 0.7 % value as a sensitivity",
+    "concrete age at test not stated; E_c and f'c taken as tabulated",
+    "Fig. 7 push-out curve used for connector stiffness; Table 2(a) ultimate used for connector strength (they differ by 12-18 %)"
+   ]
+  },
+  {
+   "id": "B4",
+   "included": true,
+   "screening": {
+    "decision": "included, flagged: lightweight concrete",
+    "design_space_check": {
+     "span_ft": "22.0 (range 20-240): in range",
+     "deck_thickness_in": "4.5 (range 4.5-12): in range, at the lower bound",
+     "girder_spacing_ft": "slab width 72 in = 6.0 ft (range 5-12): in range; width/span = 0.27",
+     "fc_ksi": "4.9 (range 3-10): in range",
+     "eta_c": "0.36 plastic, shear-span count with programme push-out strength (range 0.25-1.00): in range",
+     "fy_ksi": "35.4 measured static yield point, A36 (range 36-100): 0.6 ksi (1.7 %) below the nominal lower bound; static yield of nominal A36 steel, treated as in range",
+     "steel_depth_in": "13.8 (range 12-84): in range",
+     "bf_over_d": "0.488 (0.30-0.70): in range",
+     "tf_over_bf": "0.0572 (0.04-0.12): in range",
+     "tw_over_d": "0.0196 (0.015-0.04): in range",
+     "section": "rolled W: in scope",
+     "support": "simply supported: in scope",
+     "loading": "monotonic positive bending (short-term test): in scope",
+     "concrete": "LIGHTWEIGHT, 85 pcf; measured E_c = 1700 ksi against 3990 ksi from the normal-weight ACI expression the database uses, so n = Es/Ec = 17.1 instead of 7.3. Outside the database assumption (normal weight)."
+    },
+    "very_close_reasoning": "Every tabulated design-space parameter is inside the ranges (B2 slab width excepted, handled as for the Chapman beams through the width/span ratio). The only material departure is the lightweight slab. Judged very close for a stiffness-ratio comparison because delta_full and the beam model both use the measured lightweight E_c, so R_meas = delta_full/delta_meas isolates the interface-slip loss; but R_EI(eta_c) was derived at normal-weight modular ratios, and a larger n lowers the composite stiffness gain over the bare steel, so the lightweight beam tests R_EI outside its calibration n. Report it flagged, not pooled silently with normal-weight beams."
+   },
+   "geometry": {
+    "span_in": 264.0,
+    "span_ft": 22.0,
+    "beam_overall_length_in": 276.0,
+    "support_positions": "simple supports 6 in inside each beam end (Fig. 1, ST series, p. 90)",
+    "load_positions": "two symmetric point loads, each 78 in from its support (54 in from mid-span); constant-moment region 108 in (Fig. 1, ST series)",
+    "steel_section": {
+     "designation": "W14x30",
+     "A_in2": 8.85,
+     "d_in": 13.8,
+     "bf_in": 6.73,
+     "tf_in": 0.385,
+     "tw_in": 0.27,
+     "Ix_in4": 291.0,
+     "Sx_in3": 42.0,
+     "Zx_in3": 47.3,
+     "provenance": "designation from Fig. 1 (p. 90); dimensions from AISC Shapes Database v15.0 (handbook, not measured; the source gives no measured dimensions)"
+    },
+    "slab": {
+     "thickness_in": 4.5,
+     "haunch_in": 0.0,
+     "type": "solid cast-in-place lightweight concrete slab, flat soffit on the top flange (Fig. 1 section)",
+     "reinforcement": "two layers of bars shown in the Fig. 1 cross-section (longitudinal bars and transverse bars, top and bottom); bar sizes, spacing and cover NOT stated; rho_l unknown",
+     "width_in": 72.0,
+     "width_provenance": "Table 1, p. 91"
+    }
+   },
+   "materials": {
+    "steel": {
+     "grade": "ASTM A36",
+     "fy_static_ksi": 35.4,
+     "fy_provenance": "Table 1, p. 91, \"Static Yield Point of Beam\"",
+     "Es_ksi": null,
+     "Es_note": "not reported; use 29000 ksi (assumption)",
+     "fu_ksi": null,
+     "fu_note": "not reported"
+    },
+    "concrete": {
+     "type": "C: all-lightweight (expanded shale, rotary kiln, rounded, max 1/2 in)",
+     "unit_weight_pcf": 85,
+     "fc_ksi": 4.9,
+     "fsp_ksi": 0.27,
+     "Ec_measured_ksi": 1700.0,
+     "Ec_calculated_in_source_ksi": 1810.0,
+     "Ec_ACI_normalweight_57000sqrtfc_ksi": 3990.0,
+     "slab_width_in": 72.0,
+     "provenance": "Table 1, p. 91 (f'c, splitting strength f_sp, E_c measured and calculated, unit weight, slab width); aggregate descriptions p. 91. Test age not stated. \"Calculated\" E_c equals the ACI 33 w^1.5 sqrt(f'c) value (checked: 2.92 and 1.81 x10^3 ksi)",
+     "Ec_for_delta_full": "use Ec_measured_ksi (task instruction and paper conclusion 4: \"calculations should be based on the actual modular ratio for the lightweight concrete\"); flag"
+    }
+   },
+   "connectors": {
+    "type": "3/4 in x 3 in headed stud shear connectors (Fig. 1)",
+    "diameter_in": 0.75,
+    "height_in": 3.0,
+    "area_in2": 0.4418,
+    "studs_per_group": 2,
+    "studs_per_group_provenance": "NOT stated in the text; the Fig. 1 cross-section shows two studs side by side on the flange. With 2 per group the shear span holds 6 studs, which reproduces the stated \"about 50 percent shear connection\" under the 1969 AISC allowable-stress rule (V_h = A_s F_y / 2 = 159 kip; q = 13.3 kip for a 3/4 in stud at f'c >= 4 ksi; 6/12 = 0.50). Counting 1 per group would give 25 %, counting all 10 studs of a half-span 83 %; so 2 per group is the only reading consistent with the text.",
+    "group_positions_from_support_in": [
+     6,
+     28,
+     50,
+     96,
+     120
+    ],
+    "group_positions_from_beam_end_in": [
+     12,
+     34,
+     56,
+     102,
+     126
+    ],
+    "layout": "5 groups per half-span, symmetric: 12, 2@22, (28 to load), 18, 24, 12 in to mid-span measured from the beam end (Fig. 1, ST series). 3 groups (6 studs) in each shear span (support to load point) and 2 groups (4 studs) in each half of the constant-moment region; 20 studs in the beam.",
+    "total_studs": 20,
+    "studs_in_each_shear_span": 6,
+    "studs_per_half_span": 10,
+    "strength": {
+     "pushout_ultimate_per_stud_kip": 19.0,
+     "pushout_slip_at_ultimate_in": 0.3,
+     "provenance": "Table 2(a), p. 92: companion push-out specimen P4 (P2 was companion to B2, P3 to B3, etc.); push-out design \"identical to that used in the Lehigh phase\" (Ollgaard, Slutter and Fisher 1971, ref. 4); push-out geometry not given in this paper",
+     "ollgaard_formula_kip": 20.16,
+     "ollgaard_note": "0.5 A_s sqrt(f'c E_c) with the measured E_c (Eq. 2 of the paper, developed at Lehigh); below the A_s F_u cap for F_u >= 56 ksi"
+    },
+    "stiffness": {
+     "pushout_curve": {
+      "curve_file": "mcgarraugh1971_digitised/fig7_B4_pushout_curve.csv",
+      "n_points": 159,
+      "slip_range_in": [
+       0.0022,
+       0.3074
+      ],
+      "load_at_end_of_curve_kip": 21.27,
+      "secant_stiffness_per_stud": {
+       "0.5 x Table 2a ultimate": {
+        "load_kip": 9.5,
+        "slip_in": 0.0117,
+        "secant_k_kip_per_in": 809
+       },
+       "0.5 x Fig. 7 curve end load": {
+        "load_kip": 10.64,
+        "slip_in": 0.0141,
+        "secant_k_kip_per_in": 754
+       }
+      }
+     },
+     "provenance": "digitised push-out curve (\"Pushout\", solid line) of Fig. 7, journal p. 93 (PDF p. 4); traced by trace_pushout.py",
+     "caveat": "the Fig. 7 push-out curve ends at 21.3 kip/stud at 0.31 in slip, 12 % above the Table 2(a) ultimate of 19 kip at 0.300 in; unresolved."
+    },
+    "beam_derived_connector_data": "Fig. 7 also plots stud load-slip derived from strain profiles in the beam for the three shear-span groups (+ exterior, triangle central, circle nearest the load). Text p. 93: B2 initial connector stiffness \"essentially the same as the pushout\"; for B4 the initial stiffness of the exterior and central groups is lower than the push-out and exterior-stud ultimate only 60 % of push-out. Not digitised (scatter)."
+   },
+   "degree_of_connection": {
+    "programme_statement": "\"The ST series beams were designed with about a 50 percent shear connection to insure a shear connector failure\" (p. 90); all ST beams failed in the shear connection (p. 91)",
+    "C_f_kip": 313.3,
+    "C_f_definition": "min(A_s F_y = 313.3, 0.85 f'c b t = 1349.5) kip; steel governs",
+    "eta_plastic_primary": 0.364,
+    "eta_plastic_primary_definition": "6 studs in the shear span x Table 2(a) push-out ultimate / C_f",
+    "eta_plastic_alternatives": {
+     "shear span, Ollgaard 0.5 A_s sqrt(fc Ec) with measured Ec": 0.386,
+     "shear span, Fig. 7 push-out curve end load": 0.408,
+     "all 10 studs support to mid-span, Table 2(a) ultimate": 0.606
+    }
+   },
+   "loading": {
+    "type": "two symmetric point loads at 78 in from each support (ST series, Fig. 1), short-term monotonic test to failure",
+    "control": "four independently controlled hydraulic ram systems; equal quarter-point deflections used for control instead of applied load (p. 91)",
+    "plotted_quantity": "Fig. 5 ordinate \"REACTION (KIPS)\" = end reaction = load at each load point; checked: experimental ultimate moment (Table 2b) / 78 in = 32.1 kip against the plotted plateau of about 31-31.4 kip",
+    "ultimate_moment_experimental_kip_in": 2500,
+    "ultimate_provenance": "Table 2(b), p. 92",
+    "failure": "shear connection (stud shear-off or pull-out); mid-span deflection 12-14 in at failure (p. 91)",
+    "shoring": "not stated"
+   },
+   "deflection_zero_includes": "applied test load only: the Fig. 5 experimental points and theoretical curves start at the origin at the start of the test. Self-weight of beam and slab, and the weight of any loading hardware, are not included. Shoring during casting is not stated (irrelevant to the applied-load increment if the slab was hardened before testing).",
+   "elastic_limit": {
+    "programme_statements": [
+     "\"Slips, strains, and deflections were linear to first yield of the steel beam, at which time flexural cracking was observed in the slab in the maximum moment region\" (p. 91)",
+     "discrepancy with theory in the \"knee\" attributed to residual stresses (p. 92)",
+     "first-yield load not reported"
+    ],
+    "estimates": {
+     "steel-alone first yield (F_y S_x / 78 in), a lower bound under partial interaction without residual stress": 19.1,
+     "full-composite plastic moment M_p (PNA in slab, measured F_y and f'c) kip-in, for orientation only": 3408,
+     "note": "the modelling stage must recompute M/M_p with the database definition"
+    },
+    "adopted": "elastic if end reaction <= 16.5 kip: the last marker before the knee. The next marker (18.2 kip: increment 8.5 kip/in after 32, 19, 23, 18) shows an incremental stiffness drop of more than 40 % relative to the preceding increments, while all adopted points lie below the steel-alone first-yield load and below M/M_p(full) = 0.4"
+   },
+   "measured": [
+    {
+     "load": 4.14,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 0.076,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 323.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.264
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=707.7, py=5539.7)",
+     "elastic": true,
+     "flags": [
+      "low-deflection point: +/-0.02 in is 26 % of the value; weight accordingly"
+     ]
+    },
+    {
+     "load": 8.37,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 0.209,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 653.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.095
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=738.5, py=5442.0)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 11.6,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 0.376,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 905.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.053
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=777.0, py=5364.5)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 14.13,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 0.483,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 1102.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.041
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=802.0, py=5301.9)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 16.42,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 0.61,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 1281.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.033
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=831.3, py=5245.0)",
+     "elastic": true,
+     "flags": []
+    },
+    {
+     "load": 18.19,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 0.818,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 1419.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.024
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=880.0, py=5200.7)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 19.92,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 0.959,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 1554.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.021
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=912.8, py=5157.5)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 21.1,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 1.097,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 1646.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.018
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=945.8, py=5127.7)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 22.93,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 1.427,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 1789.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.014
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=1025.7, py=5081.0)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 24.15,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 1.712,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 1884.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.012
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=1094.4, py=5049.7)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 26.11,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 2.008,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2037.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.01
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=1165.5, py=5000.0)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 26.66,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 2.33,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2079.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.009
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=1243.9, py=4985.5)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 27.34,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 2.599,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2133.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.008
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=1309.4, py=4967.8)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 28.09,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 2.937,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2191.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.007
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=1391.9, py=4948.2)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 28.73,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 3.217,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2241.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.006
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=1460.6, py=4931.6)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 29.06,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 3.518,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2266.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.006
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=1534.7, py=4922.6)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 29.8,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 3.925,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2324.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.005
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=1634.8, py=4903.0)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 30.2,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 4.28,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2356.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.005
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=1722.0, py=4892.2)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 30.3,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 4.636,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2363.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.004
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=1809.5, py=4889.1)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 30.92,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 5.133,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2412.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.004
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=1931.3, py=4872.7)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 31.39,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 5.644,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2449.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.004
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=2054.8, py=4860.1)",
+     "elastic": false,
+     "flags": []
+    },
+    {
+     "load": 31.07,
+     "load_unit": "kip (end reaction = load at EACH of the two load points; total applied load = 2x)",
+     "deflection": 6.388,
+     "deflection_unit": "in (mid-span, applied test load only)",
+     "moment_at_load_points_kip_in": 2423.0,
+     "uncertainty": {
+      "load_kip": 0.3,
+      "deflection_in": 0.02,
+      "relative_deflection": 0.003
+     },
+     "source": "digitised, McGarraugh & Baldwin (1971) Fig. 5 bottom panel (B4), journal p. 92 (PDF p. 3); raw marker row in mcgarraugh1971_digitised/fig5_B4_markers.csv (px=2231.1, py=4866.3)",
+     "elastic": false,
+     "flags": []
+    }
+   ],
+   "digitisation": {
+    "figure": "Fig. 5 bottom panel (B4)",
+    "page": "journal p. 92, PDF p. 3",
+    "render": "pdftoppm -r 600 -gray (the scan in the PDF is a native 600 ppi CCITT image)",
+    "method": "digitise.py: each grid line (x: 0-7 in every 1 in, labels 0, 2, 4, 6; y: 0-40 kip every 10) fitted as a straight line through 100-400 ink-run centres; points mapped by piecewise-linear interpolation between neighbouring fitted lines (\"local\", adopted), global affine map reported as a check; markers (filled circles ~33 px) isolated by binary opening (disk r=12), centre = centroid of the erosion core (disk r=12). All 22 plotted markers found, none rejected.",
+    "verification": "overlay_check.py / overlay_check.png: every digitised value re-projected to pixels through the inverse calibration lands on its marker (round-trip residual < 0.02 px); opening centroid vs erosion core differ by <= 0.001 in and <= 0.01 kip; local vs affine calibration differ by up to 0.010 in, 0.20 kip in the elastic points (largest at the first point, where the 0-1 in grid interval is 3 % narrower than the others). The authors' dashed reference lines, fitted through the origin, cross zero load at -0.01 in, which bounds the zero offset.",
+    "uncertainty": {
+     "deflection_in": 0.02,
+     "load_kip": 0.3,
+     "note": "deflection: zero offset +/-0.01 in, calibration +/-0.01 in, marker centring < 0.002 in; the draughting accuracy of the 1971 plotted symbols is unknown and not included"
+    },
+    "reference_lines_in_figure": {
+     "rigid_connection_slope_kip_per_in": 46.0,
+     "no_connection_slope_kip_per_in": 14.3,
+     "provenance": "fig5_B4_calibration.json reference_lines (slope through origin)",
+     "check_warning": "UNRESOLVED: the authors' dashed \"Rigid Connection\" and \"No Connection\" lines do not match a simple elastic calculation for the stated geometry. With W14x30, the measured E_c, span 264 in and loads at 78 in, the transformed-section stiffness is 40.0 kip/in (reaction per in of mid-span deflection) and the no-connection (steel + slab bending) stiffness 15.6 kip/in; the figure lines give 46.0 and 14.3, a ratio of 3.2 against 2.6 computed (the ratio is independent of span and load position). The experimental secant stiffness at the lowest markers (55, 40 kip/in) is close to the computed full-composite value. Possible causes: the figure lines are schematic, or the theory used other section properties. The measured points are unaffected, but the modelling stage should not use the figure's reference lines as a check."
+    }
+   },
+   "assumptions": [
+    "studs per group = 2 (inferred from the Fig. 1 section and the stated ~50 % connection; not stated in the text)",
+    "E_s = 29000 ksi (not reported)",
+    "steel dimensions from the AISC handbook (not measured)",
+    "slab reinforcement ratio unknown (not stated); read R_EI at rho_l = 0 and report the 0.7 % value as a sensitivity",
+    "concrete age at test not stated; E_c and f'c taken as tabulated",
+    "Fig. 7 push-out curve used for connector stiffness; Table 2(a) ultimate used for connector strength (they differ by 12-18 %)"
+   ]
+  },
+  {
+   "id": "B3",
+   "included": false,
+   "screening": {
+    "decision": "excluded",
+    "reason": "no load-deflection record: Fig. 5 shows only B2 and B4; the text says B3 and B5 \"were similar\" (p. 92). Otherwise like B2 (E concrete 112 pcf, f'c 5.62 ksi, E_c 2.2 x10^3 ksi, 72 in slab, F_y 35.7 ksi, P3 23 kip/stud, M_u 2670 kip-in)."
+   },
+   "eta_plastic_estimate": 0.437,
+   "eta_note": "6 studs in the shear span (same ST layout) x push-out ultimate / (A_s F_y)",
+   "measured": []
+  },
+  {
+   "id": "B5",
+   "included": false,
+   "screening": {
+    "decision": "excluded",
+    "reason": "no load-deflection record (B3 and B5 \"were similar\", p. 92). Otherwise like B4 but 36 in slab (C concrete 85 pcf, f'c 4.90 ksi, E_c 1.7 x10^3 ksi, F_y 36.0 ksi, P5 21 kip/stud, M_u 2540 kip-in)."
+   },
+   "eta_plastic_estimate": 0.395,
+   "eta_note": "6 studs in the shear span (same ST layout) x push-out ultimate / (A_s F_y)",
+   "measured": []
+  },
+  {
+   "id": "B1",
+   "included": false,
+   "screening": {
+    "decision": "excluded",
+    "reason": "SL series with \"adequate\" (full) shear connection, sustained working load (14.5 kip per load point) test; no short-term load-deflection curve published; not a partial-connection specimen."
+   },
+   "eta_plastic_estimate": null,
+   "eta_note": "full connection by design",
+   "measured": []
+  },
+  {
+   "id": "B6",
+   "included": false,
+   "screening": {
+    "decision": "excluded",
+    "reason": "SL series with \"adequate\" (full) shear connection; loaded to failure only after ~180 days of sustained load, with shrinkage cracks through the slab on unloading (p. 92); Fig. 9 initial stiffness is below theory because of creep and shrinkage. Not partial, and not a virgin elastic record. Fig. 8 and Fig. 9 were digitised (fig8_B6_*, fig9_B6_*) but are not used."
+   },
+   "eta_plastic_estimate": null,
+   "eta_note": "full connection by design",
+   "measured": []
+  }
+ ]
+}

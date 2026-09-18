@@ -1,0 +1,859 @@
+{
+  "generated_by": "scripts/validate_partial_viest1952.py",
+  "method": "src/validation/partial_connection_windowed.py (windowed intercept-free slope, flexural ratios)",
+  "data": "data/experimental/partial_connection/viest1952.json",
+  "specimens": {
+    "B24W": {
+      "specimen": "B24W",
+      "source": "Viest, Siess, Appleton and Newmark (1952), Univ. Illinois Eng. Exp. Station Bulletin 405",
+      "classification": {
+        "programme": "Viest et al. (1952)",
+        "slab_type": "solid cast-in-place",
+        "connection_system": "channel connectors in solid cast-in-place slab",
+        "scale": "bridge",
+        "role": "near-full reference"
+      },
+      "window": {
+        "rule": "Fig. 43: JSON elastic flag (below measured first yield) and load >= 25 % of the highest elastic load (70.2 kips, 5 % step tolerance): 20.0-70.2 kips, 4 points",
+        "n_points": 4,
+        "load_min": 20.02,
+        "load_max": 70.18,
+        "load_mid": 45.1,
+        "source_load_min": 20.02,
+        "source_load_max": 70.18,
+        "source_load_unit": "kip (mid-span load)",
+        "m_over_mp_min": 0.15745571577260367,
+        "m_over_mp_max": 0.5519601464995667,
+        "m_over_mp_mid": 0.3547079311360851
+      },
+      "K_units": "kip of total applied load (kip/in for udl) per in of mid-span deflection",
+      "R_meas_flex": 1.0079870365799468,
+      "R_meas_flex_range_shear_area": [
+        1.0026210657691983,
+        1.0079870365799468
+      ],
+      "R_meas_flex_range_K_uncertainty": [
+        0.9703387213149164,
+        1.0458787758982977
+      ],
+      "R_beam_aci": 0.949862784234576,
+      "R_EI_window_mean": 0.967857142857143,
+      "R_EI": {
+        "window_mean": 0.967857142857143,
+        "mid_window": 1.0,
+        "window_min": 0.9357142857142857,
+        "window_max": 1.0,
+        "regime_mid": "service"
+      },
+      "eta_plastic": 1.6792372400030535,
+      "rho_l": 0.0067,
+      "R_meas": 0.9213001709650309,
+      "Delta_meas": 0.07869982903496908,
+      "R_meas_secant": 0.940452205756878,
+      "R_meas_flex_secant": 1.0309576619150873,
+      "R_meas_flex_secant_range_shear_area": [
+        1.0253450192844302,
+        1.0309576619150873
+      ],
+      "R_beam_E0": 0.9913495303315112,
+      "R_beam_E0_note": "beam model with Concrete02 E_0 = 1000 f'c",
+      "K_meas": {
+        "slope": 85.93666409005282,
+        "slope_standard_error": 1.180768009926915,
+        "uncertainty_used_in_checks": 2.943150957199578,
+        "implied_deflection_zero_offset_in": -0.013175388005723243,
+        "secant_from_zero": 87.7231198320766
+      },
+      "K_full": 93.2775948581851,
+      "K_steel": 32.03940464448913,
+      "K_noncomposite": 35.30272561158036,
+      "K_beam_aci": 88.60091595870047,
+      "K_beam_E0": 92.47069985311478,
+      "shear": {
+        "G_ksi": 11153.846153846154,
+        "area_clear_web_in2": 9.922,
+        "area_full_depth_web_in2": 10.5204,
+        "C_sh_clear_over_C_full": 0.0933463200530149,
+        "C_sh_full_over_C_full": 0.0880367844916556,
+        "assumption": "steel web carries the whole vertical shear, same term for section and test"
+      },
+      "section": {
+        "n_modular": 6.860279302257551,
+        "ec_ksi": 4227.233137644528,
+        "ec_source": "ACI 1802 sqrt(fc), aashto.py",
+        "es_ksi": 29000.0,
+        "I_full_in4": 6103.33281877436,
+        "I_steel_in4": 2096.4000000000315,
+        "y_na_from_slab_top_in": 6.959929934007371
+      },
+      "beam_aci": {
+        "K_beam": 88.60091595870047,
+        "K_beam_secant": 89.05917279137168,
+        "R_beam": 0.949862784234576,
+        "R_beam_secant": 0.9547756128014782,
+        "converged_all": true,
+        "beam_concrete_modulus_ksi": 4227.233137644528,
+        "eta_emergent_mid": 0.22572670025667133,
+        "eta_emergent_half_span_mid": 0.22572670025667133,
+        "end_slip_mid_in": 0.0026403585840828075,
+        "connector_force_max_mid_kip": 16.780818962915195,
+        "beam_first_yield_loads_in_window": []
+      },
+      "beam_E0": {
+        "K_beam": 92.47069985311478,
+        "K_beam_secant": 92.98670315886075,
+        "R_beam": 0.9913495303315112,
+        "R_beam_secant": 0.9968814408243843,
+        "converged_all": true,
+        "beam_concrete_modulus_ksi": 5500.0,
+        "eta_emergent_mid": 0.22787004328249902,
+        "eta_emergent_half_span_mid": 0.22787004328249902,
+        "end_slip_mid_in": 0.0026594168565222827,
+        "connector_force_max_mid_kip": 16.96430839081439,
+        "beam_first_yield_loads_in_window": []
+      },
+      "eta_plastic_details": {
+        "eta": 1.6792372400030535,
+        "sum_qu_kip": 1393.1999999999998,
+        "sum_qu_left_kip": 1393.1999999999998,
+        "sum_qu_right_kip": 1393.1999999999998,
+        "cf_kip": 829.6624007680216,
+        "region": "half_span",
+        "region_end_in": 225.0,
+        "concrete_crushing_kip": 2103.75,
+        "steel_yield_kip": 829.6624007680216,
+        "note": "connectors between a support and mid-span, the channel on the mid-span line excluded"
+      },
+      "eta_emergent_mid_window": 0.22572670025667133,
+      "rho_l_note": "gross, top + bottom longitudinal bars / (72 x t_s)",
+      "M_p": {
+        "mp_db_kip_in": 14081.51485083009,
+        "details": {
+          "mp_kip_in": 14081.51485083009,
+          "eta_input": 1.6792372400030535,
+          "eta_used": 1.0,
+          "b_eff_in": 72.0,
+          "c_steel_kip": 829.6624007680216,
+          "a_block_in": 2.464831850172376,
+          "block_capped_at_slab": false,
+          "y_steel_force_centroid_from_slab_top_in": 18.205000000000005,
+          "beam_model_full_width_mp_kip_in": 14081.51485083009
+        },
+        "moment_offset_kip_in": 0.0,
+        "moment_offset_note": "unshored: dead load on the steel alone, applied moment only"
+      },
+      "connector_note": "bulletin push-out 4C3C9 (6-in-wide C4x5.4, f'c 5340 psi): [(0.003, 20.7), (0.006, 33.7), (0.02, 60.5)] (slip in, kip per connector), held beyond; Q_u = 116.1 kips",
+      "flags": [
+        "flange F_y 35.8 ksi below the 36 ksi floor by 1%",
+        "channel connectors (C4x5.4), not studs; push-out load-slip at three slips only",
+        "repeated elastic loading before the plotted test; 14 in load plate",
+        "near-full reference: eta_plastic 1.678 > 1 (over-connected)"
+      ],
+      "notes": [
+        "shoring: unshored (Sec. 31, pp. 81-82): dead load on the steel section alone",
+        "applied midspan load only: 'a set of readings of all instruments was taken before application of the first load increment' (Sec. 35, p. 93). Unshored: slab and beam self-weight (551-567 lb/ft) was already on the steel section and is not in the record. Deflection measured relative to the laboratory floor; bearing compression is not separated (not stated)."
+      ],
+      "sanity_checks": {
+        "K_steel<=K_meas (within uncertainty)": true,
+        "K_meas<=K_full (within uncertainty)": true,
+        "K_steel<=K_meas (nominal)": true,
+        "K_meas<=K_full (nominal)": true,
+        "flexural compliance positive after shear removal": true,
+        "K_noncomposite<=K_beam_aci<=K_full": true
+      },
+      "secondary_records": [],
+      "sensitivity": {
+        "R_beam_aci_range": [
+          0.949862784234576,
+          0.949862784234576
+        ],
+        "R_EI_window_mean_range": [
+          0.967857142857143,
+          0.967857142857143
+        ],
+        "R_EI_mid_range": [
+          1.0,
+          1.0
+        ],
+        "R_EI_window_envelope": [
+          0.9357142857142857,
+          1.0
+        ],
+        "beam_cases": [],
+        "rei_cases": [],
+        "note": "R_meas does not depend on these inputs"
+      },
+      "programme_table19_percent_of_complete_interaction": {
+        "midspan_deflection_percent_of_complete_interaction": {
+          "test": 102,
+          "incomplete_interaction_theory": 104,
+          "no_interaction_theory": 248
+        },
+        "source": "Table 19 (p. 104): concentrated load at midspan, test data are averages; complete-interaction theory = 100",
+        "note": "the authors' complete-interaction deflection appears to include shear deformation: PL^3/48 E_b I with Table 18 values is about 6 % below the plotted complete-interaction line (see notes)"
+      }
+    },
+    "B24S": {
+      "specimen": "B24S",
+      "source": "Viest, Siess, Appleton and Newmark (1952), Univ. Illinois Eng. Exp. Station Bulletin 405",
+      "classification": {
+        "programme": "Viest et al. (1952)",
+        "slab_type": "solid cast-in-place",
+        "connection_system": "channel connectors in solid cast-in-place slab",
+        "scale": "bridge",
+        "role": "near-full reference"
+      },
+      "window": {
+        "rule": "Fig. 43: JSON elastic flag (below measured first yield) and load >= 25 % of the highest elastic load (70.2 kips, 5 % step tolerance): 29.4-70.2 kips, 3 points; 1 point(s) dropped for M/M_p > 0.6 (database M_p); window now 29.39-60.29 (kip (mid-span load)), 2 points",
+        "n_points": 2,
+        "load_min": 29.39,
+        "load_max": 60.29,
+        "load_mid": 44.84,
+        "source_load_min": 29.39,
+        "source_load_max": 60.29,
+        "source_load_unit": "kip (mid-span load)",
+        "m_over_mp_min": 0.32036795680130414,
+        "m_over_mp_max": 0.5684504293927174,
+        "m_over_mp_mid": 0.44440919309701077
+      },
+      "K_units": "kip of total applied load (kip/in for udl) per in of mid-span deflection",
+      "R_meas_flex": 1.092643758200512,
+      "R_meas_flex_range_shear_area": [
+        1.0863701404085153,
+        1.092643758200512
+      ],
+      "R_meas_flex_range_K_uncertainty": [
+        1.0497505852700761,
+        1.1358495878354424
+      ],
+      "R_beam_aci": 0.9629272415827659,
+      "R_EI_window_mean": 0.9685714285714285,
+      "R_EI": {
+        "window_mean": 0.9685714285714285,
+        "mid_window": 0.937142857142857,
+        "window_min": 0.937142857142857,
+        "window_max": 1.0,
+        "regime_mid": "extended"
+      },
+      "eta_plastic": 2.138769971642011,
+      "rho_l": 0.0068,
+      "R_meas": 0.9919356573027165,
+      "Delta_meas": 0.00806434269728351,
+      "R_meas_secant": 0.9500473971004446,
+      "R_meas_flex_secant": 1.0420351375336698,
+      "R_meas_flex_secant_range_shear_area": [
+        1.0363277006468623,
+        1.0420351375336698
+      ],
+      "R_beam_E0": 1.0076250811913097,
+      "R_beam_E0_note": "beam model with Concrete02 E_0 = 1000 f'c",
+      "K_meas": {
+        "slope": 92.10134128166914,
+        "slope_standard_error": null,
+        "uncertainty_used_in_checks": 3.2942357537407747,
+        "implied_deflection_zero_offset_in": 0.023894983818770185,
+        "secant_from_zero": 88.21201144441393
+      },
+      "K_full": 92.85011644012498,
+      "K_steel": 32.03940464448913,
+      "K_noncomposite": 35.21307667504141,
+      "K_beam_aci": 89.40790650432817,
+      "K_beam_E0": 93.55810611660348,
+      "shear": {
+        "G_ksi": 11153.846153846154,
+        "area_clear_web_in2": 9.922,
+        "area_full_depth_web_in2": 10.5204,
+        "C_sh_clear_over_C_full": 0.09291852667681706,
+        "C_sh_full_over_C_full": 0.08763332398838244,
+        "assumption": "steel web carries the whole vertical shear, same term for section and test"
+      },
+      "section": {
+        "n_modular": 6.786642687216683,
+        "ec_ksi": 4273.099577590019,
+        "ec_source": "ACI 1802 sqrt(fc), aashto.py",
+        "es_ksi": 29000.0,
+        "I_full_in4": 6075.362081940602,
+        "I_steel_in4": 2096.4000000000315,
+        "y_na_from_slab_top_in": 6.91572405366026
+      },
+      "beam_aci": {
+        "K_beam": 89.40790650432817,
+        "K_beam_secant": 89.67767409369051,
+        "R_beam": 0.9629272415827659,
+        "R_beam_secant": 0.9658326508563914,
+        "converged_all": true,
+        "beam_concrete_modulus_ksi": 4273.099577590019,
+        "eta_emergent_mid": 0.2291843305200204,
+        "eta_emergent_half_span_mid": 0.2291843305200204,
+        "end_slip_mid_in": 0.0017129038552682451,
+        "connector_force_max_mid_kip": 14.537904986745335,
+        "beam_first_yield_loads_in_window": []
+      },
+      "beam_E0": {
+        "K_beam": 93.55810611660348,
+        "K_beam_secant": 93.85224822074242,
+        "R_beam": 1.0076250811913097,
+        "R_beam_secant": 1.0107930051037004,
+        "converged_all": true,
+        "beam_concrete_modulus_ksi": 5620.0,
+        "eta_emergent_mid": 0.23150827086321735,
+        "eta_emergent_half_span_mid": 0.23150827086321735,
+        "end_slip_mid_in": 0.001728440962607426,
+        "connector_force_max_mid_kip": 14.674794067377835,
+        "beam_first_yield_loads_in_window": []
+      },
+      "eta_plastic_details": {
+        "eta": 2.138769971642011,
+        "sum_qu_kip": 1741.4999999999995,
+        "sum_qu_left_kip": 1741.4999999999995,
+        "sum_qu_right_kip": 1741.4999999999995,
+        "cf_kip": 814.2530627840201,
+        "region": "half_span",
+        "region_end_in": 225.0,
+        "concrete_crushing_kip": 2122.13448,
+        "steel_yield_kip": 814.2530627840201,
+        "note": "connectors between a support and mid-span, the channel on the mid-span line excluded"
+      },
+      "eta_emergent_mid_window": 0.2291843305200204,
+      "rho_l_note": "gross, top + bottom longitudinal bars / (72 x t_s)",
+      "M_p": {
+        "mp_db_kip_in": 13794.5053685282,
+        "details": {
+          "mp_kip_in": 13794.5053685282,
+          "eta_input": 2.138769971642011,
+          "eta_used": 1.0,
+          "b_eff_in": 72.0,
+          "c_steel_kip": 814.2530627840201,
+          "a_block_in": 2.3674001081106812,
+          "block_capped_at_slab": false,
+          "y_steel_force_centroid_from_slab_top_in": 18.125000000000007,
+          "beam_model_full_width_mp_kip_in": 13794.5053685282
+        },
+        "moment_offset_kip_in": 1164.3750000000002,
+        "moment_offset_note": "shored: slab and beam self-weight on the composite section"
+      },
+      "connector_note": "bulletin push-out 4C3C9 (6-in-wide C4x5.4, f'c 5340 psi): [(0.003, 20.7), (0.006, 33.7), (0.02, 60.5)] (slip in, kip per connector), held beyond; Q_u = 116.1 kips",
+      "flags": [
+        "flange F_y 35.2 ksi below the 36 ksi floor by 2%",
+        "channel connectors (C4x5.4), not studs; push-out load-slip at three slips only",
+        "repeated elastic loading before the plotted test; 14 in load plate",
+        "near-full reference: eta_plastic 2.137 > 1 (over-connected)"
+      ],
+      "notes": [
+        "shoring: shored: rigid intermediate support removed 46 days after casting (Sec. 33, p. 87)",
+        "applied midspan load only: 'a set of readings of all instruments was taken before application of the first load increment' (Sec. 35, p. 93). Shored: self-weight acted on the composite section after shore removal and is not in the record. Deflection measured relative to the laboratory floor; bearing compression is not separated (not stated).",
+        "1 point(s) dropped for M/M_p > 0.6 (database M_p); window now 29.39-60.29 (kip (mid-span load)), 2 points"
+      ],
+      "sanity_checks": {
+        "K_steel<=K_meas (within uncertainty)": true,
+        "K_meas<=K_full (within uncertainty)": true,
+        "K_steel<=K_meas (nominal)": true,
+        "K_meas<=K_full (nominal)": true,
+        "flexural compliance positive after shear removal": true,
+        "K_noncomposite<=K_beam_aci<=K_full": true
+      },
+      "secondary_records": [],
+      "sensitivity": {
+        "R_beam_aci_range": [
+          0.9629272415827659,
+          0.9629272415827659
+        ],
+        "R_EI_window_mean_range": [
+          0.9685714285714285,
+          0.9685714285714285
+        ],
+        "R_EI_mid_range": [
+          0.937142857142857,
+          0.937142857142857
+        ],
+        "R_EI_window_envelope": [
+          0.937142857142857,
+          1.0
+        ],
+        "beam_cases": [],
+        "rei_cases": [],
+        "note": "R_meas does not depend on these inputs"
+      },
+      "programme_table19_percent_of_complete_interaction": {
+        "midspan_deflection_percent_of_complete_interaction": {
+          "test": 102,
+          "incomplete_interaction_theory": 103,
+          "no_interaction_theory": 249
+        },
+        "source": "Table 19 (p. 104): concentrated load at midspan, test data are averages; complete-interaction theory = 100",
+        "note": "the authors' complete-interaction deflection appears to include shear deformation: PL^3/48 E_b I with Table 18 values is about 6 % below the plotted complete-interaction line (see notes)"
+      }
+    },
+    "B21S": {
+      "specimen": "B21S",
+      "source": "Viest, Siess, Appleton and Newmark (1952), Univ. Illinois Eng. Exp. Station Bulletin 405",
+      "classification": {
+        "programme": "Viest et al. (1952)",
+        "slab_type": "solid cast-in-place",
+        "connection_system": "channel connectors in solid cast-in-place slab",
+        "scale": "bridge",
+        "role": "near-full reference"
+      },
+      "window": {
+        "rule": "Fig. 43: JSON elastic flag (below measured first yield) and load >= 25 % of the highest elastic load (59.9 kips, 5 % step tolerance): 19.8-59.9 kips, 5 points; 2 point(s) dropped for M/M_p > 0.6 (database M_p); window now 19.81-49.86 (kip (mid-span load)), 3 points",
+        "n_points": 3,
+        "load_min": 19.81,
+        "load_max": 49.86,
+        "load_mid": 34.835,
+        "source_load_min": 19.81,
+        "source_load_max": 49.86,
+        "source_load_unit": "kip (mid-span load)",
+        "m_over_mp_min": 0.28104732983362685,
+        "m_over_mp_max": 0.5573036524622224,
+        "m_over_mp_mid": 0.4191754911479246
+      },
+      "K_units": "kip of total applied load (kip/in for udl) per in of mid-span deflection",
+      "R_meas_flex": 1.0674563575245588,
+      "R_meas_flex_range_shear_area": [
+        1.0613707243034571,
+        1.0674563575245588
+      ],
+      "R_meas_flex_range_K_uncertainty": [
+        1.0276680394113697,
+        1.1074871384550853
+      ],
+      "R_beam_aci": 0.9542221541215224,
+      "R_EI_window_mean": 0.9571428571428572,
+      "R_EI": {
+        "window_mean": 0.9571428571428572,
+        "mid_window": 0.9357142857142857,
+        "window_min": 0.9357142857142857,
+        "window_max": 1.0,
+        "regime_mid": "extended"
+      },
+      "eta_plastic": 2.3337701622725127,
+      "rho_l": 0.0067,
+      "R_meas": 0.9807270729851756,
+      "Delta_meas": 0.019272927014824415,
+      "R_meas_secant": 0.9588369711110429,
+      "R_meas_flex_secant": 1.041574507438683,
+      "R_meas_flex_secant_range_shear_area": [
+        1.03577960353848,
+        1.041574507438683
+      ],
+      "R_beam_E0": 1.0100913629700592,
+      "R_beam_E0_note": "beam model with Concrete02 E_0 = 1000 f'c",
+      "K_meas": {
+        "slope": 69.52675281067326,
+        "slope_standard_error": 0.7002712789043144,
+        "uncertainty_used_in_checks": 2.3882108811346034,
+        "implied_deflection_zero_offset_in": 0.013373857584768431,
+        "secant_from_zero": 67.97489629123334
+      },
+      "K_full": 70.8930697702114,
+      "K_steel": 22.592945948268067,
+      "K_noncomposite": 26.135087801543403,
+      "K_beam_aci": 67.6477377484185,
+      "K_beam_E0": 71.60847746932433,
+      "shear": {
+        "G_ksi": 11153.846153846154,
+        "area_clear_web_in2": 8.496799999999999,
+        "area_full_depth_web_in2": 9.085899999999999,
+        "C_sh_clear_over_C_full": 0.08284522303054609,
+        "C_sh_full_over_C_full": 0.07747381008441034,
+        "assumption": "steel web carries the whole vertical shear, same term for section and test"
+      },
+      "section": {
+        "n_modular": 6.320270111841511,
+        "ec_ksi": 4588.411489829568,
+        "ec_source": "ACI 1802 sqrt(fc), aashto.py",
+        "es_ksi": 29000.0,
+        "I_full_in4": 4638.6701973826,
+        "I_steel_in4": 1478.3000000000497,
+        "y_na_from_slab_top_in": 6.129553128945959
+      },
+      "beam_aci": {
+        "K_beam": 67.6477377484185,
+        "K_beam_secant": 67.79993736207336,
+        "R_beam": 0.9542221541215224,
+        "R_beam_secant": 0.9563690439959233,
+        "converged_all": true,
+        "beam_concrete_modulus_ksi": 4588.411489829568,
+        "eta_emergent_mid": 0.21054924508089626,
+        "eta_emergent_half_span_mid": 0.21054924508089626,
+        "end_slip_mid_in": 0.002028904270419534,
+        "connector_force_max_mid_kip": 12.375067078469947,
+        "beam_first_yield_loads_in_window": []
+      },
+      "beam_E0": {
+        "K_beam": 71.60847746932433,
+        "K_beam_secant": 71.78792312042934,
+        "R_beam": 1.0100913629700592,
+        "R_beam_secant": 1.0126225786683871,
+        "converged_all": true,
+        "beam_concrete_modulus_ksi": 6480.0,
+        "eta_emergent_mid": 0.21059715603878426,
+        "eta_emergent_half_span_mid": 0.21059715603878426,
+        "end_slip_mid_in": 0.0020303083664123846,
+        "connector_force_max_mid_kip": 12.353819399041946,
+        "beam_first_yield_loads_in_window": []
+      },
+      "eta_plastic_details": {
+        "eta": 2.3337701622725127,
+        "sum_qu_kip": 1773.0000000000005,
+        "sum_qu_left_kip": 1773.0000000000005,
+        "sum_qu_right_kip": 1773.0000000000005,
+        "cf_kip": 759.7149148027237,
+        "region": "half_span",
+        "region_end_in": 225.0,
+        "concrete_crushing_kip": 2478.6000000000004,
+        "steel_yield_kip": 759.7149148027237,
+        "note": "connectors between a support and mid-span, the channel on the mid-span line excluded"
+      },
+      "eta_emergent_mid_window": 0.21054924508089626,
+      "rho_l_note": "gross, top + bottom longitudinal bars / (72 x t_s)",
+      "M_p": {
+        "mp_db_kip_in": 12046.918848167972,
+        "details": {
+          "mp_kip_in": 12046.918848167972,
+          "eta_input": 2.3337701622725127,
+          "eta_used": 1.0,
+          "b_eff_in": 72.0,
+          "c_steel_kip": 759.7149148027237,
+          "a_block_in": 1.9156855553606966,
+          "block_capped_at_slab": false,
+          "y_steel_force_centroid_from_slab_top_in": 16.815000000000005,
+          "beam_model_full_width_mp_kip_in": 12046.918848167972
+        },
+        "moment_offset_kip_in": 1191.796875,
+        "moment_offset_note": "shored: slab and beam self-weight on the composite section"
+      },
+      "connector_note": "bulletin push-out 4C3C11 (6-in-wide C4x5.4, f'c 6320 psi, white lead instead of grease): [(0.006, 30.0), (0.02, 65.8)] (slip in, kip per connector), held beyond; Q_u = 118.2 kips",
+      "flags": [
+        "flange F_y 35.1 ksi below the 36 ksi floor by 2%",
+        "channel connectors (C4x5.4), not studs; push-out load-slip at three slips only",
+        "repeated elastic loading before the plotted test; 14 in load plate",
+        "near-full reference: eta_plastic 2.33 > 1 (over-connected)"
+      ],
+      "notes": [
+        "shoring: shored: intermediate shore reaction adjusted daily, removed 20 days after casting (Sec. 33, p. 87)",
+        "applied midspan load only: 'a set of readings of all instruments was taken before application of the first load increment' (Sec. 35, p. 93). Shored: self-weight acted on the composite section after shore removal and is not in the record. Deflection measured relative to the laboratory floor; bearing compression is not separated (not stated).",
+        "2 point(s) dropped for M/M_p > 0.6 (database M_p); window now 19.81-49.86 (kip (mid-span load)), 3 points"
+      ],
+      "sanity_checks": {
+        "K_steel<=K_meas (within uncertainty)": true,
+        "K_meas<=K_full (within uncertainty)": true,
+        "K_steel<=K_meas (nominal)": true,
+        "K_meas<=K_full (nominal)": true,
+        "flexural compliance positive after shear removal": true,
+        "K_noncomposite<=K_beam_aci<=K_full": true
+      },
+      "secondary_records": [],
+      "sensitivity": {
+        "R_beam_aci_range": [
+          0.9542221541215224,
+          0.9542221541215224
+        ],
+        "R_EI_window_mean_range": [
+          0.9571428571428572,
+          0.9571428571428572
+        ],
+        "R_EI_mid_range": [
+          0.9357142857142857,
+          0.9357142857142857
+        ],
+        "R_EI_window_envelope": [
+          0.9357142857142857,
+          1.0
+        ],
+        "beam_cases": [],
+        "rei_cases": [],
+        "note": "R_meas does not depend on these inputs"
+      },
+      "programme_table19_percent_of_complete_interaction": {
+        "midspan_deflection_percent_of_complete_interaction": {
+          "test": 101,
+          "incomplete_interaction_theory": 101,
+          "no_interaction_theory": 262
+        },
+        "source": "Table 19 (p. 104): concentrated load at midspan, test data are averages; complete-interaction theory = 100",
+        "note": "the authors' complete-interaction deflection appears to include shear deformation: PL^3/48 E_b I with Table 18 values is about 6 % below the plotted complete-interaction line (see notes)"
+      }
+    },
+    "B21W": {
+      "specimen": "B21W",
+      "source": "Viest, Siess, Appleton and Newmark (1952), Univ. Illinois Eng. Exp. Station Bulletin 405",
+      "classification": {
+        "programme": "Viest et al. (1952)",
+        "slab_type": "solid cast-in-place",
+        "connection_system": "channel connectors in solid cast-in-place slab",
+        "scale": "bridge",
+        "role": "partial-connection"
+      },
+      "window": {
+        "rule": "Fig. 53 test 1B after bond break: JSON elastic flag (below measured first yield) and load >= 25 % of the highest elastic load (40.0 kips, 5 % step tolerance): 10.0-40.0 kips, 4 points",
+        "n_points": 4,
+        "load_min": 10.04,
+        "load_max": 40.0,
+        "load_mid": 25.02,
+        "source_load_min": 10.04,
+        "source_load_max": 40.0,
+        "source_load_unit": "kip (mid-span load)",
+        "m_over_mp_min": 0.09914265574938357,
+        "m_over_mp_max": 0.39499066035610986,
+        "m_over_mp_mid": 0.24706665805274672
+      },
+      "K_units": "kip of total applied load (kip/in for udl) per in of mid-span deflection",
+      "R_meas_flex": 0.9171962935555524,
+      "R_meas_flex_range_shear_area": [
+        0.9128197324255475,
+        0.9171962935555524
+      ],
+      "R_meas_flex_range_K_uncertainty": [
+        0.8967414263367208,
+        0.9377141752771899
+      ],
+      "R_beam_aci": 0.8980291976293838,
+      "R_EI_window_mean": 0.9502093228905596,
+      "R_EI": {
+        "window_mean": 0.9502093228905596,
+        "mid_window": 0.9502093228905596,
+        "window_min": 0.9502093228905596,
+        "window_max": 0.9502093228905596,
+        "regime_mid": "service"
+      },
+      "eta_plastic": 0.6577409225444558,
+      "rho_l": 0.008,
+      "R_meas": 0.8540415590431504,
+      "Delta_meas": 0.14595844095684962,
+      "R_meas_secant": 0.8698210429848938,
+      "R_meas_flex_secant": 0.9354206895469811,
+      "R_meas_flex_secant_range_shear_area": [
+        0.9308689103639353,
+        0.9354206895469811
+      ],
+      "R_beam_E0": 0.9352241728699292,
+      "R_beam_E0_note": "beam model with Concrete02 E_0 = 1000 f'c",
+      "K_meas": {
+        "slope": 58.922332923762994,
+        "slope_standard_error": 0.4003335659381766,
+        "uncertainty_used_in_checks": 1.225458012835109,
+        "implied_deflection_zero_offset_in": -0.009267626712667294,
+        "secant_from_zero": 60.01099657992308
+      },
+      "K_full": 68.99234855711038,
+      "K_steel": 22.592945948268067,
+      "K_noncomposite": 25.663941057214075,
+      "K_beam_aci": 61.95714341730861,
+      "K_beam_E0": 64.5233121136774,
+      "shear": {
+        "G_ksi": 11153.846153846154,
+        "area_clear_web_in2": 8.496799999999999,
+        "area_full_depth_web_in2": 9.085899999999999,
+        "C_sh_clear_over_C_full": 0.0806240514360779,
+        "C_sh_full_over_C_full": 0.07539665198186936,
+        "assumption": "steel web carries the whole vertical shear, same term for section and test"
+      },
+      "section": {
+        "n_modular": 6.810924133968557,
+        "ec_ksi": 4257.865662512147,
+        "ec_source": "ACI 1802 sqrt(fc), aashto.py",
+        "es_ksi": 29000.0,
+        "I_full_in4": 4514.302344878499,
+        "I_steel_in4": 1478.3000000000497,
+        "y_na_from_slab_top_in": 6.277683602251162
+      },
+      "beam_aci": {
+        "K_beam": 61.95714341730861,
+        "K_beam_secant": 63.39302216333452,
+        "R_beam": 0.8980291976293838,
+        "R_beam_secant": 0.9188413423969637,
+        "converged_all": true,
+        "beam_concrete_modulus_ksi": 4257.865662512147,
+        "eta_emergent_mid": 0.14842232392060317,
+        "eta_emergent_half_span_mid": 0.14842232392060317,
+        "end_slip_mid_in": 0.0023406516391649024,
+        "connector_force_max_mid_kip": 20.33866028107297,
+        "beam_first_yield_loads_in_window": []
+      },
+      "beam_E0": {
+        "K_beam": 64.5233121136774,
+        "K_beam_secant": 66.13073082144673,
+        "R_beam": 0.9352241728699292,
+        "R_beam_secant": 0.9585226797534677,
+        "converged_all": true,
+        "beam_concrete_modulus_ksi": 5580.0,
+        "eta_emergent_mid": 0.1490079482679189,
+        "eta_emergent_half_span_mid": 0.1490079482679189,
+        "end_slip_mid_in": 0.002351322321653399,
+        "connector_force_max_mid_kip": 20.442770809077203,
+        "beam_first_yield_loads_in_window": []
+      },
+      "eta_plastic_details": {
+        "eta": 0.6577409225444558,
+        "sum_qu_kip": 491.4,
+        "sum_qu_left_kip": 491.4,
+        "sum_qu_right_kip": 491.4,
+        "cf_kip": 747.102670910349,
+        "region": "half_span",
+        "region_end_in": 225.0,
+        "concrete_crushing_kip": 2086.5405600000004,
+        "steel_yield_kip": 747.102670910349,
+        "note": "connectors between a support and mid-span, the channel on the mid-span line excluded"
+      },
+      "eta_emergent_mid_window": 0.14842232392060317,
+      "rho_l_note": "gross, top + bottom longitudinal bars / (72 x t_s)",
+      "M_p": {
+        "mp_db_kip_in": 11215.45505912992,
+        "details": {
+          "mp_kip_in": 11215.45505912992,
+          "eta_input": 0.6577409225444558,
+          "eta_used": 0.6577409225444558,
+          "b_eff_in": 47.357346423200816,
+          "c_steel_kip": 747.102670910349,
+          "a_block_in": 3.326134483728139,
+          "block_capped_at_slab": false,
+          "y_steel_force_centroid_from_slab_top_in": 16.675000000000004,
+          "beam_model_full_width_mp_kip_in": 11640.70579477807
+        },
+        "moment_offset_kip_in": 0.0,
+        "moment_offset_note": "unshored: dead load on the steel alone, applied moment only"
+      },
+      "connector_note": "bulletin push-out 4C3W2 (4-in-wide C4x5.4, the B21W connector, f'c 4430 psi, natural bond NOT broken): [(0.003, 23.4), (0.006, 29.6), (0.02, 46.0)] (slip in, kip per connector), held beyond; Q_u = 81.9 kips",
+      "flags": [
+        "flange F_y 34.3 ksi below the 36 ksi floor by 5%",
+        "channel connectors (C4x5.4), not studs; push-out load-slip at three slips only",
+        "repeated elastic loading before the plotted test; 14 in load plate",
+        "connector push-out 4C3W2 had natural bond intact: model connector stiffness is an upper bound",
+        "primary record Fig. 53 test 1B after bond was broken by 11 repetitions of 40 kips; only 4 elastic load levels (10-40 kips); first yield measured at 47 kips"
+      ],
+      "notes": [
+        "shoring: unshored (Sec. 31, pp. 81-82): dead load on the steel section alone",
+        "applied midspan load only: 'a set of readings of all instruments was taken before application of the first load increment' (Sec. 35, p. 93). Unshored: slab and beam self-weight (551-567 lb/ft) was already on the steel section and is not in the record. Deflection measured relative to the laboratory floor; bearing compression is not separated (not stated)."
+      ],
+      "sanity_checks": {
+        "K_steel<=K_meas (within uncertainty)": true,
+        "K_meas<=K_full (within uncertainty)": true,
+        "K_steel<=K_meas (nominal)": true,
+        "K_meas<=K_full (nominal)": true,
+        "flexural compliance positive after shear removal": true,
+        "K_noncomposite<=K_beam_aci<=K_full": true
+      },
+      "secondary_records": [
+        {
+          "label": "Fig. 43 test 5A/5B (secondary record)",
+          "n_points": 4,
+          "source_load_range": [
+            9.97,
+            39.79
+          ],
+          "K_meas": 60.374157632758724,
+          "R_meas": 0.8750848303530687,
+          "R_meas_flex": 0.9415111582363027,
+          "R_meas_flex_full_depth_web": 0.9369000594541117,
+          "R_meas_secant": 0.8494406735384176,
+          "R_meas_flex_secant": 0.911891908754166
+        },
+        {
+          "label": "Fig. 53 test 1A, natural bond intact (context)",
+          "n_points": 6,
+          "source_load_range": [
+            10.03,
+            39.99
+          ],
+          "K_meas": 60.98277360218698,
+          "R_meas": 0.8839063298694168,
+          "R_meas_flex": 0.951730560668059,
+          "R_meas_flex_full_depth_web": 0.947019069003043,
+          "R_meas_secant": 0.9453879266263467,
+          "R_meas_flex_secant": 1.0233918843820264
+        }
+      ],
+      "sensitivity": {
+        "R_beam_aci_range": [
+          0.8721449498098933,
+          0.9003340413080204
+        ],
+        "R_EI_window_mean_range": [
+          0.8352777777777778,
+          0.9881
+        ],
+        "R_EI_mid_range": [
+          0.8855555555555555,
+          0.9881
+        ],
+        "R_EI_window_envelope": [
+          0.6844444444444444,
+          0.9881
+        ],
+        "beam_cases": [
+          {
+            "label": "connector initial stiffness 3.28e+03 kip/in (toe replaced)",
+            "R_beam": 0.8721449498098933,
+            "K_beam": 60.17132836960769,
+            "eta_emergent_mid": 0.13820297902179027
+          },
+          {
+            "label": "connector initial stiffness 3.74e+03 kip/in (toe replaced)",
+            "R_beam": 0.8838934885953331,
+            "K_beam": 60.98188765252949,
+            "eta_emergent_mid": 0.14010418429241334
+          },
+          {
+            "label": "connector initial stiffness 4.93e+03 kip/in (toe replaced)",
+            "R_beam": 0.9003340413080204,
+            "K_beam": 62.11615999575476,
+            "eta_emergent_mid": 0.1436678414773112
+          }
+        ],
+        "rei_cases": [
+          {
+            "label": "Slutter-Driscoll convention",
+            "eta": 0.5,
+            "rho_l": 0.008,
+            "m_over_mp_mid": 0.2560143682747142,
+            "R_EI_window_mean": 0.8352777777777778,
+            "R_EI_mid": 0.8855555555555555,
+            "R_EI_window_min": 0.6844444444444444,
+            "R_EI_window_max": 0.8855555555555555
+          },
+          {
+            "label": "AISC channel formula",
+            "eta": 0.575,
+            "rho_l": 0.008,
+            "m_over_mp_mid": 0.25106904322073315,
+            "R_EI_window_mean": 0.8744444444444445,
+            "R_EI_mid": 0.9188888888888889,
+            "R_EI_window_min": 0.741111111111111,
+            "R_EI_window_max": 0.9188888888888889
+          },
+          {
+            "label": "mid-span channel counted",
+            "eta": 0.766,
+            "rho_l": 0.008,
+            "m_over_mp_mid": 0.24325796632544647,
+            "R_EI_window_mean": 0.9881,
+            "R_EI_mid": 0.9881,
+            "R_EI_window_min": 0.9881,
+            "R_EI_window_max": 0.9881
+          },
+          {
+            "label": "module half-span convention (mid-span channel weighted 0.5)",
+            "eta": 0.712552666089827,
+            "rho_l": 0.008,
+            "m_over_mp_mid": 0.24497900315104496,
+            "R_EI_window_mean": 0.9693934331314394,
+            "R_EI_mid": 0.9693934331314394,
+            "R_EI_window_min": 0.9693934331314394,
+            "R_EI_window_max": 0.9693934331314394
+          }
+        ],
+        "note": "R_meas does not depend on these inputs"
+      },
+      "programme_table19_percent_of_complete_interaction": {
+        "midspan_deflection_percent_of_complete_interaction": {
+          "test": 113,
+          "incomplete_interaction_theory": 115,
+          "no_interaction_theory": 262
+        },
+        "source": "Table 19 (p. 104): concentrated load at midspan, test data are averages; complete-interaction theory = 100",
+        "note": "the authors' complete-interaction deflection appears to include shear deformation: PL^3/48 E_b I with Table 18 values is about 6 % below the plotted complete-interaction line (see notes)"
+      }
+    }
+  }
+}

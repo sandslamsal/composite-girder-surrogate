@@ -1,0 +1,56 @@
+{
+  "figure": "Suwaed (2017) thesis Fig. 7.6, printed p. 164 (PDF p. 183)",
+  "render": "pdftoppm -r 600 -f 183 -l 183 -png (4x the 150 ppi embedded raster)",
+  "x_axis": "mid-span deflection magnitude (mm)",
+  "y_axis": "mid-span moment (kN.m), 57 kN.m self-weight + spreader moment included (thesis p. 164)",
+  "x": {
+    "gridline_pixels": [
+      1452.46,
+      2008.47,
+      2560.5,
+      3116.52,
+      3668.5,
+      4220.5
+    ],
+    "gridline_values": [
+      0,
+      100,
+      200,
+      300,
+      400,
+      500
+    ],
+    "value_per_pixel": 0.1806324161398942,
+    "intercept": -262.60323324718195,
+    "max_abs_residual_value": 0.3414548281346015
+  },
+  "y": {
+    "gridline_pixels": [
+      1138.5,
+      1338.54,
+      1538.86,
+      1738.5,
+      1938.5,
+      2138.5,
+      2338.5,
+      2538.55,
+      2738.5
+    ],
+    "gridline_values": [
+      1600,
+      1400,
+      1200,
+      1000,
+      800,
+      600,
+      400,
+      200,
+      0
+    ],
+    "value_per_pixel": -1.00005996529008,
+    "intercept": 2738.665415096141,
+    "max_abs_residual_value": 0.28530455514055575
+  },
+  "native_px_per_mm": 1.384026219338077,
+  "native_kNm_per_px": 4.00023986116032
+}

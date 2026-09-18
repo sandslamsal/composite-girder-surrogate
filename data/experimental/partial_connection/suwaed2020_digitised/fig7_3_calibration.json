@@ -1,0 +1,65 @@
+{
+  "figure": "Suwaed (2017) thesis Fig. 7.3, printed p. 160 (PDF p. 179)",
+  "render": "pdftoppm -r 600 -f 179 -l 179 -png (4x the 150 ppi embedded raster)",
+  "x_axis": "mid-span deflection magnitude (mm); axis labels are negative (downward)",
+  "y_axis": "jack load (kN), self-weight and spreader excluded",
+  "x": {
+    "gridline_pixels": [
+      1416.5,
+      1816.5,
+      2220.5,
+      2620.49,
+      3024.53,
+      3424.51,
+      3824.5,
+      4228.5
+    ],
+    "gridline_values": [
+      0,
+      50,
+      100,
+      150,
+      200,
+      250,
+      300,
+      350
+    ],
+    "value_per_pixel": 0.12448116657826658,
+    "intercept": -176.28634564271016,
+    "max_abs_residual_value": 0.21119564346867037
+  },
+  "y": {
+    "gridline_pixels": [
+      2251.5,
+      2679.49,
+      3107.5,
+      3535.5,
+      3963.5
+    ],
+    "gridline_values": [
+      1000,
+      750,
+      500,
+      250,
+      0
+    ],
+    "value_per_pixel": -0.5841107087631021,
+    "intercept": 2315.1234762643776,
+    "max_abs_residual_value": 0.005765198437984509
+  },
+  "px_per_mm_600dpi": 8.033343737755363,
+  "px_per_kN_600dpi": 1.7120042228254544,
+  "native_px_per_mm": 2.0083359344388407,
+  "native_kN_per_px": 2.3364428350524085,
+  "zero_offset": {
+    "method": "linear fit of row centroids for 10-100 kN, extrapolated to P = 0",
+    "delta0_fit_mm": 2.069,
+    "slope_fit_mm_per_kN": 0.05178,
+    "delta_at_P0_row_mm": 2.182,
+    "thesis_text": "about 2 mm at mid-span when the props were removed (p. 164)"
+  },
+  "row_scatter_50_450kN_mm": {
+    "std": 0.0641,
+    "max_abs": 0.2235
+  }
+}
