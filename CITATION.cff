@@ -38,10 +38,13 @@ version: "1.2.0"
 date-released: "2026-09-18"
 preferred-citation:
   type: article
-  title: "Stiffness Deviation of the AASHTO Transformed-Section Method Under Partial Composite Action and a Neural-Network Surrogate for Composite Steel Bridge Girders"
+  title: "Stiffness deviation of the AASHTO transformed-section method under partial composite action and a neural-network surrogate for composite steel bridge girders"
   authors:
     - given-names: Sandesh
       family-names: Lamsal
       email: slamsal60@gmail.com
-  year: 2026
-  notes: "Manuscript under review."
+  journal: "Engineering Structures"
+  volume: 371
+  start: 124091
+  year: 2027
+  doi: "10.1016/j.engstruct.2026.124091"

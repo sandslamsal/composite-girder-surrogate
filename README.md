@@ -125,14 +125,17 @@ python scripts/train_surrogate.py --config configs/training.yaml \
 Paper:
 
 ```bibtex
-@article{Lamsal2026CompositeGirderStiffness,
+@article{Lamsal2027CompositeGirderStiffness,
   author  = {Lamsal, Sandesh},
-  title   = {Stiffness Deviation of the {AASHTO} Transformed-Section
-             Method Under Partial Composite Action and a
-             Neural-Network Surrogate for Composite Steel Bridge
-             Girders},
-  year    = {2026},
-  note    = {Manuscript under review}
+  title   = {Stiffness deviation of the {AASHTO} transformed-section
+             method under partial composite action and a
+             neural-network surrogate for composite steel bridge
+             girders},
+  journal = {Engineering Structures},
+  volume  = {371},
+  pages   = {124091},
+  year    = {2027},
+  doi     = {10.1016/j.engstruct.2026.124091}
 }
 ```
 
