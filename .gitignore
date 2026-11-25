@@ -75,6 +75,11 @@ paper1_text_additions.md
 # Paper 2 -- maintained in its own separate repository.
 paper2-beam-level/
 
+# Connector-loss study -- its own private repository,
+# sandslamsal/composite-girder-connector-loss, checked out here for
+# convenience. It carries its own copy of the beam model.
+ConnectorLoss/
+
 # Archives (e.g. Paper 1.zip) -- never committed
 *.zip
 
